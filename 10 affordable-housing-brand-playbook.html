@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affordable Housing — Brand & Communication Playbook</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0b;
+    --parchment: #f5f0e8;
+    --sand: #e8dfc8;
+    --gold: #b89a5a;
+    --gold-lt: #d4b97a;
+    --rust: #8b4a2a;
+    --sage: #4a5c4e;
+    --steel: #3a4a5c;
+    --cream: #faf7f2;
+    --rule: rgba(184,154,90,0.25);
+    --mono: 'DM Mono', monospace;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand {
+    font-family: var(--sans); font-weight: 800; font-size: 13px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink); text-decoration: none;
+    opacity: 0.55; transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 80px 80px;
+    position: relative; overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 30%, rgba(139,74,42,0.1) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 10% 70%, rgba(74,92,78,0.14) 0%, transparent 55%),
+      linear-gradient(155deg, #0d0d0b 0%, #161410 50%, #0e0f0c 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(184,154,90,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,154,90,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .hero-stamp {
+    position: absolute; top: 80px; right: 80px;
+    width: 180px; height: 180px;
+    border: 1px solid rgba(184,154,90,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; opacity: 0.65;
+  }
+  .hero-stamp-inner {
+    width: 140px; height: 140px;
+    border: 1px solid rgba(184,154,90,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; text-align: center; gap: 4px;
+  }
+  .hero-stamp span {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-lt); opacity: 0.8; display: block;
+  }
+  .hero-stamp strong {
+    font-family: var(--sans); font-size: 18px; font-weight: 800;
+    color: var(--gold); line-height: 1; display: block;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 40px; height: 1px; background: var(--gold);
+  }
+  h1.hero-title {
+    font-family: var(--serif);
+    font-size: clamp(48px, 6.5vw, 88px);
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.0; letter-spacing: -0.01em; margin-bottom: 12px;
+  }
+  h1.hero-title em { font-style: italic; color: var(--gold-lt); }
+  .hero-sub {
+    font-family: var(--mono); font-size: 13px;
+    color: rgba(245,240,232,0.4); letter-spacing: 0.05em;
+    margin-top: 24px; max-width: 560px; line-height: 1.6;
+  }
+  .hero-toc {
+    position: absolute; bottom: 80px; right: 80px;
+    display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+  }
+  .toc-tag {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(184,154,90,0.5); cursor: pointer; transition: color 0.2s;
+    text-decoration: none;
+  }
+  .toc-tag:hover { color: var(--gold-lt); }
+
+  /* ─── PHASE DIVIDER ─── */
+  .phase-header {
+    padding: 0 80px; margin-top: 120px; margin-bottom: 64px;
+    display: flex; align-items: flex-end; gap: 40px;
+    border-bottom: 1px solid var(--rule); padding-bottom: 32px;
+  }
+  .phase-num {
+    font-family: var(--mono); font-size: 72px; font-weight: 300;
+    color: var(--sand); line-height: 1; flex-shrink: 0;
+  }
+  .phase-meta { flex: 1; }
+  .phase-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .phase-title {
+    font-family: var(--serif); font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300; color: var(--ink); line-height: 1.1;
+  }
+  .phase-title em { font-style: italic; color: var(--rust); }
+  .phase-desc {
+    font-size: 15px; color: rgba(13,13,11,0.55);
+    max-width: 580px; margin-top: 12px;
+    font-family: var(--mono); line-height: 1.6; letter-spacing: 0.01em;
+  }
+
+  /* ─── CONTENT ZONE ─── */
+  .content-zone { padding: 0 80px; margin-bottom: 24px; }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    font-family: var(--sans); font-size: 11px;
+    font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 1px; background: var(--rule); display: block;
+  }
+
+  /* ─── CALLOUT / DARK BLOCK ─── */
+  .callout {
+    background: var(--ink);
+    padding: 48px 56px; margin-bottom: 48px;
+    position: relative; overflow: hidden;
+  }
+  .callout-glow {
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(139,74,42,0.18) 0%, transparent 70%);
+  }
+  .callout p {
+    font-family: var(--serif); font-size: clamp(20px, 2vw, 28px);
+    font-weight: 300; font-style: italic;
+    color: var(--parchment); line-height: 1.5;
+    position: relative; z-index: 1; max-width: 840px;
+  }
+  .callout-src {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-top: 20px; position: relative; z-index: 1;
+  }
+
+  /* ─── BIG QUOTE ─── */
+  .big-quote {
+    font-family: var(--serif); font-size: clamp(26px, 3.5vw, 48px);
+    font-weight: 300; font-style: italic;
+    color: var(--ink); line-height: 1.3;
+    border-left: 3px solid var(--gold);
+    padding-left: 40px; margin: 64px 0; opacity: 0.85;
+  }
+
+  /* ─── FRAMEWORK GRID ─── */
+  .fw-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .fw-card {
+    background: var(--parchment); padding: 32px 28px;
+    border: 1px solid var(--rule);
+    position: relative; transition: background 0.25s;
+  }
+  .fw-card:hover { background: var(--sand); }
+  .fw-card-num {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold); letter-spacing: 0.15em;
+    margin-bottom: 12px; display: block;
+  }
+  .fw-card h3 {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 10px; color: var(--ink);
+  }
+  .fw-card p {
+    font-family: var(--serif); font-size: 15px;
+    color: rgba(13,13,11,0.65); line-height: 1.6;
+  }
+  .fw-card-accent {
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%; background: var(--gold);
+    opacity: 0; transition: opacity 0.25s;
+  }
+  .fw-card:hover .fw-card-accent { opacity: 1; }
+  .fw-card.rust-accent .fw-card-accent { background: var(--rust); }
+  .fw-card.sage-accent .fw-card-accent { background: var(--sage); }
+
+  /* ─── STRAT TABLE ─── */
+  .strat-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 48px;
+  }
+  .strat-table thead tr { background: var(--ink); }
+  .strat-table th {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); padding: 14px 20px;
+    text-align: left; font-weight: 400;
+  }
+  .strat-table td {
+    padding: 14px 20px; font-size: 14px;
+    border-bottom: 1px solid var(--rule); vertical-align: top;
+  }
+  .strat-table tr:nth-child(even) td { background: var(--parchment); }
+  .strat-table tr:hover td { background: var(--sand); }
+  .strat-table .cat {
+    font-family: var(--sans); font-size: 12px;
+    font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--rust);
+  }
+  .strat-table .cat.sage { color: var(--sage); }
+  .strat-table .cat.steel { color: var(--steel); }
+
+  /* ─── PILLARS (4-col) ─── */
+  .pillars {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-bottom: 48px;
+    border: 1px solid var(--rule);
+  }
+  .pillar {
+    padding: 40px 24px; border-right: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar-bg {
+    position: absolute; bottom: -20px; right: -20px;
+    font-size: 100px; line-height: 1;
+    font-family: var(--sans); font-weight: 800;
+    color: rgba(184,154,90,0.05); pointer-events: none;
+    transition: color 0.3s;
+  }
+  .pillar:hover .pillar-bg { color: rgba(184,154,90,0.1); }
+  .pillar-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+  .pillar h4 {
+    font-family: var(--sans); font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .pillar p {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(13,13,11,0.6); line-height: 1.6;
+  }
+
+  /* ─── TWO COL ─── */
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; margin-bottom: 48px; align-items: start;
+  }
+  .two-col-wide {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 48px; margin-bottom: 48px; align-items: start;
+  }
+
+  /* ─── PROSE ─── */
+  .prose { margin-bottom: 32px; }
+  .prose p {
+    font-size: 16px; line-height: 1.75;
+    color: rgba(13,13,11,0.72); margin-bottom: 16px; max-width: 760px;
+  }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  /* ─── TAG LIST ─── */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .tag {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid var(--rule);
+    padding: 5px 14px; color: var(--ink);
+    opacity: 0.65; transition: all 0.2s; cursor: default;
+  }
+  .tag:hover { opacity: 1; border-color: var(--gold); color: var(--gold); }
+  .tag.rust { border-color: rgba(139,74,42,0.3); color: var(--rust); opacity: 0.8; }
+  .tag.rust:hover { opacity: 1; border-color: var(--rust); }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding-left: 0; margin-bottom: 48px; }
+  .tl-item {
+    display: grid; grid-template-columns: 140px 1fr;
+    gap: 32px; margin-bottom: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .tl-time {
+    padding: 24px 0; font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.1em; color: var(--gold);
+    text-transform: uppercase; display: flex; align-items: flex-start; padding-top: 28px;
+  }
+  .tl-body {
+    padding: 24px 0; border-left: 1px solid var(--rule); padding-left: 32px;
+  }
+  .tl-body h4 {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .tl-body p {
+    font-size: 14px; color: rgba(13,13,11,0.6); line-height: 1.6;
+  }
+  .tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .tl-tag {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--sand); color: var(--rust);
+    padding: 3px 10px; border-radius: 2px;
+  }
+  .tl-tag.sage { background: rgba(74,92,78,0.1); color: var(--sage); }
+  .tl-tag.steel { background: rgba(58,74,92,0.1); color: var(--steel); }
+
+  /* ─── CHANNEL MAP ─── */
+  .channel-map {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .ch-col-head {
+    background: var(--ink); padding: 16px 14px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); text-align: center;
+  }
+  .ch-item {
+    background: var(--parchment); padding: 14px 14px;
+    border: 1px solid var(--rule);
+    font-size: 13px; font-family: var(--serif);
+    color: rgba(13,13,11,0.7); line-height: 1.5;
+    transition: background 0.2s;
+  }
+  .ch-item:hover { background: var(--sand); }
+  .ch-item strong {
+    display: block; font-family: var(--sans);
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--steel); margin-bottom: 4px;
+  }
+
+  /* ─── VERNACULAR TABLE — special ─── */
+  .vern-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .vern-head {
+    background: var(--ink); padding: 20px 20px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+  }
+  .vern-head span {
+    display: block; font-family: var(--serif);
+    font-size: 22px; font-weight: 300; font-style: italic;
+    color: var(--gold-lt); margin-top: 6px; letter-spacing: 0;
+    text-transform: none;
+  }
+  .vern-cell {
+    background: var(--parchment); padding: 16px 18px;
+    border: 1px solid var(--rule);
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(13,13,11,0.68); line-height: 1.55;
+    transition: background 0.2s;
+  }
+  .vern-cell:hover { background: var(--sand); }
+  .vern-cell strong {
+    display: block; font-family: var(--sans);
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--rust); margin-bottom: 5px;
+  }
+
+  /* ─── HOARDING DIAGRAM BLOCK ─── */
+  .hoarding-block {
+    background: var(--ink);
+    padding: 56px 48px; margin-bottom: 48px;
+    position: relative; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 56px; align-items: center;
+  }
+  .hoarding-block::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 80% at 80% 50%, rgba(139,74,42,0.08) 0%, transparent 60%);
+  }
+  .hoarding-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .hoarding-block h3 {
+    font-family: var(--serif); font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300; color: var(--parchment); line-height: 1.3;
+    margin-bottom: 16px; position: relative; z-index: 1;
+  }
+  .hoarding-block h3 em { font-style: italic; color: var(--gold-lt); }
+  .hoarding-block p {
+    font-family: var(--serif); font-size: 15px;
+    color: rgba(245,240,232,0.45); line-height: 1.7;
+    position: relative; z-index: 1;
+  }
+  .hoarding-visual {
+    position: relative; z-index: 1;
+    border: 1px solid rgba(184,154,90,0.15);
+    padding: 24px;
+  }
+  .hv-board {
+    border: 2px solid rgba(184,154,90,0.3);
+    padding: 28px 24px; text-align: center;
+    background: rgba(184,154,90,0.04);
+    margin-bottom: 16px; position: relative;
+  }
+  .hv-board::before {
+    content: 'SITE HOARDING — 20FT × 10FT';
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    font-family: var(--mono); font-size: 8px; letter-spacing: 0.2em;
+    background: var(--ink); color: var(--gold); padding: 2px 12px;
+    white-space: nowrap;
+  }
+  .hv-headline {
+    font-family: var(--serif); font-size: 22px; font-weight: 600;
+    color: var(--parchment); line-height: 1.2; margin-bottom: 10px;
+  }
+  .hv-sub {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    color: rgba(184,154,90,0.7); margin-bottom: 12px;
+  }
+  .hv-scheme {
+    display: inline-block;
+    border: 1px solid rgba(184,154,90,0.4);
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold-lt); padding: 4px 14px; margin: 3px;
+  }
+  .hv-zones {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  }
+  .hv-zone {
+    background: rgba(245,240,232,0.04); padding: 10px 8px; text-align: center;
+    border: 1px solid rgba(184,154,90,0.1);
+  }
+  .hv-zone span {
+    display: block; font-family: var(--mono); font-size: 8px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(184,154,90,0.4); margin-bottom: 4px;
+  }
+  .hv-zone p {
+    font-family: var(--serif); font-size: 12px;
+    color: rgba(245,240,232,0.35); line-height: 1.3;
+  }
+
+  /* ─── DECISION ARCHITECTURE ─── */
+  .decision-tree {
+    margin-bottom: 48px;
+    border: 1px solid var(--rule);
+  }
+  .dt-header {
+    background: var(--ink); padding: 20px 28px;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;
+  }
+  .dt-header span {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+    text-align: center;
+  }
+  .dt-row {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 2px; border-bottom: 1px solid var(--rule);
+  }
+  .dt-row:last-child { border-bottom: none; }
+  .dt-cell {
+    padding: 18px 16px; font-family: var(--serif);
+    font-size: 14px; color: rgba(13,13,11,0.65); line-height: 1.5;
+    text-align: center; background: var(--parchment);
+    border-right: 1px solid var(--rule); transition: background 0.2s;
+  }
+  .dt-cell:hover { background: var(--sand); }
+  .dt-cell:last-child { border-right: none; }
+  .dt-cell.person {
+    font-family: var(--sans); font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--rust); background: rgba(139,74,42,0.04);
+  }
+  .dt-cell.dominant {
+    background: rgba(74,92,78,0.08);
+    color: var(--sage); font-weight: 600;
+    font-family: var(--sans); font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+
+  /* ─── TRUST LADDER ─── */
+  .trust-ladder {
+    margin-bottom: 48px;
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .tl-rung {
+    display: grid; grid-template-columns: 64px 1fr 1fr 1fr;
+    gap: 2px;
+  }
+  .tl-rung-num {
+    background: var(--ink); padding: 20px 12px;
+    font-family: var(--mono); font-size: 18px; font-weight: 300;
+    color: var(--gold); display: flex; align-items: center; justify-content: center;
+  }
+  .tl-rung-cell {
+    padding: 20px 20px; font-family: var(--serif);
+    font-size: 14px; color: rgba(13,13,11,0.65); line-height: 1.5;
+    background: var(--parchment); border: 1px solid var(--rule);
+    transition: background 0.2s;
+  }
+  .tl-rung-cell:hover { background: var(--sand); }
+  .tl-rung-cell.head {
+    font-family: var(--sans); font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink);
+    background: var(--sand);
+  }
+  .tl-rung-cell.head.gold { color: var(--gold); background: rgba(184,154,90,0.08); }
+
+  /* ─── PMAY GRID ─── */
+  .scheme-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .scheme-card {
+    padding: 32px 28px; background: var(--parchment);
+    border: 1px solid var(--rule); position: relative;
+    transition: background 0.25s;
+  }
+  .scheme-card:hover { background: var(--sand); }
+  .scheme-card-badge {
+    position: absolute; top: 16px; right: 20px;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--sage); opacity: 0.75;
+  }
+  .scheme-card h3 {
+    font-family: var(--sans); font-size: 14px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .scheme-card .sc-code {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gold); letter-spacing: 0.1em; margin-bottom: 14px;
+  }
+  .scheme-card p {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(13,13,11,0.62); line-height: 1.6; margin-bottom: 12px;
+  }
+  .scheme-card ul {
+    list-style: none; padding: 0; margin-top: 10px;
+  }
+  .scheme-card ul li {
+    font-family: var(--serif); font-size: 13px;
+    color: rgba(13,13,11,0.58); padding: 4px 0;
+    border-bottom: 1px solid var(--rule); line-height: 1.4;
+  }
+  .scheme-card ul li::before { content: '→ '; color: var(--gold); font-size: 11px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); padding: 64px 80px 40px; margin-top: 120px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 64px; margin-bottom: 48px;
+  }
+  .footer-brand {
+    font-family: var(--sans); font-size: 26px; font-weight: 800;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-brand span { color: rgba(184,154,90,0.35); font-weight: 300; }
+  .footer-desc {
+    font-family: var(--mono); font-size: 12px;
+    color: rgba(245,240,232,0.3); line-height: 1.7; letter-spacing: 0.02em;
+  }
+  .footer-col h5 {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(245,240,232,0.4); padding: 4px 0;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(184,154,90,0.1);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p {
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(245,240,232,0.2); letter-spacing: 0.08em;
+  }
+
+  /* ─── FADE IN ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width: 1024px) {
+    nav, .hero, .content-zone, .phase-header { padding-left: 40px; padding-right: 40px; }
+    .fw-grid, .pillars, .channel-map, .vern-grid, .scheme-grid { grid-template-columns: 1fr 1fr; }
+    .two-col, .two-col-wide, .hoarding-block { grid-template-columns: 1fr; }
+    .dt-header, .dt-row { grid-template-columns: 1fr; }
+    .tl-rung { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .decision-tree { overflow-x: auto; }
+  }
+  @media(max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 80px 24px 64px; }
+    .content-zone, .phase-header { padding: 0 24px; }
+    .hero-stamp, .hero-toc { display: none; }
+    footer { padding: 48px 24px 32px; }
+    .fw-grid, .pillars, .channel-map, .vern-grid, .scheme-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Branding 360° · Affordable Housing</div>
+  <ul class="nav-links">
+    <li><a href="#challenges">01 Brand Challenges</a></li>
+    <li><a href="#trust">02 Trust Architecture</a></li>
+    <li><a href="#vernacular">03 Vernacular Strategy</a></li>
+    <li><a href="#digital">04 Digital Targeting</a></li>
+    <li><a href="#schemes">05 Scheme Communication</a></li>
+    <li><a href="#hoarding">06 Outdoor & OOH</a></li>
+    <li><a href="#family">07 Family Decision</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-stamp">
+    <div class="hero-stamp-inner">
+      <span>Phase 03</span>
+      <strong>₹20L–60L</strong>
+      <span>Positioning</span>
+      <span style="margin-top:6px; font-size:8px;">Affordable Segment</span>
+    </div>
+  </div>
+
+  <div class="hero-content fade-in">
+    <div class="hero-eyebrow">Branding 360° — Phase 03 Deep Dive</div>
+    <h1 class="hero-title">
+      Affordable Housing<br>
+      Brand &amp; <em>Communication</em><br>
+      Playbook
+    </h1>
+    <p class="hero-sub">
+      The segment most Indian developers under-invest in brand strategy for — and the segment where brand trust does the heaviest lifting. A complete positioning and communication system for the ₹20L–₹60L, PMAY-eligible buyer.
+    </p>
+  </div>
+
+  <div class="hero-toc fade-in delay-3">
+    <a class="toc-tag" href="#challenges">01 · Unique Brand Challenges</a>
+    <a class="toc-tag" href="#trust">02 · Trust Architecture</a>
+    <a class="toc-tag" href="#vernacular">03 · Vernacular Communication</a>
+    <a class="toc-tag" href="#digital">04 · Hyperlocal Digital Targeting</a>
+    <a class="toc-tag" href="#schemes">05 · Government Scheme Communication</a>
+    <a class="toc-tag" href="#hoarding">06 · Outdoor & Physical Hoarding</a>
+    <a class="toc-tag" href="#family">07 · Family Decision Architecture</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     01 — UNIQUE BRAND CHALLENGES
+══════════════════════════════════════════════ -->
+<section id="challenges">
+  <div class="phase-header">
+    <div class="phase-num">01</div>
+    <div class="phase-meta">
+      <div class="phase-label">Section One</div>
+      <h2 class="phase-title">Unique Brand <em>Challenges</em></h2>
+      <p class="phase-desc">Affordable housing faces a three-sided problem that no amount of media spend alone solves: stigma in the buyer's own social circle, an aspiration gap between what they want and what they believe they deserve, and a deep trust deficit compounded by prior market failures.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Three Core Brand Problems</div>
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"The affordable buyer does not lack aspiration — they lack permission to aspire. Brand strategy in this segment is not about lowering the dream. It is about making the dream feel reachable, real, and respectable."</p>
+      <div class="callout-src">Branding 360° — Affordable Segment Principle</div>
+    </div>
+
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Challenge 01</span>
+        <h3>Buyer Stigma</h3>
+        <p>Buyers in this segment face social pressure — from family, neighbours, and their own inner voice — that equates affordable housing with failure. The brand's job is to reframe the narrative: owning any home in Chennai, Coimbatore, or Hyderabad, on your own earnings, with a government subsidy, is an act of extraordinary achievement. Dignity must be the first design principle.</p>
+      </div>
+      <div class="fw-card rust-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Challenge 02</span>
+        <h3>The Aspiration Gap</h3>
+        <p>The buyer dreams of a mid-segment lifestyle but believes only a low-quality product exists at their price point. This creates cognitive dissonance that stalls decisions. Brands that close this gap — by showing real amenity quality, strong construction standards, and genuinely attractive spaces — convert hesitant interest into confident commitment. Never use "affordable" to excuse design mediocrity.</p>
+      </div>
+      <div class="fw-card sage-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Challenge 03</span>
+        <h3>Trust Deficit — First-Time Buyers</h3>
+        <p>First-time buyers have often witnessed project delays, builder disappearances, or loan frauds in their social circle. They enter the purchase journey with default suspicion. RERA registration, bank approvals, and visible construction progress are not just legal formalities — they are the brand's most powerful communication tools. Transparency is the product.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Challenge 04</span>
+        <h3>Competing for Attention in Noise</h3>
+        <p>This segment is heavily contested by small local builders, government schemes (TNHB, MHADA, DDA), and large developers entering the affordable vertical. Differentiation cannot be price — it must be trust signals, delivery record, and cultural familiarity. A local developer who speaks the buyer's language beats a national brand every time at this price point.</p>
+      </div>
+      <div class="fw-card rust-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Challenge 05</span>
+        <h3>The Documentation Complexity</h3>
+        <p>PMAY subsidy applications, home loan processes, RERA documentation, and society registration are overwhelming for buyers encountering them for the first time. Brands that simplify this journey — through dedicated support staff, multilingual documentation, and clear step-by-step guidance — earn trust that no advertising can manufacture. The paperwork experience is the brand experience.</p>
+      </div>
+      <div class="fw-card sage-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Challenge 06</span>
+        <h3>New Brand, No Reputation</h3>
+        <p>Most affordable segment developers are not Godrej or Brigade. They are regional builders with 2–5 projects. Building brand trust from scratch requires a specific toolkit: visible site progress content, satisfied customer testimonials in vernacular video, banker endorsements, RERA certificate display, and an active community of already-committed buyers who function as social proof.</p>
+      </div>
+    </div>
+
+    <div class="big-quote">
+      "Every luxury brand whispers. Every affordable brand must prove — loudly, repeatedly, and in the buyer's own language."
+    </div>
+
+    <div class="section-title">Segment Profile — Who Is the Affordable Buyer?</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Profile</th>
+          <th>Brand Implication</th>
+          <th>Communication Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Income</td>
+          <td>₹25,000–₹60,000 household monthly income; dual-income households common</td>
+          <td>EMI affordability is the primary filter — all messaging must anchor to monthly outgo, not total cost</td>
+          <td>"Own your home for ₹8,900/month" — always lead with EMI, not ticket size</td>
+        </tr>
+        <tr>
+          <td class="cat">Occupation</td>
+          <td>Blue-collar skilled workers, government employees, small traders, teachers, nurses, factory supervisors</td>
+          <td>Job security and stable income are genuine values — not aspirational marketing</td>
+          <td>Bank loan pre-approval tie-ups; "Approved for PSU employees" messaging increases trust instantly</td>
+        </tr>
+        <tr>
+          <td class="cat">Current Housing</td>
+          <td>Renting in peripheral areas; paying ₹6,000–₹12,000/month rent; often in congested neighbourhoods</td>
+          <td>The "rent vs EMI" comparison is the most powerful conversion argument in the segment</td>
+          <td>"Your rent pays someone else's loan. Your EMI builds your asset." — print, outdoor, digital</td>
+        </tr>
+        <tr>
+          <td class="cat">Decision Horizon</td>
+          <td>Long — 12 to 24 months from first enquiry to booking; multiple family meetings required</td>
+          <td>Brand consistency across a long nurturing cycle is critical — premature hard-sell kills the relationship</td>
+          <td>WhatsApp content drip; site visit invitations; community preview events</td>
+        </tr>
+        <tr>
+          <td class="cat">Information Sources</td>
+          <td>Word of mouth (primary), YouTube (rising fast), Facebook in vernacular, on-site hoardings, bank branch referrals</td>
+          <td>Peer validation outweighs all brand advertising combined — invest in referral architecture</td>
+          <td>Referral incentive programs; happy buyer video testimonials in Tamil/Telugu/Hindi</td>
+        </tr>
+        <tr>
+          <td class="cat">Fear Profile</td>
+          <td>Builder absconding; project delay; loan rejection; society politics; location isolation</td>
+          <td>Each fear needs a specific counter-message grounded in verifiable fact — not reassurance slogans</td>
+          <td>RERA certificate prominently displayed; quarterly progress reports; bank approval list published</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     02 — TRUST ARCHITECTURE
+══════════════════════════════════════════════ -->
+<section id="trust">
+  <div class="phase-header">
+    <div class="phase-num">02</div>
+    <div class="phase-meta">
+      <div class="phase-label">Section Two</div>
+      <h2 class="phase-title">Trust <em>Architecture</em></h2>
+      <p class="phase-desc">In the affordable segment, trust is not built through brand campaigns — it is built through a sequence of verifiable proof points that the buyer can confirm independently. Trust is the brand. Build it systematically or lose the buyer to inertia.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Trust Ladder — 6 Rungs from Stranger to Buyer</div>
+    <div class="trust-ladder">
+      <div class="tl-rung">
+        <div class="tl-rung-num">6</div>
+        <div class="tl-rung-cell head gold">Community Belonging</div>
+        <div class="tl-rung-cell">Buyer is part of a committed community before possession. WhatsApp groups with future neighbours, site visit events, naming of the community — emotional investment is complete.</div>
+        <div class="tl-rung-cell">Brand Action: Create pre-possession community identity. Name the society early. Give buyers something to belong to before the keys.</div>
+      </div>
+      <div class="tl-rung">
+        <div class="tl-rung-num">5</div>
+        <div class="tl-rung-cell head">Peer Endorsement</div>
+        <div class="tl-rung-cell">Someone the buyer knows — a colleague, neighbour, relative — has already booked. Word-of-mouth from within their social circle is the highest-conversion trust signal in this segment.</div>
+        <div class="tl-rung-cell">Brand Action: Structured referral program. ₹10,000–₹25,000 referral bonus clearly communicated. Video testimonials from buyers in the same occupation/community.</div>
+      </div>
+      <div class="tl-rung">
+        <div class="tl-rung-num">4</div>
+        <div class="tl-rung-cell head">Institutional Validation</div>
+        <div class="tl-rung-cell">SBI / LIC HFL / HDFC loan approval for the project. RERA registration. Municipal plan approval. These are trust signals only institutions can provide — they cannot be manufactured by marketing.</div>
+        <div class="tl-rung-cell">Brand Action: Display all approvals on-site, in brochures, on website homepage above the fold. "Approved by SBI Home Loans" is worth more than any outdoor campaign.</div>
+      </div>
+      <div class="tl-rung">
+        <div class="tl-rung-num">3</div>
+        <div class="tl-rung-cell head">Progress Visibility</div>
+        <div class="tl-rung-cell">Monthly construction progress photos and videos shared via WhatsApp and posted on-site hoardings. The buyer can see that work is happening. The greatest fear — builder abandonment — is countered by visible, datestamped progress.</div>
+        <div class="tl-rung-cell">Brand Action: "Construction Progress WhatsApp" subscription for all enquiries. Drone footage monthly. Time-lapse on project website. RERA-mandated progress updates repurposed as brand content.</div>
+      </div>
+      <div class="tl-rung">
+        <div class="tl-rung-num">2</div>
+        <div class="tl-rung-cell head">Product Tangibility</div>
+        <div class="tl-rung-cell">Sample flat or model unit open for walk-in visits. Branded site office. Construction quality walkthrough with a sales executive. Physical experience replaces digital promise — critical in a segment where digital literacy is mixed.</div>
+        <div class="tl-rung-cell">Brand Action: Invest in a well-lit, clean, branded sample flat even for sub-₹40L projects. The site office is the brand's retail outlet. Treat it with the same design standards as a premium showroom.</div>
+      </div>
+      <div class="tl-rung">
+        <div class="tl-rung-num">1</div>
+        <div class="tl-rung-cell head">Name Recognition</div>
+        <div class="tl-rung-cell">Buyer has seen the brand name — on a hoarding near their route, on a friend's WhatsApp, in a Facebook ad. First awareness. No trust yet, only familiarity. This is where the journey begins, not where it ends.</div>
+        <div class="tl-rung-cell">Brand Action: Hyperlocal outdoor + Facebook/YouTube ads within a 10km radius of the site. Consistent visual identity. Clear project name. No confusion about who the builder is.</div>
+      </div>
+    </div>
+
+    <div class="section-title">Trust Signal Deployment — By Touchpoint</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Touchpoint</th>
+          <th>Trust Signal</th>
+          <th>Format</th>
+          <th>Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Site Hoarding</td>
+          <td>RERA number + QR code, bank approval logos, project completion date, builder track record</td>
+          <td>Permanent signage; laminated panel; updated quarterly</td>
+          <td>🔴 Critical</td>
+        </tr>
+        <tr>
+          <td class="cat">Sales Brochure</td>
+          <td>Floor plan with carpet area prominently stated (not super built-up), legal approval certificates, testimonials with photos</td>
+          <td>8–12 page A4 or A5; regional language version mandatory</td>
+          <td>🔴 Critical</td>
+        </tr>
+        <tr>
+          <td class="cat">WhatsApp</td>
+          <td>Construction update photos (dated), payment receipt confirmations, legal document checklist shared proactively</td>
+          <td>Weekly construction update; immediate response SLA; no promotional bulk messaging</td>
+          <td>🔴 Critical</td>
+        </tr>
+        <tr>
+          <td class="cat">Bank Tie-Up Letter</td>
+          <td>Named banks offering pre-approved home loans to buyers; published interest rate grid</td>
+          <td>Single A4 page; displayed at site office; shared on WhatsApp on enquiry</td>
+          <td>🟡 High</td>
+        </tr>
+        <tr>
+          <td class="cat">Video Testimonials</td>
+          <td>3–5 actual buyers; recorded after booking/possession; in vernacular language; specific about what convinced them</td>
+          <td>60–90 sec vertical video; YouTube + Facebook + WhatsApp; no actors</td>
+          <td>🟡 High</td>
+        </tr>
+        <tr>
+          <td class="cat">PMAY Certificate Display</td>
+          <td>Displayed framed copy of PMAY empanelment letter at site office and in digital assets</td>
+          <td>Site office wall display; PDF shared on WhatsApp; banner on website</td>
+          <td>🟡 High</td>
+        </tr>
+        <tr>
+          <td class="cat sage">Community WhatsApp Group</td>
+          <td>Future residents can see each other — real names, professions, families — creating social proof and peer trust</td>
+          <td>Group created after first 10 bookings; moderated; admin responds within 24 hours</td>
+          <td>🟢 Medium</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     03 — VERNACULAR COMMUNICATION STRATEGY
+══════════════════════════════════════════════ -->
+<section id="vernacular">
+  <div class="phase-header">
+    <div class="phase-num">03</div>
+    <div class="phase-meta">
+      <div class="phase-label">Section Three</div>
+      <h2 class="phase-title">Vernacular <em>Communication</em></h2>
+      <p class="phase-desc">Not translation. Cultural translation. Tamil, Telugu, Malayalam, and Hindi communication for the affordable segment must be written natively — rooted in the emotional registers, idioms, and decision-making logic of each linguistic community. A translated English campaign is not a vernacular campaign.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"The affordable buyer makes a decision in their first language — in the language they dream in, argue in, and pray in. If your brand only speaks to them in English, you are a stranger at the most important table of their life."</p>
+      <div class="callout-src">Vernacular Strategy Principle — Branding 360°</div>
+    </div>
+
+    <div class="section-title">Language-Specific Strategy — Four Major Markets</div>
+    <div class="vern-grid">
+      <div class="vern-head">Tamil Nadu
+        <span>தமிழ்</span>
+      </div>
+      <div class="vern-head">Andhra / Telangana
+        <span>తెలుగు</span>
+      </div>
+      <div class="vern-head">Kerala
+        <span>മലയാളം</span>
+      </div>
+      <div class="vern-head">North India
+        <span>हिन्दी</span>
+      </div>
+
+      <!-- Emotional Register -->
+      <div class="vern-cell"><strong>Emotional Register</strong>Family honour, elder approval, neighbourhood standing. The concept of "சொந்த வீடு" (own home) carries generational weight. Aspiration is collective, not individual.</div>
+      <div class="vern-cell"><strong>Emotional Register</strong>Family pride and upward mobility. Strong notion of "మన ఇల్లు" (our home) tied to caste-community solidarity and marriage market positioning. Joint family logic common.</div>
+      <div class="vern-cell"><strong>Emotional Register</strong>NRI remittance logic is present even at affordable tier. Home as investment and security for ageing parents. "നാട്ടിൽ ഒരു വീട്" (a home back home) resonates even with local buyers.</div>
+      <div class="vern-cell"><strong>Emotional Register</strong>Dream of "apna ghar" is universally present. "Parivar ke liye" (for the family) framing is primary. Patriarchal decision-making with strong mother-influence at final stage.</div>
+
+      <!-- Key Phrases -->
+      <div class="vern-cell"><strong>Resonant Phrases</strong>"சொந்த வீடு, சொந்த வாழ்க்கை" · "கனவு வீடு, கைக்கு எட்டும் விலை" · "கட்டிடம் நம்பகமானது" — authenticity in the language of construction workers and government staff.</div>
+      <div class="vern-cell"><strong>Resonant Phrases</strong>"మీ కలల ఇల్లు" · "PMAY సహాయంతో మీ ఇల్లు" · "SBI అప్రూవ్డ్ ప్రాజెక్ట్" — institutional approval phrasing is high-trust in Telugu-speaking markets.</div>
+      <div class="vern-cell"><strong>Resonant Phrases</strong>"നിങ്ങളുടെ സ്വന്തം വീട്" · "PMAY ആനുകൂല്യം ഉപയോഗിക്കൂ" · "ബാങ്ക് അംഗീകൃത പ്രോജക്ട്" — Kerala buyers respond strongly to bank/government credentialing.</div>
+      <div class="vern-cell"><strong>Resonant Phrases</strong>"अपना घर, अपना सपना" · "EMI किराए से कम" · "PMAY सब्सिडी के साथ" · "पक्का घर, पक्का वादा" — the "pucca" construct (permanent, concrete) is emotionally loaded.</div>
+
+      <!-- Content Formats -->
+      <div class="vern-cell"><strong>Preferred Formats</strong>Facebook video (Tamil dubbing over site visuals); Sun TV regional ad spots; bus shelter hoardings in Tambaram, Ambattur, Chrompet; WhatsApp audio messages from sales staff.</div>
+      <div class="vern-cell"><strong>Preferred Formats</strong>YouTube pre-roll (Telugu); Eenadu / Sakshi newspaper inserts; auto-rickshaw branding in Kukatpally, Miyapur, Shadnagar; WhatsApp forward videos from community leaders.</div>
+      <div class="vern-cell"><strong>Preferred Formats</strong>Mathrubhumi / Manorama print + digital; YouTube (highest per-capita penetration in India); Gulf NRI Facebook groups; church notice boards in Christian-majority areas.</div>
+      <div class="vern-cell"><strong>Preferred Formats</strong>Facebook reels in Hindi; Dainik Bhaskar / Hindustan inserts; NOIDA/Greater Noida e-rickshaw branding; factory gate hoardings; RWA (Resident Welfare Association) bulletin boards.</div>
+
+      <!-- Cultural Cautions -->
+      <div class="vern-cell"><strong>Cultural Cautions</strong>Avoid imagery of single women as buyers (uncommon framing); always show multi-generational family. Vastu compliance is a genuine buyer concern — address directly in brochures.</div>
+      <div class="vern-cell"><strong>Cultural Cautions</strong>Avoid political imagery or colours that signal party affiliation. Community-specific festivals (Ugadi, Sankranti) are opportunity moments for goodwill outreach — don't miss them.</div>
+      <div class="vern-cell"><strong>Cultural Cautions</strong>Religious sensitivity is high — avoid showing imagery that could be read as crossing community lines. Emphasize proximity to church/temple/masjid per micro-location.</div>
+      <div class="vern-cell"><strong>Cultural Cautions</strong>Joint family living is often literal, not aspirational — bedroom count matters enormously. Festival-period pricing communication (Diwali, Navratri) is expected and welcome, not crass.</div>
+    </div>
+
+    <div class="section-title">Vernacular Content Architecture — What to Produce</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Content Type 01</span>
+        <h3>Sales Brochure — Regional Language</h3>
+        <p>Not a translation of the English brochure. A separately authored document using native idiom. Floor plans with vastu direction markings. EMI table prominently in the first two pages. PMAY eligibility and subsidy quantum clearly explained. Printed on better paper than the English version — this is the primary decision tool.</p>
+      </div>
+      <div class="fw-card rust-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Content Type 02</span>
+        <h3>Testimonial Video — In Buyer's Language</h3>
+        <p>60–90 seconds. Real buyer. Real location (their home, their workplace). Speaking naturally about what convinced them, how the process went, what they feel now. No script reading. Sales team should not appear — the buyer speaks to camera directly. These videos drive more site visits than any paid campaign.</p>
+      </div>
+      <div class="fw-card sage-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Content Type 03</span>
+        <h3>PMAY Explainer — Audio / Short Video</h3>
+        <p>A 2-minute vernacular audio or video explaining PMAY CLSS (Credit Linked Subsidy Scheme): who qualifies, how much subsidy they get, which bank to approach, what documents are needed. This content positions the developer as a knowledgeable guide — not just a product seller. Share via WhatsApp to every enquiry.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Content Type 04</span>
+        <h3>Construction Update — Weekly WhatsApp</h3>
+        <p>Single photo or 15-second video of site progress. Date and floor level clearly visible. Caption in vernacular: "இன்று 4வது மாடி கான்கிரீட் ஊற்றல் தொடங்கியது" (Today 4th floor concrete pour began). Shared to all enquiry contacts — pre-booking and post-booking alike. Creates an audience of invested followers.</p>
+      </div>
+      <div class="fw-card rust-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Content Type 05</span>
+        <h3>EMI Calculator — Vernacular Landing Page</h3>
+        <p>A dedicated mobile landing page in Tamil/Telugu/Malayalam/Hindi with a simple EMI calculator, PMAY subsidy deduction built in, and a WhatsApp CTA. Deployed with hyperlocal Facebook/YouTube ads. "Calculate how much your EMI will be" — in the buyer's language — is the highest-converting ad hook in this segment.</p>
+      </div>
+      <div class="fw-card sage-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Content Type 06</span>
+        <h3>Festival / Community Events Content</h3>
+        <p>Pongal site event for Tamil market, Ugadi/Sankranti for Andhra-Telugu, Onam for Kerala, Dussehra/Diwali for North India. Community branding events at the site — with food, cultural programme, and a structured "site walk" for families. The day generates site visits, WhatsApp content, and the sense of community belonging that drives final commitment.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     04 — HYPERLOCAL DIGITAL TARGETING
+══════════════════════════════════════════════ -->
+<section id="digital">
+  <div class="phase-header">
+    <div class="phase-num">04</div>
+    <div class="phase-meta">
+      <div class="phase-label">Section Four</div>
+      <h2 class="phase-title">Hyperlocal <em>Digital Targeting</em></h2>
+      <p class="phase-desc">Blue-collar and lower-middle income buyers are digitally present — but on mobile, on Facebook and YouTube, in vernacular. The targeting architecture must be built around where they actually live, how they actually search, and what actually converts them. Digital-first does not mean Google-first in this segment.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Platform Priority Matrix for Affordable Segment</div>
+    <div class="channel-map">
+      <div class="ch-col-head">Platform</div>
+      <div class="ch-col-head">Audience Fit</div>
+      <div class="ch-col-head">Best Format</div>
+      <div class="ch-col-head">Targeting Method</div>
+      <div class="ch-col-head">KPI</div>
+
+      <div class="ch-item"><strong>Facebook / Meta</strong>Primary platform</div>
+      <div class="ch-item">Blue-collar, 28–48 age, vernacular-browsing, high active time</div>
+      <div class="ch-item">15–30 sec video reels; lead form ads; WhatsApp CTA</div>
+      <div class="ch-item">10km radius from site + income/occupation targeting + lookalike from buyer database</div>
+      <div class="ch-item">WhatsApp enquiry volume; cost per qualified lead (CPL target: ₹200–₹500)</div>
+
+      <div class="ch-item"><strong>YouTube</strong>Growing fast</div>
+      <div class="ch-item">South Indian markets especially; pre-roll on vernacular content channels</div>
+      <div class="ch-item">Skippable pre-roll (30–60s); vernacular; emotional testimonial or EMI hook</div>
+      <div class="ch-item">Geo-targeting 15km radius; content category targeting (Tamil movie, regional news channels)</div>
+      <div class="ch-item">View-through rate; click to WhatsApp or call; site visit attribution</div>
+
+      <div class="ch-item"><strong>WhatsApp</strong>Highest conversion</div>
+      <div class="ch-item">All buyers already on WhatsApp; highest trust channel after face-to-face</div>
+      <div class="ch-item">Construction updates; PMAY explainer PDF; EMI table; testimonial video</div>
+      <div class="ch-item">Sales team managed; opt-in from site visit or Facebook lead form</div>
+      <div class="ch-item">Enquiry-to-site-visit ratio; response rate on broadcast messages</div>
+
+      <div class="ch-item"><strong>Google Search</strong>Secondary</div>
+      <div class="ch-item">Mid-funnel buyers actively searching project name or builder name</div>
+      <div class="ch-item">Brand keyword ads; PMAY-related search terms in vernacular</div>
+      <div class="ch-item">Keyword: "flats near [area]", "₹40 lakh flats Chennai", "PMAY flat Ambattur"</div>
+      <div class="ch-item">Click-through rate; branded search volume growth; CPL from search</div>
+
+      <div class="ch-item"><strong>Instagram</strong>Aspirational only</div>
+      <div class="ch-item">Younger buyers (25–33); looking to upgrade self-image; dual income households</div>
+      <div class="ch-item">Lifestyle imagery; interior photos; "first home" content</div>
+      <div class="ch-item">Lookalike from Facebook audience; location-based</div>
+      <div class="ch-item">Profile visits; link clicks; brand affinity (not direct conversion)</div>
+    </div>
+
+    <div class="section-title">Targeting Radius & Micro-Market Strategy</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Market</th>
+          <th>Primary Target Micro-Markets</th>
+          <th>Radius Logic</th>
+          <th>Occupation Targeting</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Chennai</td>
+          <td>Ambattur Industrial Estate, Avadi, Pattabiram, Perungalathur, Urapakkam, Kelambakkam</td>
+          <td>12–15km from project site; working population commuting on MRTS / bus corridors</td>
+          <td>Factory workers, government staff (DGS&D, BSNL), nurses & hospital staff (RGGGH, Stanley)</td>
+        </tr>
+        <tr>
+          <td class="cat">Hyderabad</td>
+          <td>Miyapur, Kukatpally, Shadnagar, Kothur, Patancheru, Ghatkesar</td>
+          <td>10–12km radius; ORR corridor working class; Rajiv Gandhi IT corridor support staff</td>
+          <td>Security guards in IT parks, hospitality workers, pharmacists, TSRTC staff</td>
+        </tr>
+        <tr>
+          <td class="cat sage">Bengaluru</td>
+          <td>Anekal, Hoskote, Rajanukunte, Doddaballapur, Magadi Road, Kengeri</td>
+          <td>Outer ring road periphery; garment factory workers; warehouse logistics clusters</td>
+          <td>Garment workers, Aerospace township staff, ISRO/HAL contractors, retail staff</td>
+        </tr>
+        <tr>
+          <td class="cat sage">Pune</td>
+          <td>Talegaon, Chakan, Uruli Kanchan, Nanded, Khed Shivapur</td>
+          <td>NH-48 and Pune-Satara road corridors; industrial zone feeder towns</td>
+          <td>Auto component factory workers, Bajaj/Tata Elxsi contract staff, nurses and paramedics</td>
+        </tr>
+        <tr>
+          <td class="cat steel">NCR / Delhi</td>
+          <td>Greater Noida West, Noida Sector 150+, Faridabad old city, Loni, Dasna</td>
+          <td>Metro corridor 15km radius; DMIC belt workers; Delhi overspill population</td>
+          <td>Metro staff, government clerks (Central Secretariat), DTC drivers, police constables</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">Digital Content Calendar Framework — Monthly Cycle</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-bg">W1</div>
+        <span class="pillar-icon">🏗️</span>
+        <h4>Week 1 — Proof</h4>
+        <p>Construction progress video. Floor slab completion photo. RERA status update. WhatsApp broadcast to all leads. Trust-building content that works for both new enquiries and fence-sitters.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">W2</div>
+        <span class="pillar-icon">📋</span>
+        <h4>Week 2 — Education</h4>
+        <p>PMAY explainer. EMI calculation post. Home loan process simplified (vernacular video). "What does carpet area mean?" explainer. Positions builder as buyer's guide — not just seller.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">W3</div>
+        <span class="pillar-icon">🗣️</span>
+        <h4>Week 3 — Social Proof</h4>
+        <p>Buyer testimonial video or quote. "Meet your future neighbour" content (with consent). Referral program reminder. Community WhatsApp group activity highlight. Converts interest into FOMO.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">W4</div>
+        <span class="pillar-icon">📍</span>
+        <h4>Week 4 — Activation</h4>
+        <p>Site visit invitation. Event announcement (if any). Limited availability reminder (if genuine). New bank tie-up announcement. Action-oriented content — the week to generate site visits and bookings.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     05 — GOVERNMENT SCHEME COMMUNICATION
+══════════════════════════════════════════════ -->
+<section id="schemes">
+  <div class="phase-header">
+    <div class="phase-num">05</div>
+    <div class="phase-meta">
+      <div class="phase-label">Section Five</div>
+      <h2 class="phase-title">Government Scheme <em>Communication</em></h2>
+      <p class="phase-desc">PMAY, CLSS, and allied state housing schemes are not footnotes in an affordable project brochure — they are central to the value proposition. Communicating them clearly and accurately can reduce the effective buyer cost by ₹2.67 lakh to ₹6.5 lakh. That is the brand's strongest pricing lever.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"PMAY subsidy is not a government scheme the developer is mentioning in passing. It is a lakhs-off-your-home-loan benefit that the buyer has earned through years of tax-paying, salaried work. Frame it with the weight it deserves."</p>
+      <div class="callout-src">Scheme Communication Principle — Branding 360°</div>
+    </div>
+
+    <div class="section-title">Central & State Scheme Reference — Developer Communication Guide</div>
+    <div class="scheme-grid">
+      <div class="scheme-card">
+        <div class="scheme-card-badge">Central Govt</div>
+        <h3>PMAY — CLSS MIG I</h3>
+        <div class="sc-code">Pradhan Mantri Awas Yojana · MIG-I Category</div>
+        <p>Household income ₹6L–₹12L/year. Interest subsidy of 4% on loans up to ₹9 lakh. Net benefit: ₹2.35 lakh in present value terms. Available to first-time home buyers.</p>
+        <ul>
+          <li>Lead with "Save ₹2.35 lakh on your home loan"</li>
+          <li>Eligibility check flow in vernacular on WhatsApp</li>
+          <li>Tie up with SBI/LIC HFL who have CLSS processing expertise</li>
+          <li>Timeline: subsidy credited within 60–90 days of loan disbursement</li>
+        </ul>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-card-badge">Central Govt</div>
+        <h3>PMAY — CLSS MIG II</h3>
+        <div class="sc-code">Pradhan Mantri Awas Yojana · MIG-II Category</div>
+        <p>Household income ₹12L–₹18L/year. Interest subsidy of 3% on loans up to ₹12 lakh. Net benefit: ₹2.30 lakh. Applicable for lower-end premium buyers straddling two segments.</p>
+        <ul>
+          <li>Often missed by developers — communicate to dual-income households</li>
+          <li>Particularly relevant for IT/BPO support staff and government officers</li>
+          <li>Carpet area condition: up to 160 sqm (configures most 2BHK projects)</li>
+          <li>Can be combined with employer housing loan at reduced rate</li>
+        </ul>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-card-badge">Central Govt</div>
+        <h3>PMAY — EWS / LIG</h3>
+        <div class="sc-code">Economically Weaker Section · Low Income Group</div>
+        <p>Household income up to ₹6L/year. Highest subsidy: 6.5% on loans up to ₹6 lakh. Net benefit: ₹2.67 lakh. EWS projects (up to 30 sqm carpet) qualify for direct government beneficiary grant.</p>
+        <ul>
+          <li>For micro-flat / studio / 1RK projects below ₹25L</li>
+          <li>Beneficiary list submission via state nodal agency (NHB/HUDCO)</li>
+          <li>Dedicated documentation support desk at site office — mandatory</li>
+          <li>Tamil: "கட்டணம் ₹2.67 லட்சம் குறைகிறது" — communicate quantum directly</li>
+        </ul>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-card-badge">Tamil Nadu</div>
+        <h3>TNHB / CMDA Schemes</h3>
+        <div class="sc-code">Tamil Nadu Housing Board · Chennai Metropolitan</div>
+        <p>State-sponsored housing for government employees and low-income buyers. CMDA-approved layouts with infrastructure guarantee. TNHB acts as both developer and financier in select projects.</p>
+        <ul>
+          <li>Private developers: cross-refer CMDA approval number as trust signal</li>
+          <li>TNHB proximity (nearby government housing) validates neighbourhood legitimacy</li>
+          <li>Chennai: mention CMDA layout approval in all outdoor communication</li>
+          <li>DTCP approval for peri-urban markets outside Chennai corporation limits</li>
+        </ul>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-card-badge">Andhra / Telangana</div>
+        <h3>TIDCO / YSR Housing</h3>
+        <div class="sc-code">AP TIDCO · YSR Navaratnalu Housing Scheme</div>
+        <p>AP State Housing scheme provides free or heavily subsidised housing to EWS beneficiaries. For private developers: proximity to beneficiary-allocated housing areas validates location and social infrastructure.</p>
+        <ul>
+          <li>Private projects near TIDCO layouts benefit from ready social infrastructure</li>
+          <li>Telangana: KCR Kit / 2BHK scheme creates neighbourhood density — use as location proof</li>
+          <li>Communicate: "Near government housing scheme — established neighbourhood"</li>
+          <li>Coordinate with state NHB office for CLSS registration</li>
+        </ul>
+      </div>
+      <div class="scheme-card">
+        <div class="scheme-card-badge">Maharashtra</div>
+        <h3>MHADA / SRA Schemes</h3>
+        <div class="sc-code">Maharashtra Housing & Area Dev · Slum Rehab Authority</div>
+        <p>MHADA lottery housing and SRA rehabilitation projects create large communities of urban buyers who understand and navigate government housing schemes effectively. Private developers targeting same profile.</p>
+        <ul>
+          <li>MHADA-adjacent private projects benefit from same buyer community</li>
+          <li>RERA + MHADA compliance display is table-stakes trust in Maharashtra</li>
+          <li>Slum rehabilitation buyer is the most document-literate affordable buyer segment</li>
+          <li>BMC occupation certificate timeline is a major trust signal in Mumbai MMR</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-title">PMAY Communication — Message Architecture</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">Awareness Stage</div>
+        <div class="tl-body">
+          <h4>Hook — Lead with the Benefit Quantum</h4>
+          <p>Do not lead with the scheme name. Lead with the money saved. "Sarkar aapko ₹2.67 lakh de rahi hai — kya aap le rahe hain?" / "அரசு ₹2.67 லட்சம் கொடுக்கிறது — நீங்கள் பெற்றுக்கொள்கிறீர்களா?" The benefit quantum is the hook — the scheme name is the validation.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Facebook Ad</span>
+            <span class="tl-tag">Hoarding Banner Strip</span>
+            <span class="tl-tag">YouTube Pre-roll</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Consideration Stage</div>
+        <div class="tl-body">
+          <h4>Eligibility Check — Make It Easy</h4>
+          <p>Deploy a 3-question WhatsApp bot or simple landing page: household income, first home purchase, current city. Output: "You qualify for ₹X subsidy." This converts curiosity to engagement. Builders who create this tool own the buyer's trust at consideration stage.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">WhatsApp Bot</span>
+            <span class="tl-tag sage">Landing Page</span>
+            <span class="tl-tag steel">Sales Script</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Site Visit</div>
+        <div class="tl-body">
+          <h4>Documentation Guide — Printed Handout</h4>
+          <p>Every site visit ends with a vernacular-language PMAY checklist: the 6–8 documents required, which bank to go to, what the timeline looks like, and who at the developer's office to contact for help. This handout positions the developer as the buyer's guide through a bureaucratic process that terrifies them.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">A5 Handout</span>
+            <span class="tl-tag">WhatsApp PDF</span>
+            <span class="tl-tag sage">Brochure Insert</span>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Post Booking</div>
+        <div class="tl-body">
+          <h4>Application Hand-holding — Dedicated Support</h4>
+          <p>Assign a single point of contact for PMAY application processing. Weekly update to buyer on application status. "Aapka PMAY application submitted ho gaya" on WhatsApp — with screenshot of submission — is one of the highest-trust moments in the entire buyer journey. Converts to referral immediately.</p>
+          <div class="tl-tags">
+            <span class="tl-tag steel">Dedicated Staff</span>
+            <span class="tl-tag">WhatsApp Updates</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     06 — OUTDOOR & PHYSICAL HOARDING
+══════════════════════════════════════════════ -->
+<section id="hoarding">
+  <div class="phase-header">
+    <div class="phase-num">06</div>
+    <div class="phase-meta">
+      <div class="phase-label">Section Six</div>
+      <h2 class="phase-title">Outdoor &amp; Physical <em>Hoarding</em></h2>
+      <p class="phase-desc">In affordable housing, the physical hoarding outperforms digital advertising on one dimension that no algorithm can replicate: it is there every day on the buyer's commute. Physical presence is brand presence. Hoardings in this segment must work harder and say more than luxury outdoor advertising.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="hoarding-block">
+      <div>
+        <div class="hoarding-label">Why Physical Dominates in This Segment</div>
+        <h3>The Affordable Buyer's <em>Daily Route</em> Is the Media Plan</h3>
+        <p>Factory worker, government clerk, hospital nurse — their route to work passes the same stretches of road every day. A well-placed 20×10 ft hoarding on that route is seen 450+ times in six months. No digital ad achieves that frequency at that cost, with that level of physical credibility. The hoarding says: we are here, we are real, we are not going anywhere.</p>
+      </div>
+      <div class="hoarding-visual">
+        <div class="hv-board">
+          <div class="hv-sub">BUILDER NAME · RERA Reg No. TN/12345/2024</div>
+          <div class="hv-headline">
+            சொந்த வீடு<br>
+            இனி சாத்தியம்
+          </div>
+          <div class="hv-sub" style="margin-top:10px;">₹28.5 லட்சம் முதல் · EMI ₹9,200/மாதம்</div>
+          <div>
+            <span class="hv-scheme">PMAY Approved</span>
+            <span class="hv-scheme">SBI Approved</span>
+            <span class="hv-scheme">RERA Registered</span>
+          </div>
+        </div>
+        <div class="hv-zones">
+          <div class="hv-zone">
+            <span>Zone A — Impact</span>
+            <p>Project name + Tamil/vernacular headline. Max 6 words. 100% legible at 40kmph.</p>
+          </div>
+          <div class="hv-zone">
+            <span>Zone B — Key Info</span>
+            <p>Price + EMI. PMAY + Bank approval badges. RERA number with QR code.</p>
+          </div>
+          <div class="hv-zone">
+            <span>Zone C — Action</span>
+            <p>WhatsApp number. Mobile number. 99-XXXX-XXXX format (easy dial recall).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Hoarding Placement Strategy — Affordable Segment</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Location Type</th>
+          <th>Placement Rationale</th>
+          <th>Size Recommendation</th>
+          <th>Content Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Factory / Industrial Gate</td>
+          <td>Highest concentration of target buyers in one location; seen daily on shift change; co-worker word-of-mouth activated immediately</td>
+          <td>10×5 ft gable board or flex on compound wall</td>
+          <td>EMI first, PMAY second, call to action third</td>
+        </tr>
+        <tr>
+          <td class="cat">Bus Shelter / Bus Stop</td>
+          <td>Captive audience with high dwell time; public transport users are the core demographic; vernacular + visual must work without text reading</td>
+          <td>6×4 ft illuminated shelter back panel</td>
+          <td>Visual of project + price + WhatsApp number</td>
+        </tr>
+        <tr>
+          <td class="cat">Road-Side Site Hoarding</td>
+          <td>On the project boundary wall; proves physical existence; context-sets the neighbourhood for passing traffic; ongoing visibility through construction period</td>
+          <td>20×10 ft or 30×15 ft; illuminated preferred</td>
+          <td>Full information board: RERA + bank approval + EMI + contact</td>
+        </tr>
+        <tr>
+          <td class="cat">Auto-Rickshaw Wrap</td>
+          <td>Moving billboard through target micro-markets; routes through bylanes and residential areas no static hoarding reaches; QR code on back for scanning at traffic stops</td>
+          <td>Full hood + back panel vinyl; fleet of 10–20 autos</td>
+          <td>Project name + price + WhatsApp number. QR on back panel.</td>
+        </tr>
+        <tr>
+          <td class="cat sage">Government Bank Branch</td>
+          <td>SBI, Bank of Baroda, Canara Bank branches in target micro-markets; buyers come here for loan enquiries; bank manager endorsement is implicit in placement</td>
+          <td>Standee (6×2.5 ft) + A4 desk flyer + counter card</td>
+          <td>"PMAY-eligible project. Bank approved. Ask us for details."</td>
+        </tr>
+        <tr>
+          <td class="cat steel">Temple / Church / Mosque Notice Board</td>
+          <td>Community trust anchors; community leaders who influence buyer decisions see the message; validates project as known and accepted by local community</td>
+          <td>A3 laminated poster; festival sponsorship visibility</td>
+          <td>Community tone — not sales tone. Builder's community contribution if any.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">Hoarding Content Principles — Affordable Segment</div>
+    <div class="two-col">
+      <div class="fw-grid" style="margin-bottom:0; grid-template-columns: 1fr;">
+        <div class="fw-card">
+          <div class="fw-card-accent"></div>
+          <span class="fw-card-num">Rule 01</span>
+          <h3>Vernacular Headline — Always</h3>
+          <p>The headline must be in the dominant language of the target buyer's community. Not English with a Tamil subline. Tamil (or Telugu/Malayalam/Hindi) as the primary headline. English for project name and technical certifications only. Legibility at 40kmph with a 3-second viewing window is the design brief.</p>
+        </div>
+        <div class="fw-card rust-accent">
+          <div class="fw-card-accent"></div>
+          <span class="fw-card-num">Rule 02</span>
+          <h3>Lead with EMI, Not Total Price</h3>
+          <p>A ₹35 lakh flat sounds unattainable. A ₹10,500/month EMI sounds manageable. Always lead with monthly outgo in the headline or sub-headline. "₹10,500 per month" in large type converts more inquiries than "₹35L onwards" because it maps to how the buyer actually manages their household budget.</p>
+        </div>
+        <div class="fw-card sage-accent">
+          <div class="fw-card-accent"></div>
+          <span class="fw-card-num">Rule 03</span>
+          <h3>Credentialing Must Be Visible</h3>
+          <p>RERA number, PMAY logo, and at least one bank approval logo must appear on every hoarding. In the affordable segment, these are not legal footnotes — they are the brand's credentialing system. Buyers who have been burned by fraudulent builders use these signals as the primary filter. Make them large enough to read from a moving vehicle.</p>
+        </div>
+      </div>
+      <div>
+        <div class="prose">
+          <p><strong>The Dignity Standard:</strong> The photography and visual language of affordable hoardings must depict aspiration, not deprivation. Show happy families, well-lit interiors, green spaces, children playing. Never use imagery of congested, low-quality surroundings even if that is the present neighbourhood reality. The buyer is buying into a future, not a current reality.</p>
+          <p><strong>WhatsApp as the CTA:</strong> In this segment, the call to action on every hoarding must be a WhatsApp number — not a website URL, not a brochure download link. "Send 'HOME' to [number]" with an auto-reply that sends the vernacular brochure and EMI table converts at 3–4x the rate of a phone number alone.</p>
+          <p><strong>Construction Progress — Real-Time Hoarding:</strong> Use a portion of the site boundary hoarding as a progress board — updated quarterly with the construction stage photograph. "This is what your home looks like today" with a date drives repeat engagement from passing commuters who track progress over months. Invisible construction is an anxiety trigger; visible progress is a trust builder.</p>
+        </div>
+        <div class="tag-list">
+          <span class="tag rust">RERA Display</span>
+          <span class="tag rust">PMAY Logo</span>
+          <span class="tag">Vernacular Headline</span>
+          <span class="tag">EMI-Forward</span>
+          <span class="tag">WhatsApp CTA</span>
+          <span class="tag">Bank Approval Badge</span>
+          <span class="tag">Site Progress</span>
+          <span class="tag">QR Code</span>
+          <span class="tag">Night Illumination</span>
+          <span class="tag">3-Second Rule</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     07 — FAMILY DECISION ARCHITECTURE
+══════════════════════════════════════════════ -->
+<section id="family">
+  <div class="phase-header">
+    <div class="phase-num">07</div>
+    <div class="phase-meta">
+      <div class="phase-label">Section Seven</div>
+      <h2 class="phase-title">Family Decision <em>Architecture</em></h2>
+      <p class="phase-desc">No one in the affordable segment buys a home alone. The purchase involves parents (who hold veto power), spouses (who hold emotional and practical authority), siblings (social proof validators), and often a trusted community elder or financial advisor. Understanding and communicating with each stakeholder — not just the primary buyer — is the difference between a site visit and a booking.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Family Decision Stakeholder Map</div>
+    <div class="decision-tree">
+      <div class="dt-header">
+        <span>Stakeholder</span>
+        <span>Role in Decision</span>
+        <span>Core Question</span>
+        <span>Brand Response</span>
+        <span>Communication Channel</span>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell person">Primary Buyer<br>(Son / Earning Member)</div>
+        <div class="dt-cell dominant">Decision Initiator</div>
+        <div class="dt-cell">Can I afford this monthly? Is this builder trustworthy? Is this a good investment?</div>
+        <div class="dt-cell">EMI table. RERA + bank approval. 5-year appreciation data for location.</div>
+        <div class="dt-cell">Facebook / WhatsApp / Site visit</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell person">Father / Father-in-Law<br>(Elder Male)</div>
+        <div class="dt-cell dominant">Veto Authority</div>
+        <div class="dt-cell">Is this builder known? Will this project actually complete? Is the location safe and connected?</div>
+        <div class="dt-cell">Builder track record brochure. RERA certificate. Completed project references. Physical site tour.</div>
+        <div class="dt-cell">Site visit (elder must see it). Printed brochure in vernacular.</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell person">Mother / Mother-in-Law<br>(Elder Female)</div>
+        <div class="dt-cell dominant">Vastu & Practical</div>
+        <div class="dt-cell">Is the kitchen direction right? Is the water supply assured? Is the neighbourhood safe for women and children?</div>
+        <div class="dt-cell">Vastu-compliant floor plan marked. Water tank capacity stated. Women residents' safety features highlighted.</div>
+        <div class="dt-cell">Site visit with senior sales executive. Sample flat walk-through specifically addressing kitchen and puja room.</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell person">Spouse<br>(Wife)</div>
+        <div class="dt-cell dominant">Emotional Closer</div>
+        <div class="dt-cell">Can I imagine my family living here? What does the building community feel like? Is this better than our current rental?</div>
+        <div class="dt-cell">Lifestyle imagery (not just floor plans). Current community photos. Children's play area. School proximity map.</div>
+        <div class="dt-cell">Instagram / Facebook visual content. WhatsApp community group preview. Sample flat with family lifestyle staging.</div>
+      </div>
+      <div class="dt-row">
+        <div class="dt-cell person">Bank Relationship Manager<br>or Trusted Advisor</div>
+        <div class="dt-cell dominant">Financial Validator</div>
+        <div class="dt-cell">Is this project financially sound? Will the bank approve the loan? Is the pricing rational?</div>
+        <div class="dt-cell">Bank pre-approval document. Carpet area statement. RERA financial disclosures. Project completion bond details.</div>
+        <div class="dt-cell">Bank branch collateral. RM tie-up program. Loan camp at site office.</div>
+      </div>
+    </div>
+
+    <div class="section-title">The Site Visit for Families — A Brand Experience System</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Before Arrival</span>
+        <h3>Set Expectations with the Whole Family</h3>
+        <p>WhatsApp the invitation to the primary buyer with explicit language: "Please bring your family — especially your parents — on this visit. We will address every question from everyone." This signals that the developer respects the family decision model rather than trying to isolate the buyer and pressure-close them.</p>
+      </div>
+      <div class="fw-card rust-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">At the Site Office</span>
+        <h3>The Site Office Is the Brand Theatre</h3>
+        <p>Clean, well-lit, with water, tea, chairs for elders. Materials laid out (not dumped on a table). A printed vernacular brochure in every family member's hand. Construction progress photos on the wall. RERA certificate framed and visible. The site office tells the family: this builder operates with discipline. Disorder destroys trust instantly.</p>
+      </div>
+      <div class="fw-card sage-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">The Walk-Through</span>
+        <h3>Separate Conversations with Separate Stakeholders</h3>
+        <p>Train sales staff to address the elder male separately about construction quality, track record, and neighbourhood permanence. Let the mother walk through the sample flat with a female sales executive or customer service person who addresses vastu, kitchen, and safety questions. The spouse gets the lifestyle conversation. The buyer gets the financials. One visit, four parallel conversations.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">The Closing Moment</span>
+        <h3>Make the Next Step Easy for Everyone</h3>
+        <p>The family rarely books on the same day. The goal of Visit 1 is a second visit with the bank relationship manager or a loan camp on-site. Leave the elder male with a printed builder track record document. Leave the mother with a vastu-marked floor plan printout. Leave the spouse with a photo of the sample flat she can share with her own family. Follow up with the primary buyer within 48 hours via WhatsApp.</p>
+      </div>
+      <div class="fw-card rust-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Post Visit</span>
+        <h3>The WhatsApp Follow-Up Architecture</h3>
+        <p>Day 1: Thank you message + vernacular brochure PDF + PMAY eligibility check link. Day 3: Construction progress photo. Day 7: Video testimonial from a buyer in a similar occupation. Day 14: "We have X units remaining in this block" — genuine urgency only. Day 21: Loan camp event invitation. Day 30: Site visit invitation for second viewing. Never send more than 2 messages per week.</p>
+      </div>
+      <div class="fw-card sage-accent">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">The Referral Moment</span>
+        <h3>Convert Every Happy Family into a Referral Engine</h3>
+        <p>The moment a family books — even at the token amount stage — activate the referral program. Give them a personalised referral card (printed) with their name as the referrer. "Tell your colleague — they save ₹X with PMAY and you earn ₹20,000 on their booking." In the affordable segment, one satisfied family connected to a factory or government department is worth ₹15–₹20 lakh of media spend.</p>
+      </div>
+    </div>
+
+    <div class="big-quote">
+      "The affordable buyer does not make decisions. The affordable family makes decisions. Brands that speak to the family — not just the buyer — close faster and referr more."
+    </div>
+
+    <div class="section-title">Communication Checklist — Affordable Segment Brand Readiness</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Checklist Item</th>
+          <th>Done?</th>
+          <th>If Not — Impact</th>
+          <th>Owner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat">RERA number displayed on all materials</td><td>☐</td><td>Immediate trust disqualification — buyer will not proceed</td><td>Legal + Marketing</td></tr>
+        <tr><td class="cat sage">Vernacular brochure authored (not translated)</td><td>☐</td><td>Elder family members cannot engage — veto risk increases</td><td>Marketing</td></tr>
+        <tr><td class="cat">Bank approval letter obtained + displayed</td><td>☐</td><td>Loan seekers cannot proceed; biggest barrier to booking</td><td>Finance + Marketing</td></tr>
+        <tr><td class="cat sage">PMAY eligibility communication deployed</td><td>☐</td><td>Buyer leaves ₹2–6 lakh on table; loses to competitor who communicates subsidy</td><td>Marketing + Sales</td></tr>
+        <tr><td class="cat">EMI-forward messaging on all outdoor</td><td>☐</td><td>Total price sticker shock prevents enquiry generation</td><td>Marketing</td></tr>
+        <tr><td class="cat">Sample flat / site office branded and clean</td><td>☐</td><td>Family visit impression is negative; conversion collapses</td><td>Site Operations</td></tr>
+        <tr><td class="cat sage">Testimonial videos (vernacular) produced</td><td>☐</td><td>No peer social proof — buyer has only the developer's word</td><td>Marketing</td></tr>
+        <tr><td class="cat">Construction progress WhatsApp system live</td><td>☐</td><td>Silence between enquiry and possession = anxiety = cancellation</td><td>CRM + Marketing</td></tr>
+        <tr><td class="cat">Referral program structured and communicated</td><td>☐</td><td>Lost referral velocity — most efficient customer acquisition channel untapped</td><td>Sales</td></tr>
+        <tr><td class="cat sage">Vastu-marked floor plan available</td><td>☐</td><td>Elder female family member concern unresolved — final veto risk</td><td>Design + Marketing</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Branding 360° <span>· Real Estate</span></div>
+      <p class="footer-desc">
+        Phase 03 Deep Dive — Affordable Housing Brand & Communication Playbook.<br>
+        A complete positioning and communication system for the ₹20L–₹60L, PMAY-eligible buyer segment. Part of the seven-phase Branding 360° Real Estate Framework.
+      </p>
+    </div>
+    <div class="footer-col">
+      <h5>Other Segment Playbooks</h5>
+      <ul>
+        <li>Mid-Segment (₹60L–₹1.5Cr)</li>
+        <li>Premium (₹1.5Cr–₹4Cr)</li>
+        <li>Ultra Luxury (₹4Cr+)</li>
+        <li>NRI Segment</li>
+        <li>Commercial / Office</li>
+        <li>Integrated Township</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Related Modules</h5>
+      <ul>
+        <li>Site Hoarding Identity System</li>
+        <li>Sales Office Brand Experience</li>
+        <li>RERA Brand Compliance Guide</li>
+        <li>Vernacular Ad Copywriting</li>
+        <li>Digital Lead Generation Playbook</li>
+        <li>Post-Possession Community Brand</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Branding 360° · Real Estate Framework · SPR Consultech</p>
+    <p>Phase 03 — Segment Positioning · Affordable Deep Dive</p>
+  </div>
+</footer>
+
+</body>
+</html>

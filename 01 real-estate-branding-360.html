@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Branding 360° — Real Estate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0b;
+    --parchment: #f5f0e8;
+    --sand: #e8dfc8;
+    --gold: #b89a5a;
+    --gold-lt: #d4b97a;
+    --rust: #8b4a2a;
+    --sage: #4a5c4e;
+    --steel: #3a4a5c;
+    --cream: #faf7f2;
+    --rule: rgba(184,154,90,0.25);
+    --mono: 'DM Mono', monospace;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 80px 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(184,154,90,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 15% 70%, rgba(74,92,78,0.12) 0%, transparent 55%),
+      linear-gradient(160deg, #0d0d0b 0%, #1a1a14 50%, #0f110d 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(184,154,90,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,154,90,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .hero-stamp {
+    position: absolute; top: 80px; right: 80px;
+    width: 180px; height: 180px;
+    border: 1px solid rgba(184,154,90,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.6;
+  }
+  .hero-stamp-inner {
+    width: 140px; height: 140px;
+    border: 1px solid rgba(184,154,90,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
+  }
+  .hero-stamp span {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-lt); opacity: 0.8;
+    display: block;
+  }
+  .hero-stamp strong {
+    font-family: var(--sans); font-size: 22px; font-weight: 800;
+    color: var(--gold); line-height: 1; display: block;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 40px; height: 1px; background: var(--gold);
+  }
+  h1.hero-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  h1.hero-title em {
+    font-style: italic;
+    color: var(--gold-lt);
+  }
+  .hero-sub {
+    font-family: var(--mono); font-size: 13px;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.05em;
+    margin-top: 24px;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+  .hero-phases {
+    position: absolute; bottom: 80px; right: 80px;
+    display: flex; flex-direction: column; gap: 6px;
+    align-items: flex-end;
+  }
+  .phase-tag {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(184,154,90,0.5);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .phase-tag:hover { color: var(--gold-lt); }
+  .phase-tag.active { color: var(--gold); }
+
+  /* ─── PHASE DIVIDER ─── */
+  .phase-header {
+    padding: 0 80px;
+    margin-top: 120px;
+    margin-bottom: 64px;
+    display: flex; align-items: flex-end; gap: 40px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 32px;
+  }
+  .phase-num {
+    font-family: var(--mono); font-size: 72px; font-weight: 300;
+    color: var(--sand); line-height: 1;
+    flex-shrink: 0;
+  }
+  .phase-meta { flex: 1; }
+  .phase-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .phase-title {
+    font-family: var(--serif); font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300; color: var(--ink);
+    line-height: 1.1;
+  }
+  .phase-title em { font-style: italic; color: var(--rust); }
+  .phase-desc {
+    font-size: 15px; color: rgba(13,13,11,0.55);
+    max-width: 520px; margin-top: 12px;
+    font-family: var(--mono);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  /* ─── CONTENT LAYOUT ─── */
+  .content-zone {
+    padding: 0 80px;
+    margin-bottom: 24px;
+  }
+
+  /* ─── FRAMEWORK GRID ─── */
+  .fw-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+  .fw-card {
+    background: var(--parchment);
+    padding: 32px 28px;
+    border: 1px solid var(--rule);
+    position: relative;
+    transition: background 0.25s;
+  }
+  .fw-card:hover { background: var(--sand); }
+  .fw-card-num {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold); letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .fw-card h3 {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 10px; color: var(--ink);
+  }
+  .fw-card p {
+    font-family: var(--serif); font-size: 15px;
+    color: rgba(13,13,11,0.65); line-height: 1.6;
+  }
+  .fw-card-accent {
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .fw-card:hover .fw-card-accent { opacity: 1; }
+
+  /* ─── TWO-COL ─── */
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+    align-items: start;
+  }
+  .two-col-wide {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+    align-items: start;
+  }
+
+  /* ─── STRATEGY TABLE ─── */
+  .strat-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 48px;
+  }
+  .strat-table thead tr {
+    background: var(--ink);
+  }
+  .strat-table th {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); padding: 14px 20px;
+    text-align: left; font-weight: 400;
+  }
+  .strat-table td {
+    padding: 14px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .strat-table tr:nth-child(even) td { background: var(--parchment); }
+  .strat-table tr:hover td { background: var(--sand); }
+  .strat-table .cat {
+    font-family: var(--sans); font-size: 12px;
+    font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--rust);
+  }
+
+  /* ─── PILLARS ─── */
+  .pillars {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-bottom: 48px;
+    border: 1px solid var(--rule);
+  }
+  .pillar {
+    padding: 40px 24px;
+    border-right: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar-bg {
+    position: absolute; bottom: -20px; right: -20px;
+    font-size: 100px; line-height: 1;
+    font-family: var(--sans); font-weight: 800;
+    color: rgba(184,154,90,0.05);
+    pointer-events: none;
+    transition: color 0.3s;
+  }
+  .pillar:hover .pillar-bg { color: rgba(184,154,90,0.1); }
+  .pillar-icon {
+    font-size: 28px; margin-bottom: 16px; display: block;
+  }
+  .pillar h4 {
+    font-family: var(--sans); font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .pillar p {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(13,13,11,0.6); line-height: 1.6;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    position: relative; padding-left: 0;
+    margin-bottom: 48px;
+  }
+  .tl-item {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 32px; margin-bottom: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .tl-time {
+    padding: 24px 0;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.1em; color: var(--gold);
+    text-transform: uppercase;
+    display: flex; align-items: flex-start;
+    padding-top: 28px;
+  }
+  .tl-body {
+    padding: 24px 0;
+    border-left: 1px solid var(--rule);
+    padding-left: 32px;
+  }
+  .tl-body h4 {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .tl-body p {
+    font-size: 14px; color: rgba(13,13,11,0.6);
+    line-height: 1.6;
+  }
+  .tl-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+  }
+  .tl-tag {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--sand); color: var(--rust);
+    padding: 3px 10px; border-radius: 2px;
+  }
+
+  /* ─── CALLOUT ─── */
+  .callout {
+    background: var(--ink);
+    padding: 48px 56px;
+    margin-bottom: 48px;
+    position: relative; overflow: hidden;
+  }
+  .callout-glow {
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(184,154,90,0.15) 0%, transparent 70%);
+  }
+  .callout p {
+    font-family: var(--serif); font-size: clamp(20px, 2vw, 28px);
+    font-weight: 300; font-style: italic;
+    color: var(--parchment); line-height: 1.5;
+    position: relative; z-index: 1;
+    max-width: 800px;
+  }
+  .callout-src {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-top: 20px;
+    position: relative; z-index: 1;
+  }
+
+  /* ─── CHANNEL MAP ─── */
+  .channel-map {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .ch-col-head {
+    background: var(--ink); padding: 16px 16px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); text-align: center;
+  }
+  .ch-item {
+    background: var(--parchment); padding: 12px 14px;
+    border: 1px solid var(--rule);
+    font-size: 13px; font-family: var(--serif);
+    color: rgba(13,13,11,0.7);
+    line-height: 1.4;
+    transition: background 0.2s;
+  }
+  .ch-item:hover { background: var(--sand); }
+  .ch-item strong {
+    display: block; font-family: var(--sans);
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--steel); margin-bottom: 4px;
+  }
+
+  /* ─── AUDIT MATRIX ─── */
+  .audit-matrix {
+    display: grid; grid-template-columns: 200px repeat(5, 1fr);
+    gap: 1px; margin-bottom: 48px;
+    font-size: 13px;
+  }
+  .am-head {
+    background: var(--ink); padding: 12px 16px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .am-cell {
+    background: var(--parchment); padding: 12px 16px;
+    border: 1px solid var(--rule);
+    font-family: var(--serif); color: rgba(13,13,11,0.65);
+    line-height: 1.4;
+  }
+  .am-label {
+    background: var(--sand); padding: 12px 16px;
+    font-family: var(--sans); font-size: 11px;
+    font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--rust);
+    border: 1px solid var(--rule);
+  }
+  .am-score {
+    text-align: center; font-family: var(--mono);
+    font-size: 16px; font-weight: 500; color: var(--gold);
+  }
+  .am-score.hi { color: var(--sage); }
+  .am-score.lo { color: var(--rust); }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    font-family: var(--sans); font-size: 11px;
+    font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 1px;
+    background: var(--rule); display: block;
+  }
+
+  /* ─── PROSE ─── */
+  .prose { margin-bottom: 32px; }
+  .prose p {
+    font-size: 16px; line-height: 1.75;
+    color: rgba(13,13,11,0.72); margin-bottom: 16px;
+    max-width: 760px;
+  }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  /* ─── TAG LIST ─── */
+  .tag-list {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 32px;
+  }
+  .tag {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid var(--rule);
+    padding: 5px 14px; color: var(--ink);
+    opacity: 0.65; transition: all 0.2s;
+    cursor: default;
+  }
+  .tag:hover { opacity: 1; border-color: var(--gold); color: var(--gold); }
+
+  /* ─── SEGMENT CARDS ─── */
+  .segments {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .seg-card {
+    padding: 36px 28px;
+    background: var(--parchment);
+    border: 1px solid var(--rule);
+    position: relative;
+  }
+  .seg-card::before {
+    content: attr(data-seg);
+    position: absolute; top: 16px; right: 20px;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); opacity: 0.6;
+  }
+  .seg-card h4 {
+    font-family: var(--sans); font-size: 16px; font-weight: 700;
+    color: var(--ink); margin-bottom: 10px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .seg-card .seg-price {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--rust); margin-bottom: 12px;
+  }
+  .seg-card ul {
+    list-style: none; padding: 0;
+  }
+  .seg-card ul li {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(13,13,11,0.65); padding: 5px 0;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.4;
+  }
+  .seg-card ul li::before {
+    content: '→ '; color: var(--gold); font-size: 12px;
+  }
+
+  /* ─── BIG QUOTE ─── */
+  .big-quote {
+    font-family: var(--serif); font-size: clamp(28px, 4vw, 52px);
+    font-weight: 300; font-style: italic;
+    color: var(--ink); line-height: 1.3;
+    border-left: 3px solid var(--gold);
+    padding-left: 40px; margin: 64px 0;
+    opacity: 0.85;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); padding: 64px 80px 40px;
+    margin-top: 120px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 64px; margin-bottom: 48px;
+  }
+  .footer-brand {
+    font-family: var(--sans); font-size: 28px; font-weight: 800;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-brand span { color: rgba(184,154,90,0.4); font-weight: 300; }
+  .footer-desc {
+    font-family: var(--mono); font-size: 12px;
+    color: rgba(245,240,232,0.35); line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+  .footer-col h5 {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(245,240,232,0.4); padding: 4px 0;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(184,154,90,0.1);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p {
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(245,240,232,0.2); letter-spacing: 0.08em;
+  }
+
+  /* ─── FADE IN ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.6s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width: 1024px) {
+    nav, .hero, .content-zone, .phase-header { padding-left: 40px; padding-right: 40px; }
+    .fw-grid, .pillars, .channel-map { grid-template-columns: 1fr 1fr; }
+    .audit-matrix { grid-template-columns: 1fr; }
+    .two-col, .two-col-wide { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media(max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 80px 24px 64px; }
+    .content-zone, .phase-header { padding: 0 24px; }
+    .fw-grid, .pillars, .segments, .channel-map { grid-template-columns: 1fr; }
+    .hero-stamp, .hero-phases { display: none; }
+    footer { padding: 48px 24px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Branding 360° · Real Estate</div>
+  <ul class="nav-links">
+    <li><a href="#foundation">01 Foundation</a></li>
+    <li><a href="#identity">02 Identity</a></li>
+    <li><a href="#positioning">03 Positioning</a></li>
+    <li><a href="#messaging">04 Messaging</a></li>
+    <li><a href="#channels">05 Channels</a></li>
+    <li><a href="#experience">06 Experience</a></li>
+    <li><a href="#audit">07 Audit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-stamp">
+    <div class="hero-stamp-inner">
+      <span>Complete</span>
+      <strong>360°</strong>
+      <span>Framework</span>
+      <span style="margin-top:6px; font-size:8px;">Real Estate</span>
+    </div>
+  </div>
+
+  <div class="hero-content fade-in">
+    <div class="hero-eyebrow">Branding Framework — Real Estate</div>
+    <h1 class="hero-title">
+      Building Brands<br>
+      That <em>Outlast</em><br>
+      The Structure
+    </h1>
+    <p class="hero-sub">
+      A complete 360° brand strategy reference covering 7 phases — from brand foundation and identity through positioning, messaging, channel architecture, customer experience, and audit. Engineered for Indian real estate contexts.
+    </p>
+  </div>
+
+  <div class="hero-phases fade-in delay-3">
+    <div class="phase-tag active">01 · Brand Foundation</div>
+    <div class="phase-tag">02 · Visual Identity</div>
+    <div class="phase-tag">03 · Positioning</div>
+    <div class="phase-tag">04 · Messaging</div>
+    <div class="phase-tag">05 · Channel Architecture</div>
+    <div class="phase-tag">06 · Brand Experience</div>
+    <div class="phase-tag">07 · Brand Audit</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 01 — BRAND FOUNDATION
+══════════════════════════════════════════════ -->
+<section id="foundation">
+  <div class="phase-header">
+    <div class="phase-num">01</div>
+    <div class="phase-meta">
+      <div class="phase-label">Phase One</div>
+      <h2 class="phase-title">Brand <em>Foundation</em></h2>
+      <p class="phase-desc">The strategic bedrock. Define what you stand for before you decide what you look like or where you advertise. Every decision downstream must trace back here.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Why Most Real Estate Brands Fail</div>
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"Real estate brands that collapse to price and location have no brand — only inventory. A brand is the promise that lives in the buyer's mind before they ever visit the site."</p>
+      <div class="callout-src">Core Principle — Branding 360°</div>
+    </div>
+
+    <div class="section-title">The 5 Foundation Elements</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">01.1</span>
+        <h3>Brand Purpose</h3>
+        <p>The deeper reason the company exists beyond profit. For real estate: "We create spaces where families write their most important stories." Must be authentic to founders, operationally possible, and emotionally resonant to buyers.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">01.2</span>
+        <h3>Vision & Mission</h3>
+        <p>Vision = where the brand is going in 10 years. Mission = what it does every day to get there. These two must create productive tension — ambitious enough to inspire, grounded enough to guide daily decisions.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">01.3</span>
+        <h3>Core Values</h3>
+        <p>3–5 values that are non-negotiable and behavioral — not aspirational posters. In real estate: Transparency, Delivery Excellence, Customer Dignity, Long-term Thinking. Each value must have a real behavioral test.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">01.4</span>
+        <h3>Brand Promise</h3>
+        <p>The single, ownable commitment to the buyer. Must pass the "so what?" test and the "can we prove it?" test. E.g., "Homes delivered on time, or you get compensated." Specificity creates credibility.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">01.5</span>
+        <h3>Brand Personality</h3>
+        <p>The human traits of the brand, expressed across all communication. Choose 3–4 traits from: Trustworthy, Aspirational, Warm, Premium, Progressive, Heritage-led, Community-centric, Transparent, Bold. Avoid contradictions.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">01.6</span>
+        <h3>Strategic Insight</h3>
+        <p>The single human truth that unlocks the brand's relationship with the buyer. In real estate it might be: "Buyers don't buy square footage — they buy the version of their life they imagine in that space."</p>
+      </div>
+    </div>
+
+    <div class="section-title">Real Estate Brand Archetype Map</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Archetype</th>
+          <th>Core Promise</th>
+          <th>Tone</th>
+          <th>Fits Best</th>
+          <th>Risk</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">The Guardian</td>
+          <td>Safety, reliability, long-term security</td>
+          <td>Steady, reassuring, formal</td>
+          <td>First-time buyers, mid-income families</td>
+          <td>Can feel boring to aspirational buyers</td>
+        </tr>
+        <tr>
+          <td class="cat">The Sage</td>
+          <td>Knowledge, guidance, expertise</td>
+          <td>Informative, authoritative, educational</td>
+          <td>Investors, NRI segment, seasoned buyers</td>
+          <td>Can feel cold or distant</td>
+        </tr>
+        <tr>
+          <td class="cat">The Ruler</td>
+          <td>Prestige, exclusivity, legacy</td>
+          <td>Confident, refined, premium</td>
+          <td>Luxury segment, HNI buyers</td>
+          <td>Can feel exclusionary to wider market</td>
+        </tr>
+        <tr>
+          <td class="cat">The Creator</td>
+          <td>Unique design, architectural vision</td>
+          <td>Expressive, aesthetic, visionary</td>
+          <td>Boutique luxury, design-led developers</td>
+          <td>Risk of substance–style imbalance</td>
+        </tr>
+        <tr>
+          <td class="cat">The Caregiver</td>
+          <td>Community, warmth, belonging</td>
+          <td>Warm, inclusive, family-centred</td>
+          <td>Integrated townships, affordable housing</td>
+          <td>Difficult to command premium pricing</td>
+        </tr>
+        <tr>
+          <td class="cat">The Explorer</td>
+          <td>New locations, new living concepts</td>
+          <td>Progressive, adventurous, forward</td>
+          <td>Emerging corridors, co-living, young buyers</td>
+          <td>Trust deficit in new markets</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">Foundation Diagnostic — Key Questions</div>
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p><strong>Strategic Clarity Test:</strong> If your brand disappeared tomorrow, would buyers notice a real loss — or just look for the next developer on the list? The answer reveals whether you have a brand or just a company name.</p>
+          <p><strong>Founder Intent Alignment:</strong> Is the brand's stated purpose aligned with how the promoters actually make decisions? Foundation statements that contradict operational reality destroy credibility faster than any competitor can.</p>
+          <p><strong>Competitive Differentiation:</strong> Can you articulate why a buyer should choose you over the developer two kilometres away — in a single sentence that has nothing to do with price, location, or size?</p>
+        </div>
+      </div>
+      <div>
+        <div class="tag-list">
+          <span class="tag">Brand Architecture</span>
+          <span class="tag">Brand Equity</span>
+          <span class="tag">Category Entry Points</span>
+          <span class="tag">Founder Brand</span>
+          <span class="tag">Heritage Mapping</span>
+          <span class="tag">Trust Signals</span>
+          <span class="tag">RERA Compliance</span>
+          <span class="tag">Legacy Narrative</span>
+          <span class="tag">Holding Company vs Project Brand</span>
+          <span class="tag">Multi-brand Strategy</span>
+          <span class="tag">Geographic Identity</span>
+          <span class="tag">Community Brand</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 02 — VISUAL IDENTITY
+══════════════════════════════════════════════ -->
+<section id="identity">
+  <div class="phase-header">
+    <div class="phase-num">02</div>
+    <div class="phase-meta">
+      <div class="phase-label">Phase Two</div>
+      <h2 class="phase-title">Visual <em>Identity</em></h2>
+      <p class="phase-desc">The sensory language of the brand. Every visual element must encode strategy. In real estate, identity is tested across vast touchpoints — from a 60×80ft hoarding to a WhatsApp message.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Identity System Components</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-bg">Aa</div>
+        <span class="pillar-icon">🔷</span>
+        <h4>Logo System</h4>
+        <p>Primary mark, horizontal variant, icon/monogram, dark and light versions, safe zone rules, minimum size specifications. Real estate logos must work at billboard scale and favicon scale simultaneously.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">Cc</div>
+        <span class="pillar-icon">🎨</span>
+        <h4>Colour Architecture</h4>
+        <p>Primary palette (brand ownership), secondary palette (expressiveness), functional palette (UI/print). Colour must encode personality — sage greens for sustainability claims, deep navy for trust, warm terracotta for community.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">Tt</div>
+        <span class="pillar-icon">✒️</span>
+        <h4>Typography System</h4>
+        <p>Display typeface (headlines, brand voice), body typeface (readability, documentation), utility typeface (data, pricing, legal). Real estate brands often need Devanagari / Tamil script equivalents for regional markets.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">◻</div>
+        <span class="pillar-icon">📐</span>
+        <h4>Visual Language</h4>
+        <p>Photography style (aspirational lifestyle vs documentary), illustration system, iconography, pattern/texture library, spatial layouts for ads, brand motion principles for digital. Architectural photography is the heart of real estate visual identity.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Real Estate Visual Identity Touchpoint Matrix</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Touchpoint Category</th>
+          <th>Specific Items</th>
+          <th>Brand Priority</th>
+          <th>Identity Complexity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Site Branding</td>
+          <td>Site hoardings, scaffolding wraps, gate branding, site office, construction-period banners</td>
+          <td>🔴 Critical</td>
+          <td>High — scale, weather, long tenure</td>
+        </tr>
+        <tr>
+          <td class="cat">Sales Materials</td>
+          <td>Brochures, floor plan books, pricing sheets, cost sheets, thank-you kits, gifts</td>
+          <td>🔴 Critical</td>
+          <td>High — production quality signals brand quality</td>
+        </tr>
+        <tr>
+          <td class="cat">Digital Assets</td>
+          <td>Website, landing pages, social templates, email templates, WhatsApp Business profile</td>
+          <td>🔴 Critical</td>
+          <td>Medium-High — must be scalable and consistent</td>
+        </tr>
+        <tr>
+          <td class="cat">Experience Centre</td>
+          <td>Experience centre / model flat, signage, presentation rooms, ambience</td>
+          <td>🟡 High</td>
+          <td>Very High — immersive brand environment</td>
+        </tr>
+        <tr>
+          <td class="cat">Legal & Transactional</td>
+          <td>Booking form, allotment letter, agreement for sale, demand letters, NOC certificates</td>
+          <td>🟡 High</td>
+          <td>Low aesthetic, high trust — must feel official and clean</td>
+        </tr>
+        <tr>
+          <td class="cat">Outdoor & Media</td>
+          <td>Print ads (newspaper inserts, magazines), OOH billboards, transit advertising</td>
+          <td>🟢 Medium</td>
+          <td>High — readability at distance is critical</td>
+        </tr>
+        <tr>
+          <td class="cat">Post-Possession</td>
+          <td>Handover kits, welcome letters, society brand elements, community app</td>
+          <td>🟢 Medium</td>
+          <td>Low — but high loyalty impact</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="big-quote">
+      "In real estate, your site hoarding is your first advertisement, your experience centre is your brand's theatre, and your handover moment is your closing argument."
+    </div>
+
+    <div class="section-title">Photography Direction for Real Estate</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Lifestyle</span>
+        <h3>People in Spaces</h3>
+        <p>Show buyers living the life, not just the home. Morning chai on a balcony, kids doing homework, grandparents in the garden. Cast diverse but aspirational talent. Avoid over-styled stock photography.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Architectural</span>
+        <h3>Structure & Craft</h3>
+        <p>Drone angles that show scale and location context. Golden hour and blue-hour lighting that makes concrete feel warm. Detail shots of finishes. Wide shots that show the project within its neighbourhood.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Conceptual</span>
+        <h3>Abstract Brand Visuals</h3>
+        <p>For top-of-funnel brand campaigns — textures, materials, light through glass, shadows on walls. These build emotion before facts. Used in outdoor, digital branding campaigns, and PR imagery.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 03 — POSITIONING
+══════════════════════════════════════════════ -->
+<section id="positioning">
+  <div class="phase-header">
+    <div class="phase-num">03</div>
+    <div class="phase-meta">
+      <div class="phase-label">Phase Three</div>
+      <h2 class="phase-title">Brand <em>Positioning</em></h2>
+      <p class="phase-desc">The specific territory your brand owns in the buyer's mind. Positioning is not a tagline — it is a strategic choice about what you will and won't compete on.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Segment Positioning Framework</div>
+    <div class="segments">
+      <div class="seg-card" data-seg="Affordable">
+        <h4>Affordable Housing</h4>
+        <div class="seg-price">₹20L – ₹60L | PMAY Eligible</div>
+        <ul>
+          <li>RERA compliance as trust signal</li>
+          <li>EMI-equivalent messaging</li>
+          <li>Government scheme integration</li>
+          <li>Infrastructure as value driver</li>
+          <li>Community safety narrative</li>
+          <li>Vernacular language communication</li>
+        </ul>
+      </div>
+      <div class="seg-card" data-seg="Mid-Segment">
+        <h4>Mid-Segment</h4>
+        <div class="seg-price">₹60L – ₹1.5Cr | Primary Upgrader</div>
+        <ul>
+          <li>Aspirational lifestyle imagery</li>
+          <li>Location advantage messaging</li>
+          <li>Floor plan intelligence</li>
+          <li>School, hospital proximity</li>
+          <li>Club & amenity showcase</li>
+          <li>Investment appreciation angle</li>
+        </ul>
+      </div>
+      <div class="seg-card" data-seg="Premium">
+        <h4>Premium</h4>
+        <div class="seg-price">₹1.5Cr – ₹4Cr | Status Buyer</div>
+        <ul>
+          <li>Address as identity signal</li>
+          <li>Architect & design credentials</li>
+          <li>Exclusive community positioning</li>
+          <li>Concierge-level sales experience</li>
+          <li>Branded club & wellness offering</li>
+          <li>Referral-led marketing model</li>
+        </ul>
+      </div>
+      <div class="seg-card" data-seg="Luxury">
+        <h4>Ultra Luxury</h4>
+        <div class="seg-price">₹4Cr+ | HNI / NRI</div>
+        <ul>
+          <li>Scarcity & limited units narrative</li>
+          <li>International brand collaborations</li>
+          <li>Private preview events only</li>
+          <li>Bespoke customisation offering</li>
+          <li>Private wealth network channels</li>
+          <li>Trophy asset investment framing</li>
+        </ul>
+      </div>
+      <div class="seg-card" data-seg="Commercial">
+        <h4>Commercial / Office</h4>
+        <div class="seg-price">Office / Retail / Co-working</div>
+        <ul>
+          <li>Productivity environment framing</li>
+          <li>Grade-A certification messaging</li>
+          <li>Tenant brand mix as social proof</li>
+          <li>Sustainability / green certification</li>
+          <li>Lease structure flexibility</li>
+          <li>CAM transparency as differentiator</li>
+        </ul>
+      </div>
+      <div class="seg-card" data-seg="Township">
+        <h4>Integrated Township</h4>
+        <div class="seg-price">Self-contained | 50+ acres</div>
+        <ul>
+          <li>"Everything within the gates" narrative</li>
+          <li>School, hospital, retail ecosystem</li>
+          <li>Community master-brand strategy</li>
+          <li>Long-haul content & loyalty play</li>
+          <li>Micro-brand per asset class</li>
+          <li>Resident community as brand ambassador</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-title">Positioning Statement Architecture</div>
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"For [target buyer] who [key need], [Brand Name] is the [category/frame] that [key benefit] because [proof point]. Unlike [competitors], we [differentiator]."</p>
+      <div class="callout-src">Positioning Template — Fill with Brand-Specific Truth</div>
+    </div>
+
+    <div class="section-title">Competitive Positioning Grid</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Axis</th>
+          <th>Description</th>
+          <th>Real Estate Application</th>
+          <th>Owned By</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Trust × Aspiration</td>
+          <td>Can you be both reliable and exciting?</td>
+          <td>Heritage developer launching a luxury vertical</td>
+          <td>Godrej Properties</td>
+        </tr>
+        <tr>
+          <td class="cat">Value × Status</td>
+          <td>Affordable but with pride of ownership</td>
+          <td>Premium quality at mid-market price — value luxury</td>
+          <td>Sobha Limited</td>
+        </tr>
+        <tr>
+          <td class="cat">Speed × Quality</td>
+          <td>Fast delivery without quality compromise</td>
+          <td>Construction-speed as brand differentiator</td>
+          <td>Prestige Group</td>
+        </tr>
+        <tr>
+          <td class="cat">Location × Community</td>
+          <td>Prime address plus belonging</td>
+          <td>Township developers — built neighbourhood identity</td>
+          <td>Brigade, Mahindra Lifespace</td>
+        </tr>
+        <tr>
+          <td class="cat">Sustainability × Premium</td>
+          <td>Green credentials as luxury signal</td>
+          <td>IGBC/LEED certifications as positioning asset</td>
+          <td>Emerging — White Space in India</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 04 — MESSAGING
+══════════════════════════════════════════════ -->
+<section id="messaging">
+  <div class="phase-header">
+    <div class="phase-num">04</div>
+    <div class="phase-meta">
+      <div class="phase-label">Phase Four</div>
+      <h2 class="phase-title">Brand <em>Messaging</em></h2>
+      <p class="phase-desc">How the brand speaks — across every format, channel, and stage of the buyer journey. Messaging is the bridge between strategy and conversation.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Messaging Hierarchy</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Level 1</span>
+        <h3>Brand Tagline</h3>
+        <p>The single memorable distillation of the brand promise. Must work in isolation. E.g., "Where Life Begins" (community), "Built on Trust" (reliability), "Redefine Address" (aspiration). Test: Can a buyer remember it 30 days later?</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Level 2</span>
+        <h3>Brand Story</h3>
+        <p>The founder/company narrative told in a human way. For real estate: origin, values in action, landmark projects, community impact. Usually 150–300 words. Used in brochures, about pages, media briefings, and sales scripts.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Level 3</span>
+        <h3>Project Messaging</h3>
+        <p>Each project has its own message hierarchy nested within the brand. The project name, tagline, key benefits, and proof points must resonate with the specific target segment while maintaining brand umbrella consistency.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Level 4</span>
+        <h3>Segment Messages</h3>
+        <p>Different buyers need different articulations. The financial message for an NRI investor differs from the emotional message for a first-home buyer — same product, different emphasis. Develop 3–5 segment-specific message sets.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Level 5</span>
+        <h3>Journey-Stage Messages</h3>
+        <p>Awareness = emotional hook. Consideration = rational proof. Conversion = urgency + trust. Post-purchase = reinforcement. Each stage demands different content, different proof, different emotional register.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Level 6</span>
+        <h3>Objection Messaging</h3>
+        <p>Pre-empt the 7 universal real estate objections: price, timeline, builder credibility, location, size, future appreciation, and family consensus. Build message counters for each — grounded in verifiable fact, not marketing spin.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Voice & Tone Guide by Channel</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th>Tone</th>
+          <th>Language</th>
+          <th>Vocabulary to Use</th>
+          <th>Vocabulary to Avoid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Outdoor / Print</td>
+          <td>Bold, declarative</td>
+          <td>5–8 words max</td>
+          <td>Now Open, Limited, Yours, Home, Life</td>
+          <td>Jargon, numbers without context, superlatives</td>
+        </tr>
+        <tr>
+          <td class="cat">Website</td>
+          <td>Confident, informative</td>
+          <td>Clear, structured, scannable</td>
+          <td>Discover, Explore, Designed for, Built to</td>
+          <td>Passive voice, vague claims like "world-class"</td>
+        </tr>
+        <tr>
+          <td class="cat">Social Media</td>
+          <td>Warm, aspirational, community-led</td>
+          <td>Conversational, short</td>
+          <td>Imagine, Meet your neighbours, This is home</td>
+          <td>Hard sell, price-first, generic CTAs</td>
+        </tr>
+        <tr>
+          <td class="cat">Sales Script</td>
+          <td>Consultative, empathetic</td>
+          <td>Listening-first, question-led</td>
+          <td>What matters most to you, Your family, Your vision</td>
+          <td>Pressure language, time ultimatums, boasting</td>
+        </tr>
+        <tr>
+          <td class="cat">WhatsApp / SMS</td>
+          <td>Direct, respectful</td>
+          <td>One sentence + link</td>
+          <td>You're invited, Exclusive preview, Limited units</td>
+          <td>Spam language, all caps, multiple links</td>
+        </tr>
+        <tr>
+          <td class="cat">Email</td>
+          <td>Professional, personal</td>
+          <td>Structured, scannable</td>
+          <td>We wanted to personally share, Based on your interest</td>
+          <td>Generic salutation, dense paragraphs, no segmentation</td>
+        </tr>
+        <tr>
+          <td class="cat">PR / Media</td>
+          <td>Authoritative, visionary</td>
+          <td>Data-backed, quote-ready</td>
+          <td>Market intelligence, growth trajectory, community impact</td>
+          <td>Promotional language, unverified claims, superlatives</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">The 7 Real Estate Buyer Objections — Messaging Response Map</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">Objection 1</div>
+        <div class="tl-body">
+          <h4>Price — "It's Too Expensive"</h4>
+          <p>Reframe from cost to value per square foot, total cost of ownership over 20 years, vs rent outflow. Introduce EMI equivalence: "Less than your current rent." Anchor against the cost of waiting (appreciation data).</p>
+          <div class="tl-tags"><span class="tl-tag">Reframe</span><span class="tl-tag">EMI Messaging</span><span class="tl-tag">ROI Data</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Objection 2</div>
+        <div class="tl-body">
+          <h4>Timeline — "Will They Deliver on Time?"</h4>
+          <p>Lead with RERA registration and construction milestone transparency. Show current construction photos with date stamps. Reference on-time delivery record. Offer milestone-based communication cadence as proof of commitment.</p>
+          <div class="tl-tags"><span class="tl-tag">RERA</span><span class="tl-tag">Construction Updates</span><span class="tl-tag">Track Record</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Objection 3</div>
+        <div class="tl-body">
+          <h4>Credibility — "Can I Trust This Builder?"</h4>
+          <p>Testimonial stack: video, written, LinkedIn-verified buyers. Media coverage. Award credentials. Number of delivered homes. Years in the market. Founder profile and personal accountability narrative.</p>
+          <div class="tl-tags"><span class="tl-tag">Social Proof</span><span class="tl-tag">Awards</span><span class="tl-tag">Legacy</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Objection 4</div>
+        <div class="tl-body">
+          <h4>Location — "Is This the Right Area?"</h4>
+          <p>Infrastructure investment map (metro, roads, IT corridors). School-hospital-retail proximity data. Future development adjacency. Rental yield data for the micro-market. Comparison with established areas on price vs growth.</p>
+          <div class="tl-tags"><span class="tl-tag">Infrastructure</span><span class="tl-tag">Yield Data</span><span class="tl-tag">Growth Narrative</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Objection 5</div>
+        <div class="tl-body">
+          <h4>Family Consensus — "My Family Isn't Sure"</h4>
+          <p>Family-inclusive site visits. Special experience events for all decision stakeholders. Content targeted at secondary decision-makers (spouse, parents). The model flat experience must appeal to every person in the room.</p>
+          <div class="tl-tags"><span class="tl-tag">Experience Design</span><span class="tl-tag">Stakeholder Content</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Objection 6</div>
+        <div class="tl-body">
+          <h4>Appreciation — "Will It Be Worth More?"</h4>
+          <p>Comparable past project price appreciation data. Micro-market research from credible sources (JLL, Anarock, PropEquity). Infrastructure-led appreciation timeline. Investment angle framing for relevant segments.</p>
+          <div class="tl-tags"><span class="tl-tag">Data</span><span class="tl-tag">Research</span><span class="tl-tag">Comparable Analysis</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Objection 7</div>
+        <div class="tl-body">
+          <h4>Timing — "Should We Wait?"</h4>
+          <p>Current price vs launch price comparison. Finite inventory storytelling. Interest rate trajectory narrative. Pre-launch vs post-launch differential. Cost of delay calculation presented as a tool, not pressure.</p>
+          <div class="tl-tags"><span class="tl-tag">Scarcity</span><span class="tl-tag">Price Trend</span><span class="tl-tag">FOMO Reframe</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 05 — CHANNEL ARCHITECTURE
+══════════════════════════════════════════════ -->
+<section id="channels">
+  <div class="phase-header">
+    <div class="phase-num">05</div>
+    <div class="phase-meta">
+      <div class="phase-label">Phase Five</div>
+      <h2 class="phase-title">Channel <em>Architecture</em></h2>
+      <p class="phase-desc">Where and how the brand is experienced. The PESO framework for real estate — Paid, Earned, Shared, Owned — mapped to buyer journey stages and budget allocation.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">PESO Channel Map — Real Estate</div>
+    <div class="channel-map">
+      <div class="ch-col-head">Paid</div>
+      <div class="ch-col-head">Earned</div>
+      <div class="ch-col-head">Shared</div>
+      <div class="ch-col-head">Owned</div>
+      <div class="ch-col-head">Physical</div>
+
+      <div class="ch-item"><strong>Google Search Ads</strong>Buyer-intent keywords, project + location + BHK combinations. Highest conversion channel.</div>
+      <div class="ch-item"><strong>PR & Media Coverage</strong>Project launches, milestones, CSR, market commentary. Builds top-tier credibility.</div>
+      <div class="ch-item"><strong>Facebook / Instagram</strong>Lifestyle content, project reveals, testimonials, reel formats. Community building.</div>
+      <div class="ch-item"><strong>Website & Landing Pages</strong>Primary digital home. SEO-optimised, fast, lead-capture first. AMP versions for mobile.</div>
+      <div class="ch-item"><strong>Experience Centre</strong>Immersive physical brand environment. Model flat + brand story + consultation zone.</div>
+
+      <div class="ch-item"><strong>Meta Ads</strong>Prospecting (lookalike), retargeting (site visitors), interest targeting (home-buying intent).</div>
+      <div class="ch-item"><strong>Awards & Rankings</strong>CREDAI, ET Now, JLL awards. Industry rankings cited in sales collateral.</div>
+      <div class="ch-item"><strong>YouTube Channel</strong>Project videos, buyer testimonials, market education, vlog-style construction updates.</div>
+      <div class="ch-item"><strong>Blog & Resource Hub</strong>SEO-led content: home-buying guides, RERA explainers, area profiles, ROI calculators.</div>
+      <div class="ch-item"><strong>Site Hoardings</strong>Location-based OOH. Project site, arterial roads, transit nodes near target buyer clusters.</div>
+
+      <div class="ch-item"><strong>OTT / CTV Ads</strong>Hotstar, YouTube pre-roll. Premium segment awareness. Aspirational lifestyle formats.</div>
+      <div class="ch-item"><strong>Influencer Coverage</strong>Real estate influencers, home décor creators, finance YouTubers. Authenticity over reach.</div>
+      <div class="ch-item"><strong>LinkedIn</strong>Investor audience, NRI buyers, corporate tie-ups, brand authority for developer leadership.</div>
+      <div class="ch-item"><strong>Email Nurture Sequences</strong>Lead nurture automation: 7-touch journey from inquiry to site visit to booking.</div>
+      <div class="ch-item"><strong>Channel Partner Network</strong>Trained broker network with branded toolkits, portal access, co-branded collateral.</div>
+
+      <div class="ch-item"><strong>OOH / Print</strong>TOI, Hindu inserts, city editions. Weekend property pages. JLL / Anarock market reports.</div>
+      <div class="ch-item"><strong>Word of Mouth / Referrals</strong>Structured referral programme. Happy buyer events. Community-led endorsement.</div>
+      <div class="ch-item"><strong>WhatsApp Broadcast</strong>Project updates, EMI announcements, event invites. High open rate — use sparingly and strategically.</div>
+      <div class="ch-item"><strong>CRM & Buyer Portal</strong>Construction updates, document management, community pre-launch. Post-booking relationship.</div>
+      <div class="ch-item"><strong>Property Portals</strong>99acres, MagicBricks, Housing.com. Listing optimisation, sponsored listings, review management.</div>
+    </div>
+
+    <div class="section-title">Budget Allocation Framework by Project Phase</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Project Phase</th>
+          <th>Paid</th>
+          <th>Earned</th>
+          <th>Shared</th>
+          <th>Owned</th>
+          <th>Physical</th>
+          <th>Strategic Objective</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Pre-Launch</td>
+          <td>20%</td>
+          <td>30%</td>
+          <td>20%</td>
+          <td>15%</td>
+          <td>15%</td>
+          <td>Awareness + Waitlist building</td>
+        </tr>
+        <tr>
+          <td class="cat">Launch Month</td>
+          <td>45%</td>
+          <td>15%</td>
+          <td>20%</td>
+          <td>10%</td>
+          <td>10%</td>
+          <td>Maximum lead volume + conversions</td>
+        </tr>
+        <tr>
+          <td class="cat">Sales Phase (Months 2–12)</td>
+          <td>35%</td>
+          <td>10%</td>
+          <td>25%</td>
+          <td>20%</td>
+          <td>10%</td>
+          <td>Sustained lead flow + nurture</td>
+        </tr>
+        <tr>
+          <td class="cat">Construction Phase</td>
+          <td>15%</td>
+          <td>20%</td>
+          <td>30%</td>
+          <td>25%</td>
+          <td>10%</td>
+          <td>Trust maintenance + referrals</td>
+        </tr>
+        <tr>
+          <td class="cat">Pre-Possession</td>
+          <td>10%</td>
+          <td>15%</td>
+          <td>20%</td>
+          <td>35%</td>
+          <td>20%</td>
+          <td>Buyer delight + word of mouth</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">Digital Performance KPIs</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Acquisition</span>
+        <h3>Lead Generation</h3>
+        <p>Cost Per Lead (CPL) by channel. Lead-to-site-visit ratio. Site-visit-to-booking ratio. Traffic source analysis. Search impression share for branded and non-branded keywords.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Engagement</span>
+        <h3>Content Performance</h3>
+        <p>Video view-through rate (target: 60%+). Social engagement rate (target: 3–5%). Email open rate (target: 22%+). Blog organic traffic. WhatsApp message open rate.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Brand Health</span>
+        <h3>Brand Metrics</h3>
+        <p>Branded search volume trends. Social sentiment score. Review rating (Google Business, 99acres). Net Promoter Score from buyers. Share of voice vs key competitors in local market.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 06 — BRAND EXPERIENCE
+══════════════════════════════════════════════ -->
+<section id="experience">
+  <div class="phase-header">
+    <div class="phase-num">06</div>
+    <div class="phase-meta">
+      <div class="phase-label">Phase Six</div>
+      <h2 class="phase-title">Brand <em>Experience</em></h2>
+      <p class="phase-desc">The sum of every interaction a buyer has with the brand — from first advertisement to long after possession. Experience is where brand promises meet operational reality.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Real Estate Brand Experience Journey</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">Stage 1<br>Discovery</div>
+        <div class="tl-body">
+          <h4>First Brand Encounter</h4>
+          <p>A billboard, a search result, a friend's referral, a newspaper ad. The first brand impression must be consistent, credible, and emotion-first. Brand recognition and recall begin here. First 3 seconds define interest.</p>
+          <div class="tl-tags"><span class="tl-tag">Awareness</span><span class="tl-tag">OOH</span><span class="tl-tag">Search</span><span class="tl-tag">Social</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Stage 2<br>Consideration</div>
+        <div class="tl-body">
+          <h4>Research & Evaluation</h4>
+          <p>Website visit, brochure download, portal comparison, YouTube review. The brand must perform consistently across every research touchpoint. Conflicting information at this stage causes dropout. Offer content that simplifies decision-making.</p>
+          <div class="tl-tags"><span class="tl-tag">Website</span><span class="tl-tag">Content</span><span class="tl-tag">Reviews</span><span class="tl-tag">Portals</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Stage 3<br>Engagement</div>
+        <div class="tl-body">
+          <h4>Inquiry & Site Visit</h4>
+          <p>Call/chat inquiry handling — speed and quality here are brand statements. The Experience Centre visit must be an orchestrated brand moment. Every sensory element — scent, music, lighting, staff demeanour — must encode the brand.</p>
+          <div class="tl-tags"><span class="tl-tag">CX Design</span><span class="tl-tag">Sales Team Brand</span><span class="tl-tag">Experience Centre</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Stage 4<br>Conversion</div>
+        <div class="tl-body">
+          <h4>Booking & Documentation</h4>
+          <p>The booking experience must feel like a celebration, not a bureaucratic transaction. Booking form design, welcome gift, booking confirmation letter tone, clarity of documentation — all brand touchpoints. First post-booking communication sets the relationship tone.</p>
+          <div class="tl-tags"><span class="tl-tag">Booking Experience</span><span class="tl-tag">Welcome Kit</span><span class="tl-tag">CRM Journey</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Stage 5<br>Ownership</div>
+        <div class="tl-body">
+          <h4>Construction Period — The Trust Test</h4>
+          <p>The hardest phase. Buyers are anxious. Monthly construction photo updates, RERA milestone communications, transparent delay handling (if any). The brand is tested here more than anywhere else. Silence breeds suspicion.</p>
+          <div class="tl-tags"><span class="tl-tag">Transparency</span><span class="tl-tag">Update Cadence</span><span class="tl-tag">Milestone Comms</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Stage 6<br>Possession</div>
+        <div class="tl-body">
+          <h4>Handover — The Brand's Final Statement</h4>
+          <p>The handover moment defines the brand's long-term legacy. A well-designed handover kit, a dignified possession ceremony, a snag-free handover, and a welcome gift create lifelong brand advocates. This is the most photographed, shared, emotional day in the buyer's journey.</p>
+          <div class="tl-tags"><span class="tl-tag">Possession Event</span><span class="tl-tag">Handover Kit</span><span class="tl-tag">Snag-Free</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Stage 7<br>Advocacy</div>
+        <div class="tl-body">
+          <h4>Post-Possession — The Referral Economy</h4>
+          <p>The brand doesn't end at possession. Community events, resident association support, anniversary greetings, referral programme activation, community app, and neighbour introductions convert buyers into brand ambassadors. One referral = ₹0 acquisition cost.</p>
+          <div class="tl-tags"><span class="tl-tag">Community Brand</span><span class="tl-tag">Referral Programme</span><span class="tl-tag">NPS</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Experience Centre Design Principles</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-bg">①</div>
+        <span class="pillar-icon">👁️</span>
+        <h4>First Impression</h4>
+        <p>The 30 seconds before a buyer is greeted. Arrival sequence, car parking brand, entrance design, reception styling. Must immediately signal quality grade and create emotional anticipation.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">②</div>
+        <span class="pillar-icon">🗺️</span>
+        <h4>Story Arc</h4>
+        <p>The experience centre must tell a narrative — vision wall, location story, master plan display, model unit walk. Sequence is intentional: emotion first, facts second, financials last.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">③</div>
+        <span class="pillar-icon">🏠</span>
+        <h4>Model Unit</h4>
+        <p>The most powerful conversion tool. Every finish, fixture, and spatial detail must be curated for the target buyer. Scent, lighting, and ambience are non-negotiable brand elements.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">④</div>
+        <span class="pillar-icon">🤝</span>
+        <h4>Human Interface</h4>
+        <p>Sales team grooming, language calibration, knowledge depth, and consultation style are brand embodiments. One off-brand interaction by a CRM executive can undo ₹10 lakhs of marketing investment.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PHASE 07 — BRAND AUDIT
+══════════════════════════════════════════════ -->
+<section id="audit">
+  <div class="phase-header">
+    <div class="phase-num">07</div>
+    <div class="phase-meta">
+      <div class="phase-label">Phase Seven</div>
+      <h2 class="phase-title">Brand <em>Audit</em></h2>
+      <p class="phase-desc">Systematic measurement of brand health across all dimensions. The audit closes the loop — from strategy to execution to learning — and feeds the next cycle.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Brand Audit Scorecard — Real Estate</div>
+    <div class="audit-matrix">
+      <div class="am-head">Dimension</div>
+      <div class="am-head">What to Measure</div>
+      <div class="am-head">How to Measure</div>
+      <div class="am-head">Frequency</div>
+      <div class="am-head">Benchmark</div>
+
+      <div class="am-label">Brand Awareness</div>
+      <div class="am-cell">Unaided and aided recall in target geography. Branded search volume. Share of voice in local media.</div>
+      <div class="am-cell">Consumer surveys, Google Trends, media monitoring tools (Meltwater, Cision)</div>
+      <div class="am-cell">Quarterly</div>
+      <div class="am-cell">Top-3 unaided recall in segment</div>
+
+      <div class="am-label">Identity Consistency</div>
+      <div class="am-cell">Logo misuse, colour deviations, font violations across all 30+ touchpoints. Channel partner compliance.</div>
+      <div class="am-cell">Visual audit checklist, mystery buyer audit, portal listing review</div>
+      <div class="am-cell">Monthly</div>
+      <div class="am-cell">95%+ guideline compliance</div>
+
+      <div class="am-label">Message Consistency</div>
+      <div class="am-cell">Tagline usage, value proposition clarity, factual consistency across ads, brochure, website, and sales scripts.</div>
+      <div class="am-cell">Content audit, sales team call recording review, ad copy audit</div>
+      <div class="am-cell">Monthly</div>
+      <div class="am-cell">Zero conflicting claims in circulation</div>
+
+      <div class="am-label">Digital Health</div>
+      <div class="am-cell">Website performance, SEO rankings, social engagement rate, ad quality scores, Google Business rating.</div>
+      <div class="am-cell">SEMrush/Ahrefs, Google Analytics, Meta Ads Manager, Google Business dashboard</div>
+      <div class="am-cell">Weekly</div>
+      <div class="am-cell">4.2+ Google rating; page speed &lt;3s</div>
+
+      <div class="am-label">Buyer Sentiment</div>
+      <div class="am-cell">NPS score, review sentiment analysis (99acres, Google), complaint resolution time, referral rate.</div>
+      <div class="am-cell">NPS surveys, review aggregators, CRM complaint data, referral tracking</div>
+      <div class="am-cell">Bi-monthly</div>
+      <div class="am-cell">NPS 50+; Review rating 4.0+</div>
+
+      <div class="am-label">Competitive Position</div>
+      <div class="am-cell">Share of voice vs top 3 competitors. CPL benchmark. Launch price premium vs market average.</div>
+      <div class="am-cell">Market intelligence, property portal data, media spend estimation, industry reports</div>
+      <div class="am-cell">Quarterly</div>
+      <div class="am-cell">Market-leading CPL efficiency</div>
+
+      <div class="am-label">Sales Team Brand</div>
+      <div class="am-cell">Brand knowledge quiz score, communication quality score, site-visit-to-booking conversion rate.</div>
+      <div class="am-cell">Mystery shopping, recorded calls, CRM data, trainer assessment</div>
+      <div class="am-cell">Monthly</div>
+      <div class="am-cell">80%+ brand quiz pass rate</div>
+
+      <div class="am-label">Channel Partner Brand</div>
+      <div class="am-cell">Partner brand guideline compliance, portal listing quality, co-branded material accuracy.</div>
+      <div class="am-cell">Channel partner audit, portal listing review, channel manager reporting</div>
+      <div class="am-cell">Quarterly</div>
+      <div class="am-cell">90%+ compliant listings</div>
+    </div>
+
+    <div class="section-title">Annual Brand Health Index</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">BHI-01</span>
+        <h3>Brand Equity Score</h3>
+        <p>Composite of awareness (30%), associations (25%), perceived quality (25%), and loyalty (20%). Benchmark against prior year and against two key competitors. Tracks whether brand-building investment is compounding.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">BHI-02</span>
+        <h3>Brand-to-Booking Ratio</h3>
+        <p>What percentage of bookings name "brand reputation" as a decision factor? Tracks whether brand investment is influencing commercial outcomes. Target: 40%+ of buyers cite brand as a top-3 decision factor.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">BHI-03</span>
+        <h3>Price Premium Index</h3>
+        <p>The ability to command price above the micro-market average is the clearest proof of brand value. Track PSF premium vs comparable projects. A strong brand should sustain 8–15% premium in its segment.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"The purpose of a brand audit is not to grade the past — it is to engineer the future. Every gap in the audit is a strategic investment thesis."</p>
+      <div class="callout-src">Brand Audit Philosophy — Branding 360°</div>
+    </div>
+
+    <div class="section-title">Continuous Brand Governance Structure</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Forum</th>
+          <th>Frequency</th>
+          <th>Participants</th>
+          <th>Agenda</th>
+          <th>Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Brand Council</td>
+          <td>Quarterly</td>
+          <td>CMO, CEO, VP Sales, Agency Lead</td>
+          <td>Brand health review, competitive analysis, strategic pivots</td>
+          <td>Brand direction memo, budget reallocation</td>
+        </tr>
+        <tr>
+          <td class="cat">Marketing Review</td>
+          <td>Monthly</td>
+          <td>Branding Manager, Digital, Content, PR</td>
+          <td>Campaign performance, message consistency, content gaps</td>
+          <td>Monthly marketing report + action list</td>
+        </tr>
+        <tr>
+          <td class="cat">Experience Audit</td>
+          <td>Monthly</td>
+          <td>CX Lead, Sales Manager, Site Team</td>
+          <td>NPS review, complaint analysis, site visit experience</td>
+          <td>CX improvement register</td>
+        </tr>
+        <tr>
+          <td class="cat">Identity Check</td>
+          <td>Weekly</td>
+          <td>Branding Manager, Design Team</td>
+          <td>New collateral sign-off, portal listing review</td>
+          <td>Approved asset library update</td>
+        </tr>
+        <tr>
+          <td class="cat">Competitive Watch</td>
+          <td>Bi-weekly</td>
+          <td>Branding + Sales Intelligence</td>
+          <td>Competitor campaign monitoring, pricing moves, new launches</td>
+          <td>Competitive intelligence brief</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Branding 360° <span>/ Real Estate</span></div>
+      <p class="footer-desc">A complete strategic brand framework for real estate developers, covering all seven phases of brand building — from foundation to continuous audit. Engineered for the Indian real estate market context.</p>
+    </div>
+    <div class="footer-col">
+      <h5>The 7 Phases</h5>
+      <ul>
+        <li>01 — Brand Foundation</li>
+        <li>02 — Visual Identity</li>
+        <li>03 — Positioning</li>
+        <li>04 — Messaging</li>
+        <li>05 — Channel Architecture</li>
+        <li>06 — Brand Experience</li>
+        <li>07 — Brand Audit</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Sector Applications</h5>
+      <ul>
+        <li>Affordable Housing</li>
+        <li>Mid-Segment Residential</li>
+        <li>Premium & Luxury</li>
+        <li>Commercial / Office</li>
+        <li>Integrated Townships</li>
+        <li>Ultra Luxury / HNI</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Branding 360° Framework — Real Estate Edition</p>
+    <p>Strategic Reference Document · All Phases Complete</p>
+  </div>
+</footer>
+
+<script>
+  // Animate phase tags on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fw-card, .pillar, .seg-card, .tl-item, .ch-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+
+  // Phase nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const phaseTags = document.querySelectorAll('.phase-tag');
+  
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        const map = { foundation:0, identity:1, positioning:2, messaging:3, channels:4, experience:5, audit:6 };
+        phaseTags.forEach((t, i) => t.classList.toggle('active', i === map[id]));
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>

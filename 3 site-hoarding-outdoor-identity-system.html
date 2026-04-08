@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Hoarding & Outdoor Identity System — Real Estate Branding 360°</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0d0d0b;
+    --parchment: #f5f0e8;
+    --sand:      #e8dfc8;
+    --gold:      #b89a5a;
+    --gold-lt:   #d4b97a;
+    --gold-dk:   #8a6f35;
+    --rust:      #8b4a2a;
+    --sage:      #4a5c4e;
+    --steel:     #3a4a5c;
+    --cream:     #faf7f2;
+    --rule:      rgba(184,154,90,.25);
+    --mono:      'DM Mono', monospace;
+    --serif:     'Cormorant Garamond', serif;
+    --sans:      'Syne', sans-serif;
+  }
+
+  /* Format colour tokens */
+  :root {
+    --tier1:      #1e2a38;  --tier1-lt:   #e6eaf0;  --tier1-dk:  #0e1820;
+    --tier2:      #3a2a10;  --tier2-lt:   #f5ede0;  --tier2-dk:  #221808;
+    --tier3:      #2a3c1a;  --tier3-lt:   #eaf0e2;  --tier3-dk:  #162008;
+    --tier4:      #4a2a0a;  --tier4-lt:   #f5ede0;  --tier4-dk:  #2a1200;
+    --flex:       #1e3a2a;  --flex-lt:    #e0f0e8;  --flex-dk:   #0a2018;
+    --backlit:    #2a1a3c;  --backlit-lt: #ede8f5;  --backlit-dk:#160a28;
+    --led:        #1a2a3c;  --led-lt:     #e0e8f5;  --led-dk:    #0a1428;
+    --crane:      #3c1a0a;  --crane-lt:   #f5e8e0;  --crane-dk:  #200a00;
+    --gate:       #1a3c2a;  --gate-lt:    #e0f0e8;  --gate-dk:   #082018;
+    --reg:        #3a1a1a;  --reg-lt:     #f5e0e0;  --reg-dk:    #200808;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--cream); color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.7; overflow-x:hidden; }
+
+  /* ── NAV ── */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(250,247,242,.93); backdrop-filter:blur(12px); border-bottom:1px solid var(--rule); padding:0 48px; display:flex; align-items:center; justify-content:space-between; height:56px; }
+  .nav-brand { font-family:var(--sans); font-weight:800; font-size:13px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); }
+  .nav-links { display:flex; gap:20px; list-style:none; }
+  .nav-links a { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); text-decoration:none; opacity:.5; transition:opacity .2s; }
+  .nav-links a:hover { opacity:1; color:var(--gold); }
+
+  /* ── HERO ── */
+  .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding:0 80px 80px; position:relative; overflow:hidden; background:var(--ink); }
+  .hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 75% 55% at 70% 35%,rgba(184,154,90,.09) 0%,transparent 60%),radial-gradient(ellipse 50% 70% at 12% 68%,rgba(58,74,92,.15) 0%,transparent 55%),linear-gradient(158deg,#0d0d0b 0%,#14130e 50%,#0e0d0a 100%); }
+  .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(184,154,90,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,154,90,.04) 1px,transparent 1px); background-size:80px 80px; }
+  .hero-content { position:relative; z-index:2; }
+  .hero-eyebrow { font-family:var(--mono); font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:24px; display:flex; align-items:center; gap:16px; }
+  .hero-eyebrow::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
+  h1.hero-title { font-family:var(--serif); font-size:clamp(46px,6.5vw,88px); font-weight:300; color:var(--parchment); line-height:1.0; letter-spacing:-.01em; margin-bottom:12px; }
+  h1.hero-title em { font-style:italic; color:var(--gold-lt); }
+  .hero-sub { font-family:var(--mono); font-size:13px; color:rgba(245,240,232,.38); letter-spacing:.05em; margin-top:24px; max-width:640px; line-height:1.6; }
+  .hero-stamp { position:absolute; top:80px; right:80px; width:180px; height:180px; border:1px solid rgba(184,154,90,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; opacity:.65; }
+  .hero-stamp-inner { width:140px; height:140px; border:1px solid rgba(184,154,90,.3); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; gap:4px; }
+  .hero-stamp span { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt); opacity:.8; display:block; }
+  .hero-stamp strong { font-family:var(--sans); font-size:18px; font-weight:800; color:var(--gold); line-height:1; display:block; }
+  .hero-format-tags { position:absolute; bottom:80px; right:80px; display:flex; flex-direction:column; gap:5px; align-items:flex-end; }
+  .format-tag { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(184,154,90,.35); transition:color .2s; }
+  .format-tag:hover { color:var(--gold); }
+
+  /* ── PHASE HEADER ── */
+  .phase-header { padding:0 80px; margin-top:120px; margin-bottom:64px; display:flex; align-items:flex-end; gap:40px; border-bottom:1px solid var(--rule); padding-bottom:32px; }
+  .phase-num { font-family:var(--mono); font-size:72px; font-weight:300; color:var(--sand); line-height:1; flex-shrink:0; }
+  .phase-meta { flex:1; }
+  .phase-label { font-family:var(--mono); font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .phase-title { font-family:var(--serif); font-size:clamp(28px,3vw,40px); font-weight:300; color:var(--ink); line-height:1.1; }
+  .phase-title em { font-style:italic; color:var(--rust); }
+  .phase-desc { font-size:15px; color:rgba(13,13,11,.52); max-width:560px; margin-top:12px; font-family:var(--mono); line-height:1.6; letter-spacing:.01em; }
+
+  /* ── CONTENT ZONE ── */
+  .content-zone { padding:0 80px; margin-bottom:24px; }
+  .section-title { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; padding-bottom:12px; border-bottom:1px solid var(--rule); }
+  .sub-prose { font-size:16px; color:rgba(13,13,11,.65); line-height:1.75; margin-bottom:32px; max-width:800px; }
+
+  /* ── CALLOUT ── */
+  .callout { background:var(--ink); padding:48px 56px; margin-bottom:48px; position:relative; overflow:hidden; }
+  .callout-glow { position:absolute; top:-40px; left:-40px; width:300px; height:300px; background:radial-gradient(circle,rgba(184,154,90,.12) 0%,transparent 70%); pointer-events:none; }
+  .callout p { font-family:var(--serif); font-size:clamp(20px,2.2vw,27px); font-weight:300; font-style:italic; color:var(--parchment); line-height:1.45; position:relative; z-index:1; max-width:840px; }
+  .callout-src { font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-top:20px; position:relative; z-index:1; }
+
+  /* ── TABLE ── */
+  .strat-table { width:100%; border-collapse:collapse; margin-bottom:48px; font-family:var(--mono); font-size:13px; }
+  .strat-table thead th { font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); padding:0 16px 12px; text-align:left; border-bottom:1px solid var(--rule); }
+  .strat-table tbody tr { border-bottom:1px solid var(--rule); }
+  .strat-table tbody tr:hover { background:rgba(184,154,90,.04); }
+  .strat-table tbody td { padding:14px 16px; font-size:13px; color:rgba(13,13,11,.72); vertical-align:top; line-height:1.55; }
+  .strat-table tbody td.cat { color:var(--ink); font-weight:500; }
+
+  /* ── FW GRID CARDS ── */
+  .fw-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:48px; }
+  .fw-grid-2 { grid-template-columns:repeat(2,1fr); }
+  .fw-grid-4 { grid-template-columns:repeat(4,1fr); }
+  .fw-card { background:var(--parchment); padding:32px 28px; border:1px solid var(--rule); position:relative; transition:background .25s; }
+  .fw-card:hover { background:var(--sand); }
+  .fw-card-accent { position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gold),transparent); }
+  .fw-card-num { font-family:var(--mono); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:12px; }
+  .fw-card h3 { font-family:var(--serif); font-size:20px; font-weight:400; margin-bottom:10px; line-height:1.2; }
+  .fw-card p { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.6); line-height:1.65; }
+
+  /* ── FORMAT CARDS — CORE COMPONENT ── */
+  .format-section { margin-bottom:0; }
+  .format-card { margin-bottom:2px; overflow:hidden; }
+
+  .format-header { display:grid; grid-template-columns:300px 1fr; min-height:220px; }
+  .format-identity { padding:48px 40px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; }
+  .format-identity-content { position:relative; z-index:1; }
+  .format-num { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; margin-bottom:12px; }
+  .format-name { font-family:var(--serif); font-size:clamp(30px,3.2vw,44px); font-weight:300; line-height:1.0; margin-bottom:10px; }
+  .format-tagline { font-family:var(--mono); font-size:11px; line-height:1.55; opacity:.75; max-width:200px; }
+  .format-symbol { font-family:var(--serif); font-size:110px; font-weight:300; line-height:1; opacity:.12; position:absolute; bottom:-15px; right:20px; }
+
+  .format-overview { padding:48px 40px; background:var(--parchment); border-left:2px solid; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .format-overview-block h4 { font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+  .format-overview-block p { font-family:var(--serif); font-size:16px; color:rgba(13,13,11,.75); line-height:1.65; }
+
+  .format-detail-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:2px; }
+  .format-detail-grid-2 { grid-template-columns:repeat(2,1fr); }
+  .format-detail-cell { background:var(--parchment); padding:28px 24px; border:1px solid var(--rule); }
+  .format-detail-cell:hover { background:var(--sand); }
+  .format-detail-cell h4 { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  .format-detail-cell .example-line { font-family:var(--serif); font-size:19px; font-weight:300; font-style:italic; color:var(--ink); margin-bottom:8px; line-height:1.25; }
+  .format-detail-cell p { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.6); line-height:1.6; }
+  .format-detail-cell ul { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.6); line-height:1.6; list-style:none; padding:0; }
+  .format-detail-cell ul li { padding:4px 0; border-bottom:1px solid rgba(184,154,90,.12); padding-left:14px; position:relative; }
+  .format-detail-cell ul li::before { content:'—'; position:absolute; left:0; color:var(--gold); opacity:.6; }
+  .format-detail-cell ul li:last-child { border-bottom:none; }
+
+  .format-spec-row { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-bottom:2px; }
+  .format-spec-cell { background:var(--parchment); padding:22px 18px; border:1px solid var(--rule); }
+  .format-spec-cell h5 { font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .format-spec-cell p { font-family:var(--serif); font-size:14px; font-style:italic; color:rgba(13,13,11,.65); line-height:1.5; }
+  .format-spec-cell .eg { font-family:var(--mono); font-size:10px; color:rgba(13,13,11,.45); margin-top:8px; line-height:1.5; }
+
+  .format-warning-application { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:2px; }
+  .format-warning { background:rgba(139,74,42,.05); border:1px solid var(--rule); border-left:3px solid var(--rust); padding:28px 28px; }
+  .format-application { background:rgba(74,92,78,.05); border:1px solid var(--rule); border-left:3px solid var(--sage); padding:28px 28px; }
+  .format-warning h4,.format-application h4 { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px; }
+  .format-warning h4 { color:var(--rust); }
+  .format-application h4 { color:var(--sage); }
+  .format-warning p,.format-application p { font-family:var(--serif); font-size:15px; color:rgba(13,13,11,.72); line-height:1.65; margin-bottom:10px; }
+  .format-script { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.55); line-height:1.6; font-style:italic; background:rgba(139,74,42,.06); padding:12px 14px; border-left:2px solid var(--rust); margin-top:8px; }
+  .format-app-items { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+  .format-app-item { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.65); line-height:1.5; padding:8px 12px; background:rgba(74,92,78,.06); border-left:2px solid var(--sage); }
+
+  .format-divider { height:64px; }
+
+  /* ── FORMAT COLOUR CLASSES ── */
+  .fmt-tier1 .format-identity { background:var(--tier1-dk); }
+  .fmt-tier1 .format-num,.fmt-tier1 .format-tagline { color:rgba(180,200,230,.7); }
+  .fmt-tier1 .format-name { color:#b8ccee; }
+  .fmt-tier1 .format-symbol { color:#b8ccee; }
+  .fmt-tier1 .format-overview { border-color:#3a5a8a; }
+  .fmt-tier1 .format-detail-cell h4 { color:#3a5a8a; }
+
+  .fmt-tier2 .format-identity { background:var(--tier2-dk); }
+  .fmt-tier2 .format-num,.fmt-tier2 .format-tagline { color:rgba(240,200,140,.7); }
+  .fmt-tier2 .format-name { color:#f0c880; }
+  .fmt-tier2 .format-symbol { color:#f0c880; }
+  .fmt-tier2 .format-overview { border-color:#8a6020; }
+  .fmt-tier2 .format-detail-cell h4 { color:#8a6020; }
+
+  .fmt-tier3 .format-identity { background:var(--tier3-dk); }
+  .fmt-tier3 .format-num,.fmt-tier3 .format-tagline { color:rgba(180,220,160,.7); }
+  .fmt-tier3 .format-name { color:#b8e8a0; }
+  .fmt-tier3 .format-symbol { color:#b8e8a0; }
+  .fmt-tier3 .format-overview { border-color:#3a6a1a; }
+  .fmt-tier3 .format-detail-cell h4 { color:#3a6a1a; }
+
+  .fmt-tier4 .format-identity { background:var(--tier4-dk); }
+  .fmt-tier4 .format-num,.fmt-tier4 .format-tagline { color:rgba(240,190,130,.7); }
+  .fmt-tier4 .format-name { color:#f0c090; }
+  .fmt-tier4 .format-symbol { color:#f0c090; }
+  .fmt-tier4 .format-overview { border-color:#8a4a0a; }
+  .fmt-tier4 .format-detail-cell h4 { color:#8a4a0a; }
+
+  .fmt-flex .format-identity { background:var(--flex-dk); }
+  .fmt-flex .format-num,.fmt-flex .format-tagline { color:rgba(160,220,190,.7); }
+  .fmt-flex .format-name { color:#a0e0c0; }
+  .fmt-flex .format-symbol { color:#a0e0c0; }
+  .fmt-flex .format-overview { border-color:#1e6a4a; }
+  .fmt-flex .format-detail-cell h4 { color:#1e6a4a; }
+
+  .fmt-backlit .format-identity { background:var(--backlit-dk); }
+  .fmt-backlit .format-num,.fmt-backlit .format-tagline { color:rgba(200,180,240,.7); }
+  .fmt-backlit .format-name { color:#c8b8f0; }
+  .fmt-backlit .format-symbol { color:#c8b8f0; }
+  .fmt-backlit .format-overview { border-color:#6a4a9a; }
+  .fmt-backlit .format-detail-cell h4 { color:#6a4a9a; }
+
+  .fmt-led .format-identity { background:var(--led-dk); }
+  .fmt-led .format-num,.fmt-led .format-tagline { color:rgba(160,200,240,.7); }
+  .fmt-led .format-name { color:#a0c8f0; }
+  .fmt-led .format-symbol { color:#a0c8f0; }
+  .fmt-led .format-overview { border-color:#1a4a7a; }
+  .fmt-led .format-detail-cell h4 { color:#1a4a7a; }
+
+  .fmt-crane .format-identity { background:var(--crane-dk); }
+  .fmt-crane .format-num,.fmt-crane .format-tagline { color:rgba(240,200,160,.7); }
+  .fmt-crane .format-name { color:#f0c8a0; }
+  .fmt-crane .format-symbol { color:#f0c8a0; }
+  .fmt-crane .format-overview { border-color:#8a4a1a; }
+  .fmt-crane .format-detail-cell h4 { color:#8a4a1a; }
+
+  .fmt-gate .format-identity { background:var(--gate-dk); }
+  .fmt-gate .format-num,.fmt-gate .format-tagline { color:rgba(160,230,200,.7); }
+  .fmt-gate .format-name { color:#a0e8c8; }
+  .fmt-gate .format-symbol { color:#a0e8c8; }
+  .fmt-gate .format-overview { border-color:#1a5a3a; }
+  .fmt-gate .format-detail-cell h4 { color:#1a5a3a; }
+
+  .fmt-reg .format-identity { background:var(--reg-dk); }
+  .fmt-reg .format-num,.fmt-reg .format-tagline { color:rgba(240,180,180,.7); }
+  .fmt-reg .format-name { color:#f0b8b8; }
+  .fmt-reg .format-symbol { color:#f0b8b8; }
+  .fmt-reg .format-overview { border-color:#7a2a2a; }
+  .fmt-reg .format-detail-cell h4 { color:#7a2a2a; }
+
+  /* ── TIER MATRIX ── */
+  .tier-matrix { display:grid; grid-template-columns:180px repeat(5,1fr); gap:1px; background:var(--rule); margin-bottom:48px; overflow:hidden; }
+  .tm-cell { background:var(--parchment); padding:14px 12px; font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.65); line-height:1.45; }
+  .tm-cell.head-row { background:var(--ink); font-size:9px; letter-spacing:.15em; text-transform:uppercase; color:rgba(184,154,90,.8); font-weight:500; }
+  .tm-cell.row-label { background:var(--sand); font-weight:500; color:var(--ink); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+
+  /* ── DISTANCE RULER ── */
+  .distance-ruler { display:grid; grid-template-columns:120px 1fr 1fr 1fr 1fr; gap:1px; background:var(--rule); margin-bottom:48px; overflow:hidden; }
+  .dr-cell { background:var(--parchment); padding:14px 16px; font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.68); line-height:1.5; }
+  .dr-cell.head { background:var(--ink); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:rgba(184,154,90,.8); font-weight:500; }
+  .dr-cell.dist { background:var(--sand); font-weight:500; color:var(--ink); font-size:11px; letter-spacing:.1em; }
+  .dr-headline { font-family:var(--serif); font-style:italic; color:var(--ink); }
+
+  /* ── SIGNAGE FAMILY ── */
+  .signage-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:48px; }
+  .sign-card { background:var(--parchment); border:1px solid var(--rule); padding:28px 24px; position:relative; transition:background .25s; }
+  .sign-card:hover { background:var(--sand); }
+  .sign-card-accent { position:absolute; top:0; left:0; right:0; height:3px; }
+  .sign-card-num { font-family:var(--mono); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:8px; }
+  .sign-card h3 { font-family:var(--serif); font-size:19px; font-weight:400; margin-bottom:6px; line-height:1.2; }
+  .sign-card-dim { font-family:var(--mono); font-size:11px; color:var(--gold-dk); margin-bottom:10px; }
+  .sign-card p { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.6); line-height:1.6; }
+
+  /* ── CHECKLIST ROW ── */
+  .checklist { list-style:none; margin-bottom:32px; }
+  .checklist li { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.68); line-height:1.55; padding:10px 0 10px 20px; border-bottom:1px solid rgba(184,154,90,.12); position:relative; }
+  .checklist li::before { content:'□'; position:absolute; left:0; color:var(--gold); opacity:.7; font-size:11px; }
+  .checklist li:last-child { border-bottom:none; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity:1; transform:none; }
+
+  /* ── FOOTER ── */
+  footer { background:var(--ink); margin-top:120px; padding:64px 80px 40px; }
+  .footer-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:48px; margin-bottom:48px; padding-bottom:40px; border-bottom:1px solid rgba(184,154,90,.15); }
+  .footer-brand { font-family:var(--sans); font-size:20px; font-weight:800; color:var(--gold); margin-bottom:16px; }
+  .footer-brand span { font-weight:300; color:rgba(184,154,90,.5); }
+  .footer-desc { font-family:var(--mono); font-size:12px; color:rgba(245,240,232,.35); line-height:1.7; }
+  .footer-col h5 { font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+  .footer-col ul { list-style:none; }
+  .footer-col ul li { font-family:var(--mono); font-size:12px; color:rgba(245,240,232,.35); padding:4px 0; border-bottom:1px solid rgba(184,154,90,.08); }
+  .footer-bottom { display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:rgba(184,154,90,.3); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    nav { padding:0 24px; }
+    .nav-links { display:none; }
+    .hero,.content-zone { padding-left:32px; padding-right:32px; }
+    .hero { padding-bottom:56px; }
+    .phase-header { padding:0 32px; padding-bottom:32px; margin-top:80px; flex-direction:column; align-items:flex-start; gap:16px; }
+    .phase-num { font-size:48px; }
+    .format-header { grid-template-columns:1fr; }
+    .format-overview { grid-template-columns:1fr; }
+    .fw-grid { grid-template-columns:1fr 1fr; }
+    .fw-grid-4 { grid-template-columns:1fr 1fr; }
+    .format-detail-grid { grid-template-columns:1fr; }
+    .format-spec-row { grid-template-columns:1fr 1fr; }
+    .format-warning-application { grid-template-columns:1fr; }
+    .tier-matrix { grid-template-columns:120px repeat(3,1fr); }
+    .distance-ruler { grid-template-columns:100px 1fr 1fr 1fr; }
+    .signage-grid { grid-template-columns:1fr 1fr; }
+    footer { padding:48px 32px 32px; }
+    .footer-grid { grid-template-columns:1fr; }
+    .hero-stamp { display:none; }
+    .hero-format-tags { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Site Hoarding — Real Estate</div>
+  <ul class="nav-links">
+    <li><a href="#framework">Framework</a></li>
+    <li><a href="#hierarchy">Hierarchy</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#production">Production</a></li>
+    <li><a href="#elevated">Elevated</a></li>
+    <li><a href="#gate">Gate</a></li>
+    <li><a href="#siteyard">Siteyard</a></li>
+    <li><a href="#seasonal">Seasonal</a></li>
+    <li><a href="#regulatory">Regulatory</a></li>
+  </ul>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-stamp">
+    <div class="hero-stamp-inner">
+      <span>Sign</span>
+      <strong>9</strong>
+      <span>Format<br>Types</span>
+    </div>
+  </div>
+
+  <div class="hero-format-tags">
+    <div class="format-tag">01 — Hoarding Hierarchy & Tier System</div>
+    <div class="format-tag">02 — Viewing-Distance Typography</div>
+    <div class="format-tag">03 — Flex / Vinyl Production Specs</div>
+    <div class="format-tag">04 — Backlit & LED Specifications</div>
+    <div class="format-tag">05 — Crane Banners & Scaffolding Wraps</div>
+    <div class="format-tag">06 — Construction Gate Branding</div>
+    <div class="format-tag">07 — Full Siteyard Signage Family</div>
+    <div class="format-tag">08 — Seasonal Update Protocol</div>
+    <div class="format-tag">09 — Regulatory Compliance Matrix</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Companion to Branding 360° · Real Estate</div>
+    <h1 class="hero-title">Site Hoarding &<br><em>Outdoor</em><br>Identity System</h1>
+    <p class="hero-sub">The complete production, regulatory, and visual-standards manual for real estate site communication — from the 200-metre approach board on an arterial road to the 60cm safety sign at a utility trench. Nine sections. Three substrate categories. Four metro jurisdictions. One coherent brand system.</p>
+  </div>
+</section>
+
+
+<!-- SECTION 00 — FRAMEWORK -->
+<section id="framework">
+  <div class="phase-header">
+    <div class="phase-num">00</div>
+    <div class="phase-meta">
+      <div class="phase-label">Why Outdoor Identity Demands Its Own Playbook</div>
+      <h2 class="phase-title">The Construction Site Is Not a Gap.<br>It Is the Brand's <em>Largest Medium.</em></h2>
+      <p class="phase-desc">While the project is being built, the site is the only tangible evidence that the brand's promise is real. Every hoarding, wrap, and gate sign is simultaneously a sales tool, a regulatory obligation, and a neighbourhood reputation signal. Most developers treat site signage as a production problem. The ones who win treat it as a brand strategy.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">What Is at Stake — The Gap in Current Site Branding Practice</div>
+    <p class="sub-prose">The Branding 360° touchpoint matrix lists "site hoardings" as one row among thirty-plus items. This document expands that single row into a complete outdoor identity system. The gap between current practice and what this system defines is not cosmetic — it is the difference between a construction site that erodes brand equity over two years and one that builds it month by month. A crane at 40 metres is a 360-degree brand flag visible from 1.5 kilometres. A stale hoarding in October still showing the January launch render tells every passerby that this developer cannot maintain what they have promised.</p>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"The construction site that looks built before it is built — that is the outdoor identity system working at its highest level. Every hoarding, every wrap, every gate board is a vote in the market's verdict on whether this developer can be trusted to deliver."</p>
+      <div class="callout-src">Site Hoarding & Outdoor Identity System — Real Estate Branding 360°</div>
+    </div>
+
+    <div class="section-title">Nine Sections — What This System Covers</div>
+
+    <div class="fw-grid reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Section 01</span>
+        <h3>Hoarding Hierarchy</h3>
+        <p>A four-tier system from approach dominance boards at 300 m through Tier IV safety labels at 0.5 m. Each tier has a defined message load, format family, and viewing distance. Collapsing tiers produces boards that fail at every distance.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,#5a7a9a,transparent)"></div>
+        <span class="fw-card-num">Section 02</span>
+        <h3>Typography at Distance</h3>
+        <p>The 1:35 baseline rule, speed-adjusted reading window calculations, font weight mandates by tier, and colour contrast floors. Outdoor typography fails silently — the driver simply does not read it and the opportunity is gone.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,#2a6a4a,transparent)"></div>
+        <span class="fw-card-num">Section 03</span>
+        <h3>Flex / Vinyl Specs</h3>
+        <p>Substrate grade, print resolution by viewing distance, lamination, seaming, wind load mesh requirements, MS frame sizing, and RCC footing standards. The most widely deployed format in Indian real estate — and the most frequently under-specified.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,#4a2a8a,transparent)"></div>
+        <span class="fw-card-num">Section 04</span>
+        <h3>Backlit & LED Specs</h3>
+        <p>Backlit CMYK shift proofing, SEG lightbox selection, LED module pitch by distance, brightness standards, IP ratings, CMS requirements, and engineering certification thresholds for large-format digital displays.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--rust),transparent)"></div>
+        <span class="fw-card-num">Section 05</span>
+        <h3>Crane & Scaffold Wraps</h3>
+        <p>The most under-leveraged brand surfaces in real estate construction. Wind loading rules, mesh perforation requirements, brand content rules at elevation, scaffolding module design logic, and three wrap design modes.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,#2a6a3a,transparent)"></div>
+        <span class="fw-card-num">Section 06</span>
+        <h3>Gate Branding</h3>
+        <p>The brand's most regulated sign and first physical handshake with every prospect. Four-zone board architecture, material permanence standards, RERA update obligations, gate wing panels, and vehicular entry gantry specification.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--gold-dk),transparent)"></div>
+        <span class="fw-card-num">Section 07</span>
+        <h3>Siteyard Signage Family</h3>
+        <p>All nine sign types — from tower identification boards to RERA disclosure panels — with exact dimensions, substrate, fixing method, content rules, and placement logic. A fully branded siteyard has no anonymous sign.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--sage),transparent)"></div>
+        <span class="fw-card-num">Section 08</span>
+        <h3>Seasonal Protocol</h3>
+        <p>A phased update cadence from teaser deployment through handover, tied to both construction milestones and the Indian festive calendar. Stale hoardings on an active site signal developer complacency more clearly than any competitor campaign.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--rust),transparent)"></div>
+        <span class="fw-card-num">Section 09</span>
+        <h3>Regulatory Compliance</h3>
+        <p>MCGM, CMDA, BBMP, and HMDA jurisdiction-specific requirements alongside central RERA mandates and CREDAI ethical advertising standards. Non-compliance produces demolition orders — and the adverse media coverage does more damage than the fine.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SECTION 01 — HIERARCHY -->
+<section id="hierarchy">
+  <div class="phase-header">
+    <div class="phase-num">01</div>
+    <div class="phase-meta">
+      <div class="phase-label">Visual Dominance Architecture</div>
+      <h2 class="phase-title">The Hoarding Hierarchy — <em>Four Tiers,</em> Four Cognitive Modes</h2>
+      <p class="phase-desc">A site hoarding system works as a concentric set of communication zones. As a prospect approaches — by car at 80 km/h, by auto at 30 km/h, on foot, then standing at the gate — entirely different cognitive modes are active. Each tier maps to a mode, a message load, and a format.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="section-title">The Tier System — Message Load Rules</div>
+    <p class="sub-prose">The tier purity rule is non-negotiable: each tier must contain only the message load defined for it. A Tier I approach board carrying floor counts, pricing, and RERA numbers is a Tier III gate board deployed at highway scale. It fails at every viewing distance — too cluttered to read at speed, and too shallow to satisfy at close range. Tier compression is the single most common outdoor branding error in Indian real estate.</p>
+
+    <div class="format-section">
+      <div class="format-card fmt-tier1">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Tier I / IV</div>
+              <div class="format-name">Approach<br>Dominance</div>
+              <div class="format-tagline">Brand + one claim. Read at 150–300 m. Designed for vehicular speed, not pedestrian inspection.</div>
+            </div>
+            <div class="format-symbol">I</div>
+          </div>
+          <div class="format-overview" style="border-color:#3a5a8a;">
+            <div class="format-overview-block">
+              <h4>Formats at This Tier</h4>
+              <p>Unipole boards (40×20 ft and above), highway gantries, and large billboard placements on arterial roads within 500 m of the site. These are the first brand impression for buyers arriving by vehicle. The brand mark and a single positioning claim is the complete message — everything else is clutter at this distance.</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>The Tier I Principle</h4>
+              <p>At 150 m, a vehicle is 6–7 seconds away at 80 km/h. The brain processes brand colour and shape before it reads text. Lead with colour field dominance and the brand mark at maximum size. If your logo is not legible at this distance, it is not the board's failure — it is a logo design failure that outdoor simply exposes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-detail-grid">
+          <div class="format-detail-cell">
+            <h4>Message Load — Tier I Maximum</h4>
+            <div class="example-line">Brand mark + project name + one claim</div>
+            <p>Maximum three visual elements at Tier I. Brand mark, project name, and one positioning claim or visual. Adding a phone number, RERA number, or floor count at this tier means none of the three elements receive the visual weight they need to register at speed.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Approach Sequencing — Capture Before Inform</h4>
+            <p>A prospect passing at highway speed has two exposure moments: the initial glance at 300 m (brand recognition) and the sustained view from 150–80 m (message absorption). The board must work at both distances simultaneously — brand colour dominance at 300 m, readable claim at 150 m. Design to the further distance first.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Micromarket Anchoring Effect</h4>
+            <p>Tier I hoardings near the site do more than advertise the project — they anchor the local buyer's perception of the micromarket's price tier. A prominent unipole carrying "Residences from ₹2.8 Cr" resets the neighbourhood's price expectation for all subsequent projects in the vicinity. The hoarding is price positioning for the entire land parcel.</p>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+    <div class="format-section">
+      <div class="format-card fmt-tier2">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Tier II / IV</div>
+              <div class="format-name">Site Perimeter<br>Narrative</div>
+              <div class="format-tagline">Project identity + key specs. Read at 30–80 m. The linear storytelling surface that surrounds the entire site.</div>
+            </div>
+            <div class="format-symbol">II</div>
+          </div>
+          <div class="format-overview" style="border-color:#8a6020;">
+            <div class="format-overview-block">
+              <h4>Formats at This Tier</h4>
+              <p>Site perimeter flex panels on MS frame (standard 10×8 ft modules), scaffolding wraps, and crane banners. These formats are seen by pedestrians, slow-moving traffic, and neighbouring residents. They have significantly more dwell time than Tier I, and can carry project identity, USP statements, lifestyle visuals, and amenity references — but never compliance content.</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>The Perimeter Narrative Sequence</h4>
+              <p>A prospect circling the site on foot or by auto reads the perimeter as a sequential story. Panel sequence must follow an arc: Awareness (brand identity, no text) → Promise (USP + lifestyle visual) → Proof (amenities + credentials) → Conversion (price anchor + QR + CTA). Never repeat the same panel. Never leave the narrative order to the printer.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-detail-grid">
+          <div class="format-detail-cell">
+            <h4>Panel Sequence — The Four Acts</h4>
+            <ul>
+              <li>Panels 1–2 · Awareness — brand mark + project name, 80% visual, no CTA</li>
+              <li>Panels 3–5 · Promise — USP + lifestyle visual, max 12 words</li>
+              <li>Panels 6–8 · Proof — amenities + credentials, icon grid acceptable</li>
+              <li>Final panel · Conversion — price anchor + CTA + QR code UTM-tracked</li>
+            </ul>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Fascia Continuity Rule</h4>
+            <p>The MS frame structure between panels must never be exposed. A continuous brand-colour fascia strip along the top of all perimeter panels creates a unified hoarding wall rather than a series of individual boards. The fascia strip also elevates perceived production quality and prevents the "patchwork fence" appearance that signals developer inexperience.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Seasonal Campaign Inserts</h4>
+            <p>Perimeter panels 3–5 (the Promise zone) are the correct location for seasonal campaign inserts. A branded offer band added at the base of the panel — without reprinting the full board — activates festive season messaging at minimal production cost. The band is temporary; the underlying panel is permanent until the next content refresh cycle.</p>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+    <div class="section-title">Full Tier Reference Matrix</div>
+
+    <div class="tier-matrix reveal">
+      <div class="tm-cell head-row">Tier</div>
+      <div class="tm-cell head-row">Format Type</div>
+      <div class="tm-cell head-row">Viewing Distance</div>
+      <div class="tm-cell head-row">Message Load</div>
+      <div class="tm-cell head-row">Primary Objective</div>
+
+      <div class="tm-cell row-label">Tier I</div>
+      <div class="tm-cell">Unipole / Gantry 40×20 ft+<br>Highway Billboard 30×15 ft</div>
+      <div class="tm-cell" style="background:rgba(30,42,56,.06);">150–300 m · vehicular speed</div>
+      <div class="tm-cell">Brand mark + 1 claim only</div>
+      <div class="tm-cell">Category ownership, micromarket anchoring</div>
+
+      <div class="tm-cell row-label">Tier II</div>
+      <div class="tm-cell">Perimeter flex panels 10×8 ft<br>Scaffold wraps · Crane banners</div>
+      <div class="tm-cell" style="background:rgba(58,42,16,.06);">30–80 m · pedestrian and slow traffic</div>
+      <div class="tm-cell">Project identity + USP + lifestyle. No compliance.</div>
+      <div class="tm-cell">Narrative storytelling, curiosity generation</div>
+
+      <div class="tm-cell row-label">Tier III</div>
+      <div class="tm-cell">Gate board 8–12×4–6 ft<br>Siteyard navigation signs</div>
+      <div class="tm-cell" style="background:rgba(42,60,26,.06);">5–25 m · arriving visitors</div>
+      <div class="tm-cell">Full identity + RERA + contacts + CTA</div>
+      <div class="tm-cell">Compliance, first impression, conversion</div>
+
+      <div class="tm-cell row-label">Tier IV</div>
+      <div class="tm-cell">Safety signs 60×45 cm<br>Zone labels 30×20 cm</div>
+      <div class="tm-cell" style="background:rgba(74,42,10,.06);">0.5–5 m · workers and on-site visitors</div>
+      <div class="tm-cell">ISO 7010 pictogram + bilingual instruction</div>
+      <div class="tm-cell">Legal compliance, incident prevention</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SECTION 02 — TYPOGRAPHY -->
+<section id="typography">
+  <div class="phase-header">
+    <div class="phase-num">02</div>
+    <div class="phase-meta">
+      <div class="phase-label">Legibility Engineering</div>
+      <h2 class="phase-title">Viewing-Distance Typography — <em>The 1:35 Rule</em> and What Follows It</h2>
+      <p class="phase-desc">Outdoor typography fails silently — the driver simply does not read it and the opportunity is lost. The rules below are derived from DIN 1450, OAAA guidelines, and field-calibrated for Indian conditions: glare, dust haze, monsoon light diffusion, and competing visual noise in dense urban corridors.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="section-title">The 1:35 Baseline Rule — Minimum Headline Height by Distance</div>
+    <p class="sub-prose">For every 1 metre of viewing distance, headline type must be a minimum 35 mm print height on substrate. Body copy follows the 1:20 ratio. These are floor minimums — for arterial roads with vehicles at 60+ km/h, apply the speed-adjusted factor. At 80 km/h a driver has approximately 2.25 seconds of comfortable reading time within 150 m. Each line of text requires approximately 0.4 seconds to decode. Maximum readable lines at speed: 5. Design to the approach road speed, not the standard.</p>
+
+    <div class="section-title">Distance × Type Size Reference Table</div>
+
+    <div class="distance-ruler reveal">
+      <div class="dr-cell head">Distance</div>
+      <div class="dr-cell head">Headline min. height</div>
+      <div class="dr-cell head">Body copy</div>
+      <div class="dr-cell head">Max lines at speed</div>
+      <div class="dr-cell head">Primary format</div>
+
+      <div class="dr-cell dist">300 m</div>
+      <div class="dr-cell"><span class="dr-headline" style="font-size:1.5rem;">750 mm +</span></div>
+      <div class="dr-cell">Body copy: not legible — omit entirely</div>
+      <div class="dr-cell" style="background:rgba(30,42,56,.08);">1 word maximum</div>
+      <div class="dr-cell">Unipole / highway gantry</div>
+
+      <div class="dr-cell dist">150 m</div>
+      <div class="dr-cell"><span class="dr-headline" style="font-size:1.2rem;">400 mm +</span></div>
+      <div class="dr-cell">Body: 120 mm · 5–6 words maximum</div>
+      <div class="dr-cell" style="background:rgba(30,42,56,.06);">3 lines max (80 km/h)</div>
+      <div class="dr-cell">Approach boards · extra-bold weight only</div>
+
+      <div class="dr-cell dist">80 m</div>
+      <div class="dr-cell"><span class="dr-headline" style="font-size:1.0rem;">200 mm +</span></div>
+      <div class="dr-cell">Body: 60 mm · 8–10 words</div>
+      <div class="dr-cell" style="background:rgba(58,42,16,.06);">5 lines (30 km/h)</div>
+      <div class="dr-cell">Perimeter panels · Bold weight</div>
+
+      <div class="dr-cell dist">40 m</div>
+      <div class="dr-cell"><span class="dr-headline" style="font-size:0.9rem;">100 mm +</span></div>
+      <div class="dr-cell">Body: 30 mm · 15 words</div>
+      <div class="dr-cell" style="background:rgba(42,60,26,.06);">8 lines (walking)</div>
+      <div class="dr-cell">Gate boards · near-field panels</div>
+
+      <div class="dr-cell dist">15 m</div>
+      <div class="dr-cell"><span class="dr-headline" style="font-size:0.82rem;">50 mm +</span></div>
+      <div class="dr-cell">Body: 18 mm · full paragraph possible</div>
+      <div class="dr-cell" style="background:rgba(74,42,10,.06);">Unrestricted (standing)</div>
+      <div class="dr-cell">Siteyard navigation · pedestrian boards</div>
+
+      <div class="dr-cell dist">5 m</div>
+      <div class="dr-cell"><span class="dr-headline" style="font-size:0.75rem;">25 mm +</span></div>
+      <div class="dr-cell">Body: 10 mm · fine print acceptable</div>
+      <div class="dr-cell">Unrestricted</div>
+      <div class="dr-cell">Safety signs · zone labels</div>
+    </div>
+
+    <div class="format-section">
+      <div class="format-card fmt-tier1 reveal">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Typography Rule</div>
+              <div class="format-name">Weight<br>Mandates</div>
+              <div class="format-tagline">Font weight is not a stylistic preference at outdoor scale — it is a legibility engineering decision.</div>
+            </div>
+            <div class="format-symbol">W</div>
+          </div>
+          <div class="format-overview" style="border-color:#3a5a8a;">
+            <div class="format-overview-block">
+              <h4>Colour Contrast Floors</h4>
+              <p>Outdoor contrast must compensate for glare, sky reflection, and substrate fade over 18 months. White or cream on deep navy or black: minimum 5.5:1 ratio. Mid-tone brand colour backgrounds: 6.5:1 minimum, white or near-black type only. Photography bleed backgrounds: 7.0:1 with text on solid panel overlay — never direct type on photo without panel. Backlit substrate: 4.5:1 is acceptable (light transmission adds effective contrast).</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>Script, Decorative, and Italic Rules</h4>
+              <p>Script and decorative faces are prohibited at all tiers. Italic use is restricted to taglines only — never headlines at Tier I or II. Serif display faces are acceptable at Tier II headline level only, provided the weight is Bold or heavier. At Tier I, sans-serif Black (900 weight) is the only acceptable headline treatment. The stroke width of any Tier I headline character must be at least 12% of the cap height.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-spec-row">
+          <div class="format-spec-cell">
+            <h5>Tier I — Approach</h5>
+            <p class="example-line">Black / Ultra Bold only</p>
+            <div class="eg">Weight: 800–900. Tracking: +20 to +40/1000em. Sans-serif mandatory. Stroke width ≥12% cap height.</div>
+          </div>
+          <div class="format-spec-cell">
+            <h5>Tier II — Perimeter</h5>
+            <p class="example-line">Bold / Extra Bold</p>
+            <div class="eg">Weight: 600–800. Tracking: +10 to +25/1000em. Display serif in headline acceptable. Italic for tagline only.</div>
+          </div>
+          <div class="format-spec-cell">
+            <h5>Tier III — Gate</h5>
+            <p class="example-line">Medium to Bold</p>
+            <div class="eg">Weight: 400–700. Body tracking: +5 to +15/1000em. Serif body acceptable at 30pt+. No script or decorative.</div>
+          </div>
+          <div class="format-spec-cell">
+            <h5>Tier IV — Safety</h5>
+            <p class="example-line">Bold + ALL CAPS</p>
+            <div class="eg">Weight: 700 minimum. ALL CAPS always. ISO 3864 / IS 9457 colour coding mandatory. Bilingual: English + local language.</div>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SECTION 03 + 04 — PRODUCTION SPECS -->
+<section id="production">
+  <div class="phase-header">
+    <div class="phase-num">03</div>
+    <div class="phase-meta">
+      <div class="phase-label">Material, Print & Structural Standards</div>
+      <h2 class="phase-title">Production Specifications — <em>Flex, Backlit,</em> and LED</h2>
+      <p class="phase-desc">Complete substrate selection logic, print resolution requirements, finishing standards, and structural mounting specifications for each production category. The most widely deployed format in Indian real estate — flex vinyl — is also the most frequently under-specified. Under-specification is the primary cause of premature substrate failure, colour shift, and post-monsoon replacements.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <!-- FLEX -->
+    <div class="format-section">
+      <div class="format-card fmt-flex reveal">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Substrate 01 / 03</div>
+              <div class="format-name">Flex /<br>Vinyl Frontlit</div>
+              <div class="format-tagline">The workhorse of site branding. Correctly specified, it performs for 24 months. Under-specified, it fails in the first monsoon.</div>
+            </div>
+            <div class="format-symbol">◻</div>
+          </div>
+          <div class="format-overview" style="border-color:#1e6a4a;">
+            <div class="format-overview-block">
+              <h4>Substrate & Print Standards</h4>
+              <p>340–440 gsm PVC flex, UV-stabilised, for all site applications. Below 340 gsm is packaging-grade material — it will scallop within 8 weeks on an outdoor frame. Print method: solvent or eco-solvent inkjet at 720 dpi at 1:1 scale. At final print size, minimum resolution is 60–80 dpi for boards viewed at 5 metres or beyond; 150 dpi minimum for gate boards viewed at 3 metres or closer. Cold laminate: 80 micron minimum, matte finish to eliminate solar glare.</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>Structure & Installation Standards</h4>
+              <p>MS frame pipe: 2.5-inch diameter, 2.5 mm wall thickness minimum for all freestanding boards. RCC footing 3×3×3 ft for any freestanding structure above 8 ft total height. Eyelets every 50 cm on hem, reinforced at all four corners with additional fabric patch. Flex panels above 20×10 ft must include wind relief cuts or be produced on perforated mesh substrate — solid flex at this scale fails structurally in sustained wind above 40 km/h.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-detail-grid">
+          <div class="format-detail-cell">
+            <h4>Seam & Join Specifications</h4>
+            <p>Heat-weld seams only — cold adhesive joins delaminate within 3 months of outdoor exposure. Maximum panel width before seam: 2 metres. No seam may fall on the logo, a face, or a headline — seams must fall on background colour fields or neutral areas. Seam position must be reviewed at pre-production layout stage, not discovered at installation.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Colour & Proof Standards</h4>
+            <p>Deliver artwork in PDF/X-4 or TIFF, ISO Coated v2 CMYK profile, at 1:10 or 1:5 scale with 50 mm bleed on all sides. Physical colour proof is mandatory for any order above ₹40,000 production value — view proof in both ambient daylight and artificial light before sign-off. Maximum acceptable Delta E from brand PMS reference: ΔE ≤ 3. Fonts must be outlined or embedded in the supply file.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Lifespan & Maintenance</h4>
+            <p>Correctly specified UV-coated flex on a proper MS frame: 18–24 months. The primary failure mode is colour fade (UV exposure) and substrate scalloping (inadequate tension). Post-monsoon inspection in October is mandatory — panels that show visible scalloping, colour shift, or legibility loss must be replaced before the Diwali season, which is the highest real estate search window in the Indian calendar.</p>
+          </div>
+        </div>
+        <div class="format-warning-application">
+          <div class="format-warning">
+            <h4>The Under-Specification Problem</h4>
+            <p>The single most common production failure in Indian real estate outdoor: specifying 280 gsm flex (banner grade) because it saves ₹8–12 per sq ft. The saving is recovered within 6 months when the banner scallops and needs replacement. On a 100-panel perimeter, that saving costs ₹3–4 lakh in premature reprints and an unknown cost in brand perception erosion.</p>
+            <div class="format-script">Specify substrate grade, ink type, lamination micron, and frame pipe dimensions in the purchase order — not verbally. Vendors will supply to the minimum viable specification if the order does not mandate the standard.</div>
+          </div>
+          <div class="format-application">
+            <h4>File Delivery Checklist — Vendor Brief</h4>
+            <div class="format-app-items">
+              <div class="format-app-item">PDF/X-4 or TIFF · ISO Coated v2 · Scale 1:10 or 1:5</div>
+              <div class="format-app-item">50 mm bleed all sides · crop marks included</div>
+              <div class="format-app-item">All fonts outlined or embedded · no live text</div>
+              <div class="format-app-item">Physical proof mandatory above ₹40,000 order value</div>
+              <div class="format-app-item">Seam position marked on layout before approval</div>
+              <div class="format-app-item">Installation photograph submitted to brand records within 48 hours of completion</div>
+            </div>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+    <!-- BACKLIT -->
+    <div class="format-section">
+      <div class="format-card fmt-backlit reveal">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Substrate 02 / 03</div>
+              <div class="format-name">Backlit /<br>Translucent</div>
+              <div class="format-tagline">The perception upgrade. Backlit instantly elevates a sales office or gate board from site infrastructure to brand statement.</div>
+            </div>
+            <div class="format-symbol">◈</div>
+          </div>
+          <div class="format-overview" style="border-color:#6a4a9a;">
+            <div class="format-overview-block">
+              <h4>Substrate & Print Standards</h4>
+              <p>510 gsm translucent PVC substrate. Never eco-solvent on translucent — eco-solvent inks bleed on backlit material and produce a halo effect around type. Use UV or latex ink only. Minimum print resolution at final size: 100–150 dpi — backlit amplifies every resolution artefact that flex printing at 60 dpi conceals. A mandatory backlit proof — viewed both in daylight and after dark — is non-negotiable before authorising the full production run.</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>The CMYK Backlit Shift Problem</h4>
+              <p>Backlit transmission shifts perceived colour significantly toward cyan. A navy blue approved from a print proof appears blue-green on the lightbox. Brand colours must be proofed specifically on backlit substrate with the actual LED source temperature before any production approval. The standard practice of sending a backlit colour profile is insufficient — only a physical backlit proof with the actual LED reveals the true output.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-detail-grid">
+          <div class="format-detail-cell">
+            <h4>Lightbox & Frame Selection</h4>
+            <p>SEG (Silicone Edge Graphics) aluminium lightbox is the preferred system for premium applications — tool-free fabric change, consistent edge tension, and no visible frame. Snap-frame systems are acceptable for secondary placements. Avoid thin-profile 35 mm frames on boards above 6×3 ft — the frame bow under fabric tension creates perimeter shadows that degrade the lit appearance.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>LED Lighting Specification</h4>
+            <p>LED T8 strips or LED panels, minimum 3000K colour temperature (warm white for parchment-palette brand systems; 4000K for steel-and-white visual systems). Uniformity requirement: ΔU ≤ 15% — visible hotspots or dark zones are a production failure, not an acceptable tolerance. Power budget: 5W per sq ft of illuminated face. Isolator and MCB mandatory at each lightbox; SPD (surge protection device) at the distribution board.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Approved Applications</h4>
+            <ul>
+              <li>Sales office fascia and primary name board</li>
+              <li>Main construction gate board (premium positioning)</li>
+              <li>Model apartment entrance signage</li>
+              <li>Experience centre interior feature walls</li>
+              <li>Project launch event backdrop panels</li>
+            </ul>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+    <!-- LED -->
+    <div class="format-section">
+      <div class="format-card fmt-led reveal">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Substrate 03 / 03</div>
+              <div class="format-name">LED Display /<br>Digital</div>
+              <div class="format-tagline">The dynamic medium. Content updates in real time. Requires the most rigorous specification, structural engineering, and regulatory compliance.</div>
+            </div>
+            <div class="format-symbol">◉</div>
+          </div>
+          <div class="format-overview" style="border-color:#1a4a7a;">
+            <div class="format-overview-block">
+              <h4>Module Specification</h4>
+              <p>Outdoor installations: P6 module pitch (6 mm) minimum for viewing distances of 5 m or beyond. P4 or P3 for close-range installations (3 m or less, typically sales office interiors). Brightness: minimum 5,000 nits outdoor with automatic ambient light sensor for dimming — a display running at full brightness at night is a liability, not an asset. Refresh rate: minimum 1,920 Hz to eliminate flicker in photographs and video coverage of the project.</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>Content & Infrastructure</h4>
+              <p>Cloud-managed CMS with 4G and WiFi dual-link is the minimum infrastructure standard — single-link systems create content update failures that leave error screens visible on a premium brand surface. Content format: 1080p MP4 or HTML5 for dynamic content; JPG static fallback mandatory for CMS connectivity failures. Cabinet: die-cast aluminium, IP65 for outdoor, IP54 for semi-enclosed (covered car park canopy). Viewing angle: H:140° V:140° minimum.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-detail-grid">
+          <div class="format-detail-cell">
+            <h4>Structural & Electrical Requirements</h4>
+            <p>Stabilised 3-phase power supply for installations above 8 sq m. UPS backup mandatory for sales office LED displays — a CMS error on the sales office screen during a buyer site visit is an avoidable brand failure. Engineering certificate mandatory for any outdoor LED installation above 20 sq m total face area. Certificate must be available on site during any municipal or CEIG inspection.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Regulatory Requirements</h4>
+            <p>MCGM (Mumbai) requires a separate digital sign licence for LED displays, distinct from the standard advertisement licence. BBMP (Bengaluru) also requires a specific digital hoarding licence. Factor 4–8 weeks for licence processing into the project schedule. LED displays above 10 sq m require an electrical safety certificate signed off by a CEIG-approved electrician — a separate requirement from the structural engineering certificate.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Content Standards</h4>
+            <ul>
+              <li>No flashing, strobing, or animation faster than 2 Hz</li>
+              <li>Night brightness must reduce automatically — 5,000 nit + after 8 PM is a complaint trigger</li>
+              <li>Static fallback image must be brand-compliant — not a blue error screen</li>
+              <li>Content loop duration: 15–30 seconds per creative for outdoor</li>
+              <li>All RERA-required disclosures must appear in static content slots</li>
+            </ul>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SECTION 05 — ELEVATED -->
+<section id="elevated">
+  <div class="phase-header">
+    <div class="phase-num">05</div>
+    <div class="phase-meta">
+      <div class="phase-label">Vertical & Elevated Identity</div>
+      <h2 class="phase-title">Crane Banners & <em>Scaffolding Wraps —</em> The Sky Is Not Empty</h2>
+      <p class="phase-desc">The most under-leveraged brand surfaces in real estate construction. A crane at 40 metres is a 360-degree brand flag visible from 1.5 kilometres. A scaffolding wrap converts a construction eyesore into a kilometre-scale hoarding at near-zero incremental structure cost. Both formats are entirely absent from most developers' brand planning.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="format-section">
+      <div class="format-card fmt-crane reveal">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Elevated Format 01</div>
+              <div class="format-name">Crane<br>Banner</div>
+              <div class="format-tagline">The highest brand touchpoint on the site. Visible from 1.5 km. No copy — logo mark only. Engineering approval mandatory.</div>
+            </div>
+            <div class="format-symbol">↑</div>
+          </div>
+          <div class="format-overview" style="border-color:#8a4a1a;">
+            <div class="format-overview-block">
+              <h4>The Structural Constraint</h4>
+              <p>Crane banners require signed coordination with the crane operator and a structural loading assessment from a certified engineer. The critical rule: no banner may exceed 3% of the crane mast's wind resistance specification without a formal loading certificate. This is not a bureaucratic requirement — it is a safety calculation. An over-loaded crane banner in a coastal city at 50+ km/h wind can cause a structural incident. The brand is not worth that risk.</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>The Content Rule at Elevation</h4>
+              <p>Crane branding is brand mark only. The logo at 6 sq m visible from 1 km needs no supporting text. Adding project name as a secondary band is acceptable in a single weight below the logo. Adding marketing copy, floor counts, RERA numbers, or pricing at crane elevation is a category error — none of that content is legible at the viewing distance, and attempting it makes the board look like a failed compromise between two communication objectives.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-detail-grid">
+          <div class="format-detail-cell">
+            <h4>Production Specification</h4>
+            <ul>
+              <li>Substrate: 270 gsm mesh PVC, 40% open area minimum</li>
+              <li>Maximum panel width: 3 m (single piece without seam)</li>
+              <li>Fixing: Ratchet strap through eyelets + secondary safety cable</li>
+              <li>Anti-furl: Stainless steel rod in bottom hem pocket</li>
+              <li>Wind load design: IS 875 Part 3, Vb = 50 m/s</li>
+              <li>Logo print height: minimum 1.5 m on a 3 m panel</li>
+              <li>Ink: Solvent or UV, maximum 3 colours (brand primary on white)</li>
+            </ul>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Night Visibility Option</h4>
+            <p>Retro-reflective ink or retroreflective vinyl applied to the logo mark extends crane banner visibility through night hours and during morning/evening site illumination. This is particularly effective for sites adjacent to highways or elevated roads where the crane is visible beyond daylight hours. Retro-reflective treatment adds approximately 35–40% to production cost but multiplies the effective impression hours of the placement.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Coordination Checklist</h4>
+            <ul>
+              <li>Written approval from crane operator and site civil engineer</li>
+              <li>Wind load calculation for specific crane model and banner dimensions</li>
+              <li>Banner weight calculation included in crane lift capacity check</li>
+              <li>Removal protocol agreed before installation — who removes it, when</li>
+              <li>Insurance coverage confirmed for banner as site equipment</li>
+              <li>Inspect fixing points after first high-wind event post-installation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+    <div class="format-section">
+      <div class="format-card fmt-crane reveal">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Elevated Format 02</div>
+              <div class="format-name">Scaffolding<br>Wrap</div>
+              <div class="format-tagline">Construction eyesore converted to brand canvas. One kilometre of visual presence at the cost of replacing safety netting with branded mesh.</div>
+            </div>
+            <div class="format-symbol">◫</div>
+          </div>
+          <div class="format-overview" style="border-color:#8a4a1a;">
+            <div class="format-overview-block">
+              <h4>The Module Design Logic</h4>
+              <p>Scaffolding wraps must be designed to work with the scaffold tube grid — not against it. The scaffold tube pitch imposes a fixed module. Design in 2 m × 3 m panels that align to the tube spacing; avoid full-face seamless designs that become a visual failure at every tube join. The tube grid is not a constraint to be hidden — it is the design module to be accepted. The best scaffold wraps use the module as a design element.</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>Content Rule at Scaffold Scale</h4>
+              <p>Scaffolding wraps are a Tier II surface. They carry: logo mark, project name, tagline, and a single visual. Pricing, floor counts, RERA numbers, and contact details must never appear on scaffolding wraps. These are Tier III gate board elements — deploying them at scaffold elevation produces illegible compliance text viewed from 30+ metres. The wrap also carries the DGFASLI mandatory fire-retardant fabric requirement — this is a safety regulation, not optional.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-detail-grid">
+          <div class="format-detail-cell">
+            <h4>Three Wrap Design Modes</h4>
+            <ul>
+              <li><strong>Mode A — Brand Colour Field:</strong> 90% brand primary colour with logo mark. Best for dense urban sites with competing visual noise. High recognition, highly ownable.</li>
+              <li><strong>Mode B — Rendered Lifestyle:</strong> Architectural render + brand band. Best for luxury projects with arterial frontage. Risk: render quality must be exceptional — poor renders at scale destroy premium positioning.</li>
+              <li><strong>Mode C — Pattern + Badge:</strong> Geometric brand pattern field + logo badge. Best for long scaffold runs and mid-construction phases. Scalable and seam-forgiving.</li>
+            </ul>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Production Specification</h4>
+            <ul>
+              <li>Substrate: 340 gsm mesh PVC, 35% open area minimum</li>
+              <li>Design module: 2 m × 3 m repeating panel tile</li>
+              <li>Fixing: Cable ties through scaffold pipe + velcro secondary</li>
+              <li>Edge: Sewn 50 mm hem, brass eyelets every 30 cm</li>
+              <li>Coverage: 60–70% of scaffold face — not 100%</li>
+              <li>Fire rating: DGFASLI FR fabric certificate mandatory</li>
+              <li>Print resolution: 60 dpi at 1:1 final scale</li>
+            </ul>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Design From One Direction</h4>
+            <p>Design scaffolding wraps to read from one primary approach direction. Do not attempt a coherent image across the full building face — scaffold geometry will defeat it at every seam. Design for pattern and brand colour fields instead of pictorial content. The one exception: Mode B rendered lifestyle, where the render can be scaled across multiple panels if the seam positions are controlled at the design stage.</p>
+          </div>
+        </div>
+        <div class="format-warning-application">
+          <div class="format-warning">
+            <h4>The Seam Failure Mode</h4>
+            <p>The most common scaffold wrap failure: designing a full-face photographic image without mapping seam positions against the scaffold tube grid. The render of a beautiful tower face becomes a patchwork of misaligned panels with each tube visible as a visible disruption. Commissioning a scaffold wrap without a site survey to establish the exact tube pitch is a production error, not a creative choice.</p>
+          </div>
+          <div class="format-application">
+            <h4>Post-Monsoon Maintenance Protocol</h4>
+            <div class="format-app-items">
+              <div class="format-app-item">October inspection: check all cable tie fixings — replace any that show UV brittleness</div>
+              <div class="format-app-item">Re-tension all velcro secondary fixings — monsoon wind cycling loosens them over 3 months</div>
+              <div class="format-app-item">Inspect all hem eyelets for pull-through — reinforce any that show deformation</div>
+              <div class="format-app-item">Photograph full wrap from primary viewing distance — compare against original installation record</div>
+              <div class="format-app-item">Replace panels where colour shift exceeds visible comparison to reference panels stored on site</div>
+            </div>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SECTION 06 — GATE -->
+<section id="gate">
+  <div class="phase-header">
+    <div class="phase-num">06</div>
+    <div class="phase-meta">
+      <div class="phase-label">First and Last Impression</div>
+      <h2 class="phase-title">Construction Gate Branding — <em>Regulated,</em> Permanent, and Conversion-Ready</h2>
+      <p class="phase-desc">The construction gate is the brand's most regulated sign, its most inspected surface, and the first physical touchpoint for every buyer, contractor, and lender who arrives at the site. It must function as a compliance board, a brand statement, and a sales tool simultaneously — and these three requirements must be zoned, not merged.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="format-section">
+      <div class="format-card fmt-gate reveal">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Gate Format 01</div>
+              <div class="format-name">Main Gate<br>Identity Board</div>
+              <div class="format-tagline">RERA-mandated, permanently installed, updated within 30 days of any regulatory amendment. Not flex on a temporary frame.</div>
+            </div>
+            <div class="format-symbol">⊞</div>
+          </div>
+          <div class="format-overview" style="border-color:#1a5a3a;">
+            <div class="format-overview-block">
+              <h4>The Four-Zone Architecture</h4>
+              <p>Every construction gate board must be structured in four discrete zones — Crown (top 20%): developer logo + project name + tagline, brand primary background; Identity (middle 40%): project visual or render + key USP statement, hero image or brand accent; Compliance (lower 25%): RERA number, authority approval references, approvals list, neutral white or light panel background; Conversion (bottom strip 15%): phone number, website, QR code, sales office address, high-contrast dark band. These zones must never be merged or reordered.</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>Material Permanence Standard</h4>
+              <p>The main gate board is required by RERA to be maintained in legible condition throughout the construction period. This requirement disqualifies flex vinyl on a temporary frame as the primary gate board material — flex degrades in 18 months and the RERA obligation runs for the full construction duration. ACP (4 mm aluminium composite panel) with UV digital print and lamination, or 18-gauge MS sheet with baked enamel, is the minimum durability standard. The board must be legible from 10 metres at night.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-detail-grid">
+          <div class="format-detail-cell">
+            <h4>RERA Compliance Zone Requirements</h4>
+            <p>The compliance zone must include: RERA registration number at minimum 50 mm print height; project completion date as registered; approving authority name and licence/approval number; statement that the project is registered under state RERA with the portal URL. Any amendment to these details requires RERA amendment filing first, then board update within the mandated window — typically 30 days. Never update the board before the RERA portal reflects the change.</p>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Physical Installation Standard</h4>
+            <ul>
+              <li>Board size: 8×4 ft (single gate) / 12×6 ft (double vehicular gate)</li>
+              <li>Substrate: 4 mm ACP with UV print + lamination, or 18g MS with baked enamel</li>
+              <li>Mounting: Welded MS angle frame with RCC footing — no temporary post-and-clip</li>
+              <li>Illumination: Directional spot or backlit lightbox preferred</li>
+              <li>QR code: Minimum 8×8 cm print size, UTM-tracked to campaign analytics</li>
+              <li>Phone number: Minimum 80 mm print height in conversion zone</li>
+            </ul>
+          </div>
+          <div class="format-detail-cell">
+            <h4>Gate Wing Panels & Entry Gantry</h4>
+            <p>Gate wing panels are purely brand territory — no compliance content required or permitted. Use this surface for lifestyle photography, architectural renders, or amenity visuals. For large sites (5+ acres), a branded entry gantry over the vehicular access road is the premium format: minimum 5.5 m clearance height, MS hollow section structure (galvanised), ACP panel cladding or tensioned fabric, integrated LED profile. Content: project name and brand mark only.</p>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SECTION 07 — SITEYARD FAMILY -->
+<section id="siteyard">
+  <div class="phase-header">
+    <div class="phase-num">07</div>
+    <div class="phase-meta">
+      <div class="phase-label">Complete Signage Taxonomy</div>
+      <h2 class="phase-title">The Siteyard Signage Family — <em>All Nine Formats,</em> Every Dimension</h2>
+      <p class="phase-desc">A fully branded siteyard has no anonymous signage. Every functional sign — from the tower identification board to the borewell caution label — follows the same typographic and colour system, scaled to its tier. This section specifies each member of the siteyard signage family with dimensions, substrate, placement logic, and content rules.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="section-title">Universal Rule — Safety Signs Are Exempt From Brand Redesign</div>
+    <p class="sub-prose">ISO 7010 safety signs (Signs 06 and below) must never be redesigned with project brand colours or typography. The international colour coding — red for prohibition, yellow for warning, green for safe condition, blue for mandatory action — is a life-safety standard. A branded hard-hat sign that replaces safety red with brand navy is not a branding achievement. It is a liability. Brand consistency at Tiers I–III; ISO 7010 compliance at Tier IV — these are not competing objectives.</p>
+
+    <div class="signage-grid reveal">
+      <div class="sign-card">
+        <div class="sign-card-accent" style="background:linear-gradient(90deg,var(--gold),transparent)"></div>
+        <span class="sign-card-num">Sign 01 · Tier III</span>
+        <h3>Main Project Identity Board</h3>
+        <div class="sign-card-dim">10×5 ft standard · 12×6 ft large sites</div>
+        <p>Developer brand mark, project name, tagline, RERA compliance zone, and CTA zone. ACP with UV print. Permanent installation at main entry. Updated on RERA amendments within mandated window.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-card-accent" style="background:linear-gradient(90deg,#3a5a8a,transparent)"></div>
+        <span class="sign-card-num">Sign 02 · Tier III</span>
+        <h3>Tower / Block Identification</h3>
+        <div class="sign-card-dim">4×2 ft · One per tower base per floor</div>
+        <p>Block or tower name, building designation, floor count and number. Fixed to building base or column. Replaced with permanent building signage on possession commencement.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-card-accent" style="background:linear-gradient(90deg,#8a6020,transparent)"></div>
+        <span class="sign-card-num">Sign 03 · Tier III</span>
+        <h3>Directional / Wayfinding</h3>
+        <div class="sign-card-dim">3×1.5 ft · Arrow-mounted on post</div>
+        <p>Single destination per sign. Arrow + destination name + distance. Brand colour fascia. Consistent typeface only — no custom script. Placed at every decision point from site entry.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-card-accent" style="background:linear-gradient(90deg,#3a6a1a,transparent)"></div>
+        <span class="sign-card-num">Sign 04 · Tier III</span>
+        <h3>Zone Identification Board</h3>
+        <div class="sign-card-dim">4×2 ft · Per zone boundary</div>
+        <p>Zone name + zone code + access restriction. Colour-coded left stripe by zone type: green for safe access, amber for restricted, red for danger. ISO 7010 colour coding — not brand colours.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-card-accent" style="background:linear-gradient(90deg,#8a4a0a,transparent)"></div>
+        <span class="sign-card-num">Sign 05 · Tier III</span>
+        <h3>Officer / Contact Board</h3>
+        <div class="sign-card-dim">3×2 ft · Sales office + PM office</div>
+        <p>Name, designation, contact number. Updated at personnel changes via laminated insert panel — ACP frame with replaceable insert is preferred. Required by RERA at all sales contact points.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-card-accent" style="background:linear-gradient(90deg,var(--rust),transparent)"></div>
+        <span class="sign-card-num">Sign 06 · Tier IV</span>
+        <h3>Mandatory Safety Signs</h3>
+        <div class="sign-card-dim">60×45 cm · ISO 7010 standard</div>
+        <p>ISO 7010 compliant safety signs on reflective vinyl substrate. Bilingual — English + Tamil / Hindi / Kannada. Never customised with brand colours. Hard hat, high-vis, safety footwear, and restricted entry signs mandatory at all entry points.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-card-accent" style="background:linear-gradient(90deg,#7a2a2a,transparent)"></div>
+        <span class="sign-card-num">Sign 07 · Tier IV</span>
+        <h3>RERA Disclosure Panel</h3>
+        <div class="sign-card-dim">24×18 inches · Compliance format only</div>
+        <p>RERA registration number, project completion date, approving authority name. Mandatory size and format per state RERA regulation. Cannot be styled to brand aesthetics — regulated content and layout govern. Separate from main gate board.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-card-accent" style="background:linear-gradient(90deg,#5a2a5a,transparent)"></div>
+        <span class="sign-card-num">Sign 08 · Tier IV</span>
+        <h3>Statutory Approvals Board</h3>
+        <div class="sign-card-dim">4×3 ft · Fixed at gate · Permanent</div>
+        <p>Environmental clearance, fire NOC, structural approval reference numbers. Required for sites above 5,000 sq m built-up area. Separate board from RERA panel. Updated within 30 days of any approval amendment.</p>
+      </div>
+      <div class="sign-card">
+        <div class="sign-card-accent" style="background:linear-gradient(90deg,var(--sage),transparent)"></div>
+        <span class="sign-card-num">Sign 09 · Tier III</span>
+        <h3>Construction Progress Milestone</h3>
+        <div class="sign-card-dim">4×3 ft · Updated quarterly</div>
+        <p>Current floor count, milestone phase, and handover status. Updated per seasonal protocol. Visible to buyers and neighbours. The most powerful trust-building sign on the site — evidence that the developer tracks and communicates progress.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SECTION 08 — SEASONAL -->
+<section id="seasonal">
+  <div class="phase-header">
+    <div class="phase-num">08</div>
+    <div class="phase-meta">
+      <div class="phase-label">Construction Phase Communication</div>
+      <h2 class="phase-title">The Seasonal Update Protocol — <em>Stale Hoardings</em> Cost More Than Reprints</h2>
+      <p class="phase-desc">The same render displayed at project launch still showing two years later — while the actual building rises above it — is not a cost saving. It is a credibility gap that every buyer, neighbour, and broker reads correctly. The seasonal protocol mandates content refresh at defined construction milestones and calendar triggers.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="section-title">The Six-Phase Update Cadence</div>
+
+    <table class="strat-table reveal">
+      <thead>
+        <tr><th>Phase</th><th>Timing</th><th>Trigger</th><th>Content Action</th><th>Priority Surfaces</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Teaser</td>
+          <td>Month 0</td>
+          <td>Site acquisition confirmed, pre-RERA</td>
+          <td>Project name + "Coming Soon" + QR waitlist. No renders. No pricing. No RERA number (not yet registered).</td>
+          <td>Tier I approach boards only. Flex on temporary frame acceptable.</td>
+        </tr>
+        <tr>
+          <td class="cat">Launch</td>
+          <td>Month 1–2</td>
+          <td>RERA registration confirmed</td>
+          <td>Full brand deployment. RERA disclosures added to gate board. Perimeter panel narrative sequence set. Scaffold wraps if above 3 floors.</td>
+          <td>All tiers. Gate board on permanent ACP installation mandatory at launch.</td>
+        </tr>
+        <tr>
+          <td class="cat">Summer Refresh</td>
+          <td>April–June (Q2)</td>
+          <td>Structural milestone + seasonal peak</td>
+          <td>Progress milestone board updated with current floor count. Pre-summer is high real estate search season — Tier I boards carry price or urgency CTA for this window.</td>
+          <td>Tier I + progress milestone board. Perimeter panel integrity inspection.</td>
+        </tr>
+        <tr>
+          <td class="cat">Festive Insert</td>
+          <td>September</td>
+          <td>Navratri / Dussehra campaign window</td>
+          <td>Branded offer band added to perimeter panels 3–5 only — not a full board reprint. Band is removed after October. Do not redesign the board for festive season.</td>
+          <td>Tier II perimeter panels 3–5. Offer band must carry RERA number if it references pricing.</td>
+        </tr>
+        <tr>
+          <td class="cat">Post-Monsoon Overhaul</td>
+          <td>October</td>
+          <td>Mandatory annual inspection</td>
+          <td>Full perimeter inspection. Replace all panels with scalloping, colour shift, or legibility loss. Annual content refresh — photography, copy, pricing updates — before Diwali search peak.</td>
+          <td>All Tier II surfaces. Crane and scaffold wrap fixings. LED driver and module check.</td>
+        </tr>
+        <tr>
+          <td class="cat">Handover Transition</td>
+          <td>Final 6 months</td>
+          <td>Possession date approach</td>
+          <td>Construction messaging transitions to celebration: "Possession Commencing" + handover date. Scaffold wraps come down as building completes — the building face is the final reveal. Plan it.</td>
+          <td>Tier II perimeter. Scaffold removal is an earned brand moment — the brand's promise made visible.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">Content Freeze Rules — What Can Be Updated, and What Cannot</div>
+    <p class="sub-prose">Content governance on site boards is not solely a brand question. Several content elements are legal commitments under RERA — changing them without the corresponding regulatory filing creates a compliance violation that can result in penalties, project registration suspension, and adverse publicity that no marketing spend can offset.</p>
+
+    <div class="fw-grid fw-grid-2 reveal" style="margin-bottom:48px;">
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--sage),transparent)"></div>
+        <span class="fw-card-num">Update Freely</span>
+        <h3>Marketing & Campaign Content</h3>
+        <p>Campaign messaging, seasonal offer inserts, lifestyle photography, tagline variants, and visual treatments may be updated at any time by the brand team. QR code UTM parameters: update annually to maintain analytics accuracy. Contact numbers: update immediately on any change — a disconnected site number is a conversion failure.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--rust),transparent)"></div>
+        <span class="fw-card-num">Never Update Without Filing First</span>
+        <h3>RERA-Governed Content</h3>
+        <p>RERA registration number (immutable), total unit count, land area as disclosed, project completion date, and promoter name as registered — all require RERA amendment filing before any board update. The correct sequence is: file the amendment → receive confirmation → update the board within the mandated window. Never reverse this sequence.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════ SECTION 09 — REGULATORY -->
+<section id="regulatory">
+  <div class="phase-header">
+    <div class="phase-num">09</div>
+    <div class="phase-meta">
+      <div class="phase-label">Compliance & Permissions</div>
+      <h2 class="phase-title">State-Level Regulatory Compliance — <em>MCGM, CMDA, BBMP,</em> and RERA</h2>
+      <p class="phase-desc">Outdoor advertising on construction sites sits at the intersection of municipal advertisement law, real estate regulatory law, building permission conditions, and central environmental guidelines. Non-compliance produces demolition orders — and the adverse media coverage of a board demolition does more damage to brand equity than the fine itself.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"Outdoor sign regulations are revised more frequently than most developers' legal teams review them. Verify against the latest Municipal Corporation advertisement byelaw, current RERA portal disclosure requirements, and the specific building permission conditions in your approval letter before production. The framework below is a reference — not a substitute for local compliance verification."</p>
+      <div class="callout-src">Site Hoarding & Outdoor Identity System — Regulatory Reference</div>
+    </div>
+
+    <div class="section-title">Jurisdiction Compliance Matrix</div>
+
+    <div class="format-section">
+      <div class="format-card fmt-reg reveal">
+        <div class="format-header">
+          <div class="format-identity">
+            <div class="format-identity-content">
+              <div class="format-num">Regulatory Framework</div>
+              <div class="format-name">Four<br>Jurisdictions</div>
+              <div class="format-tagline">MCGM Mumbai · CMDA Chennai · BBMP Bengaluru · HMDA Hyderabad · Central RERA · CREDAI Standards</div>
+            </div>
+            <div class="format-symbol">⊛</div>
+          </div>
+          <div class="format-overview" style="border-color:#7a2a2a;">
+            <div class="format-overview-block">
+              <h4>The Central RERA Mandate</h4>
+              <p>RERA requires the project registration number to appear on all marketing materials — including outdoor advertising. The exact size, placement, and format requirements are governed by state RERA rules, which vary. Maharashtra, Tamil Nadu, Karnataka, and Telangana each have specific disclosure format requirements. In all cases, the RERA number must be in a legible size, accompanied by the project name as registered and the project completion date.</p>
+            </div>
+            <div class="format-overview-block">
+              <h4>CREDAI Ethical Advertising Standards</h4>
+              <p>CREDAI member developers are bound by ethical advertising standards that prohibit: inflated FAR or area claims, occupancy projections inconsistent with RERA filings, use of "approved" without documentary evidence, and competitor disparagement in any form. These apply to outdoor advertising. The CREDAI standard recommends prominent RERA number display on all outdoor advertising — which is consistent with statutory requirement in all four major jurisdictions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="format-detail-grid">
+          <div class="format-detail-cell">
+            <h4>MCGM — Greater Mumbai</h4>
+            <ul>
+              <li>Advertisement Licence mandatory before any hoarding installation</li>
+              <li>Standard licence: up to 40 sq ft without special NOC</li>
+              <li>LED digital display: separate digital sign licence required</li>
+              <li>Prohibited: within 100 m of national monument or heritage structure</li>
+              <li>Wind load certificate mandatory for any structure above 60 sq ft</li>
+              <li>Structural certificate required above 4.5 m total height</li>
+              <li>Maharashtra RERA: Board at main entry, minimum 1 sq m, all disclosures</li>
+            </ul>
+          </div>
+          <div class="format-detail-cell">
+            <h4>CMDA / GCC — Chennai</h4>
+            <ul>
+              <li>GCC Advertisement Permission required — apply to zonal office</li>
+              <li>Road category governs maximum size: major arterial roads max 40 sq ft without engineer certificate</li>
+              <li>Tamil Nadu Outdoor Advertisement Policy 2014 governs format and content</li>
+              <li>Heritage zone restriction: no hoardings within 500 m of protected structures</li>
+              <li>No political messaging association — even implicit</li>
+              <li>TN RERA: Entry board + one board per marketing office; TNRERA number + QR to RERA portal required</li>
+            </ul>
+          </div>
+          <div class="format-detail-cell">
+            <h4>BBMP — Bengaluru</h4>
+            <ul>
+              <li>BBMP Advertisement Licence + structural NOC required</li>
+              <li>BBMP Advertisement Byelaws 2006 govern all outdoor installations</li>
+              <li>Standard limit: 12 sq m single-face without special permission</li>
+              <li>Engineer certificate for any structure above 3 m height (lower threshold than MCGM)</li>
+              <li>LED hoarding: separate digital licence in addition to standard licence</li>
+              <li>Karnataka RERA: Board within 7 days of registration; KRERA number + QR mandatory</li>
+            </ul>
+          </div>
+        </div>
+        <div class="format-spec-row">
+          <div class="format-spec-cell">
+            <h5>HMDA — Hyderabad</h5>
+            <p class="example-line">Conditional compliance</p>
+            <div class="eg">Site boards within building permission NOC are often covered — verify for each project. Roadside hoardings need separate GHMC licence. No advertising within 300 m of national highway without NHAI NOC.</div>
+          </div>
+          <div class="format-spec-cell">
+            <h5>RERA Compliance Copy Block</h5>
+            <p class="example-line">Mandatory on all Tier II–III boards</p>
+            <div class="eg">Every site board must include: RERA registration number, project name as registered, completion date, state RERA portal URL, and the statement that specifications are subject to change and this is not an offer to purchase.</div>
+          </div>
+          <div class="format-spec-cell">
+            <h5>Structural Certificate Threshold</h5>
+            <p class="example-line">All three metros: 4.5 m height</p>
+            <div class="eg">Any hoarding structure above 4.5 m total height requires a structural stability certificate from a registered structural engineer. Certificate must be available on site during any inspection.</div>
+          </div>
+          <div class="format-spec-cell">
+            <h5>LED Electrical Safety</h5>
+            <p class="example-line">All metros: above 10 sq m</p>
+            <div class="eg">LED displays above 10 sq m require electrical safety certificate from a CEIG-approved electrician. This is separate from and in addition to the structural engineering certificate.</div>
+          </div>
+        </div>
+        <div class="format-divider"></div>
+      </div>
+    </div>
+
+    <div class="section-title">Pre-Deployment Checklist — Design Through Maintenance</div>
+    <p class="sub-prose">The following checklist covers the full production lifecycle. Phase 1 through Phase 4 are sequential — no phase begins before the previous phase is signed off.</p>
+
+    <div class="fw-grid fw-grid-2 reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Phase 1 + 2 · Design & Production</span>
+        <h3>Artwork & Vendor Briefing</h3>
+        <ul class="checklist" style="margin-top:12px;">
+          <li>Brand guidelines reviewed; typefaces licensed for commercial outdoor use</li>
+          <li>Hierarchy tier confirmed for each sign; message load matches tier specification</li>
+          <li>Viewing distance verified against actual road approach for each format</li>
+          <li>Typography minimum sizes confirmed against distance table</li>
+          <li>RERA compliance block included in correct zone on gate board and Tier II panels</li>
+          <li>RERA registration number confirmed current and accurate with project team</li>
+          <li>Artwork in PDF/X-4 or TIFF at correct scale with bleed and crop marks</li>
+          <li>Physical colour proof approved before full production run</li>
+          <li>Seam position confirmed on pre-production mockup — not through logo or face</li>
+          <li>Structural certificate obtained for frames above 4.5 m</li>
+          <li>Municipal advertisement licence obtained before installation date</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--sage),transparent)"></div>
+        <span class="fw-card-num">Phase 3 + 4 · Installation & Maintenance</span>
+        <h3>QA and Ongoing Governance</h3>
+        <ul class="checklist" style="margin-top:12px;">
+          <li>Installation supervised by brand team representative</li>
+          <li>Plumb and level checked — ±2° from vertical tolerance maximum</li>
+          <li>Flex tension checked — no visible scalloping from primary viewing angle</li>
+          <li>All seams and joins photographed and logged in site brand file</li>
+          <li>Night view test for all backlit and LED formats from road</li>
+          <li>LED brightness, uniformity, and colour temperature verified on site</li>
+          <li>Installation completion photographs submitted to developer brand records</li>
+          <li>Monthly visual inspection scheduled and assigned to site manager</li>
+          <li>Post-monsoon full substrate inspection in October — mandatory annual milestone</li>
+          <li>Any RERA amendment reflected on gate board within mandated window</li>
+          <li>Annual licence renewal for municipal advertisement permissions tracked</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Site Hoarding <span>/ Outdoor Identity</span></div>
+      <p class="footer-desc">The complete production, regulatory, and visual-standards manual for real estate site communication — from approach boards on arterial roads to safety signs at utility trenches. Covers hoarding hierarchy, viewing-distance typography, flex/backlit/LED production specifications, crane banners and scaffolding wraps, construction gate branding, the full nine-member siteyard signage family, seasonal update protocol, and regulatory compliance matrices for MCGM, CMDA, BBMP, and RERA. The document that converts site infrastructure into a continuous brand-building system.</p>
+    </div>
+    <div class="footer-col">
+      <h5>The Nine Sections</h5>
+      <ul>
+        <li>01 — Hoarding Hierarchy & Tier System</li>
+        <li>02 — Viewing-Distance Typography Rules</li>
+        <li>03 — Flex / Vinyl Production Specs</li>
+        <li>04 — Backlit & LED Specifications</li>
+        <li>05 — Crane Banners & Scaffold Wraps</li>
+        <li>06 — Construction Gate Branding</li>
+        <li>07 — Full Siteyard Signage Family</li>
+        <li>08 — Seasonal Update Protocol</li>
+        <li>09 — Regulatory Compliance Matrix</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Companion Documents</h5>
+      <ul>
+        <li>Branding 360° — Real Estate</li>
+        <li>Brand Standards Manual</li>
+        <li>Experience Centre Design Framework</li>
+        <li>Buyer Psychology & Decision Science</li>
+        <li>MarComm Plan — Real Estate</li>
+        <li>Post-Possession Community Brand</li>
+        <li>RERA Marketing Compliance Guide</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Site Hoarding & Outdoor Identity System — Real Estate Branding 360°</p>
+    <p>Companion to Branding 360° · Module VII · Outdoor Identity Reference</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

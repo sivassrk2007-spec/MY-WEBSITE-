@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Brand Blueprint — 5-Layer Strategy System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#060D18;--ink2:#0A1525;--ink3:#111F38;--ink4:#1A2D4A;
+  --gold:#B8922A;--gold2:#D4AD5A;--gold3:#EDD28A;--goldp:rgba(184,146,42,0.10);
+  --teal:#2A7E8C;--teal2:#3AACBF;--tealp:rgba(42,172,191,0.10);
+  --red:#B83A2A;--redp:rgba(184,58,42,0.10);
+  --purple:#7B4FBF;--purplep:rgba(123,79,191,0.10);
+  --green:#2A9B5A;--greenp:rgba(42,155,90,0.10);
+  --cream:#F0EBE0;--text:#C8D4E8;--muted:#6A7E99;--dim:#3A4E66;
+  --border:rgba(184,146,42,0.16);--border2:rgba(100,130,170,0.10);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.75;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:.5}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:800;background:rgba(6,13,24,.95);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 2.5rem;gap:0}
+.nav-brand{font-family:'Playfair Display',serif;font-size:.88rem;font-weight:700;color:var(--gold2);letter-spacing:.04em;margin-right:auto;text-decoration:none;white-space:nowrap}
+.nav-brand span{color:var(--muted);font-weight:300}
+.nav-links{display:flex;list-style:none}
+.nav-links a{display:block;padding:0 .9rem;height:60px;line-height:60px;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;transition:all .3s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--gold2);border-bottom-color:var(--gold2)}
+.nav-cta{margin-left:1.2rem;background:var(--gold);color:var(--ink)!important;border-bottom:none!important;padding:0 1.2rem!important;height:32px!important;line-height:32px!important;margin-top:14px;border-radius:2px;font-weight:700!important}
+.nav-cta:hover{background:var(--gold2)!important}
+
+/* ── LAYOUT ── */
+section{padding:6rem 3rem;position:relative}
+.wrap{max-width:1300px;margin:0 auto}
+.wrap-md{max-width:980px;margin:0 auto}
+.section-divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.18;margin:0 3rem}
+
+/* ── TYPE ── */
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.eyebrow::before{content:'';display:inline-block;width:22px;height:1px;background:var(--gold2)}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400;line-height:1.08}
+h2{font-size:clamp(1.8rem,3.5vw,3rem);margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--gold2)}
+h2 strong{font-weight:900}
+h3{font-size:1.2rem;color:var(--cream);margin-bottom:.4rem}
+.lead{font-size:1rem;color:var(--muted);line-height:1.9;max-width:640px}
+.rule{width:44px;height:2px;background:var(--gold);opacity:.55;margin:1.4rem 0}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.fade-up.vis{opacity:1;transform:translateY(0)}
+.fade-up:nth-child(2){transition-delay:.08s}.fade-up:nth-child(3){transition-delay:.16s}
+.fade-up:nth-child(4){transition-delay:.24s}.fade-up:nth-child(5){transition-delay:.32s}
+.fade-up:nth-child(6){transition-delay:.40s}
+
+/* ── BTN ── */
+.btn{display:inline-block;text-decoration:none;font-family:'Outfit',sans-serif;font-size:.73rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;transition:all .3s;cursor:pointer;border:none}
+.btn-gold{background:var(--gold);color:var(--ink);padding:.8rem 1.9rem}.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{border:1px solid var(--border);color:var(--muted);padding:.8rem 1.9rem}.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2)}
+
+/* ── LAYER BADGE ── */
+.layer-badge{display:inline-flex;align-items:center;gap:.7rem;background:var(--goldp);border:1px solid var(--border);padding:.35rem .95rem;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;color:var(--gold2);margin-bottom:2rem}
+.layer-badge.teal{background:var(--tealp);border-color:rgba(42,172,191,.25);color:var(--teal2)}
+.layer-badge.red{background:var(--redp);border-color:rgba(184,58,42,.25);color:#E06050}
+.layer-badge.purple{background:var(--purplep);border-color:rgba(123,79,191,.25);color:#A88AE0}
+.layer-badge.green{background:var(--greenp);border-color:rgba(42,155,90,.25);color:#5AC890}
+.layer-badge::before{content:'●';font-size:.42rem;animation:pulse 2s ease-in-out infinite}
+
+/* ── CARDS ── */
+.card{background:var(--ink2);border:1px solid var(--border2);padding:1.8rem;transition:all .3s}
+.card:hover{border-color:var(--border);background:var(--ink3)}
+.card-gold{border-left:3px solid var(--gold)}
+.card-teal{border-left:3px solid var(--teal2)}
+.card-red{border-left:3px solid var(--red)}
+.card-purple{border-left:3px solid var(--purple)}
+.card-green{border-left:3px solid var(--green)}
+.card-dim{border-left:3px solid var(--dim);opacity:.7}
+
+/* quote */
+.quote-block{border-left:3px solid var(--gold);padding:1.4rem 1.8rem;background:rgba(184,146,42,.05);margin-top:2.5rem}
+.quote-block p{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--cream);line-height:1.65}
+.quote-block cite{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--gold2);letter-spacing:.15em;text-transform:uppercase;margin-top:.7rem;display:block}
+
+/* tag */
+.tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;padding:.22rem .65rem;border:1px solid var(--border);color:var(--dim);border-radius:1px;letter-spacing:.06em;transition:all .3s;cursor:default;display:inline-block}
+.tag:hover{border-color:var(--gold2);color:var(--gold2)}
+
+/* stat box */
+.stat-box{background:var(--ink);padding:1.6rem;text-align:center}
+.stat-val{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--gold2);line-height:1}
+.stat-lbl{font-size:.72rem;color:var(--muted);margin-top:.3rem;line-height:1.45}
+
+/* grid helpers */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem}
+.g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1.5rem}
+.g-gap1{gap:1px;background:var(--border2)}
+.g-gap1>*{background:var(--ink)}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 75% 55% at 60% 48%,rgba(184,146,42,.07) 0%,transparent 55%),radial-gradient(ellipse 45% 65% at 12% 65%,rgba(42,126,140,.05) 0%,transparent 50%)}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(184,146,42,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(184,146,42,.022) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 90% 80% at 50% 50%,black 20%,transparent 75%)}
+.hero-inner{display:grid;grid-template-columns:1fr 380px;gap:5rem;align-items:center;position:relative;z-index:1}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.8vw,5.4rem);font-weight:400;line-height:1.05;margin-bottom:1.4rem;opacity:0;animation:fadeUp 1s ease forwards .3s}
+.hero-title strong{font-weight:900;color:var(--gold2)}
+.hero-title em{font-style:italic;color:var(--teal2)}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.9;margin-bottom:2.5rem;max-width:560px;opacity:0;animation:fadeUp .9s ease forwards .6s}
+.hero-acts{display:flex;gap:1.1rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease forwards .9s}
+.hero-stack{display:flex;flex-direction:column;gap:1px;opacity:0;animation:fadeUp 1s ease forwards 1.1s}
+.hcard{background:var(--ink2);border:1px solid var(--border2);padding:1.1rem 1.4rem;border-left:3px solid var(--dim);transition:all .3s;cursor:default}
+.hcard:hover{background:var(--ink3);border-left-color:var(--gold2)}
+.hcard.a{border-left-color:var(--gold)}.hcard.b{border-left-color:var(--teal2)}.hcard.c{border-left-color:var(--red)}.hcard.d{border-left-color:var(--purple)}.hcard.e{border-left-color:var(--green)}
+.hcard-num{font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:500;color:var(--gold2);line-height:1}
+.hcard-lbl{font-size:.7rem;color:var(--muted);margin-top:.15rem;letter-spacing:.05em}
+.hcard-note{font-size:.75rem;color:var(--dim);margin-top:.3rem;line-height:1.5}
+
+/* ══════════════════════════════════════════
+   SYSTEM OVERVIEW STRIP
+══════════════════════════════════════════ */
+#overview{background:var(--ink2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:0 3rem}
+.ov-row{max-width:1300px;margin:0 auto;display:flex}
+.ov-node{flex:1;padding:1.4rem 1.2rem;border-right:1px solid var(--border2);cursor:pointer;transition:all .3s;position:relative;border-top:3px solid transparent;text-decoration:none;display:block}
+.ov-node:last-child{border-right:none}
+.ov-node:hover{background:var(--goldp)}
+.ov-node.on{background:var(--goldp);border-top-color:var(--gold)}
+.ov-num{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.22em;color:var(--dim);margin-bottom:.3rem}
+.ov-title{font-size:.82rem;font-weight:500;color:var(--cream);margin-bottom:.15rem}
+.ov-desc{font-size:.7rem;color:var(--muted);line-height:1.4}
+.ov-node.on .ov-num{color:var(--gold2)}
+.ov-node.on .ov-title{color:var(--gold2)}
+
+/* ══════════════════════════════════════════
+   LAYER 1 — BRAND CONTEXT
+══════════════════════════════════════════ */
+#l1{border-top:1px solid var(--border2)}
+.l1-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border2);border:1px solid var(--border2);margin-top:3.5rem}
+.ic{background:var(--ink);padding:1.9rem 1.7rem;position:relative;transition:background .3s}
+.ic:hover{background:var(--ink2)}
+.ic.span2{grid-column:span 2}
+.ic-bar{position:absolute;top:0;left:0;width:3px;height:100%;background:var(--dim);transition:background .3s}
+.ic:hover .ic-bar{background:var(--gold)}
+.ic-idx{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.24em;color:var(--dim);margin-bottom:.5rem}
+.ic-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:.45rem}
+.ic-why{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:.9rem}
+.ic-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+
+/* output blocks */
+.ob-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-top:3rem}
+.ob{padding:2rem;border:1px solid var(--border2);position:relative;transition:border-color .3s}
+.ob:hover{border-color:rgba(184,146,42,.35)}
+.ob-marker{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.ob-marker::before{content:'';width:16px;height:1px}
+.ob-a .ob-marker{color:var(--gold2)}.ob-a .ob-marker::before{background:var(--gold2)}
+.ob-b .ob-marker{color:#E06050}.ob-b .ob-marker::before{background:#E06050}
+.ob-c .ob-marker{color:var(--teal2)}.ob-c .ob-marker::before{background:var(--teal2)}
+.ob-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--cream);margin-bottom:.9rem}
+.ob-items{list-style:none;display:flex;flex-direction:column}
+.ob-items li{font-size:.8rem;color:var(--muted);padding:.6rem 0;border-bottom:1px solid var(--border2);display:flex;gap:.7rem;line-height:1.6}
+.ob-items li:last-child{border-bottom:none}
+.ob-items li::before{content:'—';color:var(--dim);flex-shrink:0}
+.ob-items li:hover{color:var(--cream)}
+
+/* summary template */
+.st-grid{display:flex;flex-direction:column;gap:1px}
+.sf{background:var(--ink2);border:1px solid var(--border2);padding:1.4rem 1.7rem;border-left:3px solid var(--dim);transition:all .3s;cursor:default}
+.sf:hover{border-left-color:var(--gold2);background:var(--ink3)}
+.sf-lbl{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;color:var(--gold2);text-transform:uppercase;margin-bottom:.35rem}
+.sf-txt{font-size:.85rem;color:var(--muted);line-height:1.75}
+.sf-txt strong{color:var(--cream);font-weight:500}
+
+/* ══════════════════════════════════════════
+   LAYER 2 — BRAND STRATEGY
+══════════════════════════════════════════ */
+#l2{background:var(--ink2);border-top:1px solid var(--border)}
+.strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border2);margin-top:3.5rem}
+.sg-item{background:var(--ink2);padding:2.2rem;transition:background .3s;position:relative;overflow:hidden}
+.sg-item:hover{background:var(--ink3)}
+.sg-item.full{grid-column:span 2}
+.sg-num{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.22em;color:var(--dim);margin-bottom:.6rem}
+.sg-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--cream);margin-bottom:.5rem}
+.sg-desc{font-size:.82rem;color:var(--muted);line-height:1.75;margin-bottom:1.1rem}
+.sg-rule{font-size:.78rem;color:var(--dim);line-height:1.7;padding:1rem 1.2rem;background:var(--ink);border-left:2px solid var(--gold);font-style:italic}
+.sg-rule strong{color:var(--gold2);font-style:normal}
+.sg-accent{position:absolute;top:0;right:0;font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;color:var(--border2);line-height:1;pointer-events:none;user-select:none}
+
+/* archetype cards */
+.arch-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border2);margin-top:1.2rem}
+.arch{background:var(--ink);padding:1.2rem;transition:all .3s;cursor:default;border-bottom:2px solid transparent}
+.arch:hover,.arch.on{background:var(--goldp);border-bottom-color:var(--gold2)}
+.arch-name{font-weight:500;color:var(--cream);font-size:.82rem;margin-bottom:.25rem}
+.arch-trait{font-size:.7rem;color:var(--muted);line-height:1.5}
+.arch-fit{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--gold2);margin-top:.4rem;letter-spacing:.08em}
+
+/* pillar strip */
+.pillar-strip{display:flex;flex-direction:column;gap:1px;margin-top:1rem}
+.pillar-item{background:var(--ink);padding:1.1rem 1.4rem;display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;transition:background .3s;cursor:default}
+.pillar-item:hover{background:var(--ink3)}
+.pi-num{font-family:'JetBrains Mono',monospace;font-size:1.2rem;color:var(--gold2);font-weight:500;line-height:1.2}
+.pi-title{font-weight:500;color:var(--cream);font-size:.88rem;margin-bottom:.2rem}
+.pi-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+
+/* positioning map */
+.pos-map{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.2rem}
+.pm-axis{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--gold2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.6rem}
+.pm-scale{display:flex;flex-direction:column;gap:.3rem}
+.pm-bar{display:flex;align-items:center;gap:.8rem}
+.pm-label{font-size:.75rem;color:var(--muted);min-width:100px}
+.pm-track{flex:1;height:3px;background:var(--ink);border-radius:2px;position:relative}
+.pm-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.pm-val{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--gold2);min-width:2rem;text-align:right}
+
+/* ══════════════════════════════════════════
+   LAYER 3 — COMMUNICATION SYSTEM
+══════════════════════════════════════════ */
+#l3{border-top:1px solid var(--border)}
+.comm-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:3rem;flex-wrap:wrap}
+.comm-tab{padding:.9rem 1.6rem;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .3s;margin-bottom:-1px}
+.comm-tab:hover{color:var(--gold2)}
+.comm-tab.on{color:var(--gold2);border-bottom-color:var(--gold2)}
+.comm-panel{display:none}.comm-panel.on{display:block}
+
+/* website messaging */
+.web-sections{display:flex;flex-direction:column;gap:1px;margin-top:2rem}
+.web-sec{background:var(--ink2);border:1px solid var(--border2);padding:2rem;transition:all .3s}
+.web-sec:hover{border-color:var(--border);background:var(--ink3)}
+.ws-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:var(--gold2);text-transform:uppercase;margin-bottom:.8rem}
+.ws-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:.5rem}
+.ws-purpose{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.ws-formula{display:flex;flex-direction:column;gap:.5rem}
+.wf-row{display:flex;gap:1rem;align-items:baseline}
+.wf-key{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:var(--gold2);min-width:90px;text-transform:uppercase}
+.wf-val{font-size:.82rem;color:var(--muted);line-height:1.65;flex:1}
+.wf-val em{color:var(--cream);font-style:normal;font-weight:500}
+
+/* social themes */
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border2);margin-top:2rem}
+.soc-item{background:var(--ink2);padding:1.8rem;transition:background .3s}
+.soc-item:hover{background:var(--ink3)}
+.soc-num{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;color:var(--dim);margin-bottom:.4rem}
+.soc-name{font-weight:500;color:var(--cream);font-size:.9rem;margin-bottom:.4rem}
+.soc-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:.7rem}
+.soc-why{font-size:.75rem;color:var(--gold2);font-style:italic;border-top:1px solid var(--border2);padding-top:.6rem;margin-top:.3rem}
+
+/* tone voice */
+.tone-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.tone-col-head{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.8rem;padding:.3rem .7rem;border-radius:1px;display:inline-block}
+.tone-say .tone-col-head{color:var(--green);background:var(--greenp)}
+.tone-avoid .tone-col-head{color:#E06050;background:var(--redp)}
+.tone-item{font-size:.82rem;color:var(--muted);padding:.75rem 0;border-bottom:1px solid var(--border2);line-height:1.6}
+.tone-item:last-child{border-bottom:none}
+.tone-say .tone-item{border-left:2px solid var(--green);padding-left:.7rem;margin-left:.5rem}
+.tone-avoid .tone-item{border-left:2px solid var(--red);padding-left:.7rem;margin-left:.5rem;text-decoration-color:transparent}
+
+/* ad hooks */
+.ad-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border2);margin-top:2rem}
+.ad-item{background:var(--ink2);padding:1.5rem 1.8rem;transition:background .3s;position:relative;overflow:hidden}
+.ad-item:hover{background:var(--ink3)}
+.ad-num{font-family:'JetBrains Mono',monospace;font-size:2.5rem;font-weight:500;color:var(--border2);position:absolute;right:1rem;top:.5rem;line-height:1;transition:color .3s}
+.ad-item:hover .ad-num{color:var(--goldp)}
+.ad-type{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.18em;color:var(--dim);margin-bottom:.5rem;text-transform:uppercase}
+.ad-hook{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);line-height:1.4;margin-bottom:.5rem;font-style:italic}
+.ad-why{font-size:.76rem;color:var(--muted);line-height:1.6}
+
+/* value props */
+.vp-strip{display:flex;flex-direction:column;gap:1px;margin-top:2rem}
+.vp{background:var(--ink2);padding:1.3rem 1.6rem;display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:start;transition:background .3s}
+.vp:hover{background:var(--ink3)}
+.vp-icon{width:36px;height:36px;background:var(--goldp);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.vp-text{font-size:.84rem;color:var(--muted);line-height:1.7}
+.vp-text strong{color:var(--cream);font-weight:500;display:block;margin-bottom:.15rem}
+
+/* internal comms */
+.int-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.int-card{padding:2rem;border:1px solid var(--border2);transition:border-color .3s}
+.int-card:hover{border-color:var(--border)}
+.int-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;color:var(--gold2);text-transform:uppercase;margin-bottom:.7rem}
+.int-rule{font-size:.84rem;color:var(--muted);padding:.7rem 0;border-bottom:1px solid var(--border2);line-height:1.7}
+.int-rule:last-child{border-bottom:none}
+.int-rule strong{color:var(--cream);display:block;margin-bottom:.1rem;font-size:.8rem}
+
+/* ══════════════════════════════════════════
+   LAYER 4 — CONTENT ENGINE
+══════════════════════════════════════════ */
+#l4{background:var(--ink2);border-top:1px solid var(--border)}
+.content-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:3rem;flex-wrap:wrap}
+.ct-tab{padding:.9rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all .3s;margin-bottom:-1px}
+.ct-tab:hover{color:var(--teal2)}
+.ct-tab.on{color:var(--teal2);border-bottom-color:var(--teal2)}
+.ct-panel{display:none}.ct-panel.on{display:block}
+
+/* platform header */
+.plat-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border2)}
+.plat-icon{width:52px;height:52px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:var(--ink);flex-shrink:0}
+.plat-name{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--cream)}
+.plat-sub{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+
+/* content anatomy */
+.content-anatomy{display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start}
+.ca-parts{display:flex;flex-direction:column;gap:1px}
+.ca-part{background:var(--ink);padding:1.1rem 1.4rem;border-left:3px solid var(--dim);transition:all .3s;cursor:default}
+.ca-part:hover{border-left-color:var(--teal2);background:var(--ink3)}
+.ca-part.on{border-left-color:var(--teal2);background:var(--ink3)}
+.cap-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.18em;color:var(--teal2);text-transform:uppercase;margin-bottom:.3rem}
+.cap-desc{font-size:.78rem;color:var(--muted);line-height:1.6}
+.content-preview{background:var(--ink);border:1px solid var(--border2);padding:2rem;position:relative}
+.cp-platform{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.18em;color:var(--teal2);text-transform:uppercase;margin-bottom:1rem;opacity:.7}
+.cp-content{font-size:.88rem;color:var(--text);line-height:1.8}
+.cp-content .hook{color:var(--cream);font-weight:500;font-size:.95rem;margin-bottom:.8rem;display:block}
+.cp-content .body-text{color:var(--muted);display:block;margin-bottom:.8rem}
+.cp-content .cta-line{color:var(--gold2);display:block;margin-top:.8rem;font-size:.8rem}
+.cp-content .hashtags{color:var(--dim);font-size:.75rem;margin-top:.6rem;display:block;font-family:'JetBrains Mono',monospace;line-height:1.8}
+.cp-line{height:1px;background:var(--border2);margin:.8rem 0}
+
+/* content format grid */
+.format-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border2);margin-top:2rem}
+.fmt{background:var(--ink);padding:1.5rem;transition:background .3s;cursor:default}
+.fmt:hover{background:var(--ink2)}
+.fmt-type{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.16em;color:var(--teal2);text-transform:uppercase;margin-bottom:.4rem}
+.fmt-name{font-weight:500;color:var(--cream);font-size:.85rem;margin-bottom:.3rem}
+.fmt-desc{font-size:.75rem;color:var(--muted);line-height:1.6}
+.fmt-freq{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--dim);margin-top:.5rem;letter-spacing:.08em}
+
+/* video script */
+.script-flow{display:flex;flex-direction:column;gap:1px;margin-top:1.5rem}
+.script-block{background:var(--ink);padding:1.3rem 1.5rem;display:grid;grid-template-columns:80px 1fr;gap:1.2rem;align-items:start;border-left:3px solid var(--border);transition:all .3s}
+.script-block:hover{background:var(--ink2);border-left-color:var(--teal2)}
+.sb-time{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--teal2)}
+.sb-seg{font-weight:500;color:var(--cream);font-size:.82rem;margin-bottom:.25rem}
+.sb-desc{font-size:.75rem;color:var(--muted);line-height:1.6}
+
+/* calendar strip */
+.cal-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border2);margin-top:2rem}
+.cal-day{background:var(--ink2);padding:1.1rem .8rem;text-align:center;transition:background .3s}
+.cal-day.has-content{background:var(--ink3);border-top:2px solid var(--teal2)}
+.cal-day:hover{background:var(--goldp)}
+.cd-name{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.12em;color:var(--dim);text-transform:uppercase;margin-bottom:.4rem}
+.cd-type{font-size:.7rem;color:var(--muted);line-height:1.4}
+.cd-platform{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--teal2);margin-top:.3rem}
+
+/* ══════════════════════════════════════════
+   LAYER 5 — BRAND AUDIT
+══════════════════════════════════════════ */
+#l5{border-top:1px solid var(--border)}
+.audit-intro{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-bottom:4rem}
+.audit-dimensions{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1px;background:var(--border2);margin-top:3rem}
+.adim{background:var(--ink2);padding:2rem 1.5rem;transition:background .3s;cursor:default;border-bottom:3px solid transparent;text-align:center}
+.adim:hover{background:var(--ink3)}
+.adim.d1{border-bottom-color:var(--gold)}.adim.d2{border-bottom-color:var(--teal2)}.adim.d3{border-bottom-color:var(--red)}.adim.d4{border-bottom-color:var(--purple)}
+.adim-icon{font-size:1.8rem;margin-bottom:.7rem}
+.adim-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:.4rem}
+.adim-q{font-size:.75rem;color:var(--muted);line-height:1.6;font-style:italic}
+.adim-test{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--dim);margin-top:.6rem;letter-spacing:.08em;line-height:1.5}
+
+/* audit scorecard */
+.audit-scorecard{margin-top:4rem}
+.asc-header{display:grid;grid-template-columns:1fr 80px 80px 80px;gap:1rem;padding:.6rem 1.4rem;background:var(--ink4);border:1px solid var(--border)}
+.asc-col{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.15em;color:var(--dim);text-transform:uppercase;text-align:center}
+.asc-col:first-child{text-align:left}
+.asc-row{display:grid;grid-template-columns:1fr 80px 80px 80px;gap:1rem;padding:.9rem 1.4rem;border:1px solid var(--border2);border-top:none;background:var(--ink2);transition:background .3s;align-items:center}
+.asc-row:hover{background:var(--ink3)}
+.asc-item{font-size:.82rem;color:var(--muted)}
+.asc-item strong{color:var(--cream);font-weight:500;display:block;margin-bottom:.1rem}
+.asc-score{text-align:center;font-family:'JetBrains Mono',monospace;font-size:.78rem;padding:.3rem .6rem;border-radius:1px}
+.score-fail{color:#E06050;background:var(--redp)}
+.score-partial{color:var(--gold2);background:var(--goldp)}
+.score-pass{color:#5AC890;background:var(--greenp)}
+
+/* fix cards */
+.fix-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem}
+.fix-card{padding:1.8rem;border:1px solid var(--border2);transition:border-color .3s;position:relative}
+.fix-card:hover{border-color:var(--border)}
+.fix-severity{position:absolute;top:1.2rem;right:1.2rem;font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.12em;padding:.2rem .55rem;border-radius:1px}
+.sev-high{color:#E06050;background:var(--redp)}
+.sev-med{color:var(--gold2);background:var(--goldp)}
+.sev-low{color:#5AC890;background:var(--greenp)}
+.fix-num{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.22em;color:var(--dim);margin-bottom:.5rem}
+.fix-problem{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--cream);margin-bottom:.5rem}
+.fix-why{font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:.9rem;padding-bottom:.9rem;border-bottom:1px solid var(--border2)}
+.fix-label{font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.35rem}
+.fix-label.problem{color:#E06050}.fix-label.why{color:var(--gold2)}.fix-label.action{color:#5AC890}
+.fix-action{font-size:.8rem;color:var(--muted);line-height:1.7;margin-bottom:.7rem;padding-left:.8rem;border-left:2px solid var(--green)}
+
+/* ══════════════════════════════════════════
+   ADVANCED MODULES
+══════════════════════════════════════════ */
+#modules{background:var(--ink2);border-top:1px solid var(--border)}
+.mod-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border2);margin-top:3.5rem}
+.mod{background:var(--ink2);padding:2.2rem 2rem;transition:background .3s;position:relative;overflow:hidden}
+.mod:hover{background:var(--ink3)}
+.mod-tag{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:.7rem}
+.mod-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--cream);margin-bottom:.7rem}
+.mod-desc{font-size:.8rem;color:var(--muted);line-height:1.75;margin-bottom:1.2rem}
+.mod-list{list-style:none;display:flex;flex-direction:column;gap:.1rem}
+.mod-list li{font-size:.77rem;color:var(--dim);padding:.4rem 0;border-bottom:1px solid var(--border2);display:flex;gap:.6rem}
+.mod-list li::before{content:'→';color:var(--gold2);flex-shrink:0}
+.mod-list li:hover{color:var(--muted)}
+.mod-list li:last-child{border-bottom:none}
+.mod-bg{position:absolute;bottom:-1rem;right:-1rem;font-family:'Playfair Display',serif;font-size:6rem;font-weight:900;color:rgba(184,146,42,.04);pointer-events:none;line-height:1}
+
+/* industry tiles */
+.ind-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border2);margin-top:2.5rem}
+.ind{background:var(--ink);padding:1.1rem 1rem;transition:all .3s;cursor:pointer;border-bottom:2px solid transparent}
+.ind:hover,.ind.on{background:var(--goldp);border-bottom-color:var(--gold2)}
+.ind-n{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.18em;color:var(--dim);margin-bottom:.3rem}
+.ind-name{font-size:.78rem;color:var(--cream);font-weight:500;line-height:1.35;margin-bottom:.2rem}
+.ind-sub{font-size:.65rem;color:var(--muted);line-height:1.3}
+.ind.on .ind-n,.ind:hover .ind-n{color:var(--gold2)}
+.ind.on .ind-name,.ind:hover .ind-name{color:var(--gold2)}
+
+/* ══════════════════════════════════════════
+   CTA CLOSE
+══════════════════════════════════════════ */
+#cta{text-align:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 65% at 50% 50%,rgba(184,146,42,.08) 0%,transparent 60%)}
+.cta-inner{position:relative;z-index:1}
+.cta-badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.22em;color:var(--gold2);border:1px solid var(--border);padding:.3rem .9rem;margin-bottom:1.8rem}
+.cta-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.8rem);color:var(--cream);margin-bottom:1.4rem;line-height:1.1}
+.cta-title em{color:var(--gold2);font-style:italic}
+.cta-sub{font-size:.95rem;color:var(--muted);max-width:520px;margin:0 auto 2.5rem;line-height:1.9}
+.cta-acts{display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap}
+
+footer{padding:1.8rem 3rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.ft-brand{font-family:'Playfair Display',serif;font-size:.82rem;color:var(--gold2);font-weight:600}
+.ft-brand span{color:var(--muted);font-weight:300}
+.ft-note{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--dim);letter-spacing:.08em}
+
+@media(max-width:1100px){
+  .hero-inner{grid-template-columns:1fr}.hero-stack{display:none}
+  .g2,.g3,.g4,.audit-intro,.strategy-grid,.content-anatomy,.int-grid,.fix-grid,.pos-map,.mod-grid,.audit-dimensions{grid-template-columns:1fr}
+  .sg-item.full,.ic.span2{grid-column:span 1}
+  .arch-grid{grid-template-columns:1fr 1fr}
+  .ind-grid{grid-template-columns:repeat(3,1fr)}
+  .ob-grid{grid-template-columns:1fr}
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  section{padding:4rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a class="nav-brand" href="#hero">Brand Blueprint <span>— Master System</span></a>
+  <ul class="nav-links">
+    <li><a href="#l1">L1 · Context</a></li>
+    <li><a href="#l2">L2 · Strategy</a></li>
+    <li><a href="#l3">L3 · Comms</a></li>
+    <li><a href="#l4">L4 · Content</a></li>
+    <li><a href="#l5">L5 · Audit</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#cta" class="nav-cta">Begin</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner wrap">
+    <div>
+      <div class="layer-badge">Master Brand Blueprint — 5-Layer System</div>
+      <h1 class="hero-title">
+        Strategy that<br>
+        <strong>builds brands.</strong><br>
+        Not <em>just content.</em>
+      </h1>
+      <p class="hero-sub">A complete 5-layer brand architecture — from first context to final audit — built for 15 industries, designed to produce differentiation, not just documentation.</p>
+      <div class="hero-acts">
+        <a href="#l1" class="btn btn-gold">Start with Layer 1</a>
+        <a href="#overview" class="btn btn-ghost">View the System</a>
+      </div>
+    </div>
+    <div class="hero-stack">
+      <div class="hcard a"><div class="hcard-num">L1</div><div class="hcard-lbl">Brand Context</div><div class="hcard-note">9 inputs · Brand summary · Weakness map · Opportunity areas</div></div>
+      <div class="hcard b"><div class="hcard-num">L2</div><div class="hcard-lbl">Brand Strategy</div><div class="hcard-note">Positioning · Archetype · Promise · Differentiation · Pillars</div></div>
+      <div class="hcard c"><div class="hcard-num">L3</div><div class="hcard-lbl">Communication System</div><div class="hcard-note">Website · Social · Ads · Internal voice</div></div>
+      <div class="hcard d"><div class="hcard-num">L4</div><div class="hcard-lbl">Content Engine</div><div class="hcard-note">LinkedIn · Instagram · Video · Website content</div></div>
+      <div class="hcard e"><div class="hcard-num">L5</div><div class="hcard-lbl">Brand Audit</div><div class="hcard-note">Clarity · Consistency · Differentiation · Credibility</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OVERVIEW STRIP ══ -->
+<div id="overview">
+  <div class="ov-row">
+    <a href="#l1" class="ov-node on"><div class="ov-num">Layer 01</div><div class="ov-title">Brand Context</div><div class="ov-desc">9 inputs · 3 outputs · Brand summary template</div></a>
+    <a href="#l2" class="ov-node"><div class="ov-num">Layer 02</div><div class="ov-title">Brand Strategy</div><div class="ov-desc">Positioning · Archetype · Pillars · Differentiation</div></a>
+    <a href="#l3" class="ov-node"><div class="ov-num">Layer 03</div><div class="ov-title">Communication</div><div class="ov-desc">Website · Social · Ads · Internal tone</div></a>
+    <a href="#l4" class="ov-node"><div class="ov-num">Layer 04</div><div class="ov-title">Content Engine</div><div class="ov-desc">LinkedIn · Instagram · Video · Calendar</div></a>
+    <a href="#l5" class="ov-node"><div class="ov-num">Layer 05</div><div class="ov-title">Brand Audit</div><div class="ov-desc">4 dimensions · Scorecard · Fix framework</div></a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     LAYER 1 — BRAND CONTEXT
+══════════════════════════════════ -->
+<section id="l1">
+  <div class="wrap">
+    <div class="layer-badge">Layer 01</div>
+    <h2>Brand <em>Context</em> Loader</h2>
+    <div class="rule"></div>
+    <p class="lead">Every brand decision downstream depends on the accuracy of what is captured here. Do not guess. If an input is unknown, flag it and research it before proceeding.</p>
+
+    <div class="l1-inputs">
+      <div class="ic fade-up"><div class="ic-bar"></div><div class="ic-idx">INPUT 01</div><h3 class="ic-name">Industry</h3><p class="ic-why">The sector shapes every trust signal, tone choice, and content decision. Be specific — not "healthcare" but "NABH-accredited multi-speciality hospital serving South Chennai families."</p><div class="ic-tags"><span class="tag">Healthcare</span><span class="tag">Real Estate</span><span class="tag">SaaS</span><span class="tag">Manufacturing</span><span class="tag">Education</span></div></div>
+
+      <div class="ic fade-up"><div class="ic-bar"></div><div class="ic-idx">INPUT 02</div><h3 class="ic-name">Business Model</h3><p class="ic-why">Who is the actual buyer and how does money move? B2B and B2C require fundamentally different voices. A dual-track business needs a dual-track communication system.</p><div class="ic-tags"><span class="tag">B2B</span><span class="tag">B2C</span><span class="tag">D2C</span><span class="tag">B2B2C</span><span class="tag">Subscription</span></div></div>
+
+      <div class="ic fade-up"><div class="ic-bar"></div><div class="ic-idx">INPUT 03</div><h3 class="ic-name">Target Audience</h3><p class="ic-why">Not demographics — psychology. What does this person fear? What would make them choose without hesitation? What belief must change for them to trust this brand?</p><div class="ic-tags"><span class="tag">Families 30–50</span><span class="tag">HR Managers</span><span class="tag">CXOs</span><span class="tag">First-time Buyers</span></div></div>
+
+      <div class="ic fade-up"><div class="ic-bar"></div><div class="ic-idx">INPUT 04</div><h3 class="ic-name">Geography</h3><p class="ic-why">Where the brand lives and where it wants to grow. City, corridor, region — this determines competitive density, local trust dynamics, and expansion positioning.</p><div class="ic-tags"><span class="tag">South Chennai</span><span class="tag">Pan Tamil Nadu</span><span class="tag">Pan India</span><span class="tag">Metro + Tier 2</span></div></div>
+
+      <div class="ic fade-up"><div class="ic-bar"></div><div class="ic-idx">INPUT 05</div><h3 class="ic-name">Pricing Position</h3><p class="ic-why">Not a number — a value story. "Affordable" is a race to the bottom. "Accessible excellence" is a positioning statement. Pricing must become a brand decision, not a finance department output.</p><div class="ic-tags"><span class="tag">Premium</span><span class="tag">Mid-Premium</span><span class="tag">Mid</span><span class="tag">Accessible</span></div></div>
+
+      <div class="ic fade-up"><div class="ic-bar"></div><div class="ic-idx">INPUT 06</div><h3 class="ic-name">Key Competitors</h3><p class="ic-why">Name them specifically. The brands compared to this one in the buyer's mind at the moment of decision. Their positioning is the map that reveals the white space.</p><div class="ic-tags"><span class="tag">Direct</span><span class="tag">Aspirational</span><span class="tag">Category Leaders</span><span class="tag">Emerging</span></div></div>
+
+      <div class="ic fade-up"><div class="ic-bar"></div><div class="ic-idx">INPUT 07</div><h3 class="ic-name">Current Brand Perception</h3><p class="ic-why">What people actually say — not what the brand hopes they think. If unknown, it must be researched before strategy. Strategy built on assumed perception is built on sand.</p><div class="ic-tags"><span class="tag">Unknown</span><span class="tag">Positive but vague</span><span class="tag">Mixed</span><span class="tag">Strong in one area</span></div></div>
+
+      <div class="ic span2 fade-up"><div class="ic-bar"></div><div class="ic-idx">INPUT 08 + 09</div><h3 class="ic-name">Business Goals + Current Challenges</h3><p class="ic-why">These two inputs are read together. Goals tell where the brand must go. Challenges reveal what blocks the path. The strategy serves the goal — and must directly overcome the named challenge.</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1rem"><div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--gold2);letter-spacing:.14em;margin-bottom:.5rem">GOALS</div><div class="ic-tags"><span class="tag">Build Trust</span><span class="tag">Increase Leads</span><span class="tag">Awareness</span><span class="tag">Premiumisation</span><span class="tag">Hiring</span><span class="tag">Expansion</span></div></div><div><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--red);letter-spacing:.14em;margin-bottom:.5rem">CHALLENGES</div><div class="ic-tags"><span class="tag">No differentiation</span><span class="tag">Invisible online</span><span class="tag">Inconsistent voice</span><span class="tag">Trust deficit</span><span class="tag">No content system</span></div></div></div></div>
+    </div>
+
+    <!-- Outputs -->
+    <div style="margin-top:4rem">
+      <div class="eyebrow">Layer 1 Outputs</div>
+      <h2>Three <em>Deliverables.</em><br>No Strategy Without Them.</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="ob-grid">
+      <div class="ob ob-a fade-up"><div class="ob-marker">Output A</div><div class="ob-title">Brand Summary</div><ul class="ob-items"><li>Plain language — no jargon, no buzzwords</li><li>3–5 sentences describing what the brand really is</li><li>Written for a stranger who has never encountered the brand</li><li>Identifies the gap between delivered reality and public perception</li><li>Becomes the reference point for every decision that follows</li></ul></div>
+      <div class="ob ob-b fade-up"><div class="ob-marker">Output B</div><div class="ob-title">Key Weaknesses</div><ul class="ob-items"><li>Top 5 specific branding problems — named, not softened</li><li>Root cause for each: why it exists, not just what it is</li><li>Failures mapped by touchpoint: website, social, in-person</li><li>Differentiation gaps — where the brand sounds like everyone else</li><li>Business cost of each weakness: leads lost, trust not built</li></ul></div>
+      <div class="ob ob-c fade-up"><div class="ob-marker">Output C</div><div class="ob-title">Opportunity Areas</div><ul class="ob-items"><li>Top 5 positioning gaps competitors have left unclaimed</li><li>Underserved audience segments in current messaging</li><li>Trust signals available but not yet deployed</li><li>Content territories no competitor currently owns</li><li>The single most powerful repositioning move available now</li></ul></div>
+    </div>
+
+    <!-- 5-sentence template -->
+    <div style="margin-top:4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start">
+      <div>
+        <div class="eyebrow">Brand Summary Template</div>
+        <h2>The <em>5-Sentence</em> Formula</h2>
+        <div class="rule"></div>
+        <p class="lead">Not a mission statement. A diagnostic. Plain language that describes what the business is, who it serves, what the gap is, and what the opportunity looks like.</p>
+        <div class="quote-block" style="margin-top:2rem">
+          <p>"The gap between what a brand delivers and what people believe it delivers — that is the entire branding problem."</p>
+          <cite>Layer 1 Principle</cite>
+        </div>
+      </div>
+      <div class="st-grid">
+        <div class="sf fade-up"><div class="sf-lbl">Sentence 1 — What It Is</div><div class="sf-txt"><strong>[Brand]</strong> is a <strong>[specific type]</strong> in <strong>[geography]</strong> that serves <strong>[specific audience]</strong>.</div></div>
+        <div class="sf fade-up"><div class="sf-lbl">Sentence 2 — What It Does Well</div><div class="sf-txt">It has <strong>[real capability / credential]</strong> that most competitors in this space do not — <strong>[specific proof point]</strong>.</div></div>
+        <div class="sf fade-up"><div class="sf-lbl">Sentence 3 — Pricing Reality</div><div class="sf-txt">Positioned at <strong>[price tier]</strong> — above <strong>[lower competitor]</strong> and below <strong>[premium competitor]</strong> — creating a specific value narrative that must be communicated clearly.</div></div>
+        <div class="sf fade-up"><div class="sf-lbl">Sentence 4 — The Gap</div><div class="sf-txt">Despite this, the brand currently <strong>[appears / is perceived]</strong> like <strong>[the problem]</strong> — meaning a qualified buyer cannot distinguish it from <strong>[the competition]</strong>.</div></div>
+        <div class="sf fade-up"><div class="sf-lbl">Sentence 5 — The Opportunity</div><div class="sf-txt">The core branding opportunity is to <strong>[specific repositioning action]</strong> and own the position no competitor currently holds: <strong>[ownable position]</strong>.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════
+     LAYER 2 — BRAND STRATEGY
+══════════════════════════════════ -->
+<section id="l2">
+  <div class="wrap">
+    <div class="layer-badge teal">Layer 02</div>
+    <h2><em>Brand Strategy</em> Engine</h2>
+    <div class="rule"></div>
+    <p class="lead">Strategy is not a tagline. It is the decision framework that governs every word, image, and experience the brand produces. Build it once. Apply it everywhere.</p>
+
+    <div class="strategy-grid" style="margin-top:3.5rem">
+
+      <!-- Positioning Statement -->
+      <div class="sg-item fade-up">
+        <div class="sg-accent">01</div>
+        <div class="sg-num">ELEMENT 01</div>
+        <div class="sg-title">Brand Positioning Statement</div>
+        <div class="sg-desc">One sentence that answers: who is this for, what does it offer, and why is it the only logical choice? It is not a tagline — it is the internal compass that governs every external decision.</div>
+        <div class="sg-rule">Formula: <strong>[Brand]</strong> is for <strong>[specific audience]</strong> who want <strong>[outcome]</strong> — unlike <strong>[competitor]</strong> who <strong>[limitation]</strong>, we <strong>[differentiator]</strong>.</div>
+      </div>
+
+      <!-- Core Promise -->
+      <div class="sg-item fade-up">
+        <div class="sg-accent">02</div>
+        <div class="sg-num">ELEMENT 02</div>
+        <div class="sg-title">Core Brand Promise</div>
+        <div class="sg-desc">What the brand commits to — every time, at every touchpoint, without exception. Not an aspiration. A commitment that, if broken, damages trust. The promise must be specific enough to be testable.</div>
+        <div class="sg-rule">Rule: If you cannot evaluate whether your brand kept or broke this promise on any given day, it is not specific enough. Rewrite it.</div>
+      </div>
+
+      <!-- Brand Archetype -->
+      <div class="sg-item full fade-up">
+        <div class="sg-num">ELEMENT 03</div>
+        <div class="sg-title">Brand Archetype</div>
+        <div class="sg-desc">The archetype is the personality framework that makes the brand feel like a person — consistent, recognisable, trustworthy. Choose one primary and one secondary. Every competitor who picks the same archetype is a warning: you need to go deeper into what makes this brand's version of the archetype genuinely different.</div>
+        <div class="arch-grid">
+          <div class="arch on"><div class="arch-name">The Caregiver</div><div class="arch-trait">Protective. Empathetic. Reliable. Puts others first.</div><div class="arch-fit">Best for: Healthcare, Education, NGOs, Family brands</div></div>
+          <div class="arch"><div class="arch-name">The Sage</div><div class="arch-trait">Expert. Thoughtful. Credible. Seeks truth.</div><div class="arch-fit">Best for: Consulting, Technology, Research, Academia</div></div>
+          <div class="arch"><div class="arch-name">The Ruler</div><div class="arch-trait">Authoritative. Premium. In control. Sets standards.</div><div class="arch-fit">Best for: Luxury, Finance, Government, Enterprise</div></div>
+          <div class="arch"><div class="arch-name">The Hero</div><div class="arch-trait">Bold. Capable. Transformative. Overcomes challenges.</div><div class="arch-fit">Best for: Fitness, Automotive, Defence, Sports</div></div>
+          <div class="arch"><div class="arch-name">The Creator</div><div class="arch-trait">Innovative. Visionary. Original. Builds something new.</div><div class="arch-fit">Best for: SaaS, Design, Media, Architecture</div></div>
+          <div class="arch"><div class="arch-name">The Explorer</div><div class="arch-trait">Adventurous. Authentic. Free. Seeks new experience.</div><div class="arch-fit">Best for: Travel, D2C, Outdoor, Lifestyle</div></div>
+          <div class="arch"><div class="arch-name">The Everyman</div><div class="arch-trait">Relatable. Warm. Inclusive. Down to earth.</div><div class="arch-fit">Best for: FMCG, Retail, Community brands, Mid-market</div></div>
+          <div class="arch"><div class="arch-name">The Magician</div><div class="arch-trait">Transformative. Inspiring. Makes the impossible happen.</div><div class="arch-fit">Best for: AI, Wellness, Pharma, Premium consumer</div></div>
+        </div>
+      </div>
+
+      <!-- Differentiation -->
+      <div class="sg-item fade-up">
+        <div class="sg-accent">04</div>
+        <div class="sg-num">ELEMENT 04</div>
+        <div class="sg-title">Differentiation Strategy</div>
+        <div class="sg-desc">The single most important strategic decision. What makes this brand the only logical choice for its specific audience — not a better choice, but the only one. Generic differentiators (quality, service, value) are not differentiators. They are table stakes.</div>
+        <div class="sg-rule">Test: If a competitor could say the same thing without lying, it is not a differentiator. Find what only <strong>this brand</strong> can own — and own it loudly.</div>
+      </div>
+
+      <!-- Personality -->
+      <div class="sg-item fade-up">
+        <div class="sg-acc"></div>
+        <div class="sg-num">ELEMENT 05</div>
+        <div class="sg-title">Brand Personality</div>
+        <div class="sg-desc">3–5 traits that define how the brand speaks, acts, and shows up — consistently, across every channel and every team member. Traits must be specific enough to exclude their opposites. "Professional" excludes nothing. "Direct without being cold" excludes a lot.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem">
+          <span class="tag">Calm under pressure</span><span class="tag">Specific over vague</span><span class="tag">Empathetic not sentimental</span><span class="tag">Authoritative not cold</span><span class="tag">Accessible not casual</span>
+        </div>
+      </div>
+
+      <!-- Messaging Pillars -->
+      <div class="sg-item full fade-up">
+        <div class="sg-num">ELEMENT 06</div>
+        <div class="sg-title">Messaging Pillars</div>
+        <div class="sg-desc">3–5 themes that anchor all brand communication. Pillars are not topics — they are the recurring beliefs the brand builds over time. Every piece of content should be traceable back to one pillar. If it cannot be, it should not be published.</div>
+        <div class="pillar-strip">
+          <div class="pillar-item"><div class="pi-num">P1</div><div><div class="pi-title">What We Stand For</div><div class="pi-desc">The core belief that drives every decision. Not what the brand sells — what it believes about the world and the people it serves. This pillar earns trust before a product is ever considered.</div></div></div>
+          <div class="pillar-item"><div class="pi-num">P2</div><div><div class="pi-title">What We Know</div><div class="pi-desc">The expertise and depth that no generalist competitor can match. This pillar demonstrates credibility through specificity — data, insights, outcomes, named expertise.</div></div></div>
+          <div class="pillar-item"><div class="pi-num">P3</div><div><div class="pi-title">Who We Serve</div><div class="pi-desc">The audience, named and described with precision. This pillar makes the audience feel seen — not marketed to. When people see themselves in a brand's communication, they stop scrolling.</div></div></div>
+          <div class="pillar-item"><div class="pi-num">P4</div><div><div class="pi-title">What We Deliver</div><div class="pi-desc">Specific outcomes, not vague promises. Patient recovery rates. Client ROI. Project delivery timelines. This pillar builds proof — converting belief into decision.</div></div></div>
+          <div class="pillar-item"><div class="pi-num">P5</div><div><div class="pi-title">What Sets Us Apart</div><div class="pi-desc">The differentiation pillar. Where competitors overlap, this brand diverges. Named, specific, defensible. This pillar is the reason a buyer chooses this brand when all other variables appear equal.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════
+     LAYER 3 — COMMUNICATION SYSTEM
+══════════════════════════════════ -->
+<section id="l3">
+  <div class="wrap">
+    <div class="layer-badge red">Layer 03</div>
+    <h2>Communication <em>System</em></h2>
+    <div class="rule"></div>
+    <p class="lead">Strategy is invisible until it becomes language. This layer translates the brand strategy into every word, across every channel. One brand. One voice. Zero inconsistency.</p>
+
+    <div class="comm-tabs" style="margin-top:3rem">
+      <div class="comm-tab on" onclick="switchComm('website',this)">Website Messaging</div>
+      <div class="comm-tab" onclick="switchComm('social',this)">Social Media</div>
+      <div class="comm-tab" onclick="switchComm('ads',this)">Ad Messaging</div>
+      <div class="comm-tab" onclick="switchComm('tone',this)">Tone of Voice</div>
+      <div class="comm-tab" onclick="switchComm('internal',this)">Internal Comms</div>
+    </div>
+
+    <!-- WEBSITE -->
+    <div class="comm-panel on" id="comm-website">
+      <p class="lead" style="margin-bottom:2rem">Every page on the website has one job. If it cannot be stated in one sentence, the page needs to be rewritten. These are the three pages every brand must get right before anything else.</p>
+      <div class="web-sections">
+        <div class="web-sec fade-up">
+          <div class="ws-tag">Section 01 — Hero / Homepage</div>
+          <h3 class="ws-title">The 10-Second Test</h3>
+          <p class="ws-purpose">A stranger must understand — within 10 seconds — exactly what this brand does, who it is for, and why it is different. If they cannot, the hero section has failed, regardless of how it looks.</p>
+          <div class="ws-formula">
+            <div class="wf-row"><span class="wf-key">Headline</span><span class="wf-val">One sentence. Names the <em>audience, outcome,</em> or <em>differentiator</em>. Not a slogan. A statement of fact.</span></div>
+            <div class="wf-row"><span class="wf-key">Subtext</span><span class="wf-val">2–3 sentences that expand the headline. What the brand does, for whom, and why it matters. Specific nouns. No abstract claims.</span></div>
+            <div class="wf-row"><span class="wf-key">Primary CTA</span><span class="wf-val">Action-first. <em>"Book a Consultation"</em> not <em>"Learn More."</em> Names the next step, not a vague direction.</span></div>
+            <div class="wf-row"><span class="wf-key">Trust Signal</span><span class="wf-val">One credibility anchor above the fold: accreditation, years of operation, client count, or a specific proof point. Not a logo wall — one specific fact.</span></div>
+          </div>
+        </div>
+        <div class="web-sec fade-up">
+          <div class="ws-tag">Section 02 — About</div>
+          <h3 class="ws-title">Why This Brand Exists</h3>
+          <p class="ws-purpose">The About section is not a company history. It is the brand's belief statement — why it was built, what it stands against, and what it is committed to. Told as a story, not a timeline.</p>
+          <div class="ws-formula">
+            <div class="wf-row"><span class="wf-key">Opening</span><span class="wf-val">The problem that existed before this brand. What the market was getting wrong. Written from the audience's perspective, not the founder's ego.</span></div>
+            <div class="wf-row"><span class="wf-key">The Belief</span><span class="wf-val">What this brand believes should be true for its audience. The founding conviction. One sentence, sharp and specific.</span></div>
+            <div class="wf-row"><span class="wf-key">The Proof</span><span class="wf-val">How long, how many, what results. Track record in plain language — numbers that mean something to the reader, not the brand.</span></div>
+            <div class="wf-row"><span class="wf-key">The People</span><span class="wf-val">Named faces. Not "our team of experts" — specific people with specific roles and specific credentials. Humans build trust. Anonymity destroys it.</span></div>
+          </div>
+        </div>
+        <div class="web-sec fade-up">
+          <div class="ws-tag">Section 03 — Services / Offerings</div>
+          <h3 class="ws-title">Clarity Over Cleverness</h3>
+          <p class="ws-purpose">Each service page answers one question: what problem does this solve and what happens next? Jargon is the enemy of conversion. A buyer who does not understand an offering will not buy it.</p>
+          <div class="ws-formula">
+            <div class="wf-row"><span class="wf-key">Problem First</span><span class="wf-val">Lead with the condition, challenge, or need — in the words the audience uses to describe it. Not the solution name.</span></div>
+            <div class="wf-row"><span class="wf-key">What Happens</span><span class="wf-val">The process in 3–5 steps. Specific enough to reduce fear, simple enough to be read in 30 seconds.</span></div>
+            <div class="wf-row"><span class="wf-key">The Outcome</span><span class="wf-val">What the audience walks away with. Specific result, not a promise. "Average recovery: 6 days." Not "faster recovery."</span></div>
+            <div class="wf-row"><span class="wf-key">Next Step</span><span class="wf-val">One action. Book, Call, Download, Apply. Not a contact form buried at the bottom of the page.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="comm-panel" id="comm-social">
+      <p class="lead" style="margin-bottom:2rem">Social media content that does not connect to a messaging pillar is noise. These five content themes ensure every post builds the brand — not just fills the calendar.</p>
+      <div class="social-grid">
+        <div class="soc-item fade-up"><div class="soc-num">THEME 01</div><div class="soc-name">The Expert Voice</div><div class="soc-desc">Specialist-authored content that answers one specific question your audience is already asking. Not brand promotion — genuine knowledge transfer. Published under a named person's authority, not the brand account alone.</div><div class="soc-why">Why it works: People follow people before they follow brands. Expertise builds trust before a sale is ever contemplated.</div></div>
+        <div class="soc-item fade-up"><div class="soc-num">THEME 02</div><div class="soc-name">The Real Story</div><div class="soc-desc">Client or customer journeys — specific, named (with permission), and outcome-focused. Not a testimonial. A narrative: the problem they had, what happened, and what changed. Details make it believable. Vagueness makes it forgettable.</div><div class="soc-why">Why it works: Proof is more persuasive than any claim. A specific story is more credible than the best-written case study.</div></div>
+        <div class="soc-item fade-up"><div class="soc-num">THEME 03</div><div class="soc-name">The Informed Audience</div><div class="soc-desc">Educational content that makes the audience smarter about their own situation — before they need to buy. How to evaluate a competitor. What questions to ask before committing. What the industry gets wrong. This content earns loyalty before the conversation begins.</div><div class="soc-why">Why it works: Brands that educate before they sell are trusted. Brands that only sell are tuned out.</div></div>
+        <div class="soc-item fade-up"><div class="soc-num">THEME 04</div><div class="soc-name">Behind the Brand</div><div class="soc-desc">The people, the process, and the principles that make this brand different. Not polished PR — authentic glimpses of how the work is actually done. Staff spotlights. Process walkthroughs. Decision-making moments. The human texture of the organisation.</div><div class="soc-why">Why it works: Transparency builds familiarity. Familiarity builds trust. Trust converts.</div></div>
+        <div class="soc-item fade-up"><div class="soc-num">THEME 05</div><div class="soc-name">The Strong Opinion</div><div class="soc-desc">A clear, argued point of view on something the industry debates, avoids, or gets wrong. Not controversy for attention — genuine conviction backed by reasoning. Brands that stand for something attract the right audience and repel the wrong one. Both outcomes are valuable.</div><div class="soc-why">Why it works: Neutrality is forgettable. A brand with a point of view earns followers who actively agree — and that is the foundation of community.</div></div>
+        <div class="soc-item fade-up"><div class="soc-num">THEME 06</div><div class="soc-name">The Proof Post</div><div class="soc-desc">Numbers, milestones, certifications, and results — communicated in language that means something to the audience, not the brand. "1,200 patients served this quarter" means more than "we're proud of our growth." Specificity converts browsers into believers.</div><div class="soc-why">Why it works: In markets with high trust deficits, proof is the only currency that matters. Every number is a reason to believe.</div></div>
+      </div>
+    </div>
+
+    <!-- ADS -->
+    <div class="comm-panel" id="comm-ads">
+      <p class="lead" style="margin-bottom:2rem">An ad has one job: interrupt the current behaviour of the right person and give them a reason to stop. Hook lines are the entire battle. If the first line fails, everything else is unread.</p>
+      <div class="ad-grid">
+        <div class="ad-item fade-up"><div class="ad-num">01</div><div class="ad-type">Proximity Hook</div><div class="ad-hook">"You don't need to drive to the city for specialist care."</div><div class="ad-why">Targets geography-based convenience. Works when the brand has a location advantage the audience hasn't considered. Names the friction point before naming the solution.</div></div>
+        <div class="ad-item fade-up"><div class="ad-num">02</div><div class="ad-type">Trust Contrast Hook</div><div class="ad-hook">"The difference between a listed hospital and one that follows up."</div><div class="ad-why">Positions against category norms without naming competitors. Creates immediate curiosity and implies the brand is on the better side of the distinction.</div></div>
+        <div class="ad-item fade-up"><div class="ad-num">03</div><div class="ad-type">Fear-Relief Hook</div><div class="ad-hook">"Most people wait too long. Here's what early looks like."</div><div class="ad-why">Addresses the audience's most common mistake. Positions the brand as the authority that prevents regret. Earns attention through relevance, not alarm.</div></div>
+        <div class="ad-item fade-up"><div class="ad-num">04</div><div class="ad-type">Credential Hook</div><div class="ad-hook">"NABH accredited. The same standard. A fraction of the wait."</div><div class="ad-why">Leads with a verifiable trust signal and contrasts it against a known pain point. Combines credibility with convenience — a high-conversion combination.</div></div>
+        <div class="ad-item fade-up"><div class="ad-num">05</div><div class="ad-type">Specificity Hook</div><div class="ad-hook">"Dr. Karthik has performed 200+ robotic surgeries. He sees patients on Tuesdays."</div><div class="ad-why">Named expert + specific number + accessible scheduling. Three trust signals in one sentence. Specificity is the enemy of scepticism.</div></div>
+        <div class="ad-item fade-up"><div class="ad-num">06</div><div class="ad-type">Heritage Hook</div><div class="ad-hook">"The institution that educated your family. Now taking care of their health."</div><div class="ad-why">For brands with institutional legacy, this hook transfers existing trust from a known entity to a new service. Avoids building credibility from zero.</div></div>
+      </div>
+
+      <div style="margin-top:3rem">
+        <div class="eyebrow">Value Propositions</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--cream);margin-bottom:1.5rem">What the <em>customer gets,</em> not what the brand offers</h3>
+        <div class="vp-strip">
+          <div class="vp"><div class="vp-icon">01</div><div class="vp-text"><strong>Specialist access without the large-chain trade-off</strong>You see a named specialist who knows your case — not whoever is available. The clinical depth of a major hospital. The attention of a smaller one.</div></div>
+          <div class="vp"><div class="vp-icon">02</div><div class="vp-text"><strong>Your family stays informed at every stage</strong>No anxious waiting with no information. From diagnosis to discharge, every family member receives a clear update. You are never left guessing.</div></div>
+          <div class="vp"><div class="vp-icon">03</div><div class="vp-text"><strong>Care that continues after you leave</strong>A follow-up call. A review reminder. A doctor you can reach. Most hospitals consider their job done at billing. This brand's relationship with you starts there.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TONE -->
+    <div class="comm-panel" id="comm-tone">
+      <p class="lead" style="margin-bottom:2rem">Tone of voice is the personality of the brand in language. It must be specific enough to create consistency and flexible enough to work across contexts. These are not rules — they are guardrails.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;margin-bottom:3rem">
+        <div class="card card-gold fade-up"><div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:var(--gold2);margin-bottom:.7rem">VOICE TRAIT 01</div><h3>Specific</h3><p style="font-size:.8rem;color:var(--muted);line-height:1.7;margin-top:.4rem">Name things precisely. "14 years of cardiac surgery" not "decades of experience." Numbers, names, and outcomes — not adjectives.</p></div>
+        <div class="card card-teal fade-up"><div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:var(--teal2);margin-bottom:.7rem">VOICE TRAIT 02</div><h3>Direct</h3><p style="font-size:.8rem;color:var(--muted);line-height:1.7;margin-top:.4rem">Say what needs to be said in the fewest words. No filler phrases. No hedging. "We follow up after every procedure" — not "we are committed to ongoing patient engagement."</p></div>
+        <div class="card card-red fade-up"><div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;color:#E06050;margin-bottom:.7rem">VOICE TRAIT 03</div><h3>Human</h3><p style="font-size:.8rem;color:var(--muted);line-height:1.7;margin-top:.4rem">Write the way a knowledgeable, caring person speaks — not a corporate communications team. Read every sentence out loud. If it sounds unnatural when spoken, rewrite it.</p></div>
+      </div>
+      <div class="tone-grid">
+        <div class="tone-say">
+          <div class="tone-col-head">Say This</div>
+          <div class="tone-item">"Dr. Ramesh has treated 400+ cardiac patients. He is here every Tuesday."</div>
+          <div class="tone-item">"We call every patient on Day 3 after discharge. Every time."</div>
+          <div class="tone-item">"NABH accreditation means your surgery room meets global hygiene standards. Not a badge — a daily protocol."</div>
+          <div class="tone-item">"Your family can reach us at any hour. Not a call centre — the ward nurse on duty."</div>
+          <div class="tone-item">"We explained everything before the procedure. We'll explain everything after."</div>
+        </div>
+        <div class="tone-avoid">
+          <div class="tone-col-head">Never Say This</div>
+          <div class="tone-item">"Our highly qualified team of experts is dedicated to your wellbeing."</div>
+          <div class="tone-item">"We are committed to delivering world-class healthcare solutions."</div>
+          <div class="tone-item">"State-of-the-art technology combined with compassionate care."</div>
+          <div class="tone-item">"Patient satisfaction is at the core of everything we do."</div>
+          <div class="tone-item">"We pride ourselves on our comprehensive approach to health and wellness."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERNAL -->
+    <div class="comm-panel" id="comm-internal">
+      <p class="lead" style="margin-bottom:2rem">The brand promise breaks or holds at the human level. How leadership speaks sets the culture. How staff speak to patients, clients, and partners is the brand in action — not a poster on the wall.</p>
+      <div class="int-grid">
+        <div class="int-card fade-up">
+          <div class="int-tag">Leadership Communication</div>
+          <div class="int-rule"><strong>Speak in outcomes, not slogans</strong>In every internal meeting, reference patients, clients, or customers by name or specific situation — not as abstractions. "The family in Ward 4 needs an update" not "we must prioritise patient satisfaction."</div>
+          <div class="int-rule"><strong>Name the standard, don't assume it</strong>When the brand commits to follow-up calls, define the exact protocol: who makes the call, by when, what they say, how it is logged. Aspirations without systems produce inconsistency.</div>
+          <div class="int-rule"><strong>Celebrate the brand promise kept</strong>Share examples — in team meetings, in internal communications — of moments where a team member exemplified the brand. Culture is built through the stories leadership chooses to tell repeatedly.</div>
+          <div class="int-rule"><strong>Acknowledge when the promise was broken</strong>If a patient was left without information, if a delivery was missed, if a follow-up didn't happen — name it, understand why, and build the system that prevents recurrence. Brands that ignore internal failures build external credibility on unstable ground.</div>
+        </div>
+        <div class="int-card fade-up">
+          <div class="int-tag">Staff-to-Customer Communication</div>
+          <div class="int-rule"><strong>Address by name from first contact</strong>Every customer, client, or patient is greeted and referred to by name from the moment they register — not by room number, case type, or account number. This single habit changes the entire experience.</div>
+          <div class="int-rule"><strong>Never leave a question unanswered</strong>If a staff member does not know the answer: "I don't know right now, but I will find out and come back to you within 15 minutes." Then follow through. Silence is the fastest trust destroyer in high-stakes environments.</div>
+          <div class="int-rule"><strong>Close every interaction with a next step</strong>Every conversation ends with clarity: what happens next, when it happens, and who is responsible. The customer should never have to ask "what now?" If they do, the interaction is incomplete.</div>
+          <div class="int-rule"><strong>Match external brand language</strong>Staff who speak formally when the brand is warm, or casually when the brand is authoritative, create friction. Brand voice training is not optional — it is the brand's quality control system.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════
+     LAYER 4 — CONTENT ENGINE
+══════════════════════════════════ -->
+<section id="l4">
+  <div class="wrap">
+    <div class="layer-badge purple">Layer 04</div>
+    <h2>Content <em>Engine</em></h2>
+    <div class="rule"></div>
+    <p class="lead">Content is strategy made visible. Every piece of content should be traceable to a messaging pillar, written in the brand voice, and built for the specific platform it will live on. Volume without strategy is noise.</p>
+
+    <div class="content-tabs" style="margin-top:3rem">
+      <div class="ct-tab on" onclick="switchContent('linkedin',this)">LinkedIn</div>
+      <div class="ct-tab" onclick="switchContent('instagram',this)">Instagram</div>
+      <div class="ct-tab" onclick="switchContent('video',this)">Video Script</div>
+      <div class="ct-tab" onclick="switchContent('website',this)">Website Content</div>
+      <div class="ct-tab" onclick="switchContent('calendar',this)">Content Calendar</div>
+    </div>
+
+    <!-- LINKEDIN -->
+    <div class="ct-panel on" id="ct-linkedin">
+      <div class="plat-header"><div class="plat-icon">in</div><div><div class="plat-name">LinkedIn</div><div class="plat-sub">Authority-building platform. B2B leads, corporate relationships, thought leadership, and talent acquisition.</div></div></div>
+      <div class="content-anatomy">
+        <div class="ca-parts">
+          <div class="ca-part on"><div class="cap-label">Hook</div><div class="cap-desc">First 1–2 lines. Must interrupt the scroll. A question, a counterintuitive fact, or a bold claim. If the hook fails, the rest is unread.</div></div>
+          <div class="ca-part"><div class="cap-label">Problem</div><div class="cap-desc">Name the specific situation your audience faces. Make them feel understood before you offer anything. 2–3 lines.</div></div>
+          <div class="ca-part"><div class="cap-label">Insight</div><div class="cap-desc">The one thing worth knowing. Your expertise applied to their problem. Specific, not generic. This is where authority is built.</div></div>
+          <div class="ca-part"><div class="cap-label">Story / Proof</div><div class="cap-desc">A real example, data point, or client situation (anonymised if needed) that makes the insight real. Specificity converts abstract to believable.</div></div>
+          <div class="ca-part"><div class="cap-label">CTA</div><div class="cap-desc">One clear next step. Specific: "Book a consultation," "Download the guide," "Reply with your situation." Never: "Feel free to reach out."</div></div>
+          <div class="ca-part"><div class="cap-label">Hashtags</div><div class="cap-desc">3–5 relevant hashtags. Not generic (#business #success). Specific to the industry, audience, and content type.</div></div>
+        </div>
+        <div>
+          <div class="content-preview">
+            <div class="cp-platform">LinkedIn · Authority Post · Healthcare Example</div>
+            <div class="cp-content">
+              <span class="hook">Most cardiac events don't announce themselves with drama.</span>
+              <span class="body-text">They begin quietly. A tightness after climbing stairs. Fatigue that wasn't there six months ago. Breathlessness that comes and goes.</span>
+              <span class="body-text">By the time it becomes an emergency, it has often been a conversation that was postponed too many times.</span>
+              <span class="body-text">Dr. Arun Krishnamurthy, Interventional Cardiologist, sees 3–4 patients every week who came in "just to check" — and left with a diagnosis that changed the trajectory of their next decade.</span>
+              <span class="body-text">The difference between a managed condition and a medical emergency is often a single appointment that was treated as optional.</span>
+              <div class="cp-line"></div>
+              <span class="body-text">If something in your chest, energy, or breath feels different from a year ago — it probably is.</span>
+              <span class="cta-line">→ Book a cardiac screening. Link in bio. Takes 48 hours to change what the next 20 years look like.</span>
+              <span class="hashtags">#HeartHealth #CardiacCare #PreventiveMedicine #Chennai #SRMGlobalHospitals</span>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem">
+            <div class="format-grid">
+              <div class="fmt"><div class="fmt-type">Format 01</div><div class="fmt-name">Doctor Insight Post</div><div class="fmt-desc">Specialist-authored. One clinical insight in plain language. Named doctor, specific condition, actionable takeaway.</div><div class="fmt-freq">Frequency: 1× per week</div></div>
+              <div class="fmt"><div class="fmt-type">Format 02</div><div class="fmt-name">Corporate Health Post</div><div class="fmt-desc">Targeted at HR/Admin leaders. Workforce health data, corporate wellness ROI, employee risk factors. Ends with a partnership CTA.</div><div class="fmt-freq">Frequency: 2× per month</div></div>
+              <div class="fmt"><div class="fmt-type">Format 03</div><div class="fmt-name">Proof Post</div><div class="fmt-desc">Real outcomes with specific numbers. Patient recovery timelines, procedure success rates, milestone counts. No vague claims.</div><div class="fmt-freq">Frequency: 2× per month</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSTAGRAM -->
+    <div class="ct-panel" id="ct-instagram">
+      <div class="plat-header"><div class="plat-icon">ig</div><div><div class="plat-name">Instagram</div><div class="plat-sub">Visual trust-building. Community engagement, brand warmth, preventive health awareness, and local audience reach.</div></div></div>
+      <div class="content-anatomy">
+        <div class="ca-parts">
+          <div class="ca-part on"><div class="cap-label">Visual Hook</div><div class="cap-desc">The image or video must earn the stop before any text is read. Authentic over polished — real faces, real spaces, real moments.</div></div>
+          <div class="ca-part"><div class="cap-label">Caption Opening</div><div class="cap-desc">First line must stand alone — this is what shows in the feed before "more" is tapped. A question, a short fact, or a bold statement. Under 125 characters.</div></div>
+          <div class="ca-part"><div class="cap-label">Body</div><div class="cap-desc">3–5 short paragraphs. Warm, human, conversational. Break lines generously. Long paragraphs are abandoned on mobile.</div></div>
+          <div class="ca-part"><div class="cap-label">CTA</div><div class="cap-desc">Soft and specific. "Save this for later." "Tag someone who needs to read this." "Book via link in bio." Never a hard sell.</div></div>
+          <div class="ca-part"><div class="cap-label">Hashtags</div><div class="cap-desc">5–10 hashtags. Mix of broad (#Chennai), niche (#HeartHealthChennai), and branded (#SRMGlobalHospitals). Place at end or in first comment.</div></div>
+        </div>
+        <div>
+          <div class="content-preview">
+            <div class="cp-platform">Instagram · Carousel · Health Education Example</div>
+            <div class="cp-content">
+              <span class="hook">Your blood pressure reading has a story. Most people only hear half of it.</span>
+              <span class="body-text">Slide 1: The number your doctor reads is two numbers. Both matter differently. Here's what each one is actually telling you about your heart.</span>
+              <span class="body-text">Slide 2: Systolic (top number) — the pressure when your heart beats. Diastolic (bottom number) — the pressure between beats. Normal: below 120/80.</span>
+              <span class="body-text">Slide 3: The reading that worries most doctors isn't the high one — it's the one that's been "borderline" for three years and nobody has addressed.</span>
+              <span class="body-text">Slide 4: One check every six months. That is all it takes to catch the conversation before it becomes the emergency.</span>
+              <div class="cp-line"></div>
+              <span class="cta-line">→ Save this. Share it with the person in your family who skips doctor appointments.</span>
+              <span class="hashtags">#BloodPressure #HeartHealth #KnowYourNumbers #Chennai #SRMGlobal #PreventiveCare</span>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem">
+            <div class="format-grid">
+              <div class="fmt"><div class="fmt-type">Format 01</div><div class="fmt-name">Health Education Carousel</div><div class="fmt-desc">5–8 slides teaching one health concept clearly. Saveable. Shareable. Positions brand as a health partner, not a service vendor.</div><div class="fmt-freq">Frequency: 2× per week</div></div>
+              <div class="fmt"><div class="fmt-type">Format 02</div><div class="fmt-name">Doctor Reel</div><div class="fmt-desc">60-second face-to-camera. Doctor addresses one common myth or fear in their specialty. Human, calm, reassuring.</div><div class="fmt-freq">Frequency: 1× per week</div></div>
+              <div class="fmt"><div class="fmt-type">Format 03</div><div class="fmt-name">Behind the Care</div><div class="fmt-desc">Staff spotlight, ward moment (with privacy), or a glimpse of the facility. Humanises the institution. No stock imagery.</div><div class="fmt-freq">Frequency: 1× per week</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="ct-panel" id="ct-video">
+      <div class="plat-header"><div class="plat-icon">▶</div><div><div class="plat-name">Video Script Framework</div><div class="plat-sub">YouTube, Instagram Reels, LinkedIn video, website explainer. One structure — adapted for duration and platform.</div></div></div>
+      <div class="g2">
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--cream);margin-bottom:1rem">The 90-Second Authority Video</h3>
+          <p style="font-size:.82rem;color:var(--muted);line-height:1.75;margin-bottom:1.5rem">For LinkedIn, YouTube, and website homepage. Builds credibility through a named expert addressing one specific problem with clarity and conviction.</p>
+          <div class="script-flow">
+            <div class="script-block"><div class="sb-time">0:00–0:08</div><div><div class="sb-seg">The Hook</div><div class="sb-desc">One sentence that names the problem the audience already has. On-camera. No intro, no logo, no music. The first word earns the next 82 seconds.</div></div></div>
+            <div class="script-block"><div class="sb-time">0:08–0:20</div><div><div class="sb-seg">Why It Matters</div><div class="sb-desc">The real consequence of ignoring this problem. Specific — not "it could be serious" but "most people who experience this wait an average of 14 months before seeking help."</div></div></div>
+            <div class="script-block"><div class="sb-time">0:20–0:55</div><div><div class="sb-seg">The Expert Insight</div><div class="sb-desc">The one thing worth knowing. The specialist's point of view — direct, clear, based on clinical experience. No jargon. References a real pattern they see regularly.</div></div></div>
+            <div class="script-block"><div class="sb-time">0:55–1:15</div><div><div class="sb-seg">The Proof</div><div class="sb-desc">A brief case reference (anonymised): "We had a patient last month who..." — specific detail, specific outcome. Makes the insight concrete and credible.</div></div></div>
+            <div class="script-block"><div class="sb-time">1:15–1:30</div><div><div class="sb-seg">The One Action</div><div class="sb-desc">One specific next step. "If you've had this symptom for more than two weeks, book a consultation this week. Not next month." Specific, urgent, actionable.</div></div></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--cream);margin-bottom:1rem">The 30-Second Reel / Short</h3>
+          <p style="font-size:.82rem;color:var(--muted);line-height:1.75;margin-bottom:1.5rem">For Instagram Reels and YouTube Shorts. One idea. Zero padding. Maximum impact in minimum time.</p>
+          <div class="script-flow">
+            <div class="script-block"><div class="sb-time">0:00–0:03</div><div><div class="sb-seg">Hook Frame</div><div class="sb-desc">The most surprising or counterintuitive statement. On screen as text AND spoken. "The most common heart attack symptom isn't chest pain."</div></div></div>
+            <div class="script-block"><div class="sb-time">0:03–0:15</div><div><div class="sb-seg">The One Truth</div><div class="sb-desc">Deliver the single insight. No preamble. Direct. The audience should feel they've learned something in 12 seconds.</div></div></div>
+            <div class="script-block"><div class="sb-time">0:15–0:25</div><div><div class="sb-seg">The Why It Matters</div><div class="sb-desc">One sentence on the consequence of not knowing this. Makes the insight stick.</div></div></div>
+            <div class="script-block"><div class="sb-time">0:25–0:30</div><div><div class="sb-seg">The Save Prompt</div><div class="sb-desc">"Save this. You'll want to share it." Not a sales CTA — a shareability prompt. These posts spread when they're saved and sent.</div></div></div>
+          </div>
+          <div class="quote-block" style="margin-top:1.5rem">
+            <p>"The best healthcare video a brand can produce is one where the audience shares it with someone they love."</p>
+            <cite>Layer 4 Video Principle</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WEBSITE CONTENT -->
+    <div class="ct-panel" id="ct-website">
+      <div class="plat-header"><div class="plat-icon">W</div><div><div class="plat-name">Website Content</div><div class="plat-sub">The highest-intent destination. Every visitor is one decision away from becoming a customer. Copy must convert, not just communicate.</div></div></div>
+      <div class="format-grid" style="margin-top:0">
+        <div class="fmt"><div class="fmt-type">Content Block 01</div><div class="fmt-name">The Proof Section</div><div class="fmt-desc">Real numbers, real credentials, real names. Accreditation explained in one sentence each. Not a logo wall — annotated trust signals that answer "what does this mean for me?"</div><div class="fmt-freq">Location: Above fold or immediately below hero</div></div>
+        <div class="fmt"><div class="fmt-type">Content Block 02</div><div class="fmt-name">Doctor Profiles</div><div class="fmt-desc">Professional photo. Plain-language bio. Years of experience + number of procedures. One quote from the doctor — not a tagline, a genuine belief. CTA: "Book with [Name]"</div><div class="fmt-freq">Location: Dedicated team page + service pages</div></div>
+        <div class="fmt"><div class="fmt-type">Content Block 03</div><div class="fmt-name">Patient Journey Stories</div><div class="fmt-desc">3–5 sentence narrative. Condition → visit → what happened → outcome. Specific details. With photograph where possible and permitted. Reads like a story, not a review.</div><div class="fmt-freq">Location: Homepage, service pages, About page</div></div>
+        <div class="fmt"><div class="fmt-type">Content Block 04</div><div class="fmt-name">FAQ / Fear Removal</div><div class="fmt-desc">Addresses the top 5 things patients are afraid to ask. Written as direct questions, answered in plain language. "What happens if I can't afford the full cost?" is a better FAQ than "What are your payment options?"</div><div class="fmt-freq">Location: Service pages + Contact page</div></div>
+        <div class="fmt"><div class="fmt-type">Content Block 05</div><div class="fmt-name">Blog / Health Library</div><div class="fmt-desc">Doctor-authored articles on specific conditions, procedures, and preventive care. Optimised for search. Each article answers one specific question the target audience is already searching for.</div><div class="fmt-freq">Frequency: 2 articles per month minimum</div></div>
+        <div class="fmt"><div class="fmt-type">Content Block 06</div><div class="fmt-name">Emergency & Access Info</div><div class="fmt-desc">Phone number, address, directions, ambulance contact — presented clearly, always one click away, never buried. In a high-stakes category, accessibility information IS the brand promise made tangible.</div><div class="fmt-freq">Location: Header, footer, and dedicated contact page</div></div>
+      </div>
+    </div>
+
+    <!-- CALENDAR -->
+    <div class="ct-panel" id="ct-calendar">
+      <div class="plat-header"><div class="plat-icon">📅</div><div><div class="plat-name">Weekly Content Calendar</div><div class="plat-sub">A sustainable publishing rhythm. Consistency builds brand more reliably than virality. One strong post per day beats three inconsistent posts per week.</div></div></div>
+      <div class="cal-strip">
+        <div class="cal-day has-content"><div class="cd-name">Mon</div><div class="cd-type">Doctor Insight Post</div><div class="cd-platform">LinkedIn</div></div>
+        <div class="cal-day has-content"><div class="cd-name">Tue</div><div class="cd-type">Health Education Carousel</div><div class="cd-platform">Instagram</div></div>
+        <div class="cal-day has-content"><div class="cd-name">Wed</div><div class="cd-type">Behind the Care</div><div class="cd-platform">Instagram + Facebook</div></div>
+        <div class="cal-day has-content"><div class="cd-name">Thu</div><div class="cd-type">Corporate Health Post</div><div class="cd-platform">LinkedIn</div></div>
+        <div class="cal-day has-content"><div class="cd-name">Fri</div><div class="cd-type">Doctor Reel / Short</div><div class="cd-platform">Instagram + YouTube</div></div>
+        <div class="cal-day"><div class="cd-name">Sat</div><div class="cd-type">Community / Local Content</div><div class="cd-platform">Facebook + Instagram</div></div>
+        <div class="cal-day"><div class="cd-name">Sun</div><div class="cd-type">Scheduled Rest or Repurpose</div><div class="cd-platform">Optional</div></div>
+      </div>
+      <div style="margin-top:3rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem">
+        <div class="card card-teal fade-up"><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--teal2);letter-spacing:.18em;margin-bottom:.6rem">CONTENT RULE 01</div><h3>Pillar Before Platform</h3><p style="font-size:.78rem;color:var(--muted);margin-top:.4rem;line-height:1.7">Decide which messaging pillar a piece belongs to before deciding which platform it goes on. Platform is distribution. Pillar is purpose.</p></div>
+        <div class="card card-gold fade-up"><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--gold2);letter-spacing:.18em;margin-bottom:.6rem">CONTENT RULE 02</div><h3>Repurpose Vertically</h3><p style="font-size:.78rem;color:var(--muted);margin-top:.4rem;line-height:1.7">One doctor interview becomes a LinkedIn post, an Instagram carousel, a 60-second Reel, and a blog article. One source of truth. Four distribution formats.</p></div>
+        <div class="card card-red fade-up"><div style="font-family:'JetBrains Mono',monospace;font-size:.58rem;color:#E06050;letter-spacing:.18em;margin-bottom:.6rem">CONTENT RULE 03</div><h3>Measure What Matters</h3><p style="font-size:.78rem;color:var(--muted);margin-top:.4rem;line-height:1.7">Reach is vanity. Saves, shares, DMs, and consultation bookings are signal. Track the metric that maps to the business goal — not the one that feels good in a report.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════
+     LAYER 5 — BRAND AUDIT
+══════════════════════════════════ -->
+<section id="l5">
+  <div class="wrap">
+    <div class="layer-badge green">Layer 05</div>
+    <h2>Brand <em>Audit</em> Framework</h2>
+    <div class="rule"></div>
+
+    <div class="audit-intro">
+      <div>
+        <p class="lead">A brand audit is not a creative review. It is a diagnostic. The question is not "does this look good?" — it is "does this do what it needs to do for the business?" Four dimensions. Evaluated without sentiment.</p>
+        <div class="quote-block" style="margin-top:2rem">
+          <p>"Do not soften the audit. Brands improve when problems are named clearly, not when they are managed diplomatically."</p>
+          <cite>Layer 5 Principle</cite>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:1rem">What to Audit</h3>
+        <div style="display:flex;flex-direction:column;gap:.4rem">
+          <div class="tag" style="display:block;padding:.5rem .8rem">Website — Homepage, About, Service pages, Contact</div>
+          <div class="tag" style="display:block;padding:.5rem .8rem">Social Media — Last 30 posts across all active platforms</div>
+          <div class="tag" style="display:block;padding:.5rem .8rem">Ad Creative — Last 3 active campaigns or last 6 months</div>
+          <div class="tag" style="display:block;padding:.5rem .8rem">Physical — Signage, brochures, letterheads, office space</div>
+          <div class="tag" style="display:block;padding:.5rem .8rem">Human — Front desk, call handling, email language</div>
+          <div class="tag" style="display:block;padding:.5rem .8rem">Third-party — Google profile, Practo, JustDial, reviews</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 dimensions -->
+    <div class="audit-dimensions">
+      <div class="adim d1 fade-up"><div class="adim-icon">🔍</div><div class="adim-name">Clarity</div><div class="adim-q">"Does a stranger understand what this brand does in 10 seconds?"</div><div class="adim-test">Test: Show homepage to someone unfamiliar for 10 seconds. Ask: what does this company do? Who is it for? If they cannot answer — clarity has failed.</div></div>
+      <div class="adim d2 fade-up"><div class="adim-icon">🔗</div><div class="adim-name">Consistency</div><div class="adim-q">"Does it sound and feel like the same brand everywhere?"</div><div class="adim-test">Test: Read a tweet, an ad, a brochure, and a staff email back-to-back. Do they share a voice? If they sound like four different companies, consistency has failed.</div></div>
+      <div class="adim d3 fade-up"><div class="adim-icon">⬡</div><div class="adim-name">Differentiation</div><div class="adim-q">"Is there a clear reason to choose this brand over competitors?"</div><div class="adim-test">Test: Replace the brand name with a competitor's name. If the content still works — there is no differentiation. The brand must say something only it can say.</div></div>
+      <div class="adim d4 fade-up"><div class="adim-icon">🏛</div><div class="adim-name">Credibility</div><div class="adim-q">"Do trust signals exist — and do they land?"</div><div class="adim-test">Test: List every credential, accreditation, and proof point on the website. Is each one explained in terms of what it means for the audience? If not — credibility is being wasted.</div></div>
+    </div>
+
+    <!-- Scorecard -->
+    <div class="audit-scorecard" style="margin-top:4rem">
+      <div class="eyebrow">Audit Scorecard</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--cream);margin-bottom:2rem">Common Brand Failures — <em>Named and Fixable</em></h3>
+      <div class="asc-header">
+        <div class="asc-col">Issue</div>
+        <div class="asc-col">Clarity</div>
+        <div class="asc-col">Diff.</div>
+        <div class="asc-col">Trust</div>
+      </div>
+      <div class="asc-row"><div class="asc-item"><strong>Generic hero headline</strong>"Compassionate care. Advanced technology." — 50 hospitals say this. Zero differentiation in the first impression.</div><div class="asc-score score-fail">Fail</div><div class="asc-score score-fail">Fail</div><div class="asc-score score-partial">Partial</div></div>
+      <div class="asc-row"><div class="asc-item"><strong>Anonymous doctor profiles</strong>Name, degree, and a stock icon. No photo. No outcomes data. No human voice. The most important trust builder in healthcare — wasted.</div><div class="asc-score score-pass">Pass</div><div class="asc-score score-partial">Partial</div><div class="asc-score score-fail">Fail</div></div>
+      <div class="asc-row"><div class="asc-item"><strong>Accreditations listed without explanation</strong>NABH, NABL in the footer. No explanation of what these mean for patient safety. Credentials treated as checkboxes, not proof points.</div><div class="asc-score score-partial">Partial</div><div class="asc-score score-partial">Partial</div><div class="asc-score score-fail">Fail</div></div>
+      <div class="asc-row"><div class="asc-item"><strong>Inconsistent voice across channels</strong>Website: formal clinical. Instagram: motivational quotes. Facebook: news reposts. These do not sound like the same brand.</div><div class="asc-score score-fail">Fail</div><div class="asc-score score-fail">Fail</div><div class="asc-score score-fail">Fail</div></div>
+      <div class="asc-row"><div class="asc-item"><strong>No differentiated positioning statement</strong>The brand describes what it does. Not why it is the only logical choice. A qualified buyer comparing three options cannot distinguish this brand from the others.</div><div class="asc-score score-partial">Partial</div><div class="asc-score score-fail">Fail</div><div class="asc-score score-partial">Partial</div></div>
+      <div class="asc-row"><div class="asc-item"><strong>Call-to-action vagueness</strong>"Contact us to learn more." — No urgency, no specificity, no next step. The audience's default response to a vague CTA is inaction.</div><div class="asc-score score-fail">Fail</div><div class="asc-score score-partial">Partial</div><div class="asc-score score-partial">Partial</div></div>
+    </div>
+
+    <!-- Fix cards -->
+    <div style="margin-top:3.5rem">
+      <div class="eyebrow">Exact Fixes</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--cream);margin-bottom:.5rem">What Is Not Working. Why. <em>What to Do.</em></h3>
+    </div>
+    <div class="fix-grid">
+      <div class="fix-card fade-up"><div class="fix-severity sev-high">High Priority</div><div class="fix-num">FIX 01</div><div class="fix-problem">The hero section fails the 10-second test</div><div class="fix-label problem">What's wrong</div><div class="fix-why">A first-time visitor cannot identify the brand's specialty, audience, or differentiator within 10 seconds of landing on the homepage. The headline could belong to any hospital in the country.</div><div class="fix-label action">Exact fix</div><div class="fix-action">Rewrite the hero headline to name the top 2 clinical capabilities, the geography, and one trust signal. Example: "Robotic Surgery. NABH-Accredited Cancer Care. Right here in Kattankulathur." Test with 5 people unfamiliar with the brand before publishing.</div></div>
+
+      <div class="fix-card fade-up"><div class="fix-severity sev-high">High Priority</div><div class="fix-num">FIX 02</div><div class="fix-problem">Doctor profiles build no trust</div><div class="fix-label problem">What's wrong</div><div class="fix-why">Current profiles show name and degree only. In healthcare, the doctor IS the product. A patient deciding between hospitals wants to know: who will treat me, what have they done, and can I trust them? None of these questions are answered.</div><div class="fix-label action">Exact fix</div><div class="fix-action">Rebuild every doctor profile with: professional photograph, 2-sentence plain-English biography, years of experience, number of procedures performed, and one direct quote from the doctor about their philosophy of care. Add "Book with [Name]" CTA to each profile.</div></div>
+
+      <div class="fix-card fade-up"><div class="fix-severity sev-high">High Priority</div><div class="fix-num">FIX 03</div><div class="fix-problem">Brand voice has no consistency across channels</div><div class="fix-label problem">What's wrong</div><div class="fix-why">The website, Instagram, Facebook, and printed materials sound like they were produced by four different teams with no shared brief. When a brand sounds different everywhere, audiences assume it is unreliable everywhere.</div><div class="fix-label action">Exact fix</div><div class="fix-action">Create a single one-page Brand Voice Document: 3 words the brand sounds like, 3 it never sounds like, 2 example sentences for each channel, and one real before/after example. Distribute to every person who creates content. No exception.</div></div>
+
+      <div class="fix-card fade-up"><div class="fix-severity sev-med">Medium Priority</div><div class="fix-num">FIX 04</div><div class="fix-problem">NABH / NABL credentials are invisible trust signals</div><div class="fix-label problem">What's wrong</div><div class="fix-why">Both accreditations appear in the footer and in a features list — alongside "free Wi-Fi" and "24/7 ambulance." This gives them equal weight to amenities, completely wasting their trust value.</div><div class="fix-label action">Exact fix</div><div class="fix-action">Create a dedicated "Why Our Accreditation Matters" section. For NABH: "This means your operating room meets the same hygiene standard as any internationally accredited hospital. Not a badge — an audited protocol we maintain every day." Make it visible on every service page, not just the homepage.</div></div>
+
+      <div class="fix-card fade-up"><div class="fix-severity sev-med">Medium Priority</div><div class="fix-num">FIX 05</div><div class="fix-problem">No post-treatment brand presence</div><div class="fix-label problem">What's wrong</div><div class="fix-why">The brand relationship ends at billing. There is no follow-up communication, no discharge guidance content, no review request, no ongoing connection. This is the single most expensive missed opportunity in building patient loyalty and referral.</div><div class="fix-label action">Exact fix</div><div class="fix-action">Build a 3-touch post-discharge sequence: Day 3 follow-up call (check on recovery), Day 14 reminder for review appointment, Month 1 relevant health tip from the treating specialist. This costs almost nothing. It generates testimonials, referrals, and return visits.</div></div>
+
+      <div class="fix-card fade-up"><div class="fix-severity sev-low">Quick Win</div><div class="fix-num">FIX 06</div><div class="fix-problem">Google Business Profile is under-optimised</div><div class="fix-label problem">What's wrong</div><div class="fix-why">For most patients, the Google Business Profile is the first brand impression — before the website. Incomplete profiles, unresponded reviews, and outdated information undermine the brand before a visit is considered.</div><div class="fix-label action">Exact fix</div><div class="fix-action">Complete every field. Add 20+ real facility photos. Respond to every review — positive and negative — within 48 hours. Add the correct speciality categories. Post one Google update per week. This single step improves both trust and local search ranking.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══════════════════════════════════
+     ADVANCED MODULES
+══════════════════════════════════ -->
+<section id="modules">
+  <div class="wrap">
+    <div class="eyebrow">Beyond the 5 Layers</div>
+    <h2>Advanced <em>Modules</em></h2>
+    <div class="rule"></div>
+    <p class="lead">Three specialist modules that activate when the brand needs to go deeper: sector-specific playbooks, full-ecosystem thinking, and competitive intelligence.</p>
+
+    <div class="mod-grid">
+      <div class="mod fade-up"><div class="mod-bg">01</div><div class="mod-tag">Module A</div><div class="mod-title">Industry-Specific Playbooks</div><div class="mod-desc">Each of the 15 sectors has its own trust signals, buyer fears, tone logic, and content strategy. The same 5-layer framework adapts — the outputs change, the structure does not.</div><ul class="mod-list"><li>Sector-specific buyer fear mapping</li><li>Trust signals ranked by conversion impact</li><li>Tone and language rules per industry</li><li>Common branding mistakes to avoid</li><li>Content formats that actually build the brand</li><li>Messaging priority order for each sector</li></ul></div>
+      <div class="mod fade-up"><div class="mod-bg">02</div><div class="mod-tag">Module B</div><div class="mod-title">360° Brand Ecosystem</div><div class="mod-desc">A complete, connected branding system where every element supports every other. Strategy, messaging, digital presence, content, employer brand, and PR narrative — built as one coherent story.</div><ul class="mod-list"><li>Brand strategy → Communication system alignment check</li><li>Digital presence architecture (website + social)</li><li>Content plan with themes, cadence, and formats</li><li>Employer branding narrative and talent messaging</li><li>PR story — how the brand shows up beyond marketing</li><li>Brand system coherence audit across all touchpoints</li></ul></div>
+      <div class="mod fade-up"><div class="mod-bg">03</div><div class="mod-tag">Module C</div><div class="mod-title">Competitor Intelligence</div><div class="mod-desc">What competitors are saying, where they overlap, and — most importantly — what they are not saying. White space is the most valuable real estate in any market. Find it and claim it.</div><ul class="mod-list"><li>Positioning map: who occupies what space</li><li>Messaging overlap analysis — where everyone sounds the same</li><li>White space identification — what no one is saying</li><li>Competitor trust signal audit</li><li>Recommended positioning direction: sharp, defensible, ownable</li><li>First-mover advantage areas by geography and segment</li></ul></div>
+    </div>
+
+    <!-- Industry grid -->
+    <div style="margin-top:4rem">
+      <div class="eyebrow">15 Industry Playbooks</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--cream);margin-bottom:1.5rem">One framework. <em>15 sectors.</em> All built in.</h3>
+    </div>
+    <div class="ind-grid">
+      <div class="ind on" onclick="selInd(this)"><div class="ind-n">01</div><div class="ind-name">Healthcare</div><div class="ind-sub">Hospitals · Clinics</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">02</div><div class="ind-name">Real Estate</div><div class="ind-sub">Residential · Luxury</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">03</div><div class="ind-name">Construction</div><div class="ind-sub">B2B · EPC · Govt</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">04</div><div class="ind-name">B2B Consulting</div><div class="ind-sub">Professional Services</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">05</div><div class="ind-name">Manufacturing</div><div class="ind-sub">Industrial · SME</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">06</div><div class="ind-name">Retail & Consumer</div><div class="ind-sub">FMCG · D2C</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">07</div><div class="ind-name">Technology</div><div class="ind-sub">SaaS · AI · IT</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">08</div><div class="ind-name">Education</div><div class="ind-sub">K-12 · Higher Ed</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">09</div><div class="ind-name">Financial Services</div><div class="ind-sub">Banking · Fintech</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">10</div><div class="ind-name">Hospitality</div><div class="ind-sub">Hotels · Travel</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">11</div><div class="ind-name">Media & Entertainment</div><div class="ind-sub">OTT · News · Creator</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">12</div><div class="ind-name">NGO & Social Impact</div><div class="ind-sub">Non-profit · CSR</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">13</div><div class="ind-name">Personal Branding</div><div class="ind-sub">CXOs · Founders</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">14</div><div class="ind-name">Automotive</div><div class="ind-sub">OEM · EV · Mobility</div></div>
+      <div class="ind" onclick="selInd(this)"><div class="ind-n">15</div><div class="ind-name">E-commerce</div><div class="ind-sub">Marketplace · D2C</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══ CTA ══ -->
+<section id="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-inner wrap">
+    <div class="cta-badge">The Complete System</div>
+    <h2 class="cta-title">5 Layers. 15 Industries.<br>One <em>Brand Objective.</em></h2>
+    <p class="cta-sub">Make the brand easy to understand. Easy to trust. Easy to choose. Every layer serves this — and nothing else.</p>
+    <div class="cta-acts">
+      <a href="#l1" class="btn btn-gold">Start with Layer 1</a>
+      <a href="#modules" class="btn btn-ghost">Explore Modules</a>
+    </div>
+
+    <!-- Final stat row -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border2);border:1px solid var(--border2);max-width:900px;margin:4rem auto 0">
+      <div class="stat-box"><div class="stat-val">5</div><div class="stat-lbl">Strategic Layers</div></div>
+      <div class="stat-box"><div class="stat-val">9</div><div class="stat-lbl">Context Inputs</div></div>
+      <div class="stat-box"><div class="stat-val">15</div><div class="stat-lbl">Industry Playbooks</div></div>
+      <div class="stat-box"><div class="stat-val">4</div><div class="stat-lbl">Audit Dimensions</div></div>
+      <div class="stat-box"><div class="stat-val">3</div><div class="stat-lbl">Advanced Modules</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-brand">Master Brand Blueprint <span>— Complete 5-Layer System</span></div>
+  <div class="ft-note">Layer 1 Context · Layer 2 Strategy · Layer 3 Communication · Layer 4 Content · Layer 5 Audit · 3 Advanced Modules · 15 Industry Playbooks</div>
+</footer>
+
+<script>
+// Scroll fade
+const io = new IntersectionObserver(e => {
+  e.forEach(x => { if(x.isIntersecting){x.target.classList.add('vis');io.unobserve(x.target)} })
+},{threshold:.07,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+// Nav active
+const navAs = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+const secs = document.querySelectorAll('section[id]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur=s.id});
+  navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+},{passive:true});
+
+// Overview strip active
+const ovNodes = document.querySelectorAll('.ov-node');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-80)cur=s.id});
+  ovNodes.forEach(n=>{
+    const href = n.getAttribute('href');
+    n.classList.toggle('on', href && href==='#'+cur);
+  });
+},{passive:true});
+
+// Comm tabs
+function switchComm(id,el){
+  document.querySelectorAll('.comm-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.comm-tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('comm-'+id).classList.add('on');
+  el.classList.add('on');
+}
+
+// Content tabs
+function switchContent(id,el){
+  document.querySelectorAll('.ct-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ct-tab').forEach(t=>t.classList.remove('on'));
+  document.getElementById('ct-'+id).classList.add('on');
+  el.classList.add('on');
+}
+
+// Archetype select
+document.querySelectorAll('.arch').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.querySelectorAll('.arch').forEach(x=>x.classList.remove('on'));
+    a.classList.add('on');
+  });
+});
+
+// Industry select
+function selInd(el){
+  document.querySelectorAll('.ind').forEach(i=>i.classList.remove('on'));
+  el.classList.add('on');
+}
+</script>
+</body>
+</html>

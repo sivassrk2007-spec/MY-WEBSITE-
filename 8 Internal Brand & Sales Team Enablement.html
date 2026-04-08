@@ -1,0 +1,1742 @@
+I'll create a comprehensive Internal Brand & Sales Team Enablement standalone page that matches the parchment-and-gold editorial design aesthetic of your Branding 360° document.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internal Brand & Sales Enablement — Real Estate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0b;
+    --parchment: #f5f0e8;
+    --sand: #e8dfc8;
+    --gold: #b89a5a;
+    --gold-lt: #d4b97a;
+    --rust: #8b4a2a;
+    --sage: #4a5c4e;
+    --steel: #3a4a5c;
+    --cream: #faf7f2;
+    --rule: rgba(184,154,90,0.25);
+    --mono: 'DM Mono', monospace;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 80px 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(184,154,90,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 15% 70%, rgba(74,92,78,0.12) 0%, transparent 55%),
+      linear-gradient(160deg, #0d0d0b 0%, #1a1a14 50%, #0f110d 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(184,154,90,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,154,90,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  .hero-stamp {
+    position: absolute; top: 80px; right: 80px;
+    width: 180px; height: 180px;
+    border: 1px solid rgba(184,154,90,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.6;
+  }
+  .hero-stamp-inner {
+    width: 140px; height: 140px;
+    border: 1px solid rgba(184,154,90,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
+  }
+  .hero-stamp span {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold-lt); opacity: 0.8;
+    display: block;
+  }
+  .hero-stamp strong {
+    font-family: var(--sans); font-size: 22px; font-weight: 800;
+    color: var(--gold); line-height: 1; display: block;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 40px; height: 1px; background: var(--gold);
+  }
+  h1.hero-title {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 96px);
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  h1.hero-title em {
+    font-style: italic;
+    color: var(--gold-lt);
+  }
+  .hero-sub {
+    font-family: var(--mono); font-size: 13px;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.05em;
+    margin-top: 24px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+  .hero-phases {
+    position: absolute; bottom: 80px; right: 80px;
+    display: flex; flex-direction: column; gap: 6px;
+    align-items: flex-end;
+  }
+  .phase-tag {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(184,154,90,0.5);
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .phase-tag:hover { color: var(--gold-lt); }
+  .phase-tag.active { color: var(--gold); }
+
+  /* ─── PHASE DIVIDER ─── */
+  .phase-header {
+    padding: 0 80px;
+    margin-top: 120px;
+    margin-bottom: 64px;
+    display: flex; align-items: flex-end; gap: 40px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 32px;
+  }
+  .phase-num {
+    font-family: var(--mono); font-size: 72px; font-weight: 300;
+    color: var(--sand); line-height: 1;
+    flex-shrink: 0;
+  }
+  .phase-meta { flex: 1; }
+  .phase-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .phase-title {
+    font-family: var(--serif); font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300; color: var(--ink);
+    line-height: 1.1;
+  }
+  .phase-title em { font-style: italic; color: var(--rust); }
+  .phase-desc {
+    font-size: 15px; color: rgba(13,13,11,0.55);
+    max-width: 520px; margin-top: 12px;
+    font-family: var(--mono);
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  /* ─── CONTENT LAYOUT ─── */
+  .content-zone {
+    padding: 0 80px;
+    margin-bottom: 24px;
+  }
+
+  /* ─── FRAMEWORK GRID ─── */
+  .fw-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+  .fw-card {
+    background: var(--parchment);
+    padding: 32px 28px;
+    border: 1px solid var(--rule);
+    position: relative;
+    transition: background 0.25s;
+  }
+  .fw-card:hover { background: var(--sand); }
+  .fw-card-num {
+    font-family: var(--mono); font-size: 10px;
+    color: var(--gold); letter-spacing: 0.15em;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .fw-card h3 {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 10px; color: var(--ink);
+  }
+  .fw-card p {
+    font-family: var(--serif); font-size: 15px;
+    color: rgba(13,13,11,0.65); line-height: 1.6;
+  }
+  .fw-card-accent {
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .fw-card:hover .fw-card-accent { opacity: 1; }
+
+  /* ─── TWO-COL ─── */
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+    align-items: start;
+  }
+  .two-col-wide {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+    align-items: start;
+  }
+
+  /* ─── STRATEGY TABLE ─── */
+  .strat-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 48px;
+  }
+  .strat-table thead tr {
+    background: var(--ink);
+  }
+  .strat-table th {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); padding: 14px 20px;
+    text-align: left; font-weight: 400;
+  }
+  .strat-table td {
+    padding: 14px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .strat-table tr:nth-child(even) td { background: var(--parchment); }
+  .strat-table tr:hover td { background: var(--sand); }
+  .strat-table .cat {
+    font-family: var(--sans); font-size: 12px;
+    font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--rust);
+  }
+
+  /* ─── PILLARS ─── */
+  .pillars {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 0; margin-bottom: 48px;
+    border: 1px solid var(--rule);
+  }
+  .pillar {
+    padding: 40px 24px;
+    border-right: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .pillar:last-child { border-right: none; }
+  .pillar-bg {
+    position: absolute; bottom: -20px; right: -20px;
+    font-size: 100px; line-height: 1;
+    font-family: var(--sans); font-weight: 800;
+    color: rgba(184,154,90,0.05);
+    pointer-events: none;
+    transition: color 0.3s;
+  }
+  .pillar:hover .pillar-bg { color: rgba(184,154,90,0.1); }
+  .pillar-icon {
+    font-size: 28px; margin-bottom: 16px; display: block;
+  }
+  .pillar h4 {
+    font-family: var(--sans); font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .pillar p {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(13,13,11,0.6); line-height: 1.6;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    position: relative; padding-left: 0;
+    margin-bottom: 48px;
+  }
+  .tl-item {
+    display: grid; grid-template-columns: 140px 1fr;
+    gap: 32px; margin-bottom: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .tl-time {
+    padding: 24px 0;
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.1em; color: var(--gold);
+    text-transform: uppercase;
+    display: flex; align-items: flex-start;
+    padding-top: 28px;
+  }
+  .tl-body {
+    padding: 24px 0;
+    border-left: 1px solid var(--rule);
+    padding-left: 32px;
+  }
+  .tl-body h4 {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .tl-body p {
+    font-size: 14px; color: rgba(13,13,11,0.6);
+    line-height: 1.6;
+  }
+  .tl-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+  }
+  .tl-tag {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--sand); color: var(--rust);
+    padding: 3px 10px; border-radius: 2px;
+  }
+
+  /* ─── CALLOUT ─── */
+  .callout {
+    background: var(--ink);
+    padding: 48px 56px;
+    margin-bottom: 48px;
+    position: relative; overflow: hidden;
+  }
+  .callout-glow {
+    position: absolute; top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(184,154,90,0.15) 0%, transparent 70%);
+  }
+  .callout p {
+    font-family: var(--serif); font-size: clamp(20px, 2vw, 28px);
+    font-weight: 300; font-style: italic;
+    color: var(--parchment); line-height: 1.5;
+    position: relative; z-index: 1;
+    max-width: 800px;
+  }
+  .callout-src {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-top: 20px;
+    position: relative; z-index: 1;
+  }
+
+  /* ─── SECTION TITLE ─── */
+  .section-title {
+    font-family: var(--sans); font-size: 11px;
+    font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 1px;
+    background: var(--rule); display: block;
+  }
+
+  /* ─── PROSE ─── */
+  .prose { margin-bottom: 32px; }
+  .prose p {
+    font-size: 16px; line-height: 1.75;
+    color: rgba(13,13,11,0.72); margin-bottom: 16px;
+    max-width: 760px;
+  }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  /* ─── TAG LIST ─── */
+  .tag-list {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 32px;
+  }
+  .tag {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    border: 1px solid var(--rule);
+    padding: 5px 14px; color: var(--ink);
+    opacity: 0.65; transition: all 0.2s;
+    cursor: default;
+  }
+  .tag:hover { opacity: 1; border-color: var(--gold); color: var(--gold); }
+
+  /* ─── BIG QUOTE ─── */
+  .big-quote {
+    font-family: var(--serif); font-size: clamp(28px, 4vw, 52px);
+    font-weight: 300; font-style: italic;
+    color: var(--ink); line-height: 1.3;
+    border-left: 3px solid var(--gold);
+    padding-left: 40px; margin: 64px 0;
+    opacity: 0.85;
+  }
+
+  /* ─── CHECKLIST ─── */
+  .checklist {
+    background: var(--parchment);
+    border: 1px solid var(--rule);
+    padding: 32px;
+    margin-bottom: 48px;
+  }
+  .checklist h4 {
+    font-family: var(--sans); font-size: 13px;
+    font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .checklist ul {
+    list-style: none;
+    columns: 2;
+    gap: 48px;
+  }
+  .checklist li {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(13,13,11,0.7);
+    padding: 8px 0 8px 28px;
+    position: relative;
+    break-inside: avoid;
+  }
+  .checklist li::before {
+    content: '✓';
+    position: absolute; left: 0;
+    color: var(--gold);
+    font-family: var(--sans);
+    font-weight: 700;
+  }
+
+  /* ─── METRICS GRID ─── */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+  .metric-card {
+    background: var(--parchment);
+    padding: 28px 24px;
+    border: 1px solid var(--rule);
+    text-align: center;
+  }
+  .metric-value {
+    font-family: var(--sans); font-size: 42px;
+    font-weight: 800; color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .metric-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--rust);
+  }
+  .metric-desc {
+    font-family: var(--serif); font-size: 13px;
+    color: rgba(13,13,11,0.6);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* ─── WORKSHOP SCHEDULE ─── */
+  .workshop-schedule {
+    margin-bottom: 48px;
+  }
+  .ws-session {
+    display: grid;
+    grid-template-columns: 100px 1fr 200px;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: center;
+  }
+  .ws-time {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gold); letter-spacing: 0.1em;
+  }
+  .ws-content h4 {
+    font-family: var(--sans); font-size: 14px;
+    font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .ws-content p {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(13,13,11,0.65);
+  }
+  .ws-format {
+    font-family: var(--mono); font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--rust);
+    text-align: right;
+  }
+
+  /* ─── ASSESSMENT MATRIX ─── */
+  .assess-matrix {
+    display: grid;
+    grid-template-columns: 200px repeat(4, 1fr);
+    gap: 1px;
+    margin-bottom: 48px;
+    font-size: 13px;
+  }
+  .am-head {
+    background: var(--ink); padding: 12px 16px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .am-cell {
+    background: var(--parchment); padding: 12px 16px;
+    border: 1px solid var(--rule);
+    font-family: var(--serif); color: rgba(13,13,11,0.65);
+    line-height: 1.4;
+  }
+  .am-label {
+    background: var(--sand); padding: 12px 16px;
+    font-family: var(--sans); font-size: 11px;
+    font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--rust);
+    border: 1px solid var(--rule);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); padding: 64px 80px 40px;
+    margin-top: 120px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 64px; margin-bottom: 48px;
+  }
+  .footer-brand {
+    font-family: var(--sans); font-size: 28px; font-weight: 800;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-brand span { color: rgba(184,154,90,0.4); font-weight: 300; }
+  .footer-desc {
+    font-family: var(--mono); font-size: 12px;
+    color: rgba(245,240,232,0.35); line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+  .footer-col h5 {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li {
+    font-family: var(--serif); font-size: 14px;
+    color: rgba(245,240,232,0.4); padding: 4px 0;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(184,154,90,0.1);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-bottom p {
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(245,240,232,0.2); letter-spacing: 0.08em;
+  }
+
+  /* ─── FADE IN ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.7s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width: 1024px) {
+    nav, .hero, .content-zone, .phase-header { padding-left: 40px; padding-right: 40px; }
+    .fw-grid, .pillars { grid-template-columns: 1fr 1fr; }
+    .two-col, .two-col-wide { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .checklist ul { columns: 1; }
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+    .assess-matrix { grid-template-columns: 1fr; }
+    .ws-session { grid-template-columns: 1fr; gap: 8px; }
+  }
+  @media(max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 80px 24px 64px; }
+    .content-zone, .phase-header { padding: 0 24px; }
+    .fw-grid, .pillars { grid-template-columns: 1fr; }
+    .hero-stamp, .hero-phases { display: none; }
+    footer { padding: 48px 24px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Internal Brand Enablement · Real Estate</div>
+  <ul class="nav-links">
+    <li><a href="#induction">Induction</a></li>
+    <li><a href="#assessment">Assessment</a></li>
+    <li><a href="#workshops">Workshops</a></li>
+    <li><a href="#briefings">Briefings</a></li>
+    <li><a href="#behaviour">Behaviour</a></li>
+    <li><a href="#mystery">Mystery Shopping</a></li>
+    <li><a href="#partners">Partners</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-stamp">
+    <div class="hero-stamp-inner">
+      <span>Sales Team</span>
+      <strong>Enable</strong>
+      <span>Framework</span>
+      <span style="margin-top:6px; font-size:8px;">Internal Brand</span>
+    </div>
+  </div>
+
+  <div class="hero-content fade-in">
+    <div class="hero-eyebrow">Internal Brand Enablement — Real Estate</div>
+    <h1 class="hero-title">
+      Turning Brand<br>
+      Strategy Into<br>
+      <em>Sales Behaviour</em>
+    </h1>
+    <p class="hero-sub">
+      A comprehensive framework for onboarding, training, and continuously enabling sales teams, channel partners, and agency teams to deliver consistent brand experiences — even with high turnover and distributed teams.
+    </p>
+  </div>
+
+  <div class="hero-phases fade-in delay-3">
+    <div class="phase-tag active">Brand Induction</div>
+    <div class="phase-tag">Assessment</div>
+    <div class="phase-tag">Workshops</div>
+    <div class="phase-tag">Briefings</div>
+    <div class="phase-tag">Behaviour</div>
+    <div class="phase-tag">Mystery Shopping</div>
+    <div class="phase-tag">Partner Onboarding</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 01 — BRAND INDUCTION CURRICULUM
+══════════════════════════════════════════════ -->
+<section id="induction">
+  <div class="phase-header">
+    <div class="phase-num">01</div>
+    <div class="phase-meta">
+      <div class="phase-label">Foundation</div>
+      <h2 class="phase-title">Brand <em>Induction</em> Curriculum</h2>
+      <p class="phase-desc">Every new team member must complete structured brand immersion before representing the brand externally. Induction is not orientation — it is brand indoctrination.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The 90-Day Brand Induction Journey</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">Day 1<br>Foundation</div>
+        <div class="tl-body">
+          <h4>Brand Immersion Day</h4>
+          <p>Full-day intensive covering brand purpose, vision, values, and competitive positioning. Includes founder story, heritage narrative, and the "why we exist" workshop. Every new hire meets a senior leader who embodies the brand.</p>
+          <div class="tl-tags"><span class="tl-tag">Mandatory</span><span class="tl-tag">Classroom</span><span class="tl-tag">Leadership</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Week 1<br>Knowledge</div>
+        <div class="tl-body">
+          <h4>Product & Portfolio Deep-Dive</h4>
+          <p>Comprehensive project walkthroughs: location advantages, unit configurations, pricing architecture, construction methodology. Site visits to delivered projects to experience the brand promise in physical form.</p>
+          <div class="tl-tags"><span class="tl-tag">Site Visit</span><span class="tl-tag">Product</span><span class="tl-tag">Experiential</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Week 2<br>Application</div>
+        <div class="tl-body">
+          <h4>Customer Journey Mapping</h4>
+          <p>Shadow senior sales executives through complete buyer interactions. Learn objection handling, consultation techniques, and brand-appropriate language. Practice sessions with recorded feedback.</p>
+          <div class="tl-tags"><span class="tl-tag">Shadowing</span><span class="tl-tag">Role Play</span><span class="tl-tag">Feedback</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Day 30<br>Certification</div>
+        <div class="tl-body">
+          <h4>Brand Knowledge Assessment</h4>
+          <p>Written test (60%) + simulated sales presentation (40%). Must score 80%+ to proceed to active sales duties. Failure triggers additional coaching before retake. Certificate awarded upon passing.</p>
+          <div class="tl-tags"><span class="tl-tag">Exam</span><span class="tl-tag">Certification</span><span class="tl-tag">Gate</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Day 60<br>Integration</div>
+        <div class="tl-body">
+          <h4>Advanced Brand Behaviour</h4>
+          <p>Workshop on consultative selling, empathy mapping, and reading buyer psychology. Introduction to CRM tools, brand-compliant communication templates, and escalation protocols.</p>
+          <div class="tl-tags"><span class="tl-tag">Advanced</span><span class="tl-tag">Tools</span><span class="tl-tag">Systems</span></div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">Day 90<br>Mastery</div>
+        <div class="tl-body">
+          <h4>Brand Ambassador Status</h4>
+          <p>Final evaluation through mystery shopping exercise. Peer review and manager assessment. Upon successful completion, graduate to full brand ambassador status with ongoing development track.</p>
+          <div class="tl-tags"><span class="tl-tag">Mystery Shop</span><span class="tl-tag">Graduation</span><span class="tl-tag">Ambassador</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Induction Content Modules</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Module 01</span>
+        <h3>Brand DNA</h3>
+        <p>Purpose, vision, mission, values. Why we exist beyond profit. The founder's intent. Brand archetype and personality. Competitive differentiation. Heritage and legacy narrative.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Module 02</span>
+        <h3>Visual Identity</h3>
+        <p>Logo usage, colour palette, typography. Photography style and direction. Collateral standards. Digital asset guidelines. What good looks like vs. what to avoid.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Module 03</span>
+        <h3>Messaging Architecture</h3>
+        <p>Tagline and promise. Brand story narrative. Segment-specific messaging. Channel voice and tone. The 7 objection responses. Words we use vs. words we never use.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Module 04</span>
+        <h3>Product Mastery</h3>
+        <p>Portfolio overview by segment. Location intelligence. Unit configurations and pricing. Construction quality differentiators. Amenity ecosystem. RERA compliance and transparency protocols.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Module 05</span>
+        <h3>Customer Experience</h3>
+        <p>Journey mapping from inquiry to possession. Experience centre protocols. Consultative selling methodology. CRM usage and data hygiene. Post-booking relationship management.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Module 06</span>
+        <h3>Compliance & Ethics</h3>
+        <p>RERA requirements and disclosures. Fair practice code. Data privacy and GDPR. Anti-corruption and gift policies. Escalation matrix for complaints and disputes.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 02 — KNOWLEDGE ASSESSMENT FRAMEWORK
+══════════════════════════════════════════════ -->
+<section id="assessment">
+  <div class="phase-header">
+    <div class="phase-num">02</div>
+    <div class="phase-meta">
+      <div class="phase-label">Measurement</div>
+      <h2 class="phase-title">Knowledge <em>Assessment</em> Framework</h2>
+      <p class="phase-desc">Systematic evaluation of brand knowledge across all team members. Assessment creates accountability and identifies coaching opportunities before customer impact.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Assessment Scorecard Structure</div>
+    <div class="assess-matrix">
+      <div class="am-head">Competency Area</div>
+      <div class="am-head">Knowledge Test</div>
+      <div class="am-head">Practical Demo</div>
+      <div class="am-head">Mystery Shop</div>
+      <div class="am-head">Pass Threshold</div>
+
+      <div class="am-label">Brand Foundation</div>
+      <div class="am-cell">Purpose, vision, values recall; brand story articulation</div>
+      <div class="am-cell">2-minute brand story presentation to evaluator</div>
+      <div class="am-cell">N/A</div>
+      <div class="am-cell">85%</div>
+
+      <div class="am-label">Product Knowledge</div>
+      <div class="am-cell">Project specs, pricing, availability, USPs</div>
+      <div class="am-cell">Live project walkthrough simulation</div>
+      <div class="am-cell">Accuracy of information provided</div>
+      <div class="am-cell">90%</div>
+
+      <div class="am-label">Messaging Consistency</div>
+      <div class="am-cell">Tagline usage, value proposition clarity</div>
+      <div class="am-cell">Recorded sales pitch review</div>
+      <div class="am-cell">Script adherence and improvisation quality</div>
+      <div class="am-cell">80%</div>
+
+      <div class="am-label">Objection Handling</div>
+      <div class="am-cell">7 standard objections and responses</div>
+      <div class="am-cell">Role-play with surprise objections</div>
+      <div class="am-cell">Response quality in live interaction</div>
+      <div class="am-cell">85%</div>
+
+      <div class="am-label">Process Compliance</div>
+      <div class="am-cell">CRM usage, documentation, escalation</div>
+      <div class="am-cell">System demonstration and workflow</div>
+      <div class="am-cell">Follow-up adherence and data capture</div>
+      <div class="am-cell">95%</div>
+
+      <div class="am-label">Visual Identity</div>
+      <div class="am-cell">Logo rules, colour standards, collateral quality</div>
+      <div class="am-cell">Collateral review and self-assessment</div>
+      <div class="am-cell">Professional presentation standards</div>
+      <div class="am-cell">90%</div>
+    </div>
+
+    <div class="section-title">Assessment Frequency & Cadence</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-bg">Q</div>
+        <span class="pillar-icon">📝</span>
+        <h4>Quarterly Brand Quiz</h4>
+        <p>30-minute online assessment covering all brand fundamentals. Automated scoring with immediate feedback. Results tracked by individual and team. Below 80% triggers mandatory retraining.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">M</div>
+        <span class="pillar-icon">🎭</span>
+        <h4>Monthly Role-Play</h4>
+        <p>Live simulation with manager or trainer. Scenario-based: first-time buyer, investor objection, family decision dynamics. Recorded for self-review and coaching.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">W</div>
+        <span class="pillar-icon">👤</span>
+        <h4>Weekly Mystery Shops</h4>
+        <p>External evaluators pose as prospects. Unannounced and randomized. Focus on greeting, brand story, product knowledge, and follow-up protocol. Scores fed back within 48 hours.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">A</div>
+        <span class="pillar-icon">🎯</span>
+        <h4>Annual Certification</h4>
+        <p>Comprehensive re-certification for all client-facing roles. Includes written exam, presentation, and live mystery shop. Failure requires 30-day improvement plan.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"Assessment is not punishment — it is protection. Every team member who falls below standard represents a brand liability. Early identification enables coaching before customer impact."</p>
+      <div class="callout-src">Assessment Philosophy — Internal Brand Enablement</div>
+    </div>
+
+    <div class="section-title">Performance Tiers & Interventions</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Tier</th>
+          <th>Score Range</th>
+          <th>Designation</th>
+          <th>Intervention</th>
+          <th>Timeline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Brand Champion</td>
+          <td>95–100%</td>
+          <td>Brand Ambassador</td>
+          <td>Mentor role, advanced training access, leadership track</td>
+          <td>Ongoing development</td>
+        </tr>
+        <tr>
+          <td class="cat">Proficient</td>
+          <td>85–94%</td>
+          <td>Certified Representative</td>
+          <td>Continuous learning, peer coaching opportunities</td>
+          <td>Maintain with quarterly refreshers</td>
+        </tr>
+        <tr>
+          <td class="cat">Developing</td>
+          <td>70–84%</td>
+          <td>Probationary</td>
+          <td>Structured coaching plan, weekly check-ins, reassessment required</td>
+          <td>30-day improvement window</td>
+        </tr>
+        <tr>
+          <td class="cat">At Risk</td>
+          <td>Below 70%</td>
+          <td>Performance Plan</td>
+          <td>Intensive retraining, shadowing, potential role reassignment</td>
+          <td>Immediate action required</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 03 — BRAND WORKSHOP DESIGN
+══════════════════════════════════════════════ -->
+<section id="workshops">
+  <div class="phase-header">
+    <div class="phase-num">03</div>
+    <div class="phase-meta">
+      <div class="phase-label">Training</div>
+      <h2 class="phase-title">Brand <em>Workshop</em> Design</h2>
+      <p class="phase-desc">Large-scale workshop formats for sales team brand immersion, refresher training, and new launch preparation. Designed for 50–200 participants with high engagement and retention.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Brand Immersion Workshop — 1 Day Format</div>
+    <div class="workshop-schedule">
+      <div class="ws-session">
+        <div class="ws-time">08:30 – 09:00</div>
+        <div class="ws-content">
+          <h4>Arrival & Brand Environment</h4>
+          <p>Branded registration, welcome kit distribution, ambient brand experience. Coffee and networking in brand-compliant environment.</p>
+        </div>
+        <div class="ws-format">Experience</div>
+      </div>
+      <div class="ws-session">
+        <div class="ws-time">09:00 – 09:30</div>
+        <div class="ws-content">
+          <h4>Opening: The Why</h4>
+          <p>CEO or CMO address on brand importance and business impact. Success stories of brand-driven sales. Setting the tone for the day.</p>
+        </div>
+        <div class="ws-format">Keynote</div>
+      </div>
+      <div class="ws-session">
+        <div class="ws-time">09:30 – 11:00</div>
+        <div class="ws-content">
+          <h4>Brand Foundation Deep-Dive</h4>
+          <p>Interactive session on purpose, vision, values, and positioning. Group exercises on brand personality traits. Archetype workshop.</p>
+        </div>
+        <div class="ws-format">Interactive</div>
+      </div>
+      <div class="ws-session">
+        <div class="ws-time">11:00 – 11:30</div>
+        <div class="ws-content">
+          <h4>Break & Brand Gallery Walk</h4>
+          <p>Visual identity showcase: before/after collateral, photography direction, brand evolution story. Informal learning.</p>
+        </div>
+        <div class="ws-format">Exhibition</div>
+      </div>
+      <div class="ws-session">
+        <div class="ws-time">11:30 – 13:00</div>
+        <div class="ws-content">
+          <h4>Messaging Masterclass</h4>
+          <p>Tagline workshop, brand story practice, segment messaging. Voice and tone exercises. Words to use and avoid.</p>
+        </div>
+        <div class="ws-format">Practice</div>
+      </div>
+      <div class="ws-session">
+        <div class="ws-time">13:00 – 14:00</div>
+        <div class="ws-content">
+          <h4>Lunch & Networking</h4>
+          <p>Brand-compliant catering, table discussions, cross-team relationship building.</p>
+        </div>
+        <div class="ws-format">Break</div>
+      </div>
+      <div class="ws-session">
+        <div class="ws-time">14:00 – 15:30</div>
+        <div class="ws-content">
+          <h4>Objection Handling Bootcamp</h4>
+          <p>Live role-plays on the 7 universal objections. Peer feedback and coaching. Script refinement in small groups.</p>
+        </div>
+        <div class="ws-format">Role-Play</div>
+      </div>
+      <div class="ws-session">
+        <div class="ws-time">15:30 – 16:00</div>
+        <div class="ws-content">
+          <h4>Break</h4>
+          <p>Refreshment and preparation for final sessions.</p>
+        </div>
+        <div class="ws-format">Break</div>
+      </div>
+      <div class="ws-session">
+        <div class="ws-time">16:00 – 17:00</div>
+        <div class="ws-content">
+          <h4>Experience Centre Simulation</h4>
+          <p>Mock site visits with observer feedback. Greeting, presentation, closing techniques. Video recording for self-review.</p>
+        </div>
+        <div class="ws-format">Simulation</div>
+      </div>
+      <div class="ws-session">
+        <div class="ws-time">17:00 – 17:30</div>
+        <div class="ws-content">
+          <h4>Commitment & Certification</h4>
+          <p>Personal brand commitment statements. Certificate distribution. Group photograph. Next steps and resources.</p>
+        </div>
+        <div class="ws-format">Closing</div>
+      </div>
+    </div>
+
+    <div class="section-title">Workshop Facilitation Principles</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Principle 01</span>
+        <h3>Experience Before Explanation</h3>
+        <p>Never start with slides. Begin with an experience — a story, a video, a physical interaction — that creates emotional connection to the brand. Then explain the strategy behind it.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Principle 02</span>
+        <h3>Practice Over Theory</h3>
+        <p>70% of workshop time should be active practice: role-play, simulations, group exercises. Passive listening creates knowledge; active practice creates behaviour change.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Principle 03</span>
+        <h3>Peer Learning Power</h3>
+        <p>Top performers should facilitate, not just attend. Peer coaching creates credibility and distributes expertise. Every workshop includes a "wisdom share" segment.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Principle 04</span>
+        <h3>Immediate Application</h3>
+        <p>End with a 48-hour action commitment. What will each participant do differently on Monday morning? Written commitments, accountability partners, follow-up check.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Principle 05</span>
+        <h3>Sensory Consistency</h3>
+        <p>The workshop environment must embody the brand: colours, music, scent, materials, food. Inconsistency between workshop content and environment undermines credibility.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Principle 06</span>
+        <h3>Leadership Visibility</h3>
+        <p>Senior leaders must attend and participate, not just open and close. Their presence signals brand priority. Their participation demonstrates that everyone is a brand steward.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Workshop Types & Triggers</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Workshop Type</th>
+          <th>Trigger</th>
+          <th>Audience</th>
+          <th>Duration</th>
+          <th>Focus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">New Hire Induction</td>
+          <td>Every new sales team member</td>
+          <td>Individual or small cohort</td>
+          <td>1 day</td>
+          <td>Brand foundation + product knowledge</td>
+        </tr>
+        <tr>
+          <td class="cat">Launch Preparation</td>
+          <td>30 days before new project launch</td>
+          <td>Full sales team + CP partners</td>
+          <td>Half day</td>
+          <td>Project-specific messaging + USPs</td>
+        </tr>
+        <tr>
+          <td class="cat">Brand Refresh</td>
+          <td>Rebranding or brand update</td>
+          <td>All client-facing staff</td>
+          <td>1 day</td>
+          <td>New identity, messaging, collateral</td>
+        </tr>
+        <tr>
+          <td class="cat">Quarterly Booster</td>
+          <td>Start of each quarter</td>
+          <td>Sales team</td>
+          <td>2 hours</td>
+          <td>Performance review + skill refresh</td>
+        </tr>
+        <tr>
+          <td class="cat">CP Partner Summit</td>
+          <td>Bi-annual</td>
+          <td>Channel partner network</td>
+          <td>Half day</td>
+          <td>Brand updates + incentive alignment</td>
+        </tr>
+        <tr>
+          <td class="cat">Leadership Brand Camp</td>
+          <td>Annual</td>
+          <td>Sales managers + team leads</td>
+          <td>2 days</td>
+          <td>Brand strategy + team enablement</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 04 — MONTHLY BRAND BRIEFING
+══════════════════════════════════════════════ -->
+<section id="briefings">
+  <div class="phase-header">
+    <div class="phase-num">04</div>
+    <div class="phase-meta">
+      <div class="phase-label">Rhythm</div>
+      <h2 class="phase-title">Monthly <em>Briefing</em> Format</h2>
+      <p class="phase-desc">Sustained brand consistency requires regular reinforcement. The monthly brand briefing is a non-negotiable ritual that aligns the team and addresses emerging issues.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Monthly Brand Briefing — 60 Minutes</div>
+    <div class="checklist">
+      <h4>Briefing Agenda (Standard Template)</h4>
+      <ul>
+        <li>Brand Health Dashboard Review (10 min)</li>
+        <li>Mystery Shopping Results & Learnings (10 min)</li>
+        <li>Competitive Brand Activity Update (5 min)</li>
+        <li>New Collateral / Asset Introduction (10 min)</li>
+        <li>Success Story Spotlight (5 min)</li>
+        <li>Common Deviation Correction (10 min)</li>
+        <li>Q&A and Open Discussion (10 min)</li>
+      </ul>
+    </div>
+
+    <div class="section-title">Briefing Distribution Channels</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-bg">📺</div>
+        <span class="pillar-icon">📺</span>
+        <h4>All-Hands Video</h4>
+        <p>Recorded briefing for distributed teams. 20-minute executive summary with visual examples. Hosted on internal platform with view tracking and quiz integration.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">📄</div>
+        <span class="pillar-icon">📄</span>
+        <h4>Written Brief</h4>
+        <p>One-page written summary for field reference. Printed for experience centres. Digital version for mobile access. Quick-scan format with visual highlights.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">💬</div>
+        <span class="pillar-icon">💬</span>
+        <h4>WhatsApp Digest</h4>
+        <p>Bite-sized brand reminders for daily reinforcement. Single message format with key point and visual. High open rates for field sales teams.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">🎓</div>
+        <span class="pillar-icon">🎓</span>
+        <h4>Manager Cascade</h4>
+        <p>Team huddles led by sales managers using provided talking points. Ensures personalization and local relevance. Manager toolkit with discussion guides.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Briefing Content Calendar — Annual Framework</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Theme</th>
+          <th>Focus Area</th>
+          <th>Key Activity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">January</td>
+          <td>Brand Reset</td>
+          <td>Annual brand objectives, refreshed goals</td>
+          <td>Year-start workshop, commitment letters</td>
+        </tr>
+        <tr>
+          <td class="cat">February</td>
+          <td>Product Deep-Dive</td>
+          <td>Portfolio refresh, new project previews</td>
+          <td>Site visits, technical training</td>
+        </tr>
+        <tr>
+          <td class="cat">March</td>
+          <td>Q1 Review</td>
+          <td>Performance analysis, course correction</td>
+          <td>Mystery shop deep-dive, recognition</td>
+        </tr>
+        <tr>
+          <td class="cat">April</td>
+          <td>Customer Insights</td>
+          <td>Buyer research, feedback integration</td>
+          <td>Customer immersion sessions</td>
+        </tr>
+        <tr>
+          <td class="cat">May</td>
+          <td>Messaging Excellence</td>
+          <td>Storytelling, objection handling refresh</td>
+          <td>Role-play competitions</td>
+        </tr>
+        <tr>
+          <td class="cat">June</td>
+          <td>Mid-Year Audit</td>
+          <td>Brand health assessment, gap analysis</td>
+          <td>Comprehensive assessment wave</td>
+        </tr>
+        <tr>
+          <td class="cat">July</td>
+          <td>Competitive Positioning</td>
+          <td>Market dynamics, differentiation</td>
+          <td>Competitive intelligence workshop</td>
+        </tr>
+        <tr>
+          <td class="cat">August</td>
+          <td>Digital Brand</td>
+          <td>Social media, online presence, reviews</td>
+          <td>Digital brand training</td>
+        </tr>
+        <tr>
+          <td class="cat">September</td>
+          <td>Q3 Review</td>
+          <td>Performance analysis, festive prep</td>
+          <td>Festive campaign alignment</td>
+        </tr>
+        <tr>
+          <td class="cat">October</td>
+          <td>Festive Readiness</td>
+          <td>Campaign messaging, offer communication</td>
+          <td>Launch simulation, offer training</td>
+        </tr>
+        <tr>
+          <td class="cat">November</td>
+          <td>Experience Excellence</td>
+          <td>Customer journey, handover protocols</td>
+          <td>Experience centre audits</td>
+        </tr>
+        <tr>
+          <td class="cat">December</td>
+          <td>Year-End Reflection</td>
+          <td>Achievements, learnings, next year preview</td>
+          <td>Annual awards, planning session</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 05 — BRAND-TO-BEHAVIOUR TRANSLATION
+══════════════════════════════════════════════ -->
+<section id="behaviour">
+  <div class="phase-header">
+    <div class="phase-num">05</div>
+    <div class="phase-meta">
+      <div class="phase-label">Execution</div>
+      <h2 class="phase-title">Brand-to-<em>Behaviour</em> Translation</h2>
+      <p class="phase-desc">Abstract brand values must become concrete behaviours. This section provides the translation layer that turns strategy into observable, coachable actions.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Behaviour Translation Matrix</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Brand Value</th>
+          <th>What It Means</th>
+          <th>Observable Behaviour</th>
+          <th>Red Flag Behaviour</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Transparency</td>
+          <td>Open, honest communication</td>
+          <td>Proactively discloses project risks; admits when information is unavailable; explains pricing breakdown unprompted</td>
+          <td>Deflects difficult questions; promises without verification; hides timeline uncertainties</td>
+        </tr>
+        <tr>
+          <td class="cat">Customer Dignity</td>
+          <td>Respect regardless of purchase intent</td>
+          <td>Greets every visitor equally; follows up with non-buyers professionally; never pressures or disparages</td>
+          <td>Judges by appearance; ignores "tire kickers"; uses high-pressure tactics; shows impatience</td>
+        </tr>
+        <tr>
+          <td class="cat">Expertise</td>
+          <td>Deep knowledge confidently shared</td>
+          <td>Answers technical questions precisely; admits knowledge gaps and finds answers; educates without condescension</td>
+          <td>Bluffs or guesses; speaks in generalities; dismisses detailed questions; over-promises</td>
+        </tr>
+        <tr>
+          <td class="cat">Warmth</td>
+          <td>Human connection, genuine care</td>
+          <td>Remembers buyer details; asks about family; follows up personally; celebrates buyer milestones</td>
+          <td>Scripted, robotic interactions; treats buyers as transactions; no personal follow-up</td>
+        </tr>
+        <tr>
+          <td class="cat">Excellence</td>
+          <td>Commitment to quality in all touchpoints</td>
+          <td>Presents immaculate materials; double-checks all facts; ensures perfect experience centre presentation</td>
+          <td>Wrinkled brochures; incorrect information; sloppy appearance; "good enough" attitude</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="big-quote">
+      "Brand values live in behaviour, not posters. A 'transparent' brand is one where sales executives proactively share construction delays — not one with a transparency poster in the break room."
+    </div>
+
+    <div class="section-title">The Behaviour Coaching Framework</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Step 01</span>
+        <h3>Observe</h3>
+        <p>Mystery shopping, call recording review, live shadowing. Gather objective data on actual behaviour vs. brand standard. Document specific instances, not general impressions.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Step 02</span>
+        <h3>Align</h3>
+        <p>One-on-one coaching session. Review observation data. Connect behaviour to brand value. Create shared understanding of gap. No blame — only alignment on standard.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Step 03</span>
+        <h3>Practice</h3>
+        <p>Role-play the specific scenario. Try different approaches. Get comfortable with new behaviour. Record and review. Repeat until natural.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Step 04</span>
+        <h3>Commit</h3>
+        <p>Written behaviour commitment. Specific action for next week. Accountability partner assigned. Check-in scheduled.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Step 05</span>
+        <h3>Apply</h3>
+        <p>Execute in live environment. Manager observes or reviews recording. Real-world application with real stakes.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Step 06</span>
+        <h3>Reinforce</h3>
+        <p>Recognize improvement publicly. Share success story. Update assessment score. Continue to next behaviour if mastered.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Managing High Turnover Environments</div>
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p><strong>The Challenge:</strong> Real estate sales teams often experience 30–50% annual turnover. Each departure represents brand knowledge walking out the door. Each arrival requires rapid brand indoctrination.</p>
+          <p><strong>The Solution — Modular Micro-Learning:</strong> Break induction into 15-minute daily modules rather than overwhelming day-long sessions. Daily brand nuggets via WhatsApp. Bite-sized video content. Peer buddy system for immediate support.</p>
+          <p><strong>Knowledge Repository:</strong> Centralized, searchable brand wiki. Video library of best practices. FAQ database. All accessible via mobile for field teams.</p>
+        </div>
+      </div>
+      <div>
+        <div class="tag-list">
+          <span class="tag">Rapid Induction</span>
+          <span class="tag">Buddy System</span>
+          <span class="tag">Micro-Learning</span>
+          <span class="tag">Mobile-First</span>
+          <span class="tag">Video Library</span>
+          <span class="tag">Brand Wiki</span>
+          <span class="tag">Exit Interviews</span>
+          <span class="tag">Alumni Network</span>
+          <span class="tag">Contingency Planning</span>
+          <span class="tag">Cross-Training</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Turnover Mitigation Strategies</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Strategy</th>
+          <th>Implementation</th>
+          <th>Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Brand Ambassador Retention</td>
+          <td>Identify and invest in brand champions. Special development track. Recognition and incentives. Make them mentors.</td>
+          <td>Core knowledge retention; peer training capacity</td>
+        </tr>
+        <tr>
+          <td class="cat">Rapid Onboarding Protocol</td>
+          <td>48-hour brand crash course for urgent hires. Pre-recorded modules. Immediate buddy assignment. Shadowing schedule.</td>
+          <td>Minimize time-to-brand-competency</td>
+        </tr>
+        <tr>
+          <td class="cat">Knowledge Capture</td>
+          <td>Exit interviews focused on brand insights. Documentation of tribal knowledge. Video testimonials from departing stars.</td>
+          <td>Preserve institutional brand memory</td>
+        </tr>
+        <tr>
+          <td class="cat">Standardized Processes</td>
+          <td>Reduce dependence on individual expertise. Scripted greetings. Standardized presentations. Automated follow-up.</td>
+          <td>Consistency regardless of personnel</td>
+        </tr>
+        <tr>
+          <td class="cat">Agency Partnership</td>
+          <td>Outsource to specialized sales agencies with brand training capability. Agency becomes brand guardian.</td>
+          <td>Stability through partnership</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 06 — MYSTERY SHOPPING PROGRAMME
+══════════════════════════════════════════════ -->
+<section id="mystery">
+  <div class="phase-header">
+    <div class="phase-num">06</div>
+    <div class="phase-meta">
+      <div class="phase-label">Quality Assurance</div>
+      <h2 class="phase-title">Mystery <em>Shopping</em> Programme</h2>
+      <p class="phase-desc">Objective, ongoing evaluation of brand delivery through simulated customer interactions. The programme creates accountability and generates actionable improvement insights.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Mystery Shopping Scorecard</div>
+    <div class="checklist">
+      <h4>Evaluation Categories (100 Points Total)</h4>
+      <ul>
+        <li>Greeting & First Impression (10 pts) — Warmth, professionalism, brand representation</li>
+        <li>Needs Discovery (15 pts) — Question quality, listening, understanding buyer context</li>
+        <li>Brand Story Delivery (15 pts) — Purpose, values, differentiation articulation</li>
+        <li>Product Knowledge (15 pts) — Accuracy, depth, confidence in project details</li>
+        <li>Experience Centre Presentation (10 pts) — Tour quality, material handling, environment</li>
+        <li>Objection Handling (15 pts) — Response quality, brand-appropriate language</li>
+        <li>Closing & Next Steps (10 pts) — Appropriate urgency, clear path forward</li>
+        <li>Follow-up Protocol (10 pts) — Timeliness, brand compliance, personalization</li>
+      </ul>
+    </div>
+
+    <div class="section-title">Mystery Shop Scenarios</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Scenario A</span>
+        <h3>First-Time Buyer Family</h3>
+        <p>Young couple with parents, mid-segment budget, lots of questions, comparison shopping, nervous about credibility. Tests patience, explanation clarity, and trust-building.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Scenario B</span>
+        <h3>NRI Investor</h3>
+        <p>Remote buyer, time-constrained, ROI-focused, skeptical about delivery timelines. Tests digital communication, investment narrative, and remote relationship building.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Scenario C</span>
+        <h3>Price-Sensitive Shopper</h3>
+        <p>Budget constraints, comparing multiple options, asking for discounts, expressing hesitation. Tests value articulation, objection handling, and dignity maintenance.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Scenario D</span>
+        <h3>Upgrade Buyer</h3>
+        <p>Experienced homeowner, knows what they want, specific requirements, less patience for basics. Tests consultative depth, customization discussion, and respect for expertise.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Scenario E</span>
+        <h3>Difficult Objector</h3>
+        <p>Challenging questions about delays, competitor comparisons, negative reviews. Tests grace under pressure, transparency, and brand resilience.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Scenario F</span>
+        <h3>Silent Observer</h3>
+        <p>Minimal questions, taking notes, non-committal. Tests proactive engagement, reading non-verbal cues, and appropriate persistence without pressure.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Programme Cadence & Governance</div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-bg">📅</div>
+        <span class="pillar-icon">📅</span>
+        <h4>Frequency</h4>
+        <p>Each sales executive mystery-shopped monthly. Each experience centre evaluated weekly. New projects shopped bi-weekly in launch phase.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">🎭</div>
+        <span class="pillar-icon">🎭</span>
+        <h4>Evaluator Pool</h4>
+        <p>Rotating external agency evaluators. Internal "secret shopper" programme with cross-location teams. Former customer volunteers.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">📊</div>
+        <span class="pillar-icon">📊</span>
+        <h4>Reporting</h4>
+        <p>Individual scorecards within 48 hours. Team dashboards weekly. Trend analysis monthly. Executive summary quarterly.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-bg">🎯</div>
+        <span class="pillar-icon">🎯</span>
+        <h4>Action</h4>
+        <p>Below 80% triggers coaching. Below 70% triggers performance plan. Above 90% triggers recognition and mentorship role.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"Mystery shopping is not a 'gotcha' programme — it is a gift. It reveals the gap between intention and execution before real customers experience it. Every low score is an opportunity to improve before revenue is lost."</p>
+      <div class="callout-src">Mystery Shopping Philosophy — Quality Assurance Framework</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SECTION 07 — AGENCY & CP PARTNER ONBOARDING
+══════════════════════════════════════════════ -->
+<section id="partners">
+  <div class="phase-header">
+    <div class="phase-num">07</div>
+    <div class="phase-meta">
+      <div class="phase-label">Partnerships</div>
+      <h2 class="phase-title">Agency & CP <em>Onboarding</em></h2>
+      <p class="phase-desc">External partners represent the brand to the same buyers as internal teams. Their brand alignment is non-negotiable. Structured onboarding ensures consistency across all channels.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Partner Onboarding Tracks</div>
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Track A</span>
+        <h3>Sales Agency Partners</h3>
+        <p>Full brand immersion required before any client interaction. Agency principals attend workshop. Individual sales executives complete online certification. Agency responsible for maintaining brand standards across their team.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Track B</span>
+        <h3>Channel Partners (CPs)</h3>
+        <p>Streamlined but mandatory onboarding. Half-day brand briefing. Collateral toolkit provision. Regular update webinars. Mystery shopping applies equally to CP-led interactions.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Track C</span>
+        <h3>Digital Marketing Agencies</h3>
+        <p>Deep-dive on brand voice, visual identity, and messaging architecture. Approval workflows for all content. Regular brand council participation. Quarterly performance reviews.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Track D</span>
+        <h3>Call Centre Partners</h3>
+        <p>Script approval and brand voice training. Call monitoring for compliance. CRM integration for seamless handoff. Brand-aligned escalation protocols.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Track E</span>
+        <h3>Site Staffing Agencies</h>
+        <p>Experience centre staff brand training. Grooming and presentation standards. Greeting and hospitality protocols. Regular refreshers and spot checks.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Track F</span>
+        <h3>Event & Activation Partners</h3>
+        <p>Brand environment specifications. Staff briefing requirements. Collateral and giveaway standards. Post-event brand compliance audit.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Partner Brand Agreement — Key Clauses</div>
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Clause Category</th>
+          <th>Requirement</th>
+          <th>Enforcement Mechanism</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Training Completion</td>
+          <td>All client-facing staff must complete brand certification before engagement</td>
+          <td>Access credentials only issued post-certification; monthly roster audit</td>
+        </tr>
+        <tr>
+          <td class="cat">Collateral Compliance</td>
+          <td>Only approved brand materials may be used in client interactions</td>
+          <td>Random collateral audits; digital asset access logging</td>
+        </tr>
+        <tr>
+          <td class="cat">Messaging Consistency</td>
+          <td>No deviation from approved scripts, pricing, or project claims</td>
+          <td>Call recording review; mystery shopping; client feedback monitoring</td>
+        </tr>
+        <tr>
+          <td class="cat">Visual Identity</td>
+          <td>Partner materials must meet brand guidelines; co-branding rules apply</td>
+          <td>Pre-approval required for all external-facing materials</td>
+        </tr>
+        <tr>
+          <td class="cat">Data & Privacy</td>
+          <td>Client data handling per brand privacy policy; no unauthorized sharing</td>
+          <td>Data protection audits; breach notification requirements</td>
+        </tr>
+        <tr>
+          <td class="cat">Performance Standards</td>
+          <td>Mystery shop scores must meet same standards as internal team</td>
+          <td>Quarterly performance reviews; improvement plans; termination rights</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">Partner Enablement Toolkit</div>
+    <div class="two-col">
+      <div>
+        <div class="prose">
+          <p><strong>Digital Partner Portal:</strong> 24/7 access to brand guidelines, project information, pricing sheets, and approved collateral. Self-service for routine needs. Version control ensures everyone uses current materials.</p>
+          <p><strong>Monthly Partner Briefings:</strong> Virtual sessions for distributed CP networks. Project updates, pricing changes, competitive intelligence. Q&A with brand team. Recorded for absentees.</p>
+          <p><strong>Co-Branded Templates:</strong> Pre-approved formats for CPs to customize with their details while maintaining brand integrity. Reduces off-brand improvisation.</p>
+        </div>
+      </div>
+      <div>
+        <div class="prose">
+          <p><strong>Escalation Support:</strong> Direct line to brand team for complex questions. Same-day response commitment. Prevents partners from improvising off-brand responses.</p>
+          <p><strong>Incentive Alignment:</strong> Brand compliance tied to commission structures. Mystery shop scores impact tier placement. Brand champions among partners receive preferential lead allocation.</p>
+          <p><strong>Recognition Programme:</strong> Annual partner awards for brand excellence. Public acknowledgment in partner communications. Case study features for best practices.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="big-quote">
+      "A partner who misrepresents the brand is not a partner — they are a liability. The onboarding investment protects both brand integrity and long-term commercial relationships."
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Internal Brand Enablement <span>/ Real Estate</span></div>
+      <p class="footer-desc">A comprehensive framework for transforming brand strategy into sales team behaviour. Covering induction, assessment, workshops, briefings, mystery shopping, and partner enablement — designed for the realities of high-turnover real estate environments.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Core Components</h5>
+      <ul>
+        <li>90-Day Induction Curriculum</li>
+        <li>Knowledge Assessment Framework</li>
+        <li>Workshop Design System</li>
+        <li>Monthly Briefing Rhythms</li>
+        <li>Behaviour Translation Matrix</li>
+        <li>Mystery Shopping Programme</li>
+        <li>Partner Onboarding Tracks</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Success Metrics</h5>
+      <ul>
+        <li>Brand Knowledge Scores</li>
+        <li>Mystery Shopping Ratings</li>
+        <li>Time-to-Competency</li>
+        <li>Turnover Impact Mitigation</li>
+        <li>Partner Compliance Rates</li>
+        <li>Customer Satisfaction Correlation</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Internal Brand Enablement Framework — Real Estate Edition</p>
+    <p>Strategic Reference Document · Sales Team Alignment</p>
+  </div>
+</footer>
+
+<script>
+  // Animate elements on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fw-card, .pillar, .tl-item, .ws-session').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
+```

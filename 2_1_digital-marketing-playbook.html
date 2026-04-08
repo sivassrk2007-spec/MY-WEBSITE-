@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Marketing Playbook — Real Estate Branding 360°</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0b; --parchment: #f5f0e8; --sand: #e8dfc8; --gold: #b89a5a;
+    --gold-lt: #d4b97a; --rust: #8b4a2a; --sage: #4a5c4e; --steel: #3a4a5c;
+    --cream: #faf7f2; --rule: rgba(184,154,90,0.25);
+    --mono: 'DM Mono', monospace; --serif: 'Cormorant Garamond', serif; --sans: 'Syne', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--serif); font-size: 17px; line-height: 1.7; }
+  
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-brand { font-family: var(--sans); font-weight: 800; font-size: 13px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none; opacity: 0.55; transition: opacity 0.2s; }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+  
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 80px 80px; position: relative; overflow: hidden; background: var(--ink); }
+  .hero-bg { position: absolute; inset: 0; background:
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(184,154,90,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 15% 70%, rgba(74,92,78,0.12) 0%, transparent 55%),
+    linear-gradient(160deg, #0d0d0b 0%, #1a1a14 50%, #0f110d 100%); }
+  .hero-grid { position: absolute; inset: 0; background-image:
+    linear-gradient(rgba(184,154,90,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184,154,90,0.04) 1px, transparent 1px); background-size: 80px 80px; }
+  .hero-content { position: relative; z-index: 2; max-width: 1400px; }
+  .hero-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 32px; opacity: 0.9; }
+  .hero-title { font-family: var(--sans); font-size: clamp(48px, 6vw, 96px); font-weight: 800; line-height: 0.95;
+    letter-spacing: -0.02em; color: var(--cream); margin-bottom: 24px; }
+  .hero-subtitle { font-size: 21px; color: var(--sand); max-width: 800px; line-height: 1.6; opacity: 0.85; }
+  
+  .content { max-width: 1400px; margin: 0 auto; padding: 120px 80px; }
+  .section { margin-bottom: 120px; }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; }
+  .section-title { font-family: var(--sans); font-size: 42px; font-weight: 700; line-height: 1.1;
+    margin-bottom: 32px; color: var(--ink); }
+  .section-intro { font-size: 19px; line-height: 1.7; color: var(--ink); opacity: 0.75; margin-bottom: 56px;
+    max-width: 900px; }
+  
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 32px; }
+  .card { background: var(--parchment); border: 1px solid var(--rule); padding: 40px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 48px rgba(13,13,11,0.08); }
+  .card-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px; }
+  .card-title { font-family: var(--sans); font-size: 24px; font-weight: 700; line-height: 1.2;
+    margin-bottom: 20px; color: var(--ink); }
+  .card-text { font-size: 16px; line-height: 1.7; color: var(--ink); opacity: 0.8; margin-bottom: 16px; }
+  .card-list { list-style: none; margin-top: 20px; }
+  .card-list li { font-size: 15px; line-height: 1.6; padding-left: 24px; margin-bottom: 12px;
+    position: relative; color: var(--ink); opacity: 0.85; }
+  .card-list li:before { content: "→"; position: absolute; left: 0; color: var(--gold); }
+  
+  .framework { background: var(--ink); color: var(--cream); padding: 64px; margin: 80px 0;
+    border: 1px solid rgba(184,154,90,0.2); }
+  .framework-title { font-family: var(--sans); font-size: 32px; font-weight: 700; color: var(--gold);
+    margin-bottom: 32px; }
+  .framework-content { font-family: var(--mono); font-size: 14px; line-height: 1.9; white-space: pre-wrap;
+    opacity: 0.9; }
+  
+  .table-wrap { overflow-x: auto; margin: 40px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); text-align: left; padding: 16px; border-bottom: 1px solid var(--rule); font-weight: 500; }
+  td { padding: 20px 16px; border-bottom: 1px solid var(--rule); color: var(--ink); opacity: 0.85; }
+  tr:hover { background: var(--parchment); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">RE Branding 360°</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Framework</a></li>
+    <li><a href="0_1real-estate-branding-360.html">Branding 360</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-label">Executional Depth · Module 0.2.1</div>
+    <h1 class="hero-title">Digital<br>Marketing Playbook</h1>
+    <p class="hero-subtitle">Meta Ads, Google Ads, Landing Pages, UTM Taxonomy, GA4 Tracking, Attribution, Automation, Retargeting — Complete Digital Execution Guide</p>
+  </div>
+</section>
+
+<main class="content">
+<section class="section">
+  <div class="section-label">Digital Infrastructure</div>
+  <h2 class="section-title">Meta Ads, Google Ads, Landing Pages, GA4, Attribution</h2>
+  <p class="section-intro">Digital marketing playbook covers complete paid + organic digital strategy for real estate. Includes: Meta campaign architecture, Google Ads account structure, landing page conversion principles, UTM taxonomy, GA4 event tracking, attribution modeling, automation flows, retargeting ladder. This is operational guide for daily digital execution.</p>
+  
+  <div class="cards">
+    <div class="card">
+      <div class="card-label">Module 01</div>
+      <div class="card-title">Meta Ads Campaign Architecture</div>
+      <div class="card-text">Facebook + Instagram campaign structure for real estate lead generation. 3-tier funnel: Awareness → Consideration → Conversion.</div>
+      <ul class="card-list">
+        <li>Awareness campaigns: Video views, engagement, reach (cold audiences)</li>
+        <li>Consideration campaigns: Traffic, lead generation (warm audiences, remarketing)</li>
+        <li>Conversion campaigns: Conversions, catalog sales (hot audiences, site visitors)</li>
+        <li>Budget allocation: 30% awareness, 40% consideration, 30% conversion</li>
+        <li>Creative rotation: 3-5 creatives per ad set, refresh every 14 days</li>
+        <li>Audience segments: Lookalike (1-3%), interest-based, geo-targeted (5km radius)</li>
+        <li>Landing page: Project-specific (not homepage), mobile-optimized, load <3 seconds</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Module 02</div>
+      <div class="card-title">Google Ads Account Structure</div>
+      <div class="card-text">Search + Display + YouTube campaign architecture. Keyword strategy aligned with buyer journey stages.</div>
+      <ul class="card-list">
+        <li>Search campaigns: High-intent keywords (location + property type + price)</li>
+        <li>Display campaigns: Remarketing to website visitors, contextual targeting</li>
+        <li>YouTube campaigns: In-stream video ads (awareness), bumper ads (remarketing)</li>
+        <li>Keyword structure: Exact match (bottom funnel), phrase match (mid), broad match modifier (top)</li>
+        <li>Negative keywords: Generic terms, competitor brands, unqualified searches</li>
+        <li>Quality Score optimization: Landing page relevance, ad copy alignment, expected CTR</li>
+        <li>Budget: 60% Search, 25% Display, 15% YouTube</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Module 03</div>
+      <div class="card-title">Landing Page Conversion Framework</div>
+      <div class="card-text">Project-specific landing pages optimized for lead capture. Follows AIDA framework (Attention, Interest, Desire, Action).</div>
+      <ul class="card-list">
+        <li>Above fold: Hero image/video + headline + subheadline + single CTA</li>
+        <li>Trust signals: RERA registration, bank partnerships, delivery track record</li>
+        <li>Social proof: Testimonials, site visit photos, booking counter</li>
+        <li>Floor plans: Interactive, filterable by BHK/budget</li>
+        <li>Lead form: Name + Mobile + Email (3 fields maximum, progressive profiling)</li>
+        <li>Privacy: DPDP Act 2023 compliant consent checkbox</li>
+        <li>Load speed: <3 seconds on 4G, lazy loading for images below fold</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Module 04</div>
+      <div class="card-title">UTM Taxonomy & Tracking</div>
+      <div class="card-text">Standardized UTM parameter structure for campaign attribution. Enables source/medium/campaign level reporting.</div>
+      <ul class="card-list">
+        <li>utm_source: facebook, google, instagram, youtube, whatsapp</li>
+        <li>utm_medium: cpc, cpm, display, video, social, email</li>
+        <li>utm_campaign: project-name_objective_month (e.g., vaanya_leads_jan2026)</li>
+        <li>utm_content: creative-variant (e.g., hero-video-1, carousel-floorplan)</li>
+        <li>utm_term: keyword (for paid search only)</li>
+        <li>Naming convention: lowercase, hyphens not underscores, max 50 characters</li>
+        <li>Tool: Campaign URL Builder spreadsheet for team (prevents inconsistencies)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Module 05</div>
+      <div class="card-title">GA4 Event Tracking Setup</div>
+      <div class="card-text">Google Analytics 4 configuration for real estate conversion tracking. Custom events for lead funnel.</div>
+      <ul class="card-list">
+        <li>Standard events: page_view, session_start, first_visit, user_engagement</li>
+        <li>Custom events: floor_plan_viewed, site_visit_requested, brochure_downloaded, video_played, form_submitted</li>
+        <li>Conversion events: lead_submitted, site_visit_booked, callback_requested</li>
+        <li>Ecommerce tracking: Not applicable (no online payment)</li>
+        <li>User properties: project_interest, budget_range, bhk_preference</li>
+        <li>GTM setup: All events fire via Google Tag Manager (not hardcoded)</li>
+        <li>Data retention: 14 months (maximum for free tier)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Module 06</div>
+      <div class="card-title">Attribution Model Framework</div>
+      <div class="card-text">Multi-touch attribution to understand full buyer journey. Assigns credit to each touchpoint.</div>
+      <ul class="card-list">
+        <li>Models supported: Last-click (default), First-click, Linear, Time-decay, Position-based</li>
+        <li>Real estate recommendation: Position-based (40% first touch, 40% last touch, 20% middle)</li>
+        <li>Rationale: First touch creates awareness, last touch drives conversion, middle nurtures</li>
+        <li>Tool: GA4 Model Comparison report + Data Studio dashboard</li>
+        <li>Limitation: Cannot track offline touchpoints (site hoarding, print ads)</li>
+        <li>Workaround: Unique phone numbers per offline channel (call tracking)</li>
+        <li>Review cadence: Monthly attribution analysis, quarterly model adjustment</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Module 07</div>
+      <div class="card-title">Marketing Automation Flows</div>
+      <div class="card-text">Email + WhatsApp drip campaigns for lead nurturing. Triggered by user behavior.</div>
+      <ul class="card-list">
+        <li>Welcome series: 3 emails over 7 days (project intro, floor plans, testimonials)</li>
+        <li>Abandonment flow: Form started but not submitted → Follow-up in 2 hours</li>
+        <li>Nurture sequence: Weekly content (market insights, construction updates, resident stories)</li>
+        <li>Re-engagement: Inactive leads (30 days no activity) → Special offer/site visit invite</li>
+        <li>WhatsApp automation: Instant lead acknowledgment, appointment confirmation, reminder</li>
+        <li>Tool: HubSpot (mid-segment+) or Zoho (affordable segment)</li>
+        <li>Compliance: Unsubscribe link in every email, WhatsApp opt-out option</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-label">Module 08</div>
+      <div class="card-title">Retargeting Ladder Strategy</div>
+      <div class="card-text">Progressive retargeting based on engagement depth. Matches creative to buyer journey stage.</div>
+      <ul class="card-list">
+        <li>Tier 1: Website visitors (not engaged) → Generic awareness ads (brand story, amenities)</li>
+        <li>Tier 2: Engaged visitors (2+ pages, 60+ seconds) → Specific project benefits (location, specs)</li>
+        <li>Tier 3: High-intent (floor plan viewed, brochure downloaded) → Urgency messaging (inventory, offer deadline)</li>
+        <li>Tier 4: Form abandoners → Direct CTA (Complete registration, get callback)</li>
+        <li>Frequency cap: 3 impressions per week per user (prevents ad fatigue)</li>
+        <li>Exclusions: Converted leads, job seekers, competitors</li>
+        <li>Platforms: Meta retargeting, Google Display remarketing, YouTube sequential messaging</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+</body>
+</html>

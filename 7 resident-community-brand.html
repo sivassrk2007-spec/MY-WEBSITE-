@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 07 — Post-Possession & Resident Community Brand</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0d0d0b;
+    --parchment: #f5f0e8;
+    --sand:      #e8dfc8;
+    --gold:      #b89a5a;
+    --gold-lt:   #d4b97a;
+    --gold-dk:   #8a6f35;
+    --rust:      #8b4a2a;
+    --sage:      #4a5c4e;
+    --steel:     #3a4a5c;
+    --cream:     #faf7f2;
+    --rule:      rgba(184,154,90,.25);
+    --mono:      'DM Mono', monospace;
+    --serif:     'Cormorant Garamond', serif;
+    --sans:      'Syne', sans-serif;
+
+    /* Phase 07 accent — terracotta/ember, warmth of home */
+    --ember:     #a0522d;
+    --ember-lt:  #f2ece4;
+    --ember-dk:  #6b3318;
+    --moss:      #3d5a3e;
+    --moss-lt:   #e4ede4;
+    --copper:    #b87333;
+    --copper-lt: #f5eee6;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--cream); color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.7; overflow-x:hidden; }
+
+  /* ── NAV ── */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(245,240,232,.93); backdrop-filter:blur(12px); border-bottom:1px solid var(--rule); padding:0 48px; display:flex; align-items:center; justify-content:space-between; height:56px; }
+  .nav-brand { font-family:var(--sans); font-weight:800; font-size:13px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); }
+  .nav-brand span { font-weight:300; color:rgba(184,154,90,.45); }
+  .nav-links { display:flex; gap:20px; list-style:none; }
+  .nav-links a { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); text-decoration:none; opacity:.5; transition:opacity .2s; }
+  .nav-links a:hover { opacity:1; color:var(--gold); }
+
+  /* ── HERO ── */
+  .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding:0 80px 80px; position:relative; overflow:hidden; background:var(--ink); }
+  .hero-bg { position:absolute; inset:0; background:
+    radial-gradient(ellipse 60% 50% at 75% 30%, rgba(160,82,45,.1) 0%,transparent 60%),
+    radial-gradient(ellipse 45% 65% at 15% 72%, rgba(61,90,62,.09) 0%,transparent 55%),
+    radial-gradient(ellipse 35% 45% at 50% 80%, rgba(184,115,51,.07) 0%,transparent 60%),
+    linear-gradient(158deg,#0d0d0b 0%,#141210 50%,#0e0c0a 100%); }
+  .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(184,154,90,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(184,154,90,.035) 1px,transparent 1px); background-size:80px 80px; }
+  .hero-texture { position:absolute; inset:0; opacity:.018; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size:200px 200px; }
+
+  /* Warm glow orbs — the home that exists inside */
+  .hero-orbs { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+  .hero-orbs span { position:absolute; border-radius:50%; }
+
+  .hero-stamp { position:absolute; top:80px; right:80px; width:180px; height:180px; border:1px solid rgba(184,154,90,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; opacity:.7; }
+  .hero-stamp-inner { width:140px; height:140px; border:1px solid rgba(184,154,90,.3); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; gap:4px; }
+  .hero-stamp span { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt); opacity:.8; display:block; }
+  .hero-stamp strong { font-family:var(--sans); font-size:20px; font-weight:800; color:var(--gold); line-height:1; display:block; }
+
+  .hero-content { position:relative; z-index:2; }
+  .hero-eyebrow { font-family:var(--mono); font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:24px; display:flex; align-items:center; gap:16px; }
+  .hero-eyebrow::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
+  h1.hero-title { font-family:var(--serif); font-size:clamp(48px,6.5vw,92px); font-weight:300; color:var(--parchment); line-height:1.0; letter-spacing:-.01em; margin-bottom:12px; }
+  h1.hero-title em { font-style:italic; color:var(--gold-lt); }
+  .hero-sub { font-family:var(--mono); font-size:13px; color:rgba(245,240,232,.38); letter-spacing:.04em; margin-top:24px; max-width:620px; line-height:1.65; }
+
+  .hero-chapters { position:absolute; bottom:80px; right:80px; display:flex; flex-direction:column; gap:5px; align-items:flex-end; }
+  .chapter-tag { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(184,154,90,.4); transition:color .2s; cursor:default; }
+  .chapter-tag:hover { color:var(--gold); }
+  .chapter-tag.current { color:var(--copper); }
+
+  /* ── SECTION HEADERS ── */
+  .phase-header { padding:0 80px; margin-top:120px; margin-bottom:64px; display:flex; align-items:flex-end; gap:40px; border-bottom:1px solid var(--rule); padding-bottom:32px; }
+  .phase-num { font-family:var(--mono); font-size:72px; font-weight:300; color:var(--sand); line-height:1; flex-shrink:0; }
+  .phase-meta { flex:1; }
+  .phase-label { font-family:var(--mono); font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .phase-title { font-family:var(--serif); font-size:clamp(28px,3vw,40px); font-weight:300; color:var(--ink); line-height:1.1; }
+  .phase-title em { font-style:italic; color:var(--ember); }
+  .phase-desc { font-size:15px; color:rgba(13,13,11,.52); max-width:540px; margin-top:12px; font-family:var(--mono); line-height:1.6; letter-spacing:.01em; }
+
+  /* sub-phase headers (within sections) */
+  .sub-phase-header { padding:0 80px; margin-top:80px; margin-bottom:40px; border-bottom:1px solid var(--rule); padding-bottom:24px; display:flex; align-items:flex-end; gap:28px; }
+  .sub-phase-num { font-family:var(--mono); font-size:40px; font-weight:300; color:var(--sand); line-height:1; flex-shrink:0; }
+  .sub-phase-meta h3 { font-family:var(--serif); font-size:clamp(22px,2.2vw,30px); font-weight:300; color:var(--ink); }
+  .sub-phase-meta h3 em { font-style:italic; color:var(--ember); }
+  .sub-phase-meta p { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.45); max-width:480px; margin-top:8px; line-height:1.6; }
+
+  /* ── CONTENT ZONE ── */
+  .content-zone { padding:0 80px; margin-bottom:24px; }
+  .section-title { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; padding-bottom:12px; border-bottom:1px solid var(--rule); }
+  .sub-prose { font-size:16px; color:rgba(13,13,11,.65); line-height:1.75; margin-bottom:32px; max-width:780px; }
+
+  /* ── CALLOUT ── */
+  .callout { background:var(--ink); padding:48px 56px; margin-bottom:48px; position:relative; overflow:hidden; }
+  .callout-glow { position:absolute; top:-40px; left:-40px; width:300px; height:300px; background:radial-gradient(circle,rgba(160,82,45,.14) 0%,transparent 70%); pointer-events:none; }
+  .callout p { font-family:var(--serif); font-size:clamp(20px,2.2vw,28px); font-weight:300; font-style:italic; color:var(--parchment); line-height:1.45; position:relative; z-index:1; max-width:820px; }
+  .callout-src { font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-top:20px; position:relative; z-index:1; }
+
+  /* ── TABLES ── */
+  .strat-table { width:100%; border-collapse:collapse; margin-bottom:48px; font-family:var(--mono); font-size:13px; }
+  .strat-table thead th { font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); padding:0 16px 12px; text-align:left; border-bottom:1px solid var(--rule); }
+  .strat-table tbody tr { border-bottom:1px solid var(--rule); }
+  .strat-table tbody tr:hover { background:rgba(184,154,90,.04); }
+  .strat-table tbody td { padding:14px 16px; font-size:13px; color:rgba(13,13,11,.72); vertical-align:top; line-height:1.55; }
+  .strat-table tbody td.cat { color:var(--ink); font-weight:500; }
+  .strat-table tbody td.accent { color:var(--ember); font-family:var(--serif); font-style:italic; font-size:14px; }
+
+  /* ── FW GRID (card grid) ── */
+  .fw-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:48px; }
+  .fw-grid-2 { grid-template-columns:repeat(2,1fr); }
+  .fw-grid-4 { grid-template-columns:repeat(4,1fr); }
+  .fw-card { background:var(--parchment); padding:32px 28px; border:1px solid var(--rule); position:relative; transition:background .25s; }
+  .fw-card:hover { background:var(--sand); }
+  .fw-card-accent { position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gold),transparent); }
+  .fw-card-accent.ember { background:linear-gradient(90deg,var(--ember),transparent); }
+  .fw-card-accent.moss  { background:linear-gradient(90deg,var(--moss),transparent); }
+  .fw-card-accent.copper{ background:linear-gradient(90deg,var(--copper),transparent); }
+  .fw-card-num { font-family:var(--mono); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:12px; }
+  .fw-card h3 { font-family:var(--serif); font-size:20px; font-weight:400; margin-bottom:10px; line-height:1.2; }
+  .fw-card p { font-size:15px; color:rgba(13,13,11,.65); line-height:1.65; }
+  .fw-card ul { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.6); list-style:none; margin-top:14px; }
+  .fw-card ul li { padding:4px 0 4px 16px; border-bottom:1px solid rgba(184,154,90,.1); position:relative; line-height:1.5; }
+  .fw-card ul li::before { content:'—'; position:absolute; left:0; color:var(--gold); opacity:.55; }
+  .fw-card ul li:last-child { border-bottom:none; }
+
+  /* ── ARC TIMELINE — 3-year community arc ── */
+  .arc-timeline { margin-bottom:56px; position:relative; }
+  .arc-track { display:grid; grid-template-columns:120px 1fr; }
+  .arc-year-col { position:relative; }
+  .arc-year-col::after { content:''; position:absolute; right:0; top:0; bottom:0; width:1px; background:var(--rule); }
+  .arc-year-block { padding:32px 24px 32px 0; display:flex; align-items:flex-start; gap:16px; }
+  .arc-year-num { font-family:var(--mono); font-size:28px; font-weight:300; color:var(--sand); line-height:1; flex-shrink:0; width:48px; text-align:right; }
+  .arc-phase-label { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ember); margin-top:4px; writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg); flex-shrink:0; }
+  .arc-content-col { padding:0 0 0 32px; }
+  .arc-content-block { padding:32px 0; border-bottom:1px solid var(--rule); }
+  .arc-content-block:last-child { border-bottom:none; }
+  .arc-content-block h4 { font-family:var(--serif); font-size:20px; font-weight:400; color:var(--ink); margin-bottom:8px; line-height:1.2; }
+  .arc-content-block h4 em { font-style:italic; color:var(--ember); }
+  .arc-content-block p { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.6); line-height:1.65; max-width:680px; }
+  .arc-content-block .arc-deliverables { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
+  .arc-deliverable { font-family:var(--mono); font-size:10px; letter-spacing:.06em; padding:4px 10px; background:var(--ember-lt); border:1px solid rgba(160,82,45,.15); color:var(--ember-dk); }
+
+  /* ── IDENTITY SPECIMEN — society brand demo ── */
+  .identity-specimen { background:var(--ink); padding:64px; margin-bottom:48px; position:relative; overflow:hidden; }
+  .identity-specimen-bg { position:absolute; inset:0; background:radial-gradient(ellipse 60% 40% at 60% 50%, rgba(160,82,45,.08) 0%,transparent 65%); pointer-events:none; }
+  .specimen-header { font-family:var(--mono); font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); margin-bottom:36px; display:flex; align-items:center; gap:20px; }
+  .specimen-header::before { content:''; display:block; width:32px; height:1px; background:var(--gold); opacity:.5; }
+  .specimen-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; position:relative; z-index:1; }
+  .specimen-col h5 { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:rgba(184,154,90,.6); margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid rgba(184,154,90,.15); }
+  .specimen-name-demo { font-family:var(--serif); font-size:36px; font-weight:300; color:var(--parchment); line-height:1; margin-bottom:8px; }
+  .specimen-name-demo em { font-style:italic; color:var(--gold-lt); }
+  .specimen-name-sub { font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(245,240,232,.35); }
+  .specimen-palette { display:flex; flex-direction:column; gap:6px; margin-top:4px; }
+  .swatch { display:flex; align-items:center; gap:12px; }
+  .swatch-box { width:28px; height:28px; border-radius:2px; flex-shrink:0; }
+  .swatch-label { font-family:var(--mono); font-size:10px; color:rgba(245,240,232,.45); }
+  .specimen-voice ul { list-style:none; margin-top:4px; }
+  .specimen-voice ul li { font-family:var(--serif); font-size:14px; font-style:italic; color:rgba(245,240,232,.6); padding:6px 0; border-bottom:1px solid rgba(184,154,90,.1); line-height:1.5; }
+  .specimen-voice ul li:last-child { border-bottom:none; }
+  .specimen-voice ul li span { font-family:var(--mono); font-size:10px; font-style:normal; color:rgba(184,154,90,.45); display:block; margin-top:2px; letter-spacing:.05em; }
+
+  /* ── SNAG / MAINTENANCE BRAND STANDARDS ── */
+  .comm-frame { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; margin-bottom:48px; }
+  .comm-panel { background:var(--parchment); padding:32px; border:1px solid var(--rule); }
+  .comm-panel.dark { background:var(--ink); }
+  .comm-panel h4 { font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--rule); }
+  .comm-panel.dark h4 { border-color:rgba(184,154,90,.2); }
+  .comm-panel .sample-doc { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.65); line-height:1.75; background:var(--cream); padding:20px 22px; border-left:3px solid var(--ember); }
+  .comm-panel .sample-doc strong { color:var(--ink); font-weight:500; }
+  .comm-panel .sample-doc .doc-meta { font-size:10px; color:rgba(13,13,11,.4); letter-spacing:.05em; margin-bottom:12px; }
+  .comm-panel .rule-list { list-style:none; }
+  .comm-panel .rule-list li { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.65); padding:6px 0 6px 18px; border-bottom:1px solid rgba(184,154,90,.1); line-height:1.5; position:relative; }
+  .comm-panel .rule-list li::before { content:'→'; position:absolute; left:0; color:var(--ember); font-size:10px; }
+  .comm-panel .rule-list li:last-child { border-bottom:none; }
+  .comm-panel .bad-good { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px; }
+  .bad-eg, .good-eg { padding:14px 16px; font-family:var(--mono); font-size:11px; line-height:1.55; }
+  .bad-eg { background:rgba(139,74,42,.08); border-left:2px solid var(--rust); color:rgba(13,13,11,.6); }
+  .bad-eg::before { content:'✗'; display:block; color:var(--rust); font-size:10px; letter-spacing:.1em; margin-bottom:6px; font-style:normal; }
+  .good-eg { background:rgba(61,90,62,.08); border-left:2px solid var(--moss); color:rgba(13,13,11,.7); }
+  .good-eg::before { content:'✓'; display:block; color:var(--moss); font-size:10px; letter-spacing:.1em; margin-bottom:6px; font-style:normal; }
+  .dark-rule-list { list-style:none; }
+  .dark-rule-list li { font-family:var(--mono); font-size:12px; color:rgba(245,240,232,.5); padding:7px 0 7px 18px; border-bottom:1px solid rgba(184,154,90,.1); line-height:1.5; position:relative; }
+  .dark-rule-list li::before { content:'—'; position:absolute; left:0; color:var(--gold); opacity:.5; }
+  .dark-rule-list li:last-child { border-bottom:none; }
+
+  /* ── WELCOME KIT ── */
+  .kit-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-bottom:48px; }
+  .kit-item { background:var(--parchment); padding:28px 24px; border:1px solid var(--rule); transition:background .25s; }
+  .kit-item:hover { background:var(--sand); }
+  .kit-item-num { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ember); margin-bottom:12px; }
+  .kit-item h4 { font-family:var(--serif); font-size:18px; font-weight:400; color:var(--ink); margin-bottom:8px; line-height:1.2; }
+  .kit-item p { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.58); line-height:1.6; }
+  .kit-item .kit-copy { font-family:var(--serif); font-size:13px; font-style:italic; color:var(--ember-dk); margin-top:12px; border-top:1px solid rgba(160,82,45,.1); padding-top:10px; line-height:1.5; }
+
+  /* ── EVENTS PROGRAMME ── */
+  .events-calendar { margin-bottom:48px; }
+  .cal-row { display:grid; grid-template-columns:80px 80px 1fr 180px; gap:1px; background:var(--rule); }
+  .cal-row + .cal-row { margin-top:1px; }
+  .cal-cell { background:var(--parchment); padding:16px 18px; font-family:var(--mono); font-size:12px; }
+  .cal-cell.quarter { background:var(--ink); color:var(--gold); font-size:9px; letter-spacing:.2em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; text-align:center; }
+  .cal-cell.month { background:var(--sand); color:rgba(13,13,11,.5); font-size:10px; letter-spacing:.1em; display:flex; align-items:center; justify-content:center; text-align:center; text-transform:uppercase; }
+  .cal-cell.event-name { color:var(--ink); }
+  .cal-cell.event-name strong { font-family:var(--serif); font-size:15px; font-weight:400; display:block; margin-bottom:3px; }
+  .cal-cell.event-name em { font-style:normal; color:rgba(13,13,11,.45); font-size:11px; }
+  .cal-cell.event-type { background:var(--ember-lt); color:var(--ember-dk); font-size:10px; letter-spacing:.08em; text-align:right; display:flex; align-items:center; justify-content:flex-end; }
+  .cal-cell.event-type.community { background:var(--moss-lt); color:var(--moss); }
+  .cal-cell.event-type.developer { background:rgba(184,154,90,.1); color:var(--gold-dk); }
+  .cal-row.header .cal-cell { background:var(--ink); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:rgba(184,154,90,.7); border:none; }
+
+  /* ── APP / PLATFORM BRAND ── */
+  .platform-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:48px; }
+  .platform-panel { padding:36px 32px; border:1px solid var(--rule); }
+  .platform-panel.light { background:var(--parchment); }
+  .platform-panel.dark { background:var(--ink); }
+  .platform-panel h4 { font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+  .platform-panel.dark h4 { color:var(--gold-lt); }
+  .ux-principle { display:flex; gap:16px; padding:14px 0; border-bottom:1px solid var(--rule); }
+  .ux-principle:last-child { border-bottom:none; }
+  .ux-principle-num { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--ember); flex-shrink:0; width:20px; margin-top:2px; }
+  .ux-principle-body h5 { font-family:var(--serif); font-size:16px; font-weight:400; color:var(--ink); margin-bottom:4px; }
+  .ux-principle-body p { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.55); line-height:1.6; }
+  .dark-panel-list { list-style:none; }
+  .dark-panel-list li { font-family:var(--mono); font-size:12px; color:rgba(245,240,232,.5); padding:8px 0 8px 20px; border-bottom:1px solid rgba(184,154,90,.1); line-height:1.5; position:relative; }
+  .dark-panel-list li::before { content:'→'; position:absolute; left:0; color:var(--ember); opacity:.7; }
+  .dark-panel-list li:last-child { border-bottom:none; }
+  .dark-panel-list li strong { color:rgba(245,240,232,.8); font-weight:500; }
+
+  /* ── MARKETING ASSET section ── */
+  .asset-matrix { display:grid; grid-template-columns:160px repeat(4,1fr); gap:1px; background:var(--rule); margin-bottom:48px; overflow:hidden; }
+  .am-cell { background:var(--parchment); padding:14px 14px; font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.65); line-height:1.45; }
+  .am-cell.head-row { background:var(--ink); font-size:9px; letter-spacing:.15em; text-transform:uppercase; color:rgba(184,154,90,.8); font-weight:500; }
+  .am-cell.row-label { background:var(--sand); font-weight:500; color:var(--ink); font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+  .am-cell.high { background:rgba(61,90,62,.09); color:var(--moss); font-weight:500; }
+  .am-cell.med  { background:rgba(184,154,90,.07); color:var(--gold-dk); }
+  .am-cell.low  { background:rgba(245,240,232,.5); color:rgba(13,13,11,.4); }
+
+  /* ── EVOLUTION TRACK ── */
+  .evo-row { display:grid; grid-template-columns:200px 1fr 60px 1fr; gap:0; margin-bottom:2px; align-items:stretch; }
+  .evo-label { background:var(--ink); padding:20px 24px; display:flex; align-items:center; }
+  .evo-label span { font-family:var(--mono); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); }
+  .evo-from, .evo-to { background:var(--parchment); padding:20px 22px; border:1px solid var(--rule); }
+  .evo-arrow { background:var(--sand); display:flex; align-items:center; justify-content:center; border:1px solid var(--rule); }
+  .evo-arrow span { font-family:var(--sans); font-size:18px; color:var(--gold); }
+  .evo-from h4, .evo-to h4 { font-family:var(--serif); font-size:16px; font-weight:400; color:var(--ink); margin-bottom:4px; }
+  .evo-from p, .evo-to p { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.55); line-height:1.5; }
+
+  /* ── FOOTER ── */
+  footer { background:var(--ink); margin-top:120px; padding:64px 80px 40px; }
+  .footer-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:48px; margin-bottom:48px; padding-bottom:40px; border-bottom:1px solid rgba(184,154,90,.15); }
+  .footer-brand { font-family:var(--sans); font-size:20px; font-weight:800; color:var(--gold); margin-bottom:16px; }
+  .footer-brand span { font-weight:300; color:rgba(184,154,90,.4); }
+  .footer-desc { font-family:var(--mono); font-size:12px; color:rgba(245,240,232,.35); line-height:1.7; }
+  .footer-col h5 { font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+  .footer-col ul { list-style:none; }
+  .footer-col ul li { font-family:var(--mono); font-size:12px; color:rgba(245,240,232,.35); padding:4px 0; border-bottom:1px solid rgba(184,154,90,.08); }
+  .footer-bottom { display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:rgba(184,154,90,.3); }
+
+  /* ── REVEAL ── */
+  .reveal { opacity:0; transform:translateY(14px); transition:opacity .55s ease,transform .55s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ── ARCHETYPE NOTE CALLOUT ── */
+  .archetype-note { border-left:3px solid var(--ember); padding:20px 24px; background:var(--ember-lt); margin-bottom:32px; }
+  .archetype-note .anote-label { font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:8px; }
+  .archetype-note p { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.65); line-height:1.65; }
+  .archetype-note p strong { color:var(--ink); font-weight:500; }
+
+  /* ── BLOCKQUOTE INLINE ── */
+  .pull-quote { font-family:var(--serif); font-size:clamp(18px,2vw,24px); font-weight:300; font-style:italic; color:var(--ember-dk); border-left:2px solid var(--ember); padding-left:28px; margin:32px 0 40px; max-width:700px; line-height:1.45; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Branding 360° <span>/ Real Estate — Phase 07</span></div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#society-identity">Society Identity</a></li>
+    <li><a href="#welcome-kit">Welcome Kit</a></li>
+    <li><a href="#maintenance-brand">Maintenance Brand</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#community-arc">3-Year Arc</a></li>
+    <li><a href="#marketing-asset">Marketing Asset</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-orbs">
+    <span style="width:380px;height:380px;background:rgba(160,82,45,.06);border-radius:50%;top:-60px;right:18%;"></span>
+    <span style="width:300px;height:300px;background:rgba(61,90,62,.05);border-radius:50%;bottom:15%;right:35%;"></span>
+    <span style="width:260px;height:260px;background:rgba(184,115,51,.05);border-radius:50%;top:45%;right:8%;"></span>
+  </div>
+  <div class="hero-stamp">
+    <div class="hero-stamp-inner">
+      <span>Phase</span>
+      <strong>07</strong>
+      <span>Post</span>
+      <span>Possession</span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Phase 07 — Branding 360° Real Estate</div>
+    <h1 class="hero-title">Post-Possession &amp;<br><em>Resident Community Brand</em></h1>
+    <p class="hero-sub">The developer hands over the keys and disappears. Most brands die at that moment. The few that survive — and thrive — understand that the building after possession is a living brand asset. Society identity. Resident welcome. Maintenance voice. Community rituals. A three-year arc from strangers to advocates. This is the brand that makes your next project sell itself.</p>
+  </div>
+  <div class="hero-chapters">
+    <div class="chapter-tag">Phase 01 — Foundation &amp; Strategy</div>
+    <div class="chapter-tag">Phase 02 — Identity &amp; Assets</div>
+    <div class="chapter-tag">Phase 03 — Launch &amp; Activation</div>
+    <div class="chapter-tag">Phase 04 — Construction Era Brand</div>
+    <div class="chapter-tag">Phase 05 — Pre-Possession</div>
+    <div class="chapter-tag">Phase 06 — Handover &amp; Referral</div>
+    <div class="chapter-tag current">Phase 07 — Resident Community Brand ←</div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 00 — WHY THIS PHASE EXISTS
+════════════════════════════════ -->
+<section id="overview">
+  <div class="phase-header">
+    <div class="phase-num">00</div>
+    <div class="phase-meta">
+      <div class="phase-label">The Missing Phase — Why Phase 07 Exists</div>
+      <h2 class="phase-title">The Brand That Lives <em>Inside the Building</em></h2>
+      <p class="phase-desc">Every rupee of marketing budget is spent before the buyer takes possession. Then the brand vanishes — and the building is left to become whatever it becomes. Phase 07 is the deliberate design of what that "whatever" is.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">What Phase 06 Left Undone — The Referral Economy Is Only the Entry Point</div>
+    <p class="sub-prose">Phase 06 correctly identifies referral as the dominant post-possession marketing mechanism. But referral is the output of something deeper: a resident community that feels good about where they live. Residents who are proud of their building, who feel known by their society, who receive communications that treat them as adults — these are the people who recommend. The referral economy cannot be manufactured from a WhatsApp group and a ₹50,000 referral cheque. It is the downstream consequence of a sustained community brand experience.</p>
+
+    <div class="callout reveal">
+      <div class="callout-glow"></div>
+      <p>"The developer's biggest marketing asset for Project B is not the hoarding on OMR. It is a family in Tower C of Project A who tells their colleague at Cognizant: 'You should see how well-managed our building is. Our society's communications are better than most companies I've worked for.'"</p>
+      <div class="callout-src">Phase 07 Principle — The Resident as Brand Ambassador</div>
+    </div>
+
+    <div class="section-title">What Phase 07 Covers — Eight Operational Territories</div>
+
+    <div class="fw-grid reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Territory 01</span>
+        <h3>Society Identity Design</h3>
+        <p>Name, logo, gate aesthetics, typography, and colour system. The society's own identity — separate from but coherent with the developer's brand.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Territory 02</span>
+        <h3>Resident Welcome Kit &amp; Onboarding</h3>
+        <p>The first 30 days after possession. Every touchpoint — physical kit, digital onboarding, the first letter — designed as a brand moment.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Territory 03</span>
+        <h3>Maintenance Communication Brand</h3>
+        <p>How snag reports are written. How handover updates sound. The brand voice that governs every complaint, resolution, and progress update.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent moss"></div>
+        <span class="fw-card-num">Territory 04</span>
+        <h3>Community Events Programme</h3>
+        <p>A designed calendar of events — not ad-hoc celebrations — that builds community identity over three years and generates organic brand content.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent moss"></div>
+        <span class="fw-card-num">Territory 05</span>
+        <h3>Property Management Brand Voice</h3>
+        <p>The FM team, security staff, and RWA leadership as brand touchpoints. Scripts, signage, uniform language, and digital presence guidelines.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent moss"></div>
+        <span class="fw-card-num">Territory 06</span>
+        <h3>Resident App / Platform Brand</h3>
+        <p>The digital layer of community life — the app or platform experience — designed as a brand extension, not a utility tool bolted on after the fact.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent copper"></div>
+        <span class="fw-card-num">Territory 07</span>
+        <h3>The 3-Year Community Brand Arc</h3>
+        <p>Year 1: belonging. Year 2: pride. Year 3: legacy. A phased strategy that turns a collection of residents into a community that tells your next story.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent copper"></div>
+        <span class="fw-card-num">Territory 08</span>
+        <h3>The Resident as Marketing Asset</h3>
+        <p>The deliberate conversion of a satisfied resident community into the developer's most powerful marketing tool for the next project launch.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--steel),transparent)"></div>
+        <span class="fw-card-num">Critical Omission</span>
+        <h3>Why Developers Skip This</h3>
+        <p>Revenue from this project is complete. The brand team has moved to the next launch. No budget line. No owner. No brief. This is a structural failure — and the gap where community brand brand dies before it starts.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 01 — SOCIETY IDENTITY
+════════════════════════════════ -->
+<section id="society-identity">
+  <div class="phase-header">
+    <div class="phase-num">01</div>
+    <div class="phase-meta">
+      <div class="phase-label">Territory One</div>
+      <h2 class="phase-title">Society Identity <em>Design</em></h2>
+      <p class="phase-desc">The society needs its own name, its own mark, and its own visual language — distinct from the developer's brand, coherent with it, and capable of operating independently for 20 years after the developer has moved on.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Naming Architecture — Developer Brand vs. Society Identity</div>
+    <p class="sub-prose">Most developer projects name their society after the project — "XYZ Residences Apartment Owners Association." This is a legal placeholder, not an identity. The society needs a name that residents will actually use, display on gates and letterheads, and feel proud of. The naming exercise happens at possession stage, not at registration.</p>
+
+    <div class="archetype-note reveal">
+      <div class="anote-label">Naming Principle</div>
+      <p>The society name should <strong>honour the project's identity without being legally captive to it.</strong> A project named "Prestige Lakeside Habitat" can produce a society called "Lakeside Enclave" — familiar, self-contained, resident-owned. The developer's name recedes; the community's name endures.</p>
+    </div>
+
+    <!-- Society name specimen -->
+    <div class="identity-specimen reveal">
+      <div class="identity-specimen-bg"></div>
+      <div class="specimen-header">Society Identity Specimen — Illustrative Application</div>
+      <div class="specimen-grid">
+        <div class="specimen-col">
+          <h5>Name Architecture</h5>
+          <div class="specimen-name-demo"><em>Vaanya</em><br>Heights</div>
+          <div class="specimen-name-sub">Vaanya Heights Resident Association<br>Est. 2025 · Sholinganallur, Chennai</div>
+          <div style="margin-top:20px;font-family:var(--mono);font-size:10px;color:rgba(245,240,232,.3);letter-spacing:.05em;line-height:1.7;">
+            <div>Primary: Vaanya Heights</div>
+            <div>Legal: VHRA Apt. Owners Assn.</div>
+            <div>Gate: Vaanya Heights</div>
+            <div>App Display: Vaanya</div>
+            <div>WhatsApp: Vaanya Heights Residents</div>
+          </div>
+        </div>
+        <div class="specimen-col">
+          <h5>Society Colour Palette</h5>
+          <p style="font-family:var(--mono);font-size:10px;color:rgba(245,240,232,.35);line-height:1.6;margin-bottom:16px;">Derived from developer palette but lighter, more domestic, more everyday. Not corporate. Not aspirational. Liveable.</p>
+          <div class="specimen-palette">
+            <div class="swatch"><div class="swatch-box" style="background:#3d5a3e;"></div><div class="swatch-label">#3D5A3E — Hedge Green (primary)</div></div>
+            <div class="swatch"><div class="swatch-box" style="background:#c8a86a;"></div><div class="swatch-label">#C8A86A — Warm Sand (accent)</div></div>
+            <div class="swatch"><div class="swatch-box" style="background:#f5f0e6;border:1px solid rgba(255,255,255,.1);"></div><div class="swatch-label">#F5F0E6 — Parchment (base)</div></div>
+            <div class="swatch"><div class="swatch-box" style="background:#0d0d0b;"></div><div class="swatch-label">#0D0D0B — Ink (text)</div></div>
+          </div>
+        </div>
+        <div class="specimen-col">
+          <h5>Society Voice Register</h5>
+          <p style="font-family:var(--mono);font-size:10px;color:rgba(245,240,232,.35);line-height:1.6;margin-bottom:16px;">Warm. Practical. Neighbourly. Not corporate. Not apologetic. The voice of someone who actually lives here and cares.</p>
+          <div class="specimen-voice">
+            <ul>
+              <li>"The pool opens at 6AM tomorrow. Do stretch."<span>Community update — WhatsApp</span></li>
+              <li>"Water supply disruption: 7–9AM Wednesday. We've arranged tanker backup."<span>Maintenance notice</span></li>
+              <li>"This Diwali, let's light up the courtyard together."<span>Events invite</span></li>
+              <li>"Three years. One community. Thank you for making this home."<span>Annual letter</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Gate Aesthetics &amp; Physical Identity Standards</div>
+
+    <div class="fw-grid reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Gate &amp; Entrance</span>
+        <h3>The First Impression, Every Day</h3>
+        <p>The gate is seen by every resident and every visitor 365 days a year. Society name lettering material (brass, steel, or stone-carved — never PVC), illumination style (warm backlit vs. cool direct), signage hierarchy at entry, and guard booth aesthetics.</p>
+        <ul>
+          <li>Society name in developer-coherent typeface</li>
+          <li>Entry height marker in resident-facing voice ("Welcome home")</li>
+          <li>No developer logo at entry — project era is over</li>
+          <li>Visitor signage in bilingual: English + regional language</li>
+          <li>Security booth: uniform colour, badge, resident-first language</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Common Area Signage</span>
+        <h3>The Brand You Live With</h3>
+        <p>Lift lobby notices, amenity access signs, emergency instructions, parking markers, clubhouse nameplates, gym rules. Every printed or carved surface is a brand touchpoint — currently an afterthought, designed in 20 minutes before handover day.</p>
+        <ul>
+          <li>Consistent typeface system across all signage</li>
+          <li>Single-tone brand colour for all directional elements</li>
+          <li>Amenity names given proper identities (not just "Pool Area")</li>
+          <li>Rules written in warm, direct prose — not legal boilerplate</li>
+          <li>Emergency instructions: legible at distance, same visual system</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Seasonal &amp; Festive</span>
+        <h3>The Living Identity</h3>
+        <p>Durga Puja banners, Christmas lights, Pongal kolam stencils, Independence Day gate decor — these happen anyway. Brand standards for festive expression that allow organic community celebration while maintaining aesthetic coherence.</p>
+        <ul>
+          <li>Permitted colour range for gate decor (not brand-restricting)</li>
+          <li>Society banner template for community events</li>
+          <li>Standard notice board format (not each committee printing their own)</li>
+          <li>Seasonal flower bed palette guidance for landscaping team</li>
+        </ul>
+      </div>
+    </div>
+
+    <table class="strat-table reveal">
+      <thead><tr><th>Archetype (Developer)</th><th>Society Identity Bias</th><th>Name Style</th><th>Gate Material</th><th>Common Area Voice</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">Guardian</td><td>Solid, community-centred, trust-forward</td><td class="accent">"The Residences at [Project]" → "[Locality] Homes"</td><td>Brushed steel on stone base</td><td>"We take care of this together."</td></tr>
+        <tr><td class="cat">Sage</td><td>Informed, data-rich, standards-proud</td><td class="accent">"[Project] Owners Community" → "[Project] Enclave"</td><td>Etched granite with brass lettering</td><td>"Updated 09:00 — water pressure restored."</td></tr>
+        <tr><td class="cat">Ruler</td><td>Exclusive, sovereign, quietly superior</td><td class="accent">"[Estate Name] Private Residences"</td><td>Black granite, gold leaf lettering, night-lit</td><td>"The estate management team."</td></tr>
+        <tr><td class="cat">Creator</td><td>Distinctive, design-forward, curated</td><td class="accent">Original coined name — not project-derived</td><td>Corten steel, custom-fabricated nameplate</td><td>"The building you helped design."</td></tr>
+        <tr><td class="cat">Caregiver</td><td>Warm, neighbourhood-scale, family-first</td><td class="accent">"[Locality] Gardens" / "[Garden/Tree name]"</td><td>Painted brick, planters at base, warm-lit</td><td>"Your neighbour wanted you to know…"</td></tr>
+        <tr><td class="cat">Explorer</td><td>Place-connected, nature-grounded, discovery-oriented</td><td class="accent">Named after a local landmark or natural feature</td><td>Raw teak, local stone, plant-integrated</td><td>"You chose somewhere worth being."</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 02 — WELCOME KIT
+════════════════════════════════ -->
+<section id="welcome-kit">
+  <div class="phase-header">
+    <div class="phase-num">02</div>
+    <div class="phase-meta">
+      <div class="phase-label">Territory Two</div>
+      <h2 class="phase-title">Resident Welcome Kit &amp; <em>Onboarding Experience</em></h2>
+      <p class="phase-desc">Possession day is the highest-emotion moment a resident will experience with this brand. The developer is present for about two hours. What the resident receives and reads in the following 30 days determines their permanent emotional registration of the brand.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Welcome Kit — Eight Components, All Branded</div>
+
+    <div class="kit-grid reveal">
+      <div class="kit-item">
+        <div class="kit-item-num">Kit 01</div>
+        <h4>The Welcome Letter</h4>
+        <p>From the developer MD — not legal counsel. One page. Handwritten signature facsimile. Acknowledges the journey. Welcomes them home. Introduces what comes next.</p>
+        <div class="kit-copy">"You chose this address before it existed. Today, it exists because of you."</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-num">Kit 02</div>
+        <h4>The Flat Manual</h4>
+        <p>Not a technical document — a resident guide. Brand-designed, illustrated, warm-voiced. Covers every system in the flat: how the ventilation works, where the circuit breaker is, what the warranty covers.</p>
+        <div class="kit-copy">"Your flat has 12 systems. Here's how to be on first-name terms with all of them."</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-num">Kit 03</div>
+        <h4>The Neighbourhood Guide</h4>
+        <p>The best hospital, closest grocery, nearest metro exit, best chai spot, local festival calendar. Curated, designed, opinionated. Not a Google Maps export.</p>
+        <div class="kit-copy">"The 400-metre radius you'll use for the next 20 years."</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-num">Kit 04</div>
+        <h4>Society Introduction Card</h4>
+        <p>RWA contact, FM helpdesk number, maintenance schedule, car wash day, generator test day. Society branded, warm tone. The first piece of the society's own identity system.</p>
+        <div class="kit-copy">"Your society. Your numbers. Keep this at the door."</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-num">Kit 05</div>
+        <h4>Resident App Onboarding</h4>
+        <p>QR-based setup. The app experience from zero to registered resident — first login, first action, first notification. Brand-designed flow, not the default app developer UI.</p>
+        <div class="kit-copy">"Scan. You're already a member."</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-num">Kit 06</div>
+        <h4>The Welcome Gift</h4>
+        <p>One physical gift — not generic. Archetype-specific: Guardian = seedling; Caregiver = local artisan honey; Creator = art print by a local artist; Ruler = hand-poured candle. Branded, not merchandised.</p>
+        <div class="kit-copy">"Something for the flat that isn't furniture."</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-num">Kit 07</div>
+        <h4>The Snag Reporting Wallet Card</h4>
+        <p>One card. Three steps. One QR. How to raise a snag, what to expect, what the timeline is. No ambiguity. No WhatsApp-only system. Branded like they care.</p>
+        <div class="kit-copy">"Your building isn't perfect yet. Here's how we fix it together."</div>
+      </div>
+      <div class="kit-item">
+        <div class="kit-item-num">Kit 08</div>
+        <h4>The 30-Day Check-In Promise</h4>
+        <p>A printed card or digital confirmation: "On [date], someone from our team will call you to ask how the first 30 days have been." A commitment that is kept — this is the moment referral potential is locked in or lost.</p>
+        <div class="kit-copy">"We will call. Not a survey. A conversation."</div>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <div class="callout-glow"></div>
+      <p>"The welcome kit is not a legal handover packet with a bow on it. It is the last direct brand communication the developer will ever have with this resident. It should read like it matters."</p>
+      <div class="callout-src">Onboarding Principle — Phase 07 Resident Brand</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 03 — MAINTENANCE BRAND
+════════════════════════════════ -->
+<section id="maintenance-brand">
+  <div class="phase-header">
+    <div class="phase-num">03</div>
+    <div class="phase-meta">
+      <div class="phase-label">Territory Three</div>
+      <h2 class="phase-title">Maintenance Communication <em>Brand Standards</em></h2>
+      <p class="phase-desc">The snag report. The handover update. The "we will fix it by Friday" message. This is the highest-frequency brand touchpoint in the post-possession period — and the most neglected. It arrives when the resident is most frustrated. The brand must be strongest here.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Three Communication Categories — Snag, Resolution, and Progress</div>
+
+    <div class="comm-frame reveal">
+      <div class="comm-panel">
+        <h4>Snag Acknowledgement — How It Should Read</h4>
+        <div class="sample-doc">
+          <div class="doc-meta">From: Vaanya Heights FM Team · To: Flat 4C · 22 Jan 2025, 11:42</div>
+          <strong>Snag registered: Master bathroom grouting — reference SG-2025-0847</strong>
+          <br><br>
+          Good morning.<br><br>
+          Your snag has been logged. Our team will inspect Flat 4C between 2 PM and 4 PM on Monday, 24 January. You don't need to be present — our access protocol requires your confirmation, which we'll send separately.<br><br>
+          Typical resolution for this category: 3–5 working days after inspection. We will update you by Wednesday evening regardless of status.<br><br>
+          Reference SG-2025-0847 — quote this in any follow-up.
+        </div>
+      </div>
+      <div class="comm-panel">
+        <h4>Snag Response Brand Rules — Voice Checklist</h4>
+        <ul class="rule-list">
+          <li>Always open with a reference number — not a greeting</li>
+          <li>State the next action before the timeline</li>
+          <li>Give a specific time window (not "we will contact you soon")</li>
+          <li>Acknowledge if it will take longer than the standard window</li>
+          <li>Close with a commitment, not a pleasantry</li>
+          <li>Never use passive voice ("it will be looked into")</li>
+          <li>One message = one issue. No bundling multiple snags</li>
+          <li>Bilingual option available on all written communications</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-title">The Bad vs. Good Language Standard — Applied Examples</div>
+
+    <div class="comm-frame reveal">
+      <div class="comm-panel">
+        <h4>Delay Notification — Language Calibration</h4>
+        <div class="bad-good">
+          <div class="bad-eg">We regret to inform you that due to unavoidable circumstances the work on your unit has been delayed. Kindly bear with us as we try our best to resolve the issue at the earliest.</div>
+          <div class="good-eg">The tiling work for Flat 4C is delayed. Reason: procurement delay on matching tile batch (Ref SG-0847). New completion date: 3 February. We'll update you on 29 January.</div>
+        </div>
+      </div>
+      <div class="comm-panel">
+        <h4>Water Disruption Notice — Language Calibration</h4>
+        <div class="bad-good">
+          <div class="bad-eg">Dear Residents, Due to maintenance work, water supply will be disrupted. Residents are requested to store sufficient water. Inconvenience regretted.</div>
+          <div class="good-eg">Water disruption: Thursday 6 AM – 10 AM (tank cleaning). Store 30L per flat from Wednesday night. Tanker available at Gate 2 from 7 AM if needed. Text 98400-XXXXX.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">How Snag Reports Are Structured — The Document Standard</div>
+
+    <div class="fw-grid fw-grid-2 reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Snag Report Format</span>
+        <h3>Five Fields. Always. In This Order.</h3>
+        <p>Reference number → Flat ID → Category → Description → Committed date. Not a free-form WhatsApp message. Not a verbal promise. A logged, tracked, time-stamped document in a consistent format.</p>
+        <ul>
+          <li>Reference: SG-[Year]-[Sequential 4-digit number]</li>
+          <li>Flat: Tower / Floor / Unit (not just "4C")</li>
+          <li>Category: Civil / MEP / Finishing / Common Area</li>
+          <li>Description: specific, observable, measurable</li>
+          <li>Target: DD Month YYYY — not "ASAP" or "soon"</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Handover Update Protocol</span>
+        <h3>Monthly. To All Residents. Without Asking.</h3>
+        <p>A monthly update to all residents — even those with zero open snags — that reports total snags logged, resolved, pending, and average resolution time. Transparency as brand signal.</p>
+        <ul>
+          <li>Sent by the 5th of each month for the prior month</li>
+          <li>Aggregate data — not individual flat details</li>
+          <li>Headline stat: "97% of snags resolved within 5 working days"</li>
+          <li>One honest paragraph on persistent issues and why</li>
+          <li>Name of the FM in-charge — a person, not a department</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 04 — EVENTS PROGRAMME
+════════════════════════════════ -->
+<section id="events">
+  <div class="phase-header">
+    <div class="phase-num">04</div>
+    <div class="phase-meta">
+      <div class="phase-label">Territory Four</div>
+      <h2 class="phase-title">Community Events <em>Programme Design</em></h2>
+      <p class="phase-desc">Events do not create community. The right cadence of events — with the right intent at each phase of community formation — does. An events programme is a designed brand arc, not a quarterly celebration calendar.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Event Type Taxonomy — Four Distinct Purposes</div>
+    <div class="fw-grid fw-grid-4 reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Type A</span>
+        <h3>Meet Events</h3>
+        <p>Designed for strangers becoming neighbours. Low stakes. Unstructured. First six months only. The building warming, the rooftop sundowner, the children's playday. No agenda. No speakers. Just proximity.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Type B</span>
+        <h3>Ritual Events</h3>
+        <p>Annual and repeating. Pongal in the courtyard, Diwali lights, the monsoon movie night. These events create shared memory — the raw material of community identity. Must be held every year, growing slightly each time.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent moss"></div>
+        <span class="fw-card-num">Type C</span>
+        <h3>Pride Events</h3>
+        <p>Events that showcase resident talent, building achievement, or community milestones. The photography exhibition, the gardening show, the "Year Two" resident anniversary. These generate pride and — critically — shareable content.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent moss"></div>
+        <span class="fw-card-num">Type D</span>
+        <h3>Legacy Events</h3>
+        <p>Year 3+ only. Resident-led, not developer- or FM-led. The community marathon, the resident-run library, the adopted park. Events that the community owns completely — the developer's brand disappears from the foreground.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Illustrative 12-Month Events Calendar — Year One (Formation Phase)</div>
+
+    <div class="events-calendar reveal">
+      <div class="cal-row header">
+        <div class="cal-cell">Qtr</div>
+        <div class="cal-cell">Month</div>
+        <div class="cal-cell">Event</div>
+        <div class="cal-cell">Type &amp; Purpose</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter">Q1</div>
+        <div class="cal-cell month">Jan</div>
+        <div class="cal-cell event-name"><strong>The Building Warming</strong><em>Informal sundowner — first residents to move in, no agenda</em></div>
+        <div class="cal-cell event-type">Type A — Meet</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter"></div>
+        <div class="cal-cell month">Jan</div>
+        <div class="cal-cell event-name"><strong>Pongal in the Courtyard</strong><em>Community kolam, traditional breakfast, open to all residents and family</em></div>
+        <div class="cal-cell event-type event-type">Type B — Ritual</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter"></div>
+        <div class="cal-cell month">Feb</div>
+        <div class="cal-cell event-name"><strong>Kids' Painting Day</strong><em>Courtyard walls — children paint a panel each, photographed and framed</em></div>
+        <div class="cal-cell event-type">Type A — Meet</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter">Q2</div>
+        <div class="cal-cell month">Apr</div>
+        <div class="cal-cell event-name"><strong>Tamil New Year Breakfast</strong><em>Mango rice, neighbours meeting neighbours over a meal</em></div>
+        <div class="cal-cell event-type">Type B — Ritual</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter"></div>
+        <div class="cal-cell month">Jun</div>
+        <div class="cal-cell event-name"><strong>Monsoon Movie Night</strong><em>Rooftop / courtyard screen. Residents choose the film. FM provides the popcorn.</em></div>
+        <div class="cal-cell event-type community">Type B — Ritual</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter">Q3</div>
+        <div class="cal-cell month">Aug</div>
+        <div class="cal-cell event-name"><strong>Independence Day Flag Hoisting</strong><em>Residents-led ceremony, children given flag to hoist. Building photographed.</em></div>
+        <div class="cal-cell event-type event-type">Type B — Ritual</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter"></div>
+        <div class="cal-cell month">Sep</div>
+        <div class="cal-cell event-name"><strong>Navratri / Garba Evening</strong><em>Open courtyard, residents lead, open to the building's families</em></div>
+        <div class="cal-cell event-type community">Type B — Ritual</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter">Q4</div>
+        <div class="cal-cell month">Oct</div>
+        <div class="cal-cell event-name"><strong>Diwali Lights &amp; Potluck</strong><em>Every flat puts one lamp at their door. Shared meal in the lobby.</em></div>
+        <div class="cal-cell event-type">Type B — Ritual</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter"></div>
+        <div class="cal-cell month">Nov</div>
+        <div class="cal-cell event-name"><strong>One Year Anniversary — "Our Year"</strong><em>Resident photo wall, year-in-review displayed in lobby, developer message read aloud</em></div>
+        <div class="cal-cell event-type developer">Type C — Pride / Developer</div>
+      </div>
+      <div class="cal-row">
+        <div class="cal-cell quarter"></div>
+        <div class="cal-cell month">Dec</div>
+        <div class="cal-cell event-name"><strong>Winter Bazaar</strong><em>Resident-run: homemade food, crafts, a charity stall. Community economy in miniature.</em></div>
+        <div class="cal-cell event-type community">Type C — Pride</div>
+      </div>
+    </div>
+
+    <div class="archetype-note reveal">
+      <div class="anote-label">Developer Brand Presence at Events</div>
+      <p>The developer brand should <strong>recede from Year 1 events and be nearly invisible by Year 3.</strong> Presence in Year 1: branded napkins, a quiet thank-you note. Year 2: name in the programme only. Year 3: zero developer presence — the community event belongs entirely to the residents. This is not erasure; it is the highest form of brand maturity.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 05 — PLATFORM BRAND
+════════════════════════════════ -->
+<section id="platform">
+  <div class="phase-header">
+    <div class="phase-num">05</div>
+    <div class="phase-meta">
+      <div class="phase-label">Territory Five + Six</div>
+      <h2 class="phase-title">Property Management Brand Voice &amp; <em>Resident Platform</em></h2>
+      <p class="phase-desc">The FM team and the resident app are the two most frequent daily brand touchpoints. Both are currently designed for operational convenience — not for brand experience. This section closes that gap.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Property Management Brand Voice — The FM Team as Brand Touchpoint</div>
+
+    <div class="platform-grid reveal">
+      <div class="platform-panel light">
+        <h4>FM Voice Principles — Six Rules</h4>
+        <div class="ux-principle">
+          <div class="ux-principle-num">01</div>
+          <div class="ux-principle-body"><h5>Name, not department</h5><p>Every communication from FM is signed by a named person, not "The Management" or "FM Team." Residents should know who manages their building.</p></div>
+        </div>
+        <div class="ux-principle">
+          <div class="ux-principle-num">02</div>
+          <div class="ux-principle-body"><h5>Action-first sentences</h5><p>"The generator test runs Thursday 8 AM" — not "Please be informed that generator testing will take place." No passive constructions in maintenance communication.</p></div>
+        </div>
+        <div class="ux-principle">
+          <div class="ux-principle-num">03</div>
+          <div class="ux-principle-body"><h5>Resident inconvenience acknowledged first</h5><p>Every disruption notice opens with what the resident will experience before explaining why. "You'll hear drilling today from 10 AM. This is the DG cable replacement — it finishes by 1 PM."</p></div>
+        </div>
+        <div class="ux-principle">
+          <div class="ux-principle-num">04</div>
+          <div class="ux-principle-body"><h5>Bilingual defaults</h5><p>All critical notices (water, power, access, emergency) in English and Tamil. Non-critical communications in English only unless resident preference is set.</p></div>
+        </div>
+        <div class="ux-principle">
+          <div class="ux-principle-num">05</div>
+          <div class="ux-principle-body"><h5>No WhatsApp broadcast as primary channel</h5><p>WhatsApp is confirmation only — not the primary communication channel. The app or email is primary. WhatsApp is a nudge, not a notice board.</p></div>
+        </div>
+        <div class="ux-principle">
+          <div class="ux-principle-num">06</div>
+          <div class="ux-principle-body"><h5>Uniform language</h5><p>Security staff have three approved spoken scripts: greeting residents, addressing visitors, handling a complaint. Rehearsed. Warm. Consistent across all shift changes.</p></div>
+        </div>
+      </div>
+      <div class="platform-panel dark">
+        <h4>Resident App — Brand Experience Standards</h4>
+        <ul class="dark-panel-list">
+          <li><strong>Name the app after the society, not the developer.</strong> "Vaanya" not "Prestige Resident App."</li>
+          <li><strong>First action on first login:</strong> not permissions — a welcome from the society, with the resident's name.</li>
+          <li><strong>Push notification voice:</strong> same society voice register — not default app copy. "Your maintenance request is with Arjun today." Not "Ticket assigned."</li>
+          <li><strong>Community feed:</strong> curated, not algorithmic. FM team posts 2 updates/week. Resident posts moderated for spam, not content.</li>
+          <li><strong>Maintenance tracker:</strong> visual, status-bar style. Not a ticket number and a "pending" flag.</li>
+          <li><strong>Amenity booking:</strong> shows who else is booked — neighbour visibility creates incidental community.</li>
+          <li><strong>Monthly report:</strong> auto-generated PDF. Society finances, snag status, upcoming events. Branded, not a spreadsheet.</li>
+          <li><strong>Feedback channel:</strong> one-tap mood rating (not a form). FM reviews weekly and responds within 48 hours.</li>
+          <li><strong>Offboarding:</strong> if a resident sells and moves, they receive a goodbye message and are invited to leave a memory for the building's "story wall."</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 06 — 3-YEAR ARC
+════════════════════════════════ -->
+<section id="community-arc">
+  <div class="phase-header">
+    <div class="phase-num">06</div>
+    <div class="phase-meta">
+      <div class="phase-label">Territory Seven</div>
+      <h2 class="phase-title">The 3-Year Community <em>Brand Arc</em></h2>
+      <p class="phase-desc">A resident community does not become an asset by accident. It follows a formation arc — from strangers to neighbours to community to advocates — and each phase requires a different brand intervention. This is the strategic map.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="pull-quote">"Year 1 is belonging. Year 2 is pride. Year 3 is legacy. The developer's job is to design the conditions for each — not to manufacture the outcome."</div>
+
+    <div class="section-title">Phase-by-Phase Brand Strategy — Three Years, Three Distinct Objectives</div>
+
+    <div class="arc-timeline reveal">
+      <div style="display:grid;grid-template-columns:1fr;gap:2px;">
+
+        <!-- Year 1 -->
+        <div style="background:var(--parchment);border:1px solid var(--rule);padding:40px 48px;border-left:4px solid var(--ember);">
+          <div style="display:flex;align-items:baseline;gap:20px;margin-bottom:24px;">
+            <div style="font-family:var(--mono);font-size:48px;font-weight:300;color:var(--sand);line-height:1;">01</div>
+            <div>
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--ember);margin-bottom:4px;">Year One — Months 1–12</div>
+              <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--ink);">Belonging — <em style="color:var(--ember);">Making Strangers Neighbours</em></div>
+            </div>
+          </div>
+          <p style="font-family:var(--mono);font-size:13px;color:rgba(13,13,11,.6);line-height:1.7;max-width:760px;margin-bottom:24px;">The primary risk in Year 1 is atomisation — residents living side by side as strangers, managing the building through formal channels only, developing a transactional relationship with the FM team. The brand's job is to create the conditions for informal connection, not to orchestrate it.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+            <div style="background:var(--cream);padding:24px;border:1px solid var(--rule);">
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);margin-bottom:12px;">Brand Priority</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:8px;">Welcome &amp; warmth</div>
+              <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.55);line-height:1.6;">Every communication is warm, specific, personal. The building is not a complex — it is someone's home.</div>
+            </div>
+            <div style="background:var(--cream);padding:24px;border:1px solid var(--rule);">
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);margin-bottom:12px;">Key Events</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:8px;">Type A — Meet events</div>
+              <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.55);line-height:1.6;">Building warming, festival meals, children's activities. No agenda. No developer presence. Just people in a shared space.</div>
+            </div>
+            <div style="background:var(--cream);padding:24px;border:1px solid var(--rule);">
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);margin-bottom:12px;">Deliverables</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:8px;">Kit + app + community feed</div>
+              <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.55);line-height:1.6;">Welcome kit delivered. App onboarded by 90% of residents. Monthly newsletter running. Community WhatsApp group moderated.</div>
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--ember-lt);border:1px solid rgba(160,82,45,.15);color:var(--ember-dk);">Welcome Kit Launch</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--ember-lt);border:1px solid rgba(160,82,45,.15);color:var(--ember-dk);">Society Identity Rollout</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--ember-lt);border:1px solid rgba(160,82,45,.15);color:var(--ember-dk);">App Onboarding Campaign</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--ember-lt);border:1px solid rgba(160,82,45,.15);color:var(--ember-dk);">FM Voice Standards</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--ember-lt);border:1px solid rgba(160,82,45,.15);color:var(--ember-dk);">Gate Aesthetics Installation</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--ember-lt);border:1px solid rgba(160,82,45,.15);color:var(--ember-dk);">30-Day Check-In Protocol</span>
+          </div>
+        </div>
+
+        <!-- Year 2 -->
+        <div style="background:var(--parchment);border:1px solid var(--rule);padding:40px 48px;border-left:4px solid var(--moss);">
+          <div style="display:flex;align-items:baseline;gap:20px;margin-bottom:24px;">
+            <div style="font-family:var(--mono);font-size:48px;font-weight:300;color:var(--sand);line-height:1;">02</div>
+            <div>
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--moss);margin-bottom:4px;">Year Two — Months 13–24</div>
+              <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--ink);">Pride — <em style="color:var(--moss);">From Neighbours to Community</em></div>
+            </div>
+          </div>
+          <p style="font-family:var(--mono);font-size:13px;color:rgba(13,13,11,.6);line-height:1.7;max-width:760px;margin-bottom:24px;">Year 2 residents have baseline familiarity. The brand objective shifts from connection to pride — helping the community develop a sense of identity, achievement, and distinction. This is where the developer brand begins to recede and the society brand takes over.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+            <div style="background:var(--cream);padding:24px;border:1px solid var(--rule);">
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--moss);margin-bottom:12px;">Brand Priority</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:8px;">Story &amp; recognition</div>
+              <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.55);line-height:1.6;">The community's stories are captured and celebrated. The resident anniversary, the garden that grew, the corner that became a gathering point.</div>
+            </div>
+            <div style="background:var(--cream);padding:24px;border:1px solid var(--rule);">
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--moss);margin-bottom:12px;">Key Events</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:8px;">Type C — Pride events</div>
+              <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.55);line-height:1.6;">Resident photography exhibition, the building anniversary, the children's report card wall. Events that create shareable content organically.</div>
+            </div>
+            <div style="background:var(--cream);padding:24px;border:1px solid var(--rule);">
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--moss);margin-bottom:12px;">Deliverables</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:8px;">Annual report + story archive</div>
+              <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.55);line-height:1.6;">Year 2 Annual Report published. Society Instagram (if desired). FM performance report. RWA handover complete — developer FM steps back.</div>
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--moss-lt);border:1px solid rgba(61,90,62,.15);color:var(--moss);">Community Story Capture</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--moss-lt);border:1px solid rgba(61,90,62,.15);color:var(--moss);">Year 2 Annual Report</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--moss-lt);border:1px solid rgba(61,90,62,.15);color:var(--moss);">RWA Leadership Handover</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--moss-lt);border:1px solid rgba(61,90,62,.15);color:var(--moss);">Developer Brand Recession</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--moss-lt);border:1px solid rgba(61,90,62,.15);color:var(--moss);">Society Social Presence</span>
+          </div>
+        </div>
+
+        <!-- Year 3 -->
+        <div style="background:var(--parchment);border:1px solid var(--rule);padding:40px 48px;border-left:4px solid var(--copper);">
+          <div style="display:flex;align-items:baseline;gap:20px;margin-bottom:24px;">
+            <div style="font-family:var(--mono);font-size:48px;font-weight:300;color:var(--sand);line-height:1;">03</div>
+            <div>
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:var(--copper);margin-bottom:4px;">Year Three — Months 25–36+</div>
+              <div style="font-family:var(--serif);font-size:28px;font-weight:300;color:var(--ink);">Legacy — <em style="color:var(--copper);">Community Becomes the Developer's Asset</em></div>
+            </div>
+          </div>
+          <p style="font-family:var(--mono);font-size:13px;color:rgba(13,13,11,.6);line-height:1.7;max-width:760px;margin-bottom:24px;">Year 3 is the maturity point. A well-executed brand arc produces a community that talks about where they live with pride, that organically creates content, that recommends to colleagues and family — not because they were offered a referral fee, but because they genuinely believe in the address. This is when Project B's marketing team calls Project A's residents.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;">
+            <div style="background:var(--cream);padding:24px;border:1px solid var(--rule);">
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:12px;">Brand Priority</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:8px;">Advocacy activation</div>
+              <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.55);line-height:1.6;">Turning natural pride into deliberate recommendation. Resident testimonials. Site visit invitations. Project B preview access for Project A residents — as a privilege, not a transaction.</div>
+            </div>
+            <div style="background:var(--cream);padding:24px;border:1px solid var(--rule);">
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:12px;">Key Events</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:8px;">Type D — Legacy events</div>
+              <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.55);line-height:1.6;">Resident-run entirely. Developer is a quiet benefactor at most. The community garden, the resident marathon, the story archive made physical.</div>
+            </div>
+            <div style="background:var(--cream);padding:24px;border:1px solid var(--rule);">
+              <div style="font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);margin-bottom:12px;">Deliverables</div>
+              <div style="font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:8px;">Resident advocate programme</div>
+              <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.55);line-height:1.6;">Named resident ambassadors willing to take calls from prospects. Video testimonials for digital. Site visit guide: residents-led tours of Project B.</div>
+            </div>
+          </div>
+          <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--copper-lt);border:1px solid rgba(184,115,51,.15);color:var(--copper);">Resident Ambassador Programme</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--copper-lt);border:1px solid rgba(184,115,51,.15);color:var(--copper);">Video Testimonial Series</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--copper-lt);border:1px solid rgba(184,115,51,.15);color:var(--copper);">Project B Preview Access</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--copper-lt);border:1px solid rgba(184,115,51,.15);color:var(--copper);">Community Legacy Document</span>
+            <span style="font-family:var(--mono);font-size:10px;padding:4px 10px;background:var(--copper-lt);border:1px solid rgba(184,115,51,.15);color:var(--copper);">Handover to Fully Resident-Led RWA</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 07 — MARKETING ASSET
+════════════════════════════════ -->
+<section id="marketing-asset">
+  <div class="phase-header">
+    <div class="phase-num">07</div>
+    <div class="phase-meta">
+      <div class="phase-label">Territory Eight — The Strategic Payoff</div>
+      <h2 class="phase-title">The Resident Community as <em>Marketing Asset</em></h2>
+      <p class="phase-desc">A satisfied, proud, well-branded resident community is not a soft outcome. It is a quantifiable marketing channel for the next project — one that costs almost nothing and converts at a rate no paid channel can match.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Channel Conversion Rate Comparison — Resident Advocacy vs. Paid Media</div>
+    <p class="sub-prose">The numbers below are indicative and will vary by market, segment, and developer reputation. The directional insight is consistent across all developer marketing data available: referred buyers convert to booking at 2–4x the rate of cold-channel buyers, with 30–50% shorter sales cycles and significantly higher NPS scores post-possession.</p>
+
+    <div class="asset-matrix reveal">
+      <div class="am-cell head-row">Channel</div>
+      <div class="am-cell head-row">Lead-to-Site-Visit</div>
+      <div class="am-cell head-row">Site-Visit-to-Booking</div>
+      <div class="am-cell head-row">Cost per Booking</div>
+      <div class="am-cell head-row">Post-Possession NPS</div>
+      <div class="am-cell row-label">Digital Paid</div>
+      <div class="am-cell med">8–12%</div>
+      <div class="am-cell low">6–10%</div>
+      <div class="am-cell low">₹3L–8L</div>
+      <div class="am-cell med">42–55</div>
+      <div class="am-cell row-label">Channel Partners</div>
+      <div class="am-cell med">18–25%</div>
+      <div class="am-cell med">12–18%</div>
+      <div class="am-cell low">₹4L–10L (brokerage)</div>
+      <div class="am-cell low">38–50</div>
+      <div class="am-cell row-label">Hoardings / ATL</div>
+      <div class="am-cell low">2–5%</div>
+      <div class="am-cell low">5–8%</div>
+      <div class="am-cell low">₹8L–20L</div>
+      <div class="am-cell low">40–52</div>
+      <div class="am-cell row-label">Resident Referral</div>
+      <div class="am-cell high">35–55%</div>
+      <div class="am-cell high">28–42%</div>
+      <div class="am-cell high">₹0.5L–2L</div>
+      <div class="am-cell high">68–82</div>
+      <div class="am-cell row-label">Resident-Led Tour</div>
+      <div class="am-cell high">55–70%</div>
+      <div class="am-cell high">35–50%</div>
+      <div class="am-cell high">₹0.2L–0.8L</div>
+      <div class="am-cell high">72–88</div>
+    </div>
+
+    <div class="section-title">How to Activate the Resident Community for Project B — Five Levers</div>
+
+    <div class="fw-grid fw-grid-2 reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Lever 01</span>
+        <h3>The Resident Preview Invitation</h3>
+        <p>Project A residents receive a private preview of Project B 4–6 weeks before public launch. Framed as a privilege, not a sales call. Physical invitation card, private walkthrough with the MD, no sales team in the room. The conversion conversation happens after the experience, not during.</p>
+        <ul>
+          <li>Exclusive preview access — 3 weekends, residents-only</li>
+          <li>MD present — not sales manager</li>
+          <li>No brochure at the event — sent 48 hours later</li>
+          <li>Every attendee receives a handwritten thank-you</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent ember"></div>
+        <span class="fw-card-num">Lever 02</span>
+        <h3>The Named Ambassador Programme</h3>
+        <p>10–15 residents per project who have explicitly agreed to take calls from prospects. They are not incentivised by booking commission — they are invited because they are vocal advocates. A referral bonus is offered after booking, not before the call.</p>
+        <ul>
+          <li>Selected from Year 3 community events participation</li>
+          <li>Briefed on Project B — but never scripted</li>
+          <li>Their names appear on the developer's website as "Our Residents Say"</li>
+          <li>Post-referral-booking: a curated thank-you gift, not cash</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent moss"></div>
+        <span class="fw-card-num">Lever 03</span>
+        <h3>Video Testimony Series</h3>
+        <p>3–5 resident video testimonials produced at the 2-year mark. Not produced by the developer's advertising agency — filmed by a documentary-style filmmaker. Residents talking about their life, not about specifications. Used in digital ads and site presentations.</p>
+        <ul>
+          <li>15–90 seconds — short-form for digital, long-form for site</li>
+          <li>Residents choose what to say — no scripts</li>
+          <li>Director's cut shared with the resident family</li>
+          <li>Released on the society's anniversary, not the project's launch date</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent moss"></div>
+        <span class="fw-card-num">Lever 04</span>
+        <h3>The Resident-Led Site Tour</h3>
+        <p>Serious prospects for Project B are offered a guided tour of Project A — conducted by a resident, not a salesperson. The resident shows their home, their routines, their community. The prospect experiences what they are buying, not what they are being sold.</p>
+        <ul>
+          <li>Opt-in programme — residents volunteer, not required</li>
+          <li>30–45 minutes, resident-owned agenda</li>
+          <li>Sales team present only for Q&amp;A on specifications</li>
+          <li>Follow-up: prospect contacts sales team — not the reverse</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <div class="callout-glow"></div>
+      <p>"Your most powerful salesperson for Project B is not on your payroll. She is in Flat 7A of Project A, making coffee on a Tuesday morning, about to tell her colleague that if he's looking for a flat in this part of the city, he should see where she lives. She will not mention your marketing. She will mention her life."</p>
+      <div class="callout-src">Phase 07 Strategic Principle — The Resident as the Medium</div>
+    </div>
+
+    <div class="section-title">Archetype Modulation — How Each Archetype Activates its Community Differently</div>
+
+    <table class="strat-table reveal">
+      <thead><tr><th>Archetype</th><th>Year 1 Priority Brand Act</th><th>Year 3 Community Identity</th><th>Advocacy Mechanism</th><th>What the Community Says About the Developer</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="cat" style="color:#4a5c7a;">Guardian</td>
+          <td>Personal welcome from MD, 30-day call kept</td>
+          <td>"This building is taken care of."</td>
+          <td>Oral referral — word of mouth through trust networks</td>
+          <td class="accent">"They did what they promised. Every time."</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#4a5c4e;">Sage</td>
+          <td>Full documentation delivered; FM report on Day 1</td>
+          <td>"We made the right decision."</td>
+          <td>Data-led referral — "Here's what our appreciation looks like vs. the market"</td>
+          <td class="accent">"The most professionally managed building I've lived in."</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#8a6f35;">Ruler</td>
+          <td>Private handover ceremony — no queue, no crowd</td>
+          <td>"This is the address."</td>
+          <td>Status-signal referral — invitation to see the building, not a sales conversation</td>
+          <td class="accent">"I don't tell everyone about this building. But I'm telling you."</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#7a4a2a;">Creator</td>
+          <td>Resident personalisation options: door colour, garden plot</td>
+          <td>"We helped design this."</td>
+          <td>Social sharing — residents post their spaces and tag the building</td>
+          <td class="accent">"It still looks exactly like the renders. That never happens."</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#5c4a7a;">Caregiver</td>
+          <td>Neighbour introduction programme — FM facilitates first meetings</td>
+          <td>"This is our community."</td>
+          <td>Community referral — "My friend's parents are moving — they'd love this building"</td>
+          <td class="accent">"My kids have grown up here. The other children are their best friends."</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#2a5c4a;">Explorer</td>
+          <td>Local neighbourhood map in welcome kit, community discovery events</td>
+          <td>"We found somewhere special."</td>
+          <td>Evangelist referral — residents actively recruit others who "get it"</td>
+          <td class="accent">"Most people haven't heard of this part of the city yet. That's exactly why we chose it."</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     FOOTER
+════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Branding 360° <span>/ Real Estate</span></div>
+      <div class="footer-desc">A comprehensive brand operations framework for India's real estate sector. Phase 07 covers the post-possession and resident community brand — the phase most developers skip and the one that determines whether Project B markets itself.</div>
+    </div>
+    <div class="footer-col">
+      <h5>Phase 07 — All Territories</h5>
+      <ul>
+        <li>01 — Society Identity Design</li>
+        <li>02 — Welcome Kit &amp; Onboarding</li>
+        <li>03 — Maintenance Brand Standards</li>
+        <li>04 — Community Events Programme</li>
+        <li>05 — Property Management Voice</li>
+        <li>06 — Resident App / Platform Brand</li>
+        <li>07 — 3-Year Community Arc</li>
+        <li>08 — Resident as Marketing Asset</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Adjacent Phases</h5>
+      <ul>
+        <li>Phase 01 — Foundation &amp; Strategy</li>
+        <li>Phase 02 — Identity &amp; Assets</li>
+        <li>Phase 03 — Launch &amp; Activation</li>
+        <li>Phase 04 — Construction Era Brand</li>
+        <li>Phase 05 — Pre-Possession Brand</li>
+        <li>Phase 06 — Handover &amp; Referral Economy</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Branding 360° — Real Estate · Phase 07 Companion Document</span>
+    <span>Post-Possession &amp; Resident Community Brand</span>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.06, rootMargin:'0px 0px -40px 0px' });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>

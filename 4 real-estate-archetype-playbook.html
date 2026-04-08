@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Archetype Application Playbook — Real Estate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0d0d0b;
+    --parchment: #f5f0e8;
+    --sand:      #e8dfc8;
+    --gold:      #b89a5a;
+    --gold-lt:   #d4b97a;
+    --gold-dk:   #8a6f35;
+    --rust:      #8b4a2a;
+    --sage:      #4a5c4e;
+    --steel:     #3a4a5c;
+    --cream:     #faf7f2;
+    --rule:      rgba(184,154,90,.25);
+    --mono:      'DM Mono', monospace;
+    --serif:     'Cormorant Garamond', serif;
+    --sans:      'Syne', sans-serif;
+  }
+
+  /* ── Archetype colour tokens ── */
+  :root {
+    --guardian: #4a5c7a;   --guardian-lt: #e8ecf2;  --guardian-dk: #2a3a52;
+    --sage-c:   #4a5c4e;   --sage-lt:     #e8f0e8;  --sage-dk:     #2a3c2e;
+    --ruler:    #1a1a14;   --ruler-lt:    #e8e4d8;  --ruler-dk:    #0d0d0b;
+    --creator:  #7a4a2a;   --creator-lt:  #f2ece6;  --creator-dk:  #5a2a0a;
+    --caregiver:#5c4a7a;   --caregiver-lt:#eeeaf5;  --caregiver-dk:#3a2a5c;
+    --explorer: #2a5c4a;   --explorer-lt: #e2f0e8;  --explorer-dk: #0a3c2a;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--cream); color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.7; overflow-x:hidden; }
+
+  /* ── NAV ── */
+  nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(245,240,232,.93); backdrop-filter:blur(12px); border-bottom:1px solid var(--rule); padding:0 48px; display:flex; align-items:center; justify-content:space-between; height:56px; }
+  .nav-brand { font-family:var(--sans); font-weight:800; font-size:13px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); }
+  .nav-links { display:flex; gap:24px; list-style:none; }
+  .nav-links a { font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); text-decoration:none; opacity:.5; transition:opacity .2s; }
+  .nav-links a:hover { opacity:1; color:var(--gold); }
+
+  /* ── HERO ── */
+  .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding:0 80px 80px; position:relative; overflow:hidden; background:var(--ink); }
+  .hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 75% 55% at 70% 35%,rgba(184,154,90,.09) 0%,transparent 60%),radial-gradient(ellipse 50% 70% at 12% 68%,rgba(90,74,42,.1) 0%,transparent 55%),linear-gradient(158deg,#0d0d0b 0%,#14130e 50%,#0e0d0a 100%); }
+  .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(184,154,90,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,154,90,.04) 1px,transparent 1px); background-size:80px 80px; }
+  /* Six archetype colour aureoles in hero background */
+  .hero-aureoles { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+  .hero-aureoles span { position:absolute; border-radius:50%; opacity:.04; }
+  .hero-stamp { position:absolute; top:80px; right:80px; width:180px; height:180px; border:1px solid rgba(184,154,90,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; opacity:.65; }
+  .hero-stamp-inner { width:140px; height:140px; border:1px solid rgba(184,154,90,.3); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; gap:4px; }
+  .hero-stamp span { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-lt); opacity:.8; display:block; }
+  .hero-stamp strong { font-family:var(--sans); font-size:20px; font-weight:800; color:var(--gold); line-height:1; display:block; }
+  .hero-content { position:relative; z-index:2; }
+  .hero-eyebrow { font-family:var(--mono); font-size:11px; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:24px; display:flex; align-items:center; gap:16px; }
+  .hero-eyebrow::before { content:''; display:block; width:40px; height:1px; background:var(--gold); }
+  h1.hero-title { font-family:var(--serif); font-size:clamp(52px,7vw,96px); font-weight:300; color:var(--parchment); line-height:1.0; letter-spacing:-.01em; margin-bottom:12px; }
+  h1.hero-title em { font-style:italic; color:var(--gold-lt); }
+  .hero-sub { font-family:var(--mono); font-size:13px; color:rgba(245,240,232,.38); letter-spacing:.05em; margin-top:24px; max-width:580px; line-height:1.6; }
+  .hero-archetypes { position:absolute; bottom:80px; right:80px; display:flex; flex-direction:column; gap:5px; align-items:flex-end; }
+  .arch-tag { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(184,154,90,.4); transition:color .2s; }
+  .arch-tag:hover, .arch-tag.active { color:var(--gold); }
+
+  /* ── SECTION HEADERS ── */
+  .phase-header { padding:0 80px; margin-top:120px; margin-bottom:64px; display:flex; align-items:flex-end; gap:40px; border-bottom:1px solid var(--rule); padding-bottom:32px; }
+  .phase-num { font-family:var(--mono); font-size:72px; font-weight:300; color:var(--sand); line-height:1; flex-shrink:0; }
+  .phase-meta { flex:1; }
+  .phase-label { font-family:var(--mono); font-size:10px; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .phase-title { font-family:var(--serif); font-size:clamp(28px,3vw,40px); font-weight:300; color:var(--ink); line-height:1.1; }
+  .phase-title em { font-style:italic; color:var(--rust); }
+  .phase-desc { font-size:15px; color:rgba(13,13,11,.52); max-width:520px; margin-top:12px; font-family:var(--mono); line-height:1.6; letter-spacing:.01em; }
+
+  /* ── CONTENT ── */
+  .content-zone { padding:0 80px; margin-bottom:24px; }
+  .section-title { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; padding-bottom:12px; border-bottom:1px solid var(--rule); }
+  .sub-prose { font-size:16px; color:rgba(13,13,11,.65); line-height:1.75; margin-bottom:32px; max-width:780px; }
+
+  /* ── CALLOUT ── */
+  .callout { background:var(--ink); padding:48px 56px; margin-bottom:48px; position:relative; overflow:hidden; }
+  .callout-glow { position:absolute; top:-40px; left:-40px; width:300px; height:300px; background:radial-gradient(circle,rgba(184,154,90,.12) 0%,transparent 70%); pointer-events:none; }
+  .callout p { font-family:var(--serif); font-size:clamp(20px,2.2vw,28px); font-weight:300; font-style:italic; color:var(--parchment); line-height:1.45; position:relative; z-index:1; max-width:820px; }
+  .callout-src { font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-top:20px; position:relative; z-index:1; }
+
+  /* ── TABLE ── */
+  .strat-table { width:100%; border-collapse:collapse; margin-bottom:48px; font-family:var(--mono); font-size:13px; }
+  .strat-table thead th { font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); padding:0 16px 12px; text-align:left; border-bottom:1px solid var(--rule); }
+  .strat-table tbody tr { border-bottom:1px solid var(--rule); }
+  .strat-table tbody tr:hover { background:rgba(184,154,90,.04); }
+  .strat-table tbody td { padding:14px 16px; font-size:13px; color:rgba(13,13,11,.72); vertical-align:top; line-height:1.55; }
+  .strat-table tbody td.cat { color:var(--ink); font-weight:500; }
+
+  /* ══════════════════════════════
+     ARCHETYPE CARDS — THE CORE COMPONENT
+     ══════════════════════════════ */
+  .archetype-section { margin-bottom:0; }
+
+  .arch-card { margin-bottom:2px; overflow:hidden; }
+
+  /* Header band */
+  .arch-header { display:grid; grid-template-columns:280px 1fr; min-height:200px; }
+  .arch-identity { padding:48px 40px; display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; }
+  .arch-identity-bg { position:absolute; inset:0; opacity:.08; }
+  .arch-identity-content { position:relative; z-index:1; }
+  .arch-num { font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; margin-bottom:12px; }
+  .arch-name { font-family:var(--serif); font-size:clamp(36px,4vw,52px); font-weight:300; line-height:1.0; margin-bottom:12px; }
+  .arch-tagline { font-family:var(--mono); font-size:11px; line-height:1.55; opacity:.75; }
+  .arch-symbol { font-family:var(--serif); font-size:120px; font-weight:300; line-height:1; opacity:.15; position:absolute; bottom:-20px; right:20px; }
+
+  .arch-overview { padding:48px 40px; background:var(--parchment); border-left:2px solid; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .arch-overview-block h4 { font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+  .arch-overview-block p { font-family:var(--serif); font-size:16px; color:rgba(13,13,11,.75); line-height:1.65; }
+
+  /* Detail grid — below header */
+  .arch-detail-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:2px; }
+  .arch-detail-cell { background:var(--parchment); padding:28px 24px; border:1px solid var(--rule); }
+  .arch-detail-cell:hover { background:var(--sand); }
+  .arch-detail-cell h4 { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--rule); }
+  .arch-detail-cell .headline-eg { font-family:var(--serif); font-size:20px; font-weight:300; font-style:italic; color:var(--ink); margin-bottom:8px; line-height:1.2; }
+  .arch-detail-cell p { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.6); line-height:1.6; }
+  .arch-detail-cell ul { font-family:var(--mono); font-size:12px; color:rgba(13,13,11,.6); line-height:1.6; list-style:none; padding:0; }
+  .arch-detail-cell ul li { padding:3px 0; border-bottom:1px solid rgba(184,154,90,.12); padding-left:14px; position:relative; }
+  .arch-detail-cell ul li::before { content:'—'; position:absolute; left:0; color:var(--gold); opacity:.6; }
+  .arch-detail-cell ul li:last-child { border-bottom:none; }
+
+  /* Channel voice table within arch */
+  .arch-channel-row { display:grid; grid-template-columns:repeat(5,1fr); gap:2px; margin-bottom:2px; }
+  .arch-channel-cell { background:var(--parchment); padding:20px 16px; border:1px solid var(--rule); }
+  .arch-channel-cell h5 { font-family:var(--mono); font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .arch-channel-cell p { font-family:var(--serif); font-size:14px; font-style:italic; color:rgba(13,13,11,.65); line-height:1.5; }
+  .arch-channel-cell .eg { font-family:var(--mono); font-size:10px; color:rgba(13,13,11,.45); margin-top:8px; line-height:1.5; }
+
+  /* Crisis + Experience row */
+  .arch-crisis-xp { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:2px; }
+  .arch-crisis { background:rgba(139,74,42,.05); border:1px solid var(--rule); border-left:3px solid var(--rust); padding:28px 28px; }
+  .arch-xp { background:rgba(74,92,78,.05); border:1px solid var(--rule); border-left:3px solid var(--sage); padding:28px 28px; }
+  .arch-crisis h4, .arch-xp h4 { font-family:var(--mono); font-size:9px; letter-spacing:.2em; text-transform:uppercase; margin-bottom:14px; }
+  .arch-crisis h4 { color:var(--rust); }
+  .arch-xp h4 { color:var(--sage); }
+  .arch-crisis p, .arch-xp p { font-family:var(--serif); font-size:15px; color:rgba(13,13,11,.72); line-height:1.65; margin-bottom:12px; }
+  .arch-crisis-script { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.55); line-height:1.6; font-style:italic; background:rgba(139,74,42,.06); padding:12px 14px; border-left:2px solid var(--rust); margin-top:8px; }
+  .arch-xp-items { display:flex; flex-direction:column; gap:8px; margin-top:8px; }
+  .arch-xp-item { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.65); line-height:1.5; padding:8px 12px; background:rgba(74,92,78,.06); border-left:2px solid var(--sage); }
+
+  /* Spacer between archetype cards */
+  .arch-divider { height:64px; }
+
+  /* ── ARCHETYPE COLOUR CLASSES ── */
+  .arch-guardian  .arch-identity { background:var(--guardian-dk); }
+  .arch-guardian  .arch-num, .arch-guardian .arch-tagline { color:rgba(200,210,230,.7); }
+  .arch-guardian  .arch-name { color:#c8d4e8; }
+  .arch-guardian  .arch-symbol { color:#c8d4e8; }
+  .arch-guardian  .arch-overview { border-color:var(--guardian); }
+  .arch-guardian  .arch-detail-cell h4 { color:var(--guardian); }
+
+  .arch-sage      .arch-identity { background:var(--sage-dk); }
+  .arch-sage      .arch-num, .arch-sage .arch-tagline { color:rgba(190,210,195,.7); }
+  .arch-sage      .arch-name { color:#bee8c4; }
+  .arch-sage      .arch-symbol { color:#bee8c4; }
+  .arch-sage      .arch-overview { border-color:var(--sage-c); }
+  .arch-sage      .arch-detail-cell h4 { color:var(--sage-c); }
+
+  .arch-ruler     .arch-identity { background:#0d0d0b; border-right:1px solid rgba(184,154,90,.2); }
+  .arch-ruler     .arch-num, .arch-ruler .arch-tagline { color:rgba(184,154,90,.7); }
+  .arch-ruler     .arch-name { color:var(--gold-lt); }
+  .arch-ruler     .arch-symbol { color:var(--gold-lt); }
+  .arch-ruler     .arch-overview { border-color:var(--gold); }
+  .arch-ruler     .arch-detail-cell h4 { color:var(--gold-dk); }
+
+  .arch-creator   .arch-identity { background:var(--creator-dk); }
+  .arch-creator   .arch-num, .arch-creator .arch-tagline { color:rgba(230,200,175,.7); }
+  .arch-creator   .arch-name { color:#f0d4b8; }
+  .arch-creator   .arch-symbol { color:#f0d4b8; }
+  .arch-creator   .arch-overview { border-color:var(--creator); }
+  .arch-creator   .arch-detail-cell h4 { color:var(--creator); }
+
+  .arch-caregiver .arch-identity { background:var(--caregiver-dk); }
+  .arch-caregiver .arch-num, .arch-caregiver .arch-tagline { color:rgba(210,200,240,.7); }
+  .arch-caregiver .arch-name { color:#d8cef5; }
+  .arch-caregiver .arch-symbol { color:#d8cef5; }
+  .arch-caregiver .arch-overview { border-color:var(--caregiver); }
+  .arch-caregiver .arch-detail-cell h4 { color:var(--caregiver); }
+
+  .arch-explorer  .arch-identity { background:var(--explorer-dk); }
+  .arch-explorer  .arch-num, .arch-explorer .arch-tagline { color:rgba(185,225,205,.7); }
+  .arch-explorer  .arch-name { color:#b8e8cc; }
+  .arch-explorer  .arch-symbol { color:#b8e8cc; }
+  .arch-explorer  .arch-overview { border-color:var(--explorer); }
+  .arch-explorer  .arch-detail-cell h4 { color:var(--explorer); }
+
+  /* ── EVOLUTION SECTION ── */
+  .evolution-track { margin-bottom:48px; }
+  .evo-row { display:grid; grid-template-columns:200px 1fr 60px 1fr 60px 1fr; gap:0; margin-bottom:2px; align-items:stretch; }
+  .evo-label { background:var(--ink); padding:20px 24px; display:flex; align-items:center; }
+  .evo-label span { font-family:var(--mono); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); }
+  .evo-from, .evo-to, .evo-dest { background:var(--parchment); padding:20px 22px; border:1px solid var(--rule); }
+  .evo-arrow { background:var(--sand); display:flex; align-items:center; justify-content:center; border:1px solid var(--rule); }
+  .evo-arrow span { font-family:var(--sans); font-size:20px; color:var(--gold); }
+  .evo-from h4, .evo-to h4, .evo-dest h4 { font-family:var(--serif); font-size:17px; font-weight:400; color:var(--ink); margin-bottom:4px; }
+  .evo-from p, .evo-to p, .evo-dest p { font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.55); line-height:1.5; }
+
+  /* ── COMPARISON MATRIX ── */
+  .compare-matrix { display:grid; grid-template-columns:160px repeat(6,1fr); gap:1px; background:var(--rule); margin-bottom:48px; overflow:hidden; }
+  .cm-cell { background:var(--parchment); padding:14px 12px; font-family:var(--mono); font-size:11px; color:rgba(13,13,11,.65); line-height:1.45; }
+  .cm-cell.head-row { background:var(--ink); font-size:9px; letter-spacing:.15em; text-transform:uppercase; color:rgba(184,154,90,.8); font-weight:500; }
+  .cm-cell.row-label { background:var(--sand); font-weight:500; color:var(--ink); font-size:10px; letter-spacing:.12em; text-transform:uppercase; }
+  .cm-cell.guardian  { background:rgba(74,92,122,.08); }
+  .cm-cell.sage-c    { background:rgba(74,92,78,.08); }
+  .cm-cell.ruler     { background:rgba(184,154,90,.06); }
+  .cm-cell.creator   { background:rgba(122,74,42,.08); }
+  .cm-cell.caregiver { background:rgba(92,74,122,.08); }
+  .cm-cell.explorer  { background:rgba(42,92,74,.08); }
+
+  /* ── FOOTER ── */
+  footer { background:var(--ink); margin-top:120px; padding:64px 80px 40px; }
+  .footer-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:48px; margin-bottom:48px; padding-bottom:40px; border-bottom:1px solid rgba(184,154,90,.15); }
+  .footer-brand { font-family:var(--sans); font-size:20px; font-weight:800; color:var(--gold); margin-bottom:16px; }
+  .footer-brand span { font-weight:300; color:rgba(184,154,90,.5); }
+  .footer-desc { font-family:var(--mono); font-size:12px; color:rgba(245,240,232,.35); line-height:1.7; }
+  .footer-col h5 { font-family:var(--mono); font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+  .footer-col ul { list-style:none; }
+  .footer-col ul li { font-family:var(--mono); font-size:12px; color:rgba(245,240,232,.35); padding:4px 0; border-bottom:1px solid rgba(184,154,90,.08); }
+  .footer-bottom { display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:rgba(184,154,90,.3); }
+
+  /* ── UTILITY ── */
+  .fw-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:48px; }
+  .fw-grid-2 { grid-template-columns:repeat(2,1fr); }
+  .fw-card { background:var(--parchment); padding:32px 28px; border:1px solid var(--rule); position:relative; transition:background .25s; }
+  .fw-card:hover { background:var(--sand); }
+  .fw-card-accent { position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--gold),transparent); }
+  .fw-card-num { font-family:var(--mono); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:12px; }
+  .fw-card h3 { font-family:var(--serif); font-size:20px; font-weight:400; margin-bottom:10px; line-height:1.2; }
+  .fw-card p { font-size:15px; color:rgba(13,13,11,.65); line-height:1.65; }
+
+  .reveal { opacity:0; transform:translateY(14px); transition:opacity .5s ease,transform .5s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Archetype Playbook <span style="color:rgba(184,154,90,.4);font-weight:300"> / Real Estate</span></div>
+  <ul class="nav-links">
+    <li><a href="#framework">Framework</a></li>
+    <li><a href="#guardian">Guardian</a></li>
+    <li><a href="#sage">Sage</a></li>
+    <li><a href="#ruler">Ruler</a></li>
+    <li><a href="#creator">Creator</a></li>
+    <li><a href="#caregiver">Caregiver</a></li>
+    <li><a href="#explorer">Explorer</a></li>
+    <li><a href="#evolution">Evolution</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-aureoles">
+    <span style="width:400px;height:400px;background:#4a5c7a;top:-100px;right:10%"></span>
+    <span style="width:360px;height:360px;background:#4a5c4e;top:40%;right:25%"></span>
+    <span style="width:320px;height:320px;background:#b89a5a;bottom:-80px;right:40%"></span>
+    <span style="width:380px;height:380px;background:#7a4a2a;top:20%;right:55%"></span>
+    <span style="width:340px;height:340px;background:#5c4a7a;bottom:10%;right:15%"></span>
+    <span style="width:360px;height:360px;background:#2a5c4a;top:50%;right:5%"></span>
+  </div>
+  <div class="hero-stamp">
+    <div class="hero-stamp-inner">
+      <span>Archetype</span>
+      <strong>6×</strong>
+      <span>Playbook</span>
+      <span>Real Estate</span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Companion Document — Branding 360°</div>
+    <h1 class="hero-title">Brand Archetype<br><em>Application Playbook</em></h1>
+    <p class="hero-sub">Six archetypal identities. Each demands a distinct voice, a different visual world, a unique crisis posture, and its own physical experience. This is the operational translation — from strategic archetype to the sentence your sales manager says tomorrow morning.</p>
+  </div>
+  <div class="hero-archetypes">
+    <div class="arch-tag active">Guardian — The Protector</div>
+    <div class="arch-tag">Sage — The Expert</div>
+    <div class="arch-tag">Ruler — The Sovereign</div>
+    <div class="arch-tag">Creator — The Visionary</div>
+    <div class="arch-tag">Caregiver — The Nurturer</div>
+    <div class="arch-tag">Explorer — The Pioneer</div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 00 — FRAMEWORK
+════════════════════════════════ -->
+<section id="framework">
+  <div class="phase-header">
+    <div class="phase-num">00</div>
+    <div class="phase-meta">
+      <div class="phase-label">How to Use This Playbook</div>
+      <h2 class="phase-title">Archetype as <em>Operating System</em></h2>
+      <p class="phase-desc">An archetype is not a mood board. It is the cognitive and emotional operating system that governs every brand decision — from the font weight in a legal notice to the music playing in the lift lobby. This playbook translates each archetype into six practical applications.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Six Applications — What This Playbook Covers for Each Archetype</div>
+
+    <div class="fw-grid reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Application 01</span>
+        <h3>Headline Writing Style</h3>
+        <p>The specific grammatical structures, sentence lengths, vocabulary registers, and rhetorical devices that belong to each archetype. With worked example headlines for digital ads, hoardings, and brochure openers.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--rust),transparent)"></div>
+        <span class="fw-card-num">Application 02</span>
+        <h3>Visual Language</h3>
+        <p>Photography mood, colour temperature, compositional bias, typography weight, white space philosophy, and the one visual mistake each archetype must never make.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--sage),transparent)"></div>
+        <span class="fw-card-num">Application 03</span>
+        <h3>Tone of Voice by Channel</h3>
+        <p>How the archetype's voice shifts across Instagram, LinkedIn, WhatsApp, hoardings, sales scripts, and formal correspondence — with a one-sentence example for each channel.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--steel),transparent)"></div>
+        <span class="fw-card-num">Application 04</span>
+        <h3>Crisis Communication</h3>
+        <p>The specific posture, language register, and word choices each archetype must use when facing construction delays, legal complaints, viral negative posts, or price revision backlash.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,#5c4a7a,transparent)"></div>
+        <span class="fw-card-num">Application 05</span>
+        <h3>Experience Centre Design</h3>
+        <p>Materials, lighting, scent, music, spatial sequence, collateral placement, and the moment of arrival — all translated through the archetype's emotional logic.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,#2a5c4a,transparent)"></div>
+        <span class="fw-card-num">Application 06</span>
+        <h3>Archetype Evolution</h3>
+        <p>How a developer consciously shifts archetype as they move up-segment, expand geographically, or respond to a reputational event — without creating incoherence in their existing portfolio.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Archetype–Segment Fit Map — Which Archetype Works Where</div>
+    <p class="sub-prose">The most common mistake is choosing an archetype based on personal preference rather than segment fit. A developer building ₹35L apartments cannot operate as a Ruler — the archetype must match what the buyer's life is, or aspires to be, at the time of purchase.</p>
+
+    <table class="strat-table reveal">
+      <thead>
+        <tr><th>Archetype</th><th>Primary Segment Fit</th><th>Core Buyer Motivation</th><th>Brand Promise Pattern</th><th>Danger Segment</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat" style="color:#4a5c7a;">Guardian</td>
+          <td>Mid-segment · Affordable · First-home buyers</td>
+          <td>Safety, stability, "a good decision for my family"</td>
+          <td>"We will be here. This is solid. You are protected."</td>
+          <td>Ultra-luxury — sounds like a bank, not an aspiration</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#4a5c4e;">Sage</td>
+          <td>Premium · Commercial · NRI investor segment</td>
+          <td>Making the right decision, not being fooled, long-term wisdom</td>
+          <td>"We know more. Let us show you why this is the intelligent choice."</td>
+          <td>Affordable — sounds condescending to buyers who need warmth, not data</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#8a6f35;">Ruler</td>
+          <td>Luxury · Ultra-luxury · HNI / UHNI</td>
+          <td>Status, control, the best of everything, exclusivity</td>
+          <td>"This is the standard. Everything else is beneath it."</td>
+          <td>Mid-segment — sounds arrogant without the price point to justify it</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#7a4a2a;">Creator</td>
+          <td>Premium · Boutique luxury · Design-conscious buyers</td>
+          <td>Self-expression, originality, living in something that reflects their taste</td>
+          <td>"This was designed. Not just built."</td>
+          <td>Affordable / mid — design consciousness requires disposable income</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#5c4a7a;">Caregiver</td>
+          <td>Family residential · Senior living · Integrated townships</td>
+          <td>Community, belonging, looking after those you love</td>
+          <td>"Your family's life, better. We thought of everything."</td>
+          <td>Solo investor / commercial — buyers here want returns, not warmth</td>
+        </tr>
+        <tr>
+          <td class="cat" style="color:#2a5c4a;">Explorer</td>
+          <td>Township · Second home · Eco / wellness residential</td>
+          <td>Discovery, freedom, living differently from the conventional urban life</td>
+          <td>"You found somewhere most people will never think to look."</td>
+          <td>Urban mid-segment — buyers here want proximity, not escape</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"The archetype is the contract between the brand and the buyer's imagination. When a Guardian brand suddenly runs a Ruler-style campaign — all black, all gold, all silence — it does not feel premium. It feels like a stranger wearing the developer's suit. The buyer's imagination has already formed, and you cannot renegotiate it mid-campaign."</p>
+      <div class="callout-src">Archetype Consistency Principle — Brand Archetype Application Playbook</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     ARCHETYPE 01 — GUARDIAN
+════════════════════════════════ -->
+<section id="guardian">
+  <div class="phase-header">
+    <div class="phase-num">01</div>
+    <div class="phase-meta">
+      <div class="phase-label">Archetype One</div>
+      <h2 class="phase-title">The <em>Guardian</em></h2>
+      <p class="phase-desc">The brand that stands between its buyer and the world's uncertainty. Safety, reliability, permanence. The Guardian does not promise excitement — it promises that nothing will go wrong. In Indian real estate, this is the bedrock archetype for developers who have earned trust across decades.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="archetype-section arch-guardian reveal">
+
+      <div class="arch-card">
+        <div class="arch-header">
+          <div class="arch-identity">
+            <div class="arch-identity-content">
+              <div class="arch-num">Archetype 01</div>
+              <div class="arch-name">Guardian</div>
+              <div class="arch-tagline">Core emotion: Security · Core fear: Chaos<br>Core desire: To protect and be protected<br>Indian real estate voice: DLF, Puravankara, Sobha (Bengaluru trust story)</div>
+            </div>
+            <div class="arch-symbol">⊕</div>
+          </div>
+          <div class="arch-overview" style="border-color:var(--guardian);">
+            <div class="arch-overview-block">
+              <h4>The Guardian's Promise</h4>
+              <p>We have been here before and we will be here after. What we build, endures. Your family's security is not a marketing claim — it is the only reason we come to work. We are not fast; we are certain.</p>
+            </div>
+            <div class="arch-overview-block">
+              <h4>The Guardian's Shadow</h4>
+              <p>Rigidity. The Guardian brand that never evolves reads as stale rather than reliable. The failure mode is a developer who confuses "we never change" with "we can be trusted." Stability without warmth becomes an institution, not a home.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detail grid -->
+      <div class="arch-detail-grid">
+        <div class="arch-detail-cell">
+          <h4>Headline Writing Style</h4>
+          <div class="headline-eg">"Since 1982. Still building the same way."</div>
+          <p>Short declarative sentences. No exclamation marks — ever. Past tense and present continuous ("We have been," "We are still"). Numbers are credibility markers. Heritage years front-loaded. Never use superlatives ("best," "finest") — the Guardian earns credibility through understatement.</p>
+          <ul style="margin-top:12px;">
+            <li>Hoarding: "40 years. 18,000 families. 0 delays."</li>
+            <li>Digital: "Your parents chose us. Now it's your turn."</li>
+            <li>Brochure: "Built to outlast the mortgage."</li>
+            <li>NRI: "Some things have not changed. This is one of them."</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Language</h4>
+          <p style="margin-bottom:12px;">Solid, grounded, symmetrical. The Guardian's visual world is architectural in the classical sense — strong horizontals and verticals, no diagonal energy. Colour palette: deep blues, slate greys, warm cream. Photography: morning light rather than golden hour — steady and clear rather than dramatic.</p>
+          <ul>
+            <li>Photography: residents in situ, not models posing</li>
+            <li>Architecture: full facade at straight angle, no 3/4 drama</li>
+            <li>Typography: upright (no italics in headlines)</li>
+            <li>White space: generous — conveys permanence, not emptiness</li>
+            <li>Never: dynamic diagonals, explosive layouts, neon accents</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Palette &amp; Mood</h4>
+          <p style="margin-bottom:12px;">Slate blues, warm whites, aged stone. The palette is the colour of institutions that have stood for 100 years — banks, universities, courts. Never trend-driven. Never fashion-forward.</p>
+          <div style="display:flex;gap:4px;margin-bottom:12px;">
+            <div style="width:32px;height:32px;background:#4a5c7a;border-radius:2px;" title="#4A5C7A"></div>
+            <div style="width:32px;height:32px;background:#8a9ab8;border-radius:2px;" title="#8A9AB8"></div>
+            <div style="width:32px;height:32px;background:#e8ecf2;border-radius:2px;border:1px solid rgba(0,0,0,.08);" title="#E8ECF2"></div>
+            <div style="width:32px;height:32px;background:#c8a86a;border-radius:2px;" title="#C8A86A"></div>
+            <div style="width:32px;height:32px;background:#2a3a52;border-radius:2px;" title="#2A3A52"></div>
+          </div>
+          <ul>
+            <li>Font weight: Regular or SemiBold — never Light for Guardian</li>
+            <li>Images: people occupying space, not space without people</li>
+            <li>Material: stone, brick, timber — natural permanence</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Channel voices -->
+      <div class="arch-channel-row">
+        <div class="arch-channel-cell">
+          <h5>Instagram</h5>
+          <p>"The roof that has sheltered three generations in Velachery."</p>
+          <div class="eg">Factual, warm, community-rooted. Photos of real residents with long residency.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>LinkedIn</h5>
+          <p>"Our 40-year delivery record in numbers: 18,000 families, 23 projects, 0 delayed possessions."</p>
+          <div class="eg">Data-led credibility. Addresses investors and brokers, not end-users.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>WhatsApp Broadcast</h5>
+          <p>"Construction update: Slab Level 14 complete. As promised in your agreement letter."</p>
+          <div class="eg">Precision, keeping promises, no marketing language. The update IS the brand message.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Site Hoarding</h5>
+          <p>"40 years building Tamil Nadu's most dependable addresses."</p>
+          <div class="eg">Heritage + specific geography. Dependable is the word — not luxury, not premium.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Sales Script</h5>
+          <p>"Every project we've delivered has been on time or early. I'll show you the RERA records."</p>
+          <div class="eg">Evidence-first. Never promise; show proof. The salesperson is a steward, not a salesperson.</div>
+        </div>
+      </div>
+
+      <!-- Crisis + Experience -->
+      <div class="arch-crisis-xp">
+        <div class="arch-crisis">
+          <h4>Crisis Communication — Guardian Voice</h4>
+          <p>The Guardian's credibility is built entirely on reliability. Any suggestion of a delay or complaint must be addressed with two things simultaneously: honesty about what happened, and evidence that the system worked to catch it.</p>
+          <p>The worst mistake a Guardian brand makes in crisis is going silent. Silence, for the Guardian, is not gravitas — it is abandonment. The Guardian's crisis voice is a senior person speaking slowly and clearly, with facts, not apologies.</p>
+          <div class="arch-crisis-script">
+            Construction delay response: "We identified a 6-week delay in the slab pour for Towers A and B due to monsoon disruption on [specific dates]. The revised completion date is [specific date], confirmed by our site engineer. You will receive a written amendment to your agreement within 48 hours. We have not changed your possession date on paper before informing you personally. We never do."
+          </div>
+        </div>
+        <div class="arch-xp">
+          <h4>Experience Centre — Guardian Design</h4>
+          <p>The Guardian's experience centre must feel like entering a trusted institution — a well-run private bank or a respected law firm. Heavy furniture, solid materials, no gimmicks.</p>
+          <div class="arch-xp-items">
+            <div class="arch-xp-item">Arrival: Wide, solid entrance — stone or polished concrete. A reception desk, not a tablet-on-a-stand. A human being greeting, not a QR code.</div>
+            <div class="arch-xp-item">Materials: Dark-stained oak, stone countertops, leather seating. No acrylic, no neon, no interactive walls.</div>
+            <div class="arch-xp-item">Signature moment: A wall displaying every completed project with year, units, and possession date. The track record IS the experience.</div>
+            <div class="arch-xp-item">Scent: Unscented or cedar — clean institutional. Never sweet or floral.</div>
+            <div class="arch-xp-item">Music: None, or classical instrumental — never ambient electronic.</div>
+            <div class="arch-xp-item">Closing room: Timber table, printed documents (not tablets), offer letter in a folder — not an email.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /arch-guardian -->
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     ARCHETYPE 02 — SAGE
+════════════════════════════════ -->
+<section id="sage">
+  <div class="phase-header">
+    <div class="phase-num">02</div>
+    <div class="phase-meta">
+      <div class="phase-label">Archetype Two</div>
+      <h2 class="phase-title">The <em>Sage</em></h2>
+      <p class="phase-desc">The brand that knows more than anyone else, and makes its buyers feel intelligent for choosing it. Data, research, market insight. The Sage turns complex real estate decisions into informed choices. The buyer of a Sage brand feels like they have done their homework — because they have been taught by the best.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="archetype-section arch-sage reveal">
+
+      <div class="arch-card">
+        <div class="arch-header">
+          <div class="arch-identity">
+            <div class="arch-identity-content">
+              <div class="arch-num">Archetype 02</div>
+              <div class="arch-name">Sage</div>
+              <div class="arch-tagline">Core emotion: Confidence through knowledge · Core fear: Being misled<br>Core desire: To understand and to be understood<br>Indian real estate voice: Godrej Properties, Embassy Group, Brigade</div>
+            </div>
+            <div class="arch-symbol">◎</div>
+          </div>
+          <div class="arch-overview" style="border-color:var(--sage-c);">
+            <div class="arch-overview-block">
+              <h4>The Sage's Promise</h4>
+              <p>We have studied this market longer than anyone else in this city. What you are about to buy is not just a home — it is the product of a decade of data, site analysis, and design research. Let us show you exactly why this is the right decision.</p>
+            </div>
+            <div class="arch-overview-block">
+              <h4>The Sage's Shadow</h4>
+              <p>Coldness. The Sage brand that leads only with data can feel clinical and transactional — the opposite of what a home purchase should feel like. The danger is being right in a way that makes the buyer feel small, or being so measured that you never create desire.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arch-detail-grid">
+        <div class="arch-detail-cell">
+          <h4>Headline Writing Style</h4>
+          <div class="headline-eg">"The 12 infrastructure triggers that make this the only location worth watching."</div>
+          <p>The Sage headline educates. It reveals information the buyer did not have before. It creates the sensation of being given privileged access to knowledge. Numbered lists, specific data, rhetorical questions that promise an answer. The tone is the professor who respects their student.</p>
+          <ul style="margin-top:12px;">
+            <li>Hoarding: "The metro station opens 600 metres away. In 18 months."</li>
+            <li>Digital: "Why every analyst we spoke to flagged this corridor first."</li>
+            <li>Brochure: "The investment case for [Project]. Documented."</li>
+            <li>NRI: "The 5 reasons Chennai's IT corridor outperforms Dubai for NRI returns."</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Language</h4>
+          <p style="margin-bottom:12px;">Clean, precise, research-grade. The Sage's visual world is infographic-adjacent — data visualisations, maps with marked infrastructure, isometric floor plans rendered with precision. Photography is documentary rather than aspirational: the site, the process, the evidence.</p>
+          <ul>
+            <li>Photography: aerial establishing shots, construction documentation, real views from the project</li>
+            <li>Typography: monospace data labels alongside serif body — the combination signals rigour</li>
+            <li>Diagrams: location maps with distance markers, price appreciation charts, connectivity infographics</li>
+            <li>Colour: forest green, deep navy, warm white — authoritative without being cold</li>
+            <li>Never: dreamy soft-focus, aspirational lifestyle-only imagery with no substance</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Palette &amp; Mood</h4>
+          <p style="margin-bottom:12px;">The palette of a research institution: deep forest green, warm parchment, ink black. Charts and infographics are not decorative — they are the content itself in a Sage layout.</p>
+          <div style="display:flex;gap:4px;margin-bottom:12px;">
+            <div style="width:32px;height:32px;background:#2a3c2e;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#4a5c4e;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#8aaa8e;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#e8f0e8;border-radius:2px;border:1px solid rgba(0,0,0,.08);"></div>
+            <div style="width:32px;height:32px;background:#b89a5a;border-radius:2px;"></div>
+          </div>
+          <ul>
+            <li>Data visualisations in brand palette — never default chart colours</li>
+            <li>Layouts: column-grid, editorial, information-dense</li>
+            <li>Infographics replace photography in key sections</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arch-channel-row">
+        <div class="arch-channel-cell">
+          <h5>Instagram</h5>
+          <p>"The Whitefield IT employment belt grew 34% in 36 months. Here is what that means for your home's value."</p>
+          <div class="eg">Insight carousels. Data + plain-language explanation. Teaches something.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>LinkedIn</h5>
+          <p>"Our research team's 2025 micro-market analysis: the three corridors that every serious investor missed — and why."</p>
+          <div class="eg">Thought leadership. Long-form articles. MD bylines on market research.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>WhatsApp Broadcast</h5>
+          <p>"Infrastructure update: Metro Phase 2 alignment confirmed. Your project is within the projected 600m catchment. What this means for your asset value."</p>
+          <div class="eg">Context with data. Never just a notification — always an interpretation.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Site Hoarding</h5>
+          <p>"43 infrastructure projects within 5 km. Most developers counted 4."</p>
+          <div class="eg">Comparative intelligence. Positions the brand as the one that did the research.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Sales Script</h5>
+          <p>"Can I show you the appreciation data for the last 8 projects we delivered in this corridor? I want you to make this decision with the same information our investment committee used."</p>
+          <div class="eg">The salesperson is a research guide, not a pitchperson. Buyer is elevated.</div>
+        </div>
+      </div>
+
+      <div class="arch-crisis-xp">
+        <div class="arch-crisis">
+          <h4>Crisis Communication — Sage Voice</h4>
+          <p>The Sage's credibility is built on being right. A crisis that reveals the Sage was wrong — or worse, that it withheld information — is existential. The Sage in crisis must over-disclose, not under-disclose.</p>
+          <p>The Sage must also avoid the temptation to respond to a crisis with data — raw data without interpretation feels defensive. The Sage crisis voice explains. It creates understanding out of confusion.</p>
+          <div class="arch-crisis-script">
+            Viral negative review response: "We have reviewed your specific case and the claim you made on [platform]. Here is what the data shows: [specific facts]. Here is where our process failed: [honest gap]. Here is what we are changing in our construction monitoring protocol as a result: [concrete action]. We are publishing our full quality audit for this project on our website by [date]."
+          </div>
+        </div>
+        <div class="arch-xp">
+          <h4>Experience Centre — Sage Design</h4>
+          <p>The Sage's experience centre is a research library that has been designed for human beings. Data-rich but warm. Every surface teaches something.</p>
+          <div class="arch-xp-items">
+            <div class="arch-xp-item">Arrival: Large-format location infographic as the first thing a buyer sees — the context before the project.</div>
+            <div class="arch-xp-item">Research wall: Price appreciation of all completed projects, mapped. Not in a brochure — on the wall.</div>
+            <div class="arch-xp-item">Materials: Warm oak, matte surfaces, printed books. Tactile and considered, not flashy.</div>
+            <div class="arch-xp-item">Signature moment: A presentation that teaches the buyer something new about the micro-market before ever showing them the unit.</div>
+            <div class="arch-xp-item">Scent: Neutral or very light — the Sage does not manipulate through scent. Clean, paper-and-oak.</div>
+            <div class="arch-xp-item">Closing: A research summary document the buyer takes away — their "investment case" in physical form.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     ARCHETYPE 03 — RULER
+════════════════════════════════ -->
+<section id="ruler">
+  <div class="phase-header">
+    <div class="phase-num">03</div>
+    <div class="phase-meta">
+      <div class="phase-label">Archetype Three</div>
+      <h2 class="phase-title">The <em>Ruler</em></h2>
+      <p class="phase-desc">The brand that sets the standard all others are measured against. The Ruler does not compete — it defines. Its buyers are not purchasing a home; they are claiming their rightful position. In Indian real estate, the Ruler archetype belongs to the one developer in a city that has made exclusivity structural, not promotional.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="archetype-section arch-ruler reveal">
+
+      <div class="arch-card">
+        <div class="arch-header">
+          <div class="arch-identity">
+            <div class="arch-identity-content">
+              <div class="arch-num">Archetype 03</div>
+              <div class="arch-name">Ruler</div>
+              <div class="arch-tagline">Core emotion: Power and control · Core fear: Chaos, being ordinary<br>Core desire: To own the best and to be seen to own the best<br>Indian real estate voice: Lodha (ultra-luxury) · Prestige (aspirational Ruler)</div>
+            </div>
+            <div class="arch-symbol">♛</div>
+          </div>
+          <div class="arch-overview" style="border-color:var(--gold);">
+            <div class="arch-overview-block">
+              <h4>The Ruler's Promise</h4>
+              <p>There is one address in this city that sets the standard. Everything else is a compromise. We built it because someone had to. You are here because you understand the difference.</p>
+            </div>
+            <div class="arch-overview-block">
+              <h4>The Ruler's Shadow</h4>
+              <p>Arrogance without delivery. The Ruler archetype requires flawless execution — any visible failure (a peeling facade, a delayed lift, a rude security guard) destroys the brand far faster than it would for any other archetype. The Ruler cannot afford human error at the experience level.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arch-detail-grid">
+        <div class="arch-detail-cell">
+          <h4>Headline Writing Style</h4>
+          <div class="headline-eg">"Not for everyone. By design."</div>
+          <p>The Ruler headline is short. Often three to five words. It does not explain — it declares. It speaks directly to the buyer's self-image rather than the product's features. It uses exclusion as inclusion: by defining who this is not for, it makes the buyer feel chosen. Silence and restraint are the Ruler's rhetorical tools.</p>
+          <ul style="margin-top:12px;">
+            <li>Hoarding: "One address. One price. Non-negotiable."</li>
+            <li>Digital: "The waiting list opens Tuesday."</li>
+            <li>Brochure: [Only the project name and the address. Nothing else on the cover.]</li>
+            <li>NRI: "Lodha Altamount. For those who no longer explain their choices."</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Language</h4>
+          <p style="margin-bottom:12px;">Absolute restraint. The Ruler's visual world is the luxury fashion house applied to real estate: vast white space, minimal text, photography that is almost cinematic in its precision and scale. Everything costs. Nothing is accidental.</p>
+          <ul>
+            <li>Photography: large format, single image per page, never a grid of four equal images</li>
+            <li>Typography: Cormorant Garamond Light — the thinnest weight, maximum tracking</li>
+            <li>Colour: black, white, and a single gold or platinum element. No secondary palette visible</li>
+            <li>Layouts: centre-weighted or completely asymmetric — never templated</li>
+            <li>Never: bullet points, comparison tables, "value for money" copy, stock imagery</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Palette &amp; Mood</h4>
+          <p style="margin-bottom:12px;">The darkest possible palette. The Ruler operates in black, deep charcoal, and the specific gold of restraint — not the warm hospitality gold, but the cool metallic gold of a watch. Matte finishes, not gloss.</p>
+          <div style="display:flex;gap:4px;margin-bottom:12px;">
+            <div style="width:32px;height:32px;background:#0d0d0b;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#1a1a14;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#b89a5a;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#d8d0b8;border-radius:2px;border:1px solid rgba(0,0,0,.08);"></div>
+            <div style="width:32px;height:32px;background:#8a8a7a;border-radius:2px;"></div>
+          </div>
+          <ul>
+            <li>Print: matte black stock, spot UV on logo only</li>
+            <li>Foil: gold or platinum cold foil — never hot-stamp on brochures</li>
+            <li>Digital: dark background, no white digital ads for Ruler brands</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arch-channel-row">
+        <div class="arch-channel-cell">
+          <h5>Instagram</h5>
+          <p>"—"</p>
+          <div class="eg">Ruler brands post less than any other archetype. A black image. A detail. No caption. The absence of explanation is the brand statement.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>LinkedIn</h5>
+          <p>"The World Towers delivered. 300 metres above sea level. The highest residential address in India."</p>
+          <div class="eg">One statement. No adjectives. The fact speaks for the brand.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>WhatsApp Broadcast</h5>
+          <p>"Your possession is scheduled for [date]. Your relationship manager will contact you 48 hours before to coordinate your private handover."</p>
+          <div class="eg">Formal, precise, personal. Never a broadcast to all buyers — always segmented to feel individual.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Site Hoarding</h5>
+          <p>"[Project name]. [City]. [Year of completion]." — nothing else.</p>
+          <div class="eg">The Ruler's hoarding is not an advertisement. It is an announcement. Less copy than any competitor.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Sales Script</h5>
+          <p>"I'm not going to tell you about the project — I'd rather take you to see it. The appointment will take about 90 minutes. When are you free?"</p>
+          <div class="eg">The Ruler's sales process is an invitation, not a pitch. Never a PDF sent cold.</div>
+        </div>
+      </div>
+
+      <div class="arch-crisis-xp">
+        <div class="arch-crisis">
+          <h4>Crisis Communication — Ruler Voice</h4>
+          <p>The Ruler in crisis must resist the most dangerous temptation: silence as a power move. While the Ruler communicates minimally in marketing, silence during a genuine crisis reads as contempt for buyers.</p>
+          <p>The Ruler's crisis communication must come from the highest level — the MD or the Chairman, not the PR team. It must be brief, unequivocal, and show exactly what standard is being upheld in response to the failure.</p>
+          <div class="arch-crisis-script">
+            Construction delay (from MD/Chairperson): "The 23 residences in Tower A will not receive possession on [date]. I made a commitment — it will not be met. We are extending the slab completion by eleven weeks. Each of you will receive a personal call from me or my office before any media communication. This is not acceptable, and the response to it will reflect the standards this project was designed to represent."
+          </div>
+        </div>
+        <div class="arch-xp">
+          <h4>Experience Centre — Ruler Design</h4>
+          <p>The Ruler's experience centre is not a showroom — it is a private viewing. There are no walk-ins. Every visit is an appointment. Fewer than 8 visitors per day is normal and correct.</p>
+          <div class="arch-xp-items">
+            <div class="arch-xp-item">Arrival: Private car park bay reserved for visitor. Valet if possible. Name-verified entry.</div>
+            <div class="arch-xp-item">Materials: Imported stone, brushed brass, hand-woven textiles. Everything is from the same material family used in the project itself.</div>
+            <div class="arch-xp-item">Signature: The scale model as art object — not a sales tool. No dimensions labelled. The model is a statement of vision.</div>
+            <div class="arch-xp-item">Hospitality: A single glass of still water in a weighted glass, placed without being asked. Never a tray of options.</div>
+            <div class="arch-xp-item">Scent: One signature scent, exclusively commissioned. Never an off-the-shelf diffuser.</div>
+            <div class="arch-xp-item">Sales person title: "Residence Advisor" or "Relationship Manager" — never "Sales Executive."</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     ARCHETYPE 04 — CREATOR
+════════════════════════════════ -->
+<section id="creator">
+  <div class="phase-header">
+    <div class="phase-num">04</div>
+    <div class="phase-meta">
+      <div class="phase-label">Archetype Four</div>
+      <h2 class="phase-title">The <em>Creator</em></h2>
+      <p class="phase-desc">The brand that treats building as a form of authorship. The Creator does not develop real estate — it produces work. Its buyers are design-literate and taste-conscious. They are choosing a home the way they would choose a gallery they want to live inside. In Indian real estate, this archetype is rare and valuable precisely because it is rare.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="archetype-section arch-creator reveal">
+
+      <div class="arch-card">
+        <div class="arch-header">
+          <div class="arch-identity">
+            <div class="arch-identity-content">
+              <div class="arch-num">Archetype 04</div>
+              <div class="arch-name">Creator</div>
+              <div class="arch-tagline">Core emotion: Self-expression · Core fear: Mediocrity and conformity<br>Core desire: To build and live in something that is genuinely original<br>Indian real estate voice: Mahindra Lifespaces (Happinest), niche boutique developers</div>
+            </div>
+            <div class="arch-symbol">✦</div>
+          </div>
+          <div class="arch-overview" style="border-color:var(--creator);">
+            <div class="arch-overview-block">
+              <h4>The Creator's Promise</h4>
+              <p>This was designed. Not just built. Every decision from the spacing between columns to the view from the kitchen window was deliberate. The people who live here chose it because they recognised something of themselves in it.</p>
+            </div>
+            <div class="arch-overview-block">
+              <h4>The Creator's Shadow</h4>
+              <p>Indulgence. The Creator brand that becomes more interested in its own vision than in the buyer's experience loses the thread. The danger is building something beautiful that no one can live in, or communicating design intent so abstractly that only the architect understands the campaign.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arch-detail-grid">
+        <div class="arch-detail-cell">
+          <h4>Headline Writing Style</h4>
+          <div class="headline-eg">"The light in this room was planned six years before you arrived in it."</div>
+          <p>The Creator headline reveals intention — it shows the buyer that every detail was deliberate. It uses specificity to signal craft ("the 14-degree angle of the canopy," "hand-pressed Italian clay"). It treats the buyer as a fellow creative, not a consumer. The tone is a craftsperson describing their process.</p>
+          <ul style="margin-top:12px;">
+            <li>Hoarding: "Designed by [Architect]. For people who notice."</li>
+            <li>Digital: "The seven details no other developer thought to specify."</li>
+            <li>Brochure: "An architect's letter to the future resident."</li>
+            <li>NRI: "Built for those who have lived in good design and can't go back."</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Language</h4>
+          <p style="margin-bottom:12px;">Bold graphic sensibility. The Creator's visual world borrows from art publishing and design magazines — unconventional crops, layered typography, detail photography that treats architecture as sculpture. Layouts are editorial and unexpected.</p>
+          <ul>
+            <li>Photography: architectural detail over wide shots — macro on materials, shadow studies, light quality documentation</li>
+            <li>Typography: expressive tracking variations, mixed weights in headlines for graphic effect</li>
+            <li>Colour: unexpected pairings — terracotta and slate, deep teal and natural linen</li>
+            <li>Layout: grid-breaking, overlapping, asymmetric — the layout IS a creative statement</li>
+            <li>Never: three-bedroom-two-bathroom grid layouts, generic lifestyle photography, templated e-flyers</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Palette &amp; Mood</h4>
+          <p style="margin-bottom:12px;">Terracotta, warm linen, deep teal. The Creator's palette is drawn from the material world — pigments, clays, natural textiles. Never synthetic. Never the colours of digital brands.</p>
+          <div style="display:flex;gap:4px;margin-bottom:12px;">
+            <div style="width:32px;height:32px;background:#5a2a0a;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#7a4a2a;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#c87850;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#f2ece6;border-radius:2px;border:1px solid rgba(0,0,0,.08);"></div>
+            <div style="width:32px;height:32px;background:#3a5a5a;border-radius:2px;"></div>
+          </div>
+          <ul>
+            <li>Paper stock: uncoated, textured, natural — the brochure itself is a design object</li>
+            <li>Print finishes: deboss, letterpress, uncoated screen printing</li>
+            <li>Digital: textured backgrounds, never flat white</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arch-channel-row">
+        <div class="arch-channel-cell">
+          <h5>Instagram</h5>
+          <p>"The double-height void was designed to frame the Aravalli silhouette at 5pm in October. We measured 18 months of light data first."</p>
+          <div class="eg">Design narrative posts. The story behind each detail. Partners the architect as an author.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>LinkedIn</h5>
+          <p>"We commissioned a materials library before we commissioned an architect. Here is why."</p>
+          <div class="eg">Process stories. Behind-the-design thinking. Addresses design-literate professionals.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>WhatsApp Broadcast</h5>
+          <p>"The Italian porcelain for your kitchen arrived at site today. Here is the quarry it came from."</p>
+          <div class="eg">Material provenance updates. The construction update is a design story, not a progress report.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Site Hoarding</h5>
+          <p>"[Architect Name] + [Developer Name]. Twelve units. No compromises."</p>
+          <div class="eg">The architect's name on the hoarding. Co-authorship as a marketing position. Scarcity signalled by the unit count.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Sales Script</h5>
+          <p>"Before I show you anything, I want to tell you about the conversations the architect had with the light over two years of site visits. Because that's where this building started."</p>
+          <div class="eg">Story-first. The salesperson is a curator, guiding a creative experience.</div>
+        </div>
+      </div>
+
+      <div class="arch-crisis-xp">
+        <div class="arch-crisis">
+          <h4>Crisis Communication — Creator Voice</h4>
+          <p>The Creator in crisis faces a particular vulnerability: when construction fails to meet the standard promised by the design vision. The gap between a beautifully rendered experience centre and a disappointing delivered product destroys Creator credibility instantly.</p>
+          <p>The Creator's crisis voice must own the problem with the same level of specificity with which it describes its design intent. Vague corporate apologies are existentially incompatible with a brand whose entire positioning is precision and intentionality.</p>
+          <div class="arch-crisis-script">
+            Quality shortfall response: "The terrazzo flooring in Units 4–9 on Level 3 was poured incorrectly — the aggregate ratio was wrong. We caught this in our quality walkthrough and halted possession for those six units. The floor will be removed and relaid. We are showing you the photographs. This is exactly the kind of decision we built our QA process to make, and we will make it every time."
+          </div>
+        </div>
+        <div class="arch-xp">
+          <h4>Experience Centre — Creator Design</h4>
+          <p>The Creator's experience centre is a gallery opening, not a sales office. It should feel like the project before the project — the same materials, the same sensibility, the same curatorial intelligence.</p>
+          <div class="arch-xp-items">
+            <div class="arch-xp-item">Arrival: An art object at the entrance — a fragment of the facade material, a sketch by the architect, an object that tells a story before a word is said.</div>
+            <div class="arch-xp-item">Materials room: Tactile samples of every finish available, labelled with provenance — quarry, maker, country. Handled by visitors without a guide hovering.</div>
+            <div class="arch-xp-item">Signature: The architect's process journals — actual drawings, material selections, site photographs from the design process — displayed without explanation.</div>
+            <div class="arch-xp-item">Light: Deliberately manipulated. The experience centre demonstrates the light quality the project will deliver.</div>
+            <div class="arch-xp-item">Scent: A single fragrance designed to evoke the material palette of the building — cedar, stone, warm concrete.</div>
+            <div class="arch-xp-item">Collateral: The brochure is a book — not a product brochure. It is art-directed and printed to be kept, not discarded.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     ARCHETYPE 05 — CAREGIVER
+════════════════════════════════ -->
+<section id="caregiver">
+  <div class="phase-header">
+    <div class="phase-num">05</div>
+    <div class="phase-meta">
+      <div class="phase-label">Archetype Five</div>
+      <h2 class="phase-title">The <em>Caregiver</em></h2>
+      <p class="phase-desc">The brand that builds for the life that happens after you move in. Community, belonging, the ecosystem of everyday joy — school run, evening walks, neighbours who become friends. The Caregiver developer is building a village, not just selling units. This is the archetype of the integrated township and the family residential project done with genuine empathy.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="archetype-section arch-caregiver reveal">
+
+      <div class="arch-card">
+        <div class="arch-header">
+          <div class="arch-identity">
+            <div class="arch-identity-content">
+              <div class="arch-num">Archetype 05</div>
+              <div class="arch-name">Caregiver</div>
+              <div class="arch-tagline">Core emotion: Belonging and warmth · Core fear: Selfishness, isolation<br>Core desire: To nurture and be nurtured, to build something that looks after people<br>Indian real estate voice: Godrej Properties (township), Mahindra World City</div>
+            </div>
+            <div class="arch-symbol">◯</div>
+          </div>
+          <div class="arch-overview" style="border-color:var(--caregiver);">
+            <div class="arch-overview-block">
+              <h4>The Caregiver's Promise</h4>
+              <p>We built everything you need for your family to flourish — not just bedrooms and bathrooms, but a community, a school that walks to, a park that is safe at 9pm, neighbours who look out for each other. We thought about life after the key handover. We designed for that.</p>
+            </div>
+            <div class="arch-overview-block">
+              <h4>The Caregiver's Shadow</h4>
+              <p>Suffocation. The Caregiver brand that over-engineers community can feel controlling or intrusive — residents who bought for the promise of a warm community and then find constant organised events and mandatory participation discover the shadow. The care must feel offered, never imposed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arch-detail-grid">
+        <div class="arch-detail-cell">
+          <h4>Headline Writing Style</h4>
+          <div class="headline-eg">"Your daughter will learn to swim in a pool we built at her height."</div>
+          <p>The Caregiver headline is the most personal of all archetypes. It addresses specific family members, specific life moments. It uses second-person intensely — "your daughter," "your parents," "your 6am." The emotion is warmth rather than aspiration. Sentences are longer and more conversational. The tone is the thoughtful neighbour, not the brand.</p>
+          <ul style="margin-top:12px;">
+            <li>Hoarding: "Your children will not need a driver to get to school."</li>
+            <li>Digital: "The question every parent asks before they move: 'Will they be safe here?' We built our answer."</li>
+            <li>Brochure: "A letter to your family, from ours."</li>
+            <li>NRI: "Everything your parents need, within walking distance of your front door."</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Language</h4>
+          <p style="margin-bottom:12px;">Warm, human, populated. The Caregiver's visual world is the opposite of the Ruler's minimalism — it is full of people, movement, and life. Wide-angle shots of the community in use. Multiple generations in the same frame. Golden hour, but residential rather than architectural — the light is domestic, not dramatic.</p>
+          <ul>
+            <li>Photography: families, children, elderly residents — authentic moments, not staged families</li>
+            <li>Architecture: always with people in it — never an empty amenity space</li>
+            <li>Typography: slightly warmer weight — Regular and SemiBold, not Light</li>
+            <li>Colour: warm amber, sage green, linen — the palette of a home, not a corporate brand</li>
+            <li>Never: cold empty architecture shots, luxury minimalism, clinical white spaces</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Palette &amp; Mood</h4>
+          <p style="margin-bottom:12px;">Warm amber, soft sage, linen white. The palette of an afternoon in a well-loved garden. The Caregiver is the warmest visual palette of all six archetypes.</p>
+          <div style="display:flex;gap:4px;margin-bottom:12px;">
+            <div style="width:32px;height:32px;background:#3a2a5c;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#5c4a7a;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#9a8ab8;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#f5efe8;border-radius:2px;border:1px solid rgba(0,0,0,.08);"></div>
+            <div style="width:32px;height:32px;background:#c8a86a;border-radius:2px;"></div>
+          </div>
+          <ul>
+            <li>Mixed with warm ambers and greens — community colours</li>
+            <li>Photography: golden hour with humans, not architecture</li>
+            <li>Illustrations: hand-drawn maps and community plans for township collateral</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arch-channel-row">
+        <div class="arch-channel-cell">
+          <h5>Instagram</h5>
+          <p>"Mrs Krishnamurthy has lived at Prestige Gardens for 14 years. Yesterday she showed us her daughter's first report card from the school 200 metres from her door."</p>
+          <div class="eg">Resident life stories. Real people, long timelines. Not product features — life outcomes.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>LinkedIn</h5>
+          <p>"The research shows that residents in integrated townships spend 38% more time with family than those in standalone apartments. Here is how we designed for that."</p>
+          <div class="eg">Community wellbeing data. Addresses HR professionals, corporate township partnerships.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>WhatsApp Broadcast</h5>
+          <p>"The new residents' garden is now open. 847 families now call this home. Welcome to all 23 families who moved in this week — your neighbours are ready for you."</p>
+          <div class="eg">Warm, community-building. Names the community size. Makes newcomers feel received.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Site Hoarding</h5>
+          <p>"Where your children will walk to school. And your parents will walk for the evening. And you will walk to work. All within 1.2 kilometres."</p>
+          <div class="eg">Lifestyle specificity for every family member. The 1.2km distance is evidence, not poetry.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Sales Script</h5>
+          <p>"Before I show you the apartment, I want to show you the rest — the school, the clinic, the park at the back. The apartment is the easiest part of the decision."</p>
+          <div class="eg">Outside-in selling. The ecosystem first, the unit second. Addresses the whole family's life.</div>
+        </div>
+      </div>
+
+      <div class="arch-crisis-xp">
+        <div class="arch-crisis">
+          <h4>Crisis Communication — Caregiver Voice</h4>
+          <p>The Caregiver in crisis faces the most personal form of brand damage: the feeling of being let down by someone you trusted to look after you. The emotional contract is more intimate than for other archetypes — the buyer's vulnerability is higher.</p>
+          <p>The Caregiver's crisis communication must be empathetic before it is factual. The facts matter, but the first thing a Caregiver brand must demonstrate is that it feels the impact on the family — not just on the project schedule.</p>
+          <div class="arch-crisis-script">
+            Construction delay (email to all buyers): "Dear [Family name], I am writing to you because this decision affects your family, and you deserve to hear from us directly. The possession for your home at [Project] has been rescheduled to [date] — six weeks later than your agreement date. We know this disrupts school planning, rental renewals, and the plans your family made around this date. We are sorry for that disruption. Here is everything we are doing about it..."
+          </div>
+        </div>
+        <div class="arch-xp">
+          <h4>Experience Centre — Caregiver Design</h4>
+          <p>The Caregiver's experience centre is the community itself — scaled down, made tangible. The whole family should be invited and accommodated. There is a play area. There is something for the grandparents. No single experience is optimised for the "decision maker" — the whole family decides together.</p>
+          <div class="arch-xp-items">
+            <div class="arch-xp-item">Arrival: Wide, welcoming entrance — designed for families with prams and the elderly. Never a turnstile or a security check that makes visitors feel surveilled.</div>
+            <div class="arch-xp-item">Children's zone: A small, well-designed play area adjacent to the main presentation space. Non-negotiable for family segment.</div>
+            <div class="arch-xp-item">Community map: Large-format hand-illustrated map of the township showing every amenity with hand-lettered distances.</div>
+            <div class="arch-xp-item">Signature: A resident testimonial wall — actual quotes from actual residents, with their names and their years of residence.</div>
+            <div class="arch-xp-item">Scent: Warm — baking, subtle floral, warm wood. The smell of a home, not an office.</div>
+            <div class="arch-xp-item">Refreshments: Homemade or locally sourced snacks. Filter coffee, not instant. The hospitality signals that this brand cares about small things.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     ARCHETYPE 06 — EXPLORER
+════════════════════════════════ -->
+<section id="explorer">
+  <div class="phase-header">
+    <div class="phase-num">06</div>
+    <div class="phase-meta">
+      <div class="phase-label">Archetype Six</div>
+      <h2 class="phase-title">The <em>Explorer</em></h2>
+      <p class="phase-desc">The brand that builds at the frontier — geographic, conceptual, or experiential. The Explorer developer sees something that no one else has yet committed to: a hillside, a coastline, a new kind of urban living that the conventional market hasn't recognised yet. Its buyer is the early adopter — the person who moves first and feels vindicated when everyone follows.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="archetype-section arch-explorer reveal">
+
+      <div class="arch-card">
+        <div class="arch-header">
+          <div class="arch-identity">
+            <div class="arch-identity-content">
+              <div class="arch-num">Archetype 06</div>
+              <div class="arch-name">Explorer</div>
+              <div class="arch-tagline">Core emotion: Freedom and discovery · Core fear: Conformity, missing out on what's next<br>Core desire: To find and inhabit new territory before everyone else arrives<br>Indian real estate voice: Second-home markets (Coorg, Alibaug), eco-townships, wellness destinations</div>
+            </div>
+            <div class="arch-symbol">◈</div>
+          </div>
+          <div class="arch-overview" style="border-color:var(--explorer);">
+            <div class="arch-overview-block">
+              <h4>The Explorer's Promise</h4>
+              <p>We found something. Most people drive past this place without stopping. You stopped. What we built here is not the result of a market study — it is the result of someone standing on this hillside at 5am and understanding what a life here could be. We built for the version of you that has always been looking for this.</p>
+            </div>
+            <div class="arch-overview-block">
+              <h4>The Explorer's Shadow</h4>
+              <p>Inaccessibility. The Explorer brand that becomes too niche, too remote, or too esoteric loses the buyer who wants adventure but also wants connectivity. The danger is building somewhere so genuinely frontier that the infrastructure never catches up, and the early adopters feel stranded rather than pioneering.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="arch-detail-grid">
+        <div class="arch-detail-cell">
+          <h4>Headline Writing Style</h4>
+          <div class="headline-eg">"You have been looking at the wrong map."</div>
+          <p>The Explorer headline creates a sense of secret knowledge and missed possibility. It uses the word "you" intimately — as if speaking to the buyer before anyone else heard about this. It often begins with what the buyer has been denied so far, then offers the alternative. The tone is an experienced guide who has been to a place no one else knows yet.</p>
+          <ul style="margin-top:12px;">
+            <li>Hoarding: "Most of Bengaluru is still looking for this view. You found it."</li>
+            <li>Digital: "124 acres in the Western Ghats. 48 residences. After that, it closes."</li>
+            <li>Brochure: "A field notes guide to your new geography."</li>
+            <li>NRI: "While you were working in Dubai, this valley was waiting for you."</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Language</h4>
+          <p style="margin-bottom:12px;">Documentary and landscape-led. The Explorer's visual world is an expedition journal made into a property brochure. Location photography dominates — wider, more expansive, more atmospheric than any other archetype. The land itself is the hero, not the building.</p>
+          <ul>
+            <li>Photography: landscape first, architecture second — the context is the selling point</li>
+            <li>Morning mist, long shadows, weather — the Explorer is not afraid of imperfect light</li>
+            <li>Typography: bold, all-caps in some applications — the energy of discovery</li>
+            <li>Maps: hand-drawn or cartographic — treating the location as a place to be discovered</li>
+            <li>Colour: forest greens, deep earths, fog greys, water blues — the palette of the landscape itself</li>
+            <li>Never: polished interior lifestyle shots as lead imagery, urban skyline contexts</li>
+          </ul>
+        </div>
+        <div class="arch-detail-cell">
+          <h4>Visual Palette &amp; Mood</h4>
+          <p style="margin-bottom:12px;">Deep forest, water grey, earth brown. The palette of the landscape in which the Explorer builds. More saturated than the other archetypes — the Explorer's world has more colour in it than the city.</p>
+          <div style="display:flex;gap:4px;margin-bottom:12px;">
+            <div style="width:32px;height:32px;background:#0a3c2a;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#2a5c4a;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#5a8a6a;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#8a7a60;border-radius:2px;"></div>
+            <div style="width:32px;height:32px;background:#c8bea8;border-radius:2px;border:1px solid rgba(0,0,0,.08);"></div>
+          </div>
+          <ul>
+            <li>Print: uncoated paper — the brochure feels like a field guide, not a product catalogue</li>
+            <li>Maps as primary visual element, not supplementary</li>
+            <li>Weather and mist in photography: authentic, not avoided</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arch-channel-row">
+        <div class="arch-channel-cell">
+          <h5>Instagram</h5>
+          <p>"The Malabar coast at 5:40am, from what will be someone's living room. Residences 1–12 open this Friday."</p>
+          <div class="eg">Location storytelling. Time and place specificity. The project as discovery, not announcement.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>LinkedIn</h5>
+          <p>"In 2018 we identified a 240-acre land parcel in the Nilgiris that no developer had yet mapped for residential. Here is what five years of planning looks like from this altitude."</p>
+          <div class="eg">Expedition narrative. The journey of discovery positions the developer as a pioneer.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>WhatsApp Broadcast</h5>
+          <p>"The monsoon arrived at the site yesterday. We documented it. You'll want to see what your house looks like in the rain before it's yours."</p>
+          <div class="eg">Experiential updates. The site in all weathers, all seasons. Never sanitised.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Site Hoarding</h5>
+          <p>"You just drove past something. Turn back."</p>
+          <div class="eg">Provocation. The hoarding breaks the convention. For Explorer brands on remote or emerging corridors only.</div>
+        </div>
+        <div class="arch-channel-cell">
+          <h5>Sales Script</h5>
+          <p>"Before we talk about the units, I want to take you on a walk. Thirty minutes. You'll understand everything after that."</p>
+          <div class="eg">Experiential selling. The land itself does the convincing. Walk before presentation, always.</div>
+        </div>
+      </div>
+
+      <div class="arch-crisis-xp">
+        <div class="arch-crisis">
+          <h4>Crisis Communication — Explorer Voice</h4>
+          <p>The Explorer's vulnerability in crisis is specific: buyers who chose an emerging location because of an infrastructure promise (highway, airport, metro) that is then delayed or cancelled. The Explorer's credibility is built on geographic foresight — being wrong about that foresight is existential.</p>
+          <p>The Explorer in crisis must avoid abandoning its pioneer identity. It should not suddenly start communicating like a Guardian (safe, institutional). It must maintain its voice of honest expedition — things go wrong on the trail. Here is what we do about it.</p>
+          <div class="arch-crisis-script">
+            Infrastructure delay response: "The Peripheral Ring Road Phase 2 completion has been pushed to 2028. We told you this corridor was the right call — we still believe that. Here is the data we are using to track the project. Here is the alternative access route analysis we commissioned last month. We moved here before everyone else. That means we also feel the gap when infrastructure lags. Here is how we are filling it in the meantime."
+          </div>
+        </div>
+        <div class="arch-xp">
+          <h4>Experience Centre — Explorer Design</h4>
+          <p>The Explorer's experience centre is not a centre — it is a base camp. It should feel like a beautifully equipped expedition starting point, not a corporate sales office.</p>
+          <div class="arch-xp-items">
+            <div class="arch-xp-item">Arrival: No signage that says "Sales Office." A sign that says the project name and the elevation. The experience is geographic before it is commercial.</div>
+            <div class="arch-xp-item">Site visit: Non-negotiable. No Explorer project is sold from inside an experience centre — the site walk is the centrepiece. Boots, if the terrain requires them.</div>
+            <div class="arch-xp-item">Materials: Natural — rammed earth, local stone, plantation teak. The experience centre is built from the same landscape as the project.</div>
+            <div class="arch-xp-item">Cartographic wall: A large topographic map of the site and its 20km context — rivers, forests, roads, distances. Handmade if possible.</div>
+            <div class="arch-xp-item">Light: Natural only. If the site has an extraordinary view, the experience centre is positioned to frame it before anything is said.</div>
+            <div class="arch-xp-item">Refreshments: Local produce. Coffee from a nearby estate if coffee country. Seasonal fruits. The hospitality is of the place.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 07 — COMPARISON MATRIX
+════════════════════════════════ -->
+<section id="comparison">
+  <div class="phase-header">
+    <div class="phase-num">07</div>
+    <div class="phase-meta">
+      <div class="phase-label">Cross-Archetype Reference</div>
+      <h2 class="phase-title">All Six Archetypes —<em>Side by Side</em></h2>
+      <p class="phase-desc">The comparison matrix is a diagnostic tool. Use it to check whether your brand's current communication is aligned with its archetype, to identify drift, and to locate the specific dimensions where your brand is over- or under-expressing its identity.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+    <div class="section-title">Tone of Voice Across Eight Dimensions</div>
+
+    <div class="compare-matrix reveal">
+      <div class="cm-cell row-label"></div>
+      <div class="cm-cell head-row">Guardian</div>
+      <div class="cm-cell head-row">Sage</div>
+      <div class="cm-cell head-row">Ruler</div>
+      <div class="cm-cell head-row">Creator</div>
+      <div class="cm-cell head-row">Caregiver</div>
+      <div class="cm-cell head-row">Explorer</div>
+
+      <div class="cm-cell row-label">Sentence Structure</div>
+      <div class="cm-cell guardian">Short declaratives. Present continuous. Never exclamations.</div>
+      <div class="cm-cell sage-c">Educative. Numbered lists. Rhetorical question with a promised answer.</div>
+      <div class="cm-cell ruler">Three to five words. Declaration, not persuasion. Often a fragment.</div>
+      <div class="cm-cell creator">Specific. Process-revealing. Detail-led. Often one unexpected image.</div>
+      <div class="cm-cell caregiver">Longer, warmer, personal. Second-person family member addressed directly.</div>
+      <div class="cm-cell explorer">Provocation. Invitation. The sense of a secret being shared.</div>
+
+      <div class="cm-cell row-label">Preferred Adjectives</div>
+      <div class="cm-cell guardian">Dependable, proven, solid, consistent, enduring</div>
+      <div class="cm-cell sage-c">Intelligent, researched, informed, precise, considered</div>
+      <div class="cm-cell ruler">Singular, uncompromising, definitive, authoritative</div>
+      <div class="cm-cell creator">Deliberate, crafted, original, authored, considered</div>
+      <div class="cm-cell caregiver">Warm, thoughtful, belonging, generational, alive</div>
+      <div class="cm-cell explorer">Undiscovered, rare, alive, frontier, first</div>
+
+      <div class="cm-cell row-label">Words to Avoid</div>
+      <div class="cm-cell guardian">Exciting, innovative, luxury (unless genuinely), first-ever</div>
+      <div class="cm-cell sage-c">Trust us, believe, feel, dream — anything non-evidenced</div>
+      <div class="cm-cell ruler">Affordable, value, compared to, deal, special offer</div>
+      <div class="cm-cell creator">Standard, conventional, popular, mainstream, typical</div>
+      <div class="cm-cell caregiver">Investment, appreciation, returns, yield, portfolio</div>
+      <div class="cm-cell explorer">Convenient, central, urban, connected, typical</div>
+
+      <div class="cm-cell row-label">Photography Lead</div>
+      <div class="cm-cell guardian">Residents in situ. Facade straight-on morning light. Community events.</div>
+      <div class="cm-cell sage-c">Aerial establishing. Infrastructure maps. Construction documentation.</div>
+      <div class="cm-cell ruler">Single large-format architectural shot. Material close-ups. No people.</div>
+      <div class="cm-cell creator">Material details. Architectural shadow studies. Process documentation.</div>
+      <div class="cm-cell caregiver">Families in amenities. Children. Multiple generations in one frame.</div>
+      <div class="cm-cell explorer">Landscape first. Weather welcome. Site before structure.</div>
+
+      <div class="cm-cell row-label">Headline Length</div>
+      <div class="cm-cell guardian">6–12 words. Factual.</div>
+      <div class="cm-cell sage-c">8–16 words. Educative.</div>
+      <div class="cm-cell ruler">3–6 words. Declarative.</div>
+      <div class="cm-cell creator">8–14 words. Specific detail.</div>
+      <div class="cm-cell caregiver">10–18 words. Personal and warm.</div>
+      <div class="cm-cell explorer">4–10 words. Provocative.</div>
+
+      <div class="cm-cell row-label">Pricing Communication</div>
+      <div class="cm-cell guardian">Value for what is delivered. Price is fair and explained.</div>
+      <div class="cm-cell sage-c">Price is contextualised against data — the investment case is made.</div>
+      <div class="cm-cell ruler">Price is not communicated. The question implies incompatibility.</div>
+      <div class="cm-cell creator">Price per crafted detail. The investment in quality is the story.</div>
+      <div class="cm-cell caregiver">Value for family life. The cost of not living here is also communicated.</div>
+      <div class="cm-cell explorer">Price of entry to the frontier. Appreciation potential is the subtext.</div>
+
+      <div class="cm-cell row-label">Crisis First Move</div>
+      <div class="cm-cell guardian">Acknowledge, state facts, provide revised commitment in writing.</div>
+      <div class="cm-cell sage-c">Over-disclose. Show the data. Explain what the data means.</div>
+      <div class="cm-cell ruler">Senior person speaks. Brief, unequivocal, personal. No PR speak.</div>
+      <div class="cm-cell creator">Own the failure with same specificity as the design vision. Show photographs.</div>
+      <div class="cm-cell caregiver">Empathy before facts. Address the family impact before the project schedule.</div>
+      <div class="cm-cell explorer">Maintain pioneer voice. Problems happen on frontiers. Here is the plan.</div>
+
+      <div class="cm-cell row-label">Experience Centre Feel</div>
+      <div class="cm-cell guardian">Trusted institution. Heavy furniture. Track record wall.</div>
+      <div class="cm-cell sage-c">Research library. Data-rich walls. Infographics everywhere.</div>
+      <div class="cm-cell ruler">Private viewing. By appointment only. Fewer than 8 visitors per day.</div>
+      <div class="cm-cell creator">Gallery opening. Materials room. Architect's journal on display.</div>
+      <div class="cm-cell caregiver">Warm community hub. Children's zone. Resident testimonial wall.</div>
+      <div class="cm-cell explorer">Base camp. Site walk is mandatory. Natural materials and local produce.</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════
+     SECTION 08 — EVOLUTION
+════════════════════════════════ -->
+<section id="evolution">
+  <div class="phase-header">
+    <div class="phase-num">08</div>
+    <div class="phase-meta">
+      <div class="phase-label">Archetype Evolution Strategy</div>
+      <h2 class="phase-title">Moving Between Archetypes — <em>Without Breaking the Brand</em></h2>
+      <p class="phase-desc">Most developers evolve. A Guardian brand that delivers consistently for 20 years has earned the right to move up-segment and take on Sage or Ruler qualities. A Caregiver brand expanding into commercial can adopt Sage positioning for that sub-brand. The evolution must be intentional, sequenced, and visible — not abrupt.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Archetype Evolution Ladder — Six Common Transitions</div>
+    <p class="sub-prose">Archetype evolution in real estate almost always moves in one direction: upward in trust and aspiration. Developers rarely move from Ruler to Guardian. The ladder below shows the natural evolution paths, the trigger conditions that justify each shift, and the communication bridge required to carry existing customers through the transition.</p>
+
+    <div class="evolution-track reveal">
+      <div class="evo-row">
+        <div class="evo-label"><span>Transition A</span></div>
+        <div class="evo-from">
+          <h4>Guardian</h4>
+          <p>Established trust · 10+ years · Consistent delivery record</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-to">
+          <h4>Sage</h4>
+          <p>Transition trigger: Entering premium segment or launching investor-facing product</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-dest">
+          <h4>The Bridge</h4>
+          <p>Lead with data about delivery record first — the Guardian's track record IS the Sage's research. "40 years of data. Here's what it shows." The transition feels earned, not arbitrary.</p>
+        </div>
+      </div>
+
+      <div class="evo-row">
+        <div class="evo-label"><span>Transition B</span></div>
+        <div class="evo-from">
+          <h4>Guardian</h4>
+          <p>Trusted mass-market presence · Community brand equity</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-to">
+          <h4>Caregiver</h4>
+          <p>Transition trigger: Entering integrated township category or expanding into senior living</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-dest">
+          <h4>The Bridge</h4>
+          <p>Warmth is already present in the Guardian — amplify the "protection of your family's life" dimension. Show residents in community rather than residents in front of buildings. The shift is incremental.</p>
+        </div>
+      </div>
+
+      <div class="evo-row">
+        <div class="evo-label"><span>Transition C</span></div>
+        <div class="evo-from">
+          <h4>Sage</h4>
+          <p>Premium research-led brand · Market authority established</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-to">
+          <h4>Ruler</h4>
+          <p>Transition trigger: Launching a true luxury product for the first time</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-dest">
+          <h4>The Bridge</h4>
+          <p>Create a distinct sub-brand for the luxury product that operates as a Ruler while the parent brand continues as Sage. Never attempt to convert the entire brand to Ruler — the mass of premium buyers will feel abandoned. Whisper endorsement: "[Luxury sub-brand] by [Parent]."</p>
+        </div>
+      </div>
+
+      <div class="evo-row">
+        <div class="evo-label"><span>Transition D</span></div>
+        <div class="evo-from">
+          <h4>Creator</h4>
+          <p>Design-led boutique developer · Small but high-reputation portfolio</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-to">
+          <h4>Ruler</h4>
+          <p>Transition trigger: Scale-up to luxury segment · Awards recognition · International collaborations</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-dest">
+          <h4>The Bridge</h4>
+          <p>The Creator earns Ruler status through accumulated design authority, not through pricing alone. The transition is marked by dropping the "by [Architect]" co-authorship and allowing the developer brand to carry the authority unassisted. This is a 3–5 year earned transition.</p>
+        </div>
+      </div>
+
+      <div class="evo-row">
+        <div class="evo-label"><span>Transition E</span></div>
+        <div class="evo-from">
+          <h4>Explorer</h4>
+          <p>Frontier developer · Location bet paid off · Early market validated</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-to">
+          <h4>Guardian or Sage</h4>
+          <p>Transition trigger: Location matures · Infrastructure arrives · Mainstream buyers enter the market</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-dest">
+          <h4>The Bridge</h4>
+          <p>The Explorer's greatest communication challenge is maturity — the frontier became a neighbourhood and the early adopters became the mainstream. Transition by creating a "second act" narrative: "We found this valley. We built it right. Now everyone knows why." The credibility of foresight enables a Sage transition.</p>
+        </div>
+      </div>
+
+      <div class="evo-row">
+        <div class="evo-label"><span>Transition F</span></div>
+        <div class="evo-from">
+          <h4>Any Archetype</h4>
+          <p>Post-reputational event · Recovery phase · New leadership</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-to">
+          <h4>Guardian</h4>
+          <p>Transition trigger: Crisis event · Delayed project history · New MD or ownership change</p>
+        </div>
+        <div class="evo-arrow"><span>→</span></div>
+        <div class="evo-dest">
+          <h4>The Bridge</h4>
+          <p>The Guardian is the recovery archetype. Any developer rebuilding trust after a crisis should adopt Guardian principles temporarily — the emphasis on dependability, transparency, and track record is the antidote to reputational damage. Move away only after 3–5 projects delivered without incident.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">The Three Rules of Archetype Evolution</div>
+
+    <div class="fw-grid reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Rule 01</span>
+        <h3>Never Abandon an Archetype Mid-Project</h3>
+        <p>A developer who launches Project A as a Caregiver and then shifts to Ruler positioning for Project B before Project A is complete creates cognitive dissonance for shared buyers and CPs. An archetype evolution must wait until an existing project cycle is complete — from pre-launch through possession — before the new identity is adopted in any new project communication.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--rust),transparent)"></div>
+        <span class="fw-card-num">Rule 02</span>
+        <h3>Segment Your Portfolio Before Your Brand</h3>
+        <p>Before attempting to be two different archetypes across two segments, create a named sub-brand for the new segment. A single corporate brand cannot credibly be both a Guardian (affordable mid-segment) and a Ruler (ultra-luxury) simultaneously. The portfolio architecture must be solved before the brand communication is attempted.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent" style="background:linear-gradient(90deg,var(--sage),transparent)"></div>
+        <span class="fw-card-num">Rule 03</span>
+        <h3>Earn the New Archetype Before Claiming It</h3>
+        <p>An archetype must be deserved before it is declared. A Guardian brand cannot announce itself as a Ruler through an advertising campaign — it must deliver one or two projects that genuinely operate at Ruler standard before the communication claims that positioning. The sequence is always: deliver → earn credibility → then communicate the evolution. Never communicate first.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"An archetype is earned, not declared. You cannot write yourself into being a Ruler. You build to the Ruler standard first, and the archetype follows the work. The developer who begins a marketing campaign with 'India's most exclusive developer' before delivering the project to match is not operating a Ruler brand. They are operating a crisis waiting for a trigger."</p>
+      <div class="callout-src">Archetype Evolution Principle — Brand Archetype Application Playbook</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Archetype Playbook <span>/ Real Estate</span></div>
+      <p class="footer-desc">The operational translation of six archetypal brand identities for Indian real estate developers. Covers headline style, visual language, tone of voice by channel, crisis communication, experience centre design, and archetype evolution strategy. The document that turns a brand framework into daily practice.</p>
+    </div>
+    <div class="footer-col">
+      <h5>The 6 Archetypes</h5>
+      <ul>
+        <li>01 — Guardian · The Protector</li>
+        <li>02 — Sage · The Expert</li>
+        <li>03 — Ruler · The Sovereign</li>
+        <li>04 — Creator · The Visionary</li>
+        <li>05 — Caregiver · The Nurturer</li>
+        <li>06 — Explorer · The Pioneer</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Companion Documents</h5>
+      <ul>
+        <li>Branding 360° — Real Estate</li>
+        <li>Brand Standards Manual</li>
+        <li>Brand & Project Naming System</li>
+        <li>MarComm Plan — Real Estate</li>
+        <li>Brand Storytelling & Narrative</li>
+        <li>Post-Possession Community Brand</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Brand Archetype Application Playbook — Real Estate Edition</p>
+    <p>Companion to Branding 360° · Operational Reference Document</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const archTags = document.querySelectorAll('.arch-tag');
+  const map = { framework:null, guardian:0, sage:1, ruler:2, creator:3, caregiver:4, explorer:5, comparison:null, evolution:null };
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = map[entry.target.id];
+        archTags.forEach((t,i) => t.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.15 });
+  sections.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>

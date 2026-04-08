@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing & Communication Plan — Real Estate</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --white: #ffffff;
+    --dark: #141210;
+    --mid: #2e2a25;
+    --muted: rgba(20,18,16,0.48);
+    --accent: #c45c2a;
+    --accent2: #3d6b5c;
+    --amber: #d4972a;
+    --rule: rgba(20,18,16,0.1);
+    --rule2: rgba(196,92,42,0.2);
+    --sand: #ede8df;
+    --serif: 'Playfair Display', serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Outfit', sans-serif;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--dark);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:200;
+    height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 52px;
+    background: rgba(247,244,239,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-id {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 500;
+  }
+  .nav-menu {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .nav-menu a {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-menu a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    align-items: end;
+    padding: 100px 52px 72px;
+    position: relative;
+    overflow: hidden;
+    gap: 60px;
+  }
+  .hero::before {
+    content:'';
+    position: absolute; inset:0;
+    background:
+      radial-gradient(ellipse 60% 70% at 90% 20%, rgba(196,92,42,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(61,107,92,0.1) 0%, transparent 55%);
+  }
+  .hero-lines {
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 79px,
+      rgba(255,255,255,0.025) 80px
+    );
+  }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+    position: relative; z-index:2;
+  }
+  .hero-eyebrow::before {
+    content:''; width: 32px; height:1px;
+    background: var(--accent); display:block;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(44px, 5.5vw, 80px);
+    font-weight: 900;
+    color: #f0ebe3;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    position: relative; z-index:2;
+    margin-bottom: 24px;
+  }
+  h1 .line2 {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  h1 .line3 {
+    font-weight: 400;
+    color: rgba(240,235,227,0.5);
+  }
+  .hero-body {
+    font-family: var(--sans); font-size: 15px;
+    color: rgba(240,235,227,0.45);
+    max-width: 540px; line-height: 1.7;
+    position: relative; z-index:2;
+  }
+  .hero-sidebar {
+    position: relative; z-index:2;
+    border: 1px solid rgba(196,92,42,0.2);
+    padding: 36px 28px;
+    display: flex; flex-direction: column; gap: 0;
+    align-self: end;
+  }
+  .hero-sidebar-title {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px;
+  }
+  .plan-module {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; gap: 12px;
+    cursor: default;
+    transition: padding-left 0.2s;
+  }
+  .plan-module:hover { padding-left: 6px; }
+  .plan-module:last-child { border-bottom: none; }
+  .pm-num {
+    font-family: var(--mono); font-size: 9px;
+    color: var(--accent); letter-spacing: 0.1em;
+    flex-shrink:0; width: 24px;
+  }
+  .pm-label {
+    font-family: var(--sans); font-size: 13px; font-weight: 500;
+    color: rgba(240,235,227,0.65);
+  }
+
+  /* ── SECTION ANATOMY ── */
+  .module {
+    margin-top: 80px;
+  }
+  .mod-header {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    border-bottom: 1px solid var(--rule);
+    margin: 0 52px;
+    padding-bottom: 28px;
+    margin-bottom: 52px;
+    gap: 32px;
+    align-items: end;
+  }
+  .mod-num {
+    font-family: var(--serif); font-size: 80px; font-weight: 900;
+    color: var(--sand); line-height: 1;
+    font-style: italic;
+  }
+  .mod-title {
+    font-family: var(--serif); font-size: clamp(26px, 3vw, 40px);
+    font-weight: 700; line-height: 1.1;
+    color: var(--dark);
+  }
+  .mod-title em { font-style: italic; color: var(--accent); }
+  .mod-desc {
+    font-family: var(--sans); font-size: 14px;
+    color: var(--muted); margin-top: 10px;
+    max-width: 580px; line-height: 1.65;
+  }
+  .mod-tag {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent2); margin-bottom: 10px; display: block;
+  }
+
+  /* ── CONTENT ZONE ── */
+  .zone { padding: 0 52px; }
+
+  /* ── GRID CARDS ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 52px;
+  }
+  .card {
+    background: var(--white);
+    padding: 28px 24px;
+    transition: background 0.2s;
+    position: relative;
+  }
+  .card:hover { background: var(--bg); }
+  .card-tag {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px; display: block;
+  }
+  .card h3 {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    color: var(--dark); margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .card p {
+    font-size: 13px; color: var(--muted); line-height: 1.6;
+  }
+  .card-bar {
+    position: absolute; bottom:0; left:0; right:0;
+    height: 2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .card:hover .card-bar { transform: scaleX(1); }
+
+  /* ── BIG TABLE ── */
+  .bt {
+    width: 100%; border-collapse: collapse;
+    margin-bottom: 52px; font-size: 13px;
+  }
+  .bt thead tr { background: var(--dark); }
+  .bt th {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--amber); padding: 12px 18px;
+    text-align: left; font-weight: 400;
+  }
+  .bt td {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .bt tr:nth-child(even) td { background: var(--bg); }
+  .bt tr:hover td { background: var(--sand); }
+  .bt .cat {
+    font-family: var(--sans); font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--accent); white-space: nowrap;
+  }
+  .bt .hi { color: var(--accent2); font-weight: 600; }
+  .bt .warn { color: var(--accent); font-weight: 600; }
+
+  /* ── DARK CALLOUT ── */
+  .callout {
+    background: var(--dark);
+    padding: 48px 52px;
+    margin: 0 0 52px;
+    position: relative; overflow: hidden;
+  }
+  .callout::after {
+    content: '';
+    position: absolute; top:-80px; right:-80px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,92,42,0.12), transparent 70%);
+  }
+  .callout p {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 26px);
+    font-weight: 400; font-style: italic;
+    color: rgba(240,235,227,0.85);
+    line-height: 1.5; max-width: 820px;
+    position: relative; z-index:1;
+  }
+  .callout cite {
+    display: block; margin-top: 18px;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); font-style: normal;
+    position: relative; z-index:1;
+  }
+
+  /* ── TIMELINE ROWS ── */
+  .tl { margin-bottom: 52px; }
+  .tl-row {
+    display: grid; grid-template-columns: 100px 20px 1fr;
+    gap: 0 24px; padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .tl-label {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); padding-top: 2px;
+    line-height: 1.4;
+  }
+  .tl-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%; background: var(--accent);
+    margin-top: 5px; flex-shrink:0;
+  }
+  .tl-body h4 {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    color: var(--dark); margin-bottom: 4px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .tl-body p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .chip {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    background: var(--sand); color: var(--mid);
+    padding: 2px 9px; border-radius: 2px;
+  }
+  .chip.accent { background: rgba(196,92,42,0.1); color: var(--accent); }
+  .chip.green { background: rgba(61,107,92,0.1); color: var(--accent2); }
+
+  /* ── SECTION LABEL ── */
+  .slabel {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .slabel::after { content:''; flex:1; height:1px; background: var(--rule2); }
+
+  /* ── TWO COL ── */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 52px; align-items: start; }
+  .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-bottom: 52px; }
+
+  /* ── BUDGET VIZ ── */
+  .budget-bar-row {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 12px;
+  }
+  .bbl {
+    font-family: var(--sans); font-size: 12px; font-weight: 500;
+    color: var(--dark); min-width: 180px;
+  }
+  .bbtrack {
+    flex: 1; height: 6px; background: var(--sand);
+    border-radius: 3px; overflow: hidden;
+  }
+  .bbfill {
+    height: 100%; border-radius: 3px;
+    background: var(--accent);
+    transition: width 1s ease;
+  }
+  .bbfill.green { background: var(--accent2); }
+  .bbfill.amber { background: var(--amber); }
+  .bbpct {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--muted); min-width: 36px; text-align: right;
+  }
+
+  /* ── ROSTER ── */
+  .roster { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 52px; }
+  .role-card {
+    background: var(--white); padding: 24px 20px;
+    border: 1px solid var(--rule);
+    transition: background 0.2s;
+  }
+  .role-card:hover { background: var(--bg); }
+  .role-title {
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    color: var(--dark); margin-bottom: 6px;
+  }
+  .role-type {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 10px;
+  }
+  .role-owns {
+    font-size: 12px; color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* ── KPI PANEL ── */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 52px; }
+  .kpi {
+    background: var(--dark); padding: 24px 20px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .kpi-val {
+    font-family: var(--serif); font-size: 36px; font-weight: 900;
+    color: var(--amber); line-height: 1; margin-bottom: 6px;
+  }
+  .kpi-label {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(240,235,227,0.4);
+  }
+  .kpi-desc {
+    font-size: 12px; color: rgba(240,235,227,0.35);
+    margin-top: 8px; line-height: 1.5;
+  }
+
+  /* ── CALENDAR GRID ── */
+  .cal {
+    display: grid; grid-template-columns: 140px repeat(12, 1fr);
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule);
+    font-size: 11px; margin-bottom: 52px;
+  }
+  .cal-head {
+    background: var(--dark); padding: 8px 6px;
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--amber); text-align: center;
+  }
+  .cal-label {
+    background: var(--sand); padding: 10px 12px;
+    font-family: var(--sans); font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    color: var(--mid); border: 1px solid var(--rule);
+    display: flex; align-items: center;
+  }
+  .cal-cell {
+    background: var(--white); padding: 8px 6px;
+    border: 1px solid var(--rule);
+    text-align: center;
+    font-family: var(--mono); font-size: 9px;
+    color: transparent;
+    transition: all 0.15s;
+  }
+  .cal-cell.on {
+    background: var(--accent); color: transparent;
+  }
+  .cal-cell.lite {
+    background: rgba(196,92,42,0.15);
+  }
+  .cal-cell.green-on { background: var(--accent2); }
+  .cal-cell.amber-on { background: var(--amber); }
+
+  /* ── QUOTE DIVIDER ── */
+  .qdiv {
+    font-family: var(--serif); font-size: clamp(22px, 3vw, 40px);
+    font-weight: 700; font-style: italic;
+    border-left: 4px solid var(--accent);
+    padding: 0 0 0 32px;
+    margin: 64px 52px;
+    color: var(--dark); opacity: 0.75;
+    line-height: 1.3;
+  }
+
+  /* ── CRISIS MATRIX ── */
+  .crisis { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 52px; }
+  .crisis-item {
+    background: var(--white); padding: 28px 24px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .crisis-item:hover { border-left-color: var(--accent); background: var(--bg); }
+  .crisis-level {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 8px; display: block;
+  }
+  .l-high { color: #c0392b; }
+  .l-med { color: var(--accent); }
+  .l-low { color: var(--accent2); }
+  .crisis-item h4 {
+    font-family: var(--sans); font-size: 14px; font-weight: 600;
+    color: var(--dark); margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .crisis-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 64px 52px 40px;
+    margin-top: 80px;
+  }
+  .ft-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px; margin-bottom: 48px;
+  }
+  .ft-brand {
+    font-family: var(--serif); font-size: 32px; font-weight: 900;
+    color: rgba(240,235,227,0.9); margin-bottom: 12px;
+  }
+  .ft-brand span { color: var(--accent); font-style: italic; }
+  .ft-sub { font-size: 13px; color: rgba(240,235,227,0.3); line-height: 1.7; }
+  .ft-col h5 {
+    font-family: var(--mono); font-size: 9px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px;
+  }
+  .ft-col ul { list-style: none; }
+  .ft-col li { font-size: 13px; color: rgba(240,235,227,0.3); padding: 3px 0; }
+  .ft-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 24px;
+    display: flex; justify-content: space-between;
+  }
+  .ft-bottom p {
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.08em; color: rgba(240,235,227,0.2);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media(max-width: 900px) {
+    nav, .zone { padding-left: 24px; padding-right: 24px; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 64px; }
+    .hero-sidebar { display: none; }
+    .mod-header { margin: 0 24px; }
+    .card-grid, .three, .roster, .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .two, .crisis { grid-template-columns: 1fr; }
+    .cal { display: none; }
+    .qdiv { margin: 40px 24px; }
+    footer { padding: 48px 24px 32px; }
+    .ft-top { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media(max-width: 640px) {
+    .card-grid, .three, .roster, .kpi-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 16px; }
+    .nav-menu { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-id">MarComm Plan · Real Estate</div>
+  <ul class="nav-menu">
+    <li><a href="#situation">01 Situation</a></li>
+    <li><a href="#objectives">02 Objectives</a></li>
+    <li><a href="#audience">03 Audience</a></li>
+    <li><a href="#strategy">04 Strategy</a></li>
+    <li><a href="#calendar">05 Calendar</a></li>
+    <li><a href="#budget">06 Budget</a></li>
+    <li><a href="#team">07 Team</a></li>
+    <li><a href="#measurement">08 Measurement</a></li>
+    <li><a href="#crisis">09 Crisis</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div>
+    <div class="hero-eyebrow">Marketing & Communication Plan</div>
+    <h1>
+      What the<br>
+      <span class="line2">Brand 360°</span><br>
+      <span class="line3">Doesn't Cover</span>
+    </h1>
+    <p class="hero-body" style="margin-top:20px;">
+      Branding defines <em>what</em> you stand for. A Marketing & Communication Plan defines <em>who</em> you reach, <em>when</em> you reach them, <em>how much</em> you spend, <em>what</em> you say at each stage, <em>who</em> is responsible, and <em>how</em> you measure success. Nine operational modules — complete.
+    </p>
+  </div>
+  <div class="hero-sidebar">
+    <div class="hero-sidebar-title">9 Plan Modules</div>
+    <div class="plan-module"><span class="pm-num">01</span><span class="pm-label">Situation Analysis</span></div>
+    <div class="plan-module"><span class="pm-num">02</span><span class="pm-label">Marketing Objectives</span></div>
+    <div class="plan-module"><span class="pm-num">03</span><span class="pm-label">Audience Architecture</span></div>
+    <div class="plan-module"><span class="pm-num">04</span><span class="pm-label">Go-to-Market Strategy</span></div>
+    <div class="plan-module"><span class="pm-num">05</span><span class="pm-label">Activity Calendar</span></div>
+    <div class="plan-module"><span class="pm-num">06</span><span class="pm-label">Budget Framework</span></div>
+    <div class="plan-module"><span class="pm-num">07</span><span class="pm-label">Team & Agency Structure</span></div>
+    <div class="plan-module"><span class="pm-num">08</span><span class="pm-label">Measurement & Reporting</span></div>
+    <div class="plan-module"><span class="pm-num">09</span><span class="pm-label">Crisis Communication</span></div>
+  </div>
+</section>
+
+<!-- ═══ 01 SITUATION ANALYSIS ═══ -->
+<section id="situation" class="module">
+  <div class="mod-header reveal">
+    <div class="mod-num">01</div>
+    <div>
+      <span class="mod-tag">Where You Stand Before You Plan</span>
+      <h2 class="mod-title">Situation <em>Analysis</em></h2>
+      <p class="mod-desc">Every marketing plan begins not with ambition, but with honest assessment. The situation analysis gives the plan its strategic foundation — without it, objectives float without gravity.</p>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="slabel">The 4-Layer Analysis Framework</div>
+    <div class="card-grid reveal">
+      <div class="card">
+        <span class="card-tag">Layer 01</span>
+        <h3>Market Analysis</h3>
+        <p>Current state of the local real estate market — price trends, inventory supply, demand drivers, infrastructure pipeline, competitive launches in the micro-market. Use JLL, Anarock, PropEquity data. Identify whether it's a buyer's or seller's market right now.</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Layer 02</span>
+        <h3>Competitor Analysis</h3>
+        <p>Map your top 3–5 competitors: their current campaigns, channel spend mix, pricing, inventory status, brand positioning, and customer sentiment (reviews). What are they saying? What are they NOT saying? Where are the gaps you can own?</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Layer 03</span>
+        <h3>Brand & Sales Audit</h3>
+        <p>Current lead volume, CPL by channel, site-visit-to-booking conversion, channel partner performance, digital health (website traffic, SEO ranking, review score), and the last 6 months of campaign ROI. What is working? What is burning money?</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Layer 04</span>
+        <h3>Buyer Intelligence</h3>
+        <p>Who are your actual buyers vs your assumed buyers? Use CRM data to build real buyer profiles: age, income, geography, family structure, purchase motivation (end-use vs investment), source of awareness, key objections, decision timeline.</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Layer 05</span>
+        <h3>SWOT Synthesis</h3>
+        <p>Strengths (what the brand/project genuinely owns), Weaknesses (honest gaps in delivery, reputation, location, pricing), Opportunities (market gaps, competitor vulnerabilities, infrastructure tailwinds), Threats (macro-economic, regulatory, competitive).</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Layer 06</span>
+        <h3>Regulatory Landscape</h3>
+        <p>RERA status of the project, any pending approvals, GST implications on pricing communication, ASCI advertising guidelines for real estate (no misleading claims, mandatory disclosures), and local municipal communication rules for hoardings and banners.</p>
+        <div class="card-bar"></div>
+      </div>
+    </div>
+
+    <div class="slabel">Key Intelligence Sources</div>
+    <table class="bt reveal">
+      <thead>
+        <tr><th>Data Type</th><th>Source</th><th>Frequency</th><th>Used In</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat">Market Absorption</td><td>Anarock, JLL, Knight Frank quarterly reports</td><td>Quarterly</td><td>Pricing strategy, launch timing</td></tr>
+        <tr><td class="cat">Competitor Campaigns</td><td>AdLibrary (Meta), Google Ads transparency, manual monitoring</td><td>Bi-weekly</td><td>Competitive messaging, channel gaps</td></tr>
+        <tr><td class="cat">Buyer Profile Data</td><td>CRM exports, booking form analysis, site visit data</td><td>Monthly</td><td>Audience segmentation, media planning</td></tr>
+        <tr><td class="cat">Digital Health</td><td>Google Analytics, SEMrush, Google Business, 99acres dashboard</td><td>Weekly</td><td>Channel allocation, content strategy</td></tr>
+        <tr><td class="cat">Sentiment</td><td>Google reviews, 99acres reviews, social listening (Brandwatch/Mention)</td><td>Weekly</td><td>Reputation management, messaging correction</td></tr>
+        <tr><td class="cat">Macro Data</td><td>RBI rate announcements, PropEquity pricing data, Census housing data</td><td>As published</td><td>Investor messaging, appreciation narrative</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══ 02 MARKETING OBJECTIVES ═══ -->
+<section id="objectives" class="module">
+  <div class="mod-header reveal">
+    <div class="mod-num">02</div>
+    <div>
+      <span class="mod-tag">What Success Looks Like — In Numbers</span>
+      <h2 class="mod-title">Marketing <em>Objectives</em></h2>
+      <p class="mod-desc">Objectives are not wishes. They are time-bound, numerically specific commitments that connect marketing activity to commercial outcomes. The plan lives or dies on whether these are met.</p>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="slabel">The SMART Objective Stack — Real Estate</div>
+    <table class="bt reveal">
+      <thead>
+        <tr><th>Objective Type</th><th>Example Objective</th><th>Metric</th><th>Target</th><th>Timeframe</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat">Lead Generation</td><td>Generate qualified leads for Project X</td><td>Total leads / CPL</td><td class="hi">800 leads / ₹2,800 CPL</td><td>Month 1–3</td></tr>
+        <tr><td class="cat">Site Visits</td><td>Convert leads to site visits</td><td>Lead→Visit ratio</td><td class="hi">25% conversion</td><td>Rolling monthly</td></tr>
+        <tr><td class="cat">Bookings</td><td>Drive confirmed bookings</td><td>Bookings per month</td><td class="hi">18–22 units / month</td><td>Launch quarter</td></tr>
+        <tr><td class="cat">Brand Awareness</td><td>Build unaided recall in Chennai South</td><td>Brand recall survey %</td><td class="hi">Top-3 unaided recall</td><td>6 months</td></tr>
+        <tr><td class="cat">Digital Presence</td><td>Grow organic search visibility</td><td>Branded search volume</td><td class="hi">+40% YoY growth</td><td>12 months</td></tr>
+        <tr><td class="cat">Channel Partners</td><td>Activate broker channel</td><td>Active partners / bookings via CP</td><td class="hi">120 partners / 35% of bookings via CP</td><td>Q2</td></tr>
+        <tr><td class="cat">Reputation</td><td>Improve review rating</td><td>Google Business / 99acres rating</td><td class="hi">4.2+ on Google</td><td>6 months</td></tr>
+        <tr><td class="cat">NRI Segment</td><td>Generate NRI enquiries</td><td>NRI lead % of total</td><td class="hi">15% of total leads from NRI</td><td>Q3 onwards</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout reveal">
+      <p>"A marketing plan without numeric objectives is an essay. A plan with objectives but without measurement cadence is a wish list. Objectives only work when they are reviewed weekly, adjusted monthly, and renegotiated quarterly."</p>
+      <cite>Operational Principle — MarComm Planning</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 03 AUDIENCE ARCHITECTURE ═══ -->
+<section id="audience" class="module">
+  <div class="mod-header reveal">
+    <div class="mod-num">03</div>
+    <div>
+      <span class="mod-tag">Who You're Actually Talking To</span>
+      <h2 class="mod-title">Audience <em>Architecture</em></h2>
+      <p class="mod-desc">Not a demographic table. A deep understanding of who makes the decision, who influences it, what they fear, what they desire, and how they consume information — mapped to each communication moment.</p>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="slabel">Primary Buyer Persona Map</div>
+    <table class="bt reveal">
+      <thead>
+        <tr><th>Persona</th><th>Demographics</th><th>Primary Motivation</th><th>Key Anxiety</th><th>Preferred Channels</th><th>Decision Timeline</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat">The Upgrader</td><td>35–48, ₹18–35L income, married with children</td><td>More space, better school zone, status upgrade</td><td>Leaving the known locality, EMI burden</td><td>Word of mouth, Google, site visit</td><td>3–6 months</td></tr>
+        <tr><td class="cat">The First-Timer</td><td>27–36, ₹8–18L income, newly married or nuclear</td><td>Own home pride, financial security, PMAY benefit</td><td>Builder credibility, documentation complexity</td><td>YouTube, Facebook, referrals from parents</td><td>6–12 months</td></tr>
+        <tr><td class="cat">The Investor</td><td>40–60, ₹40L+ income, multiple properties</td><td>Yield, appreciation, portfolio diversification</td><td>Market timing, developer delivery, liquidity</td><td>LinkedIn, email, financial media, personal network</td><td>1–3 months</td></tr>
+        <tr><td class="cat">The NRI Buyer</td><td>32–55, overseas income ₹60L+, origin-linked emotions</td><td>Roots, family legacy, rupee investment hedge</td><td>Remote trust, documentation, management post-purchase</td><td>YouTube (vernacular), WhatsApp, NRI portals, events</td><td>1 visit → decision</td></tr>
+        <tr><td class="cat">The HNI / Luxury</td><td>45–65, ₹1Cr+ income, established professional / entrepreneur</td><td>Trophy asset, privacy, design differentiation</td><td>Exclusivity dilution, builder proximity, customisation limits</td><td>Private preview, personal intro, wealth manager referral</td><td>Relationship-led, variable</td></tr>
+        <tr><td class="cat">The Parent Gifter</td><td>55–70, buying for children (typically son/daughter getting married)</td><td>Gifting a future, legacy, family duty</td><td>Safety, builder longevity, documentation clarity</td><td>Newspaper, site hoardings, builder trust legacy</td><td>2–4 months</td></tr>
+      </tbody>
+    </table>
+
+    <div class="slabel">Decision Stakeholder Map</div>
+    <div class="card-grid reveal">
+      <div class="card">
+        <span class="card-tag">Primary</span>
+        <h3>The Decision-Maker</h3>
+        <p>The person who signs the cheque and drives the search. Typically male, 32–50. Motivated by financial logic and status. Needs ROI data, builder credibility proof, and location rationale.</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">High Influence</span>
+        <h3>The Spouse / Partner</h3>
+        <p>Often the emotional decision-maker. Responds to kitchen design, natural light, neighbourhood safety, school proximity, and community feel. The model flat experience must primarily win this person.</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Advisory</span>
+        <h3>Parents</h3>
+        <p>Still highly influential in Indian real estate, especially for first-time buyers. Concerned with builder longevity, documentation correctness, vastu, location safety, and resale value. Needs trust signals, not aspirational content.</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Channel</span>
+        <h3>Channel Partner / Broker</h3>
+        <p>A critical audience in their own right. They need brand training, exclusive previews, competitive commission structures, fast response from builder team, and marketing material that makes their job easier.</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Amplifier</span>
+        <h3>Current Residents</h3>
+        <p>Your most credible brand ambassadors. Existing buyers who are happy refer 2–5 buyers each on average. Must be cultivated through community events, anniversary touches, and a structured referral programme with real incentives.</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Influencer</span>
+        <h3>Employer / Peer Network</h3>
+        <p>Colleagues, managers, and WhatsApp groups are major real estate information channels. "Where does X live?" is a significant purchase signal. Location prestige and community quality drive peer influence.</p>
+        <div class="card-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 04 STRATEGY ═══ -->
+<section id="strategy" class="module">
+  <div class="mod-header reveal">
+    <div class="mod-num">04</div>
+    <div>
+      <span class="mod-tag">The Operational Heart of the Plan</span>
+      <h2 class="mod-title">Go-to-Market <em>Strategy</em></h2>
+      <p class="mod-desc">How you will actually reach, engage, and convert each audience segment — across campaign phases, content types, and channels. This is where strategy becomes a plan of action.</p>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="slabel">Campaign Phase Architecture</div>
+    <div class="tl reveal">
+      <div class="tl-row">
+        <div class="tl-label">Phase 0<br>Pre-Launch<br>6–8 Wks</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>Teaser & Interest Generation</h4>
+          <p>Build intrigue before the launch. No prices, no floor plans — just brand and location story. Objective: build a waitlist. Tactics: teaser campaign on social, outdoor countdown, PR about the project (without pricing), broker pre-briefing, expression of interest form, early bird communication to CRM database.</p>
+          <div class="chip-row"><span class="chip accent">Waitlist Building</span><span class="chip">Social Teaser</span><span class="chip">PR</span><span class="chip">Broker Briefing</span><span class="chip">EOI Form</span></div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Phase 1<br>Launch<br>Month 1</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>Full Market Activation</h4>
+          <p>Maximum simultaneous touchpoints. Launch event (invite media, brokers, early registrants), full digital campaign activation (Google + Meta + YouTube), newspaper inserts, outdoor blitz, Experience Centre opening, PR coverage of the launch, social content storm. Price revelation moment is a media event in itself.</p>
+          <div class="chip-row"><span class="chip accent">Launch Event</span><span class="chip accent">Full Media Burst</span><span class="chip">Newspaper Inserts</span><span class="chip">Google Search</span><span class="chip">Meta Ads</span><span class="chip">OOH Blitz</span></div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Phase 2<br>Momentum<br>Months 2–4</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>Sustained Lead Flow & Nurture</h4>
+          <p>The longest and most operationally demanding phase. Shift from blitz to sustained. Retargeting campaigns for website visitors and video viewers. Segmented email nurture journeys. Content programme (blog, social, YouTube). Site visit events. Broker engagement tours. Monthly construction update to existing enquiries. Early booking milestone PR ("50% sold in 60 days").</p>
+          <div class="chip-row"><span class="chip">Retargeting</span><span class="chip">Email Nurture</span><span class="chip">Content Programme</span><span class="chip accent">Site Visit Events</span><span class="chip">Milestone PR</span></div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Phase 3<br>Conversion Push<br>Months 5–8</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>Urgency, Scarcity & Inventory Mgmt</h4>
+          <p>Inventory depletion creates its own urgency story. "Phase 1 — Only 12 units remaining." Last-floor communication. Price revision announcement (planned). Festive season campaign activation (Diwali, Pongal, Gudi Padwa depending on market). Referral programme push to existing buyers. Investor day event.</p>
+          <div class="chip-row"><span class="chip accent">Scarcity Narrative</span><span class="chip">Festive Campaign</span><span class="chip accent">Price Revision PR</span><span class="chip">Referral Push</span><span class="chip">Investor Day</span></div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Phase 4<br>Construction<br>Months 9–36</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>Trust Maintenance & Community Building</h4>
+          <p>Construction progress communication (monthly photo/video updates via CRM, RERA portal). Any remaining inventory — steady digital presence. Slab completion event. Community platform launch (app or WhatsApp group for future residents). Referral programme in full swing. Thought leadership content from leadership. Next project seed content.</p>
+          <div class="chip-row"><span class="chip green">Construction Updates</span><span class="chip green">Community Building</span><span class="chip">Referral Programme</span><span class="chip">Thought Leadership</span><span class="chip">Next Project Teaser</span></div>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-label">Phase 5<br>Possession<br>Month 36+</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>Handover Experience & Advocacy Activation</h4>
+          <p>The handover ceremony is a media event — photograph and video every possession moment. Welcome kits. Snag-free handover protocol. Society brand rollout. NPS survey. Resident testimonial collection. First community event within 3 months. Referral programme renewal. Leverage for next project brand credibility.</p>
+          <div class="chip-row"><span class="chip green">Handover Event</span><span class="chip green">Welcome Kit</span><span class="chip accent">Testimonial Collection</span><span class="chip">NPS Survey</span><span class="chip">Community Launch</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slabel">Content Strategy by Format</div>
+    <table class="bt reveal">
+      <thead>
+        <tr><th>Content Format</th><th>Objective</th><th>Platform</th><th>Frequency</th><th>Owner</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat">Project Launch Film</td><td>Emotional brand narrative — 90 sec hero film</td><td>YouTube, website, events</td><td>Once per project</td><td>Agency + Director</td></tr>
+        <tr><td class="cat">Testimonial Videos</td><td>Social proof — buyer stories, 60–90 sec</td><td>YouTube, Instagram, Meta Ads</td><td>Monthly (1–2)</td><td>In-house / Agency</td></tr>
+        <tr><td class="cat">Construction Reels</td><td>Trust building — timelapse, milestone shots</td><td>Instagram, Facebook, WhatsApp</td><td>Weekly</td><td>In-house / Videographer</td></tr>
+        <tr><td class="cat">Thought Leadership</td><td>Authority building — market insights, buyer guides</td><td>LinkedIn, Blog, PR</td><td>Bi-weekly</td><td>Brand Manager + Leadership</td></tr>
+        <tr><td class="cat">Area Profile Content</td><td>Location narrative — infrastructure, lifestyle, schools</td><td>Blog, YouTube, Social</td><td>Monthly</td><td>Content Team</td></tr>
+        <tr><td class="cat">Festive Campaigns</td><td>Sales conversion spike around festivals</td><td>All channels</td><td>4–5 per year</td><td>Agency</td></tr>
+        <tr><td class="cat">Influencer Collaborations</td><td>Credibility + reach for target buyer segment</td><td>Instagram, YouTube</td><td>Quarterly (2–3 per quarter)</td><td>Brand Manager</td></tr>
+        <tr><td class="cat">Email Newsletters</td><td>Lead nurture + existing buyer communication</td><td>Email (segmented)</td><td>Fortnightly</td><td>CRM + Content Team</td></tr>
+        <tr><td class="cat">PR Articles / Quotes</td><td>Market authority, brand credibility, earned media</td><td>ET Realty, Hindu, Times Property</td><td>Monthly (1–2 placements)</td><td>PR Agency / In-house PR</td></tr>
+        <tr><td class="cat">Floor Plan Explainers</td><td>Consideration — educate on layout advantages</td><td>Website, Social, WhatsApp</td><td>Per unit type</td><td>Design + Content</td></tr>
+      </tbody>
+    </table>
+
+    <div class="slabel">Channel Partner Communication Plan</div>
+    <div class="card-grid reveal">
+      <div class="card">
+        <span class="card-tag">Onboarding</span>
+        <h3>CP Brand Induction</h3>
+        <p>Every channel partner must be a brand ambassador before they are a salesperson. Onboarding kit: brand story, project facts, objection handling guide, do's/don'ts for representing the brand. 2-hour brand induction session mandatory.</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Enablement</span>
+        <h3>Sales Toolkit</h3>
+        <p>Digital and physical sales kit: digital brochure, co-branded proposal template, virtual tour link, pricing matrix, EMI calculator, WhatsApp broadcast content ready to deploy, social media post templates with brand compliance.</p>
+        <div class="card-bar"></div>
+      </div>
+      <div class="card">
+        <span class="card-tag">Engagement</span>
+        <h3>CP Communication Cadence</h3>
+        <p>Weekly WhatsApp update on inventory status. Monthly CP meet. Quarterly CP appreciation event. Leaderboard with commission tracking. Priority access to new inventory. Escalation line direct to senior sales team.</p>
+        <div class="card-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 05 ACTIVITY CALENDAR ═══ -->
+<section id="calendar" class="module">
+  <div class="mod-header reveal">
+    <div class="mod-num">05</div>
+    <div>
+      <span class="mod-tag">When Everything Happens</span>
+      <h2 class="mod-title">Annual <em>Activity Calendar</em></h2>
+      <p class="mod-desc">The 12-month view that synchronises campaigns, content, events, PR, and performance reviews. Without a calendar, marketing becomes reactive. With one, it becomes a competitive weapon.</p>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="slabel">Annual Marketing Calendar — Activity Matrix</div>
+    <div class="cal reveal">
+      <div class="cal-head" style="background:var(--dark); color:var(--amber);">Activity</div>
+      <div class="cal-head">J</div><div class="cal-head">F</div><div class="cal-head">M</div>
+      <div class="cal-head">A</div><div class="cal-head">M</div><div class="cal-head">J</div>
+      <div class="cal-head">J</div><div class="cal-head">A</div><div class="cal-head">S</div>
+      <div class="cal-head">O</div><div class="cal-head">N</div><div class="cal-head">D</div>
+
+      <div class="cal-label">Google Search Ads</div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell on"></div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell lite"></div>
+      <div class="cal-cell lite"></div><div class="cal-cell on"></div><div class="cal-cell on"></div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell on"></div>
+
+      <div class="cal-label">Meta / FB Ads</div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell on"></div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell lite"></div>
+      <div class="cal-cell lite"></div><div class="cal-cell on"></div><div class="cal-cell on"></div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell on"></div>
+
+      <div class="cal-label">Outdoor / OOH</div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell lite"></div>
+      <div class="cal-cell lite"></div><div class="cal-cell lite"></div><div class="cal-cell"></div>
+      <div class="cal-cell"></div><div class="cal-cell lite"></div><div class="cal-cell on"></div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell lite"></div>
+
+      <div class="cal-label">Newspaper / Print</div>
+      <div class="cal-cell on"></div><div class="cal-cell lite"></div><div class="cal-cell on"></div>
+      <div class="cal-cell lite"></div><div class="cal-cell lite"></div><div class="cal-cell"></div>
+      <div class="cal-cell"></div><div class="cal-cell lite"></div><div class="cal-cell on"></div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell lite"></div>
+
+      <div class="cal-label">PR / Media</div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+
+      <div class="cal-label">Social Content</div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+
+      <div class="cal-label">Email Campaigns</div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell green-on"></div><div class="cal-cell green-on"></div>
+
+      <div class="cal-label">CP Engagement</div>
+      <div class="cal-cell amber-on"></div><div class="cal-cell lite"></div><div class="cal-cell amber-on"></div>
+      <div class="cal-cell lite"></div><div class="cal-cell lite"></div><div class="cal-cell amber-on"></div>
+      <div class="cal-cell lite"></div><div class="cal-cell lite"></div><div class="cal-cell amber-on"></div>
+      <div class="cal-cell lite"></div><div class="cal-cell lite"></div><div class="cal-cell amber-on"></div>
+
+      <div class="cal-label">Festive Campaigns</div>
+      <div class="cal-cell lite"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+      <div class="cal-cell amber-on"></div><div class="cal-cell lite"></div><div class="cal-cell"></div>
+      <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell amber-on"></div>
+      <div class="cal-cell amber-on"></div><div class="cal-cell amber-on"></div><div class="cal-cell lite"></div>
+
+      <div class="cal-label">Events / Site Visits</div>
+      <div class="cal-cell on"></div><div class="cal-cell lite"></div><div class="cal-cell on"></div>
+      <div class="cal-cell lite"></div><div class="cal-cell on"></div><div class="cal-cell lite"></div>
+      <div class="cal-cell lite"></div><div class="cal-cell lite"></div><div class="cal-cell on"></div>
+      <div class="cal-cell on"></div><div class="cal-cell on"></div><div class="cal-cell lite"></div>
+
+      <div class="cal-label">Brand Review</div>
+      <div class="cal-cell green-on"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+      <div class="cal-cell green-on"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+    </div>
+
+    <div style="display:flex; gap:24px; margin-bottom:32px; flex-wrap:wrap; align-items:center;">
+      <div style="display:flex;gap:8px;align-items:center;"><span style="width:14px;height:14px;background:var(--accent);border-radius:2px;display:inline-block;"></span><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.08em;">Full Intensity</span></div>
+      <div style="display:flex;gap:8px;align-items:center;"><span style="width:14px;height:14px;background:rgba(196,92,42,0.15);border-radius:2px;display:inline-block;"></span><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.08em;">Reduced / Maintenance</span></div>
+      <div style="display:flex;gap:8px;align-items:center;"><span style="width:14px;height:14px;background:var(--accent2);border-radius:2px;display:inline-block;"></span><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.08em;">Always-On</span></div>
+      <div style="display:flex;gap:8px;align-items:center;"><span style="width:14px;height:14px;background:var(--amber);border-radius:2px;display:inline-block;"></span><span style="font-family:var(--mono);font-size:10px;letter-spacing:0.08em;">Seasonal / Event</span></div>
+    </div>
+
+    <div class="slabel">Key Campaign Dates — Indian Real Estate Calendar</div>
+    <table class="bt reveal">
+      <thead><tr><th>Period</th><th>Event</th><th>Campaign Type</th><th>Audience</th><th>Typical Budget Spike</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">Jan–Feb</td><td>New Year / Budget Season</td><td>New Year New Home campaign. Pre-budget homebuyer anxiety content.</td><td>Fence-sitters, investors</td><td>+20%</td></tr>
+        <tr><td class="cat">Mar–Apr</td><td>Gudi Padwa / Ugadi / Tamil New Year</td><td>Festive launch or offer announcement for South & West India</td><td>Regional buyers, first-timers</td><td>+35%</td></tr>
+        <tr><td class="cat">Apr–May</td><td>Financial Year End</td><td>Tax saving angle — Section 80C, first home benefit messaging</td><td>Investors, salaried professionals</td><td>+15%</td></tr>
+        <tr><td class="cat">Aug–Sep</td><td>Ganesh Chaturthi / Onam</td><td>Festival home campaign — Maharashtra and Kerala market focus</td><td>Regional mid-segment</td><td>+25%</td></tr>
+        <tr><td class="cat">Oct–Nov</td><td>Navratri → Diwali</td><td>The single biggest real estate campaign window in India</td><td>All segments — maximum push</td><td>+50%</td></tr>
+        <tr><td class="cat">Nov</td><td>CREDAI / Propexpo</td><td>Property exhibition participation — multi-city NRI events</td><td>NRI buyers, investors</td><td>+20%</td></tr>
+        <tr><td class="cat">Dec</td><td>Year-End / Bonus Season</td><td>Bonus investment campaign — "Put your bonus to work"</td><td>Salaried professionals, IT sector</td><td>+25%</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══ 06 BUDGET ═══ -->
+<section id="budget" class="module">
+  <div class="mod-header reveal">
+    <div class="mod-num">06</div>
+    <div>
+      <span class="mod-tag">Where Every Rupee Goes — and Why</span>
+      <h2 class="mod-title">Budget <em>Framework</em></h2>
+      <p class="mod-desc">Budget without strategy is waste. Strategy without budget is poetry. The marketing budget for a real estate project must be calculated as a function of revenue — not pulled from thin air.</p>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="slabel">Budget as % of Project Revenue — Industry Benchmark</div>
+    <table class="bt reveal">
+      <thead><tr><th>Segment</th><th>Typical Marketing Budget</th><th>% of Project Revenue</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">Affordable (₹20–60L)</td><td>₹40L – ₹1.5Cr per project</td><td>1.5–2.5%</td><td>Digital-heavy; vernacular content critical</td></tr>
+        <tr><td class="cat">Mid-Segment (₹60L–1.5Cr)</td><td>₹1.5Cr – ₹4Cr per project</td><td>2–3%</td><td>Balanced ATL + digital; CP-heavy distribution</td></tr>
+        <tr><td class="cat">Premium (₹1.5Cr–4Cr)</td><td>₹3Cr – ₹8Cr per project</td><td>2.5–3.5%</td><td>Brand quality matters; production values critical</td></tr>
+        <tr><td class="cat">Luxury (₹4Cr+)</td><td>₹5Cr – ₹15Cr per project</td><td>3–5%</td><td>Events, PR, experience design dominant</td></tr>
+        <tr><td class="cat">Township (multi-phase)</td><td>₹15Cr – ₹50Cr+ (lifetime)</td><td>2–3% per phase</td><td>Master brand + project-level dual spend</td></tr>
+      </tbody>
+    </table>
+
+    <div class="slabel">Indicative Channel Budget Split — Mid-Segment Project</div>
+    <div class="two reveal">
+      <div>
+        <div class="budget-bar-row"><span class="bbl">Digital — Google / Meta</span><div class="bbtrack"><div class="bbfill" style="width:35%"></div></div><span class="bbpct">35%</span></div>
+        <div class="budget-bar-row"><span class="bbl">Outdoor / OOH</span><div class="bbtrack"><div class="bbfill" style="width:15%"></div></div><span class="bbpct">15%</span></div>
+        <div class="budget-bar-row"><span class="bbl">Print / Newspaper</span><div class="bbtrack"><div class="bbfill" style="width:10%"></div></div><span class="bbpct">10%</span></div>
+        <div class="budget-bar-row"><span class="bbl">Experience Centre</span><div class="bbtrack"><div class="bbfill green" style="width:12%"></div></div><span class="bbpct">12%</span></div>
+        <div class="budget-bar-row"><span class="bbl">Content Production</span><div class="bbtrack"><div class="bbfill green" style="width:8%"></div></div><span class="bbpct">8%</span></div>
+        <div class="budget-bar-row"><span class="bbl">PR & Events</span><div class="bbtrack"><div class="bbfill amber" style="width:7%"></div></div><span class="bbpct">7%</span></div>
+        <div class="budget-bar-row"><span class="bbl">CP Tools & Training</span><div class="bbtrack"><div class="bbfill amber" style="width:5%"></div></div><span class="bbpct">5%</span></div>
+        <div class="budget-bar-row"><span class="bbl">Research & Tools</span><div class="bbtrack"><div class="bbfill" style="width:3%"></div></div><span class="bbpct">3%</span></div>
+        <div class="budget-bar-row"><span class="bbl">Reserve / Contingency</span><div class="bbtrack"><div class="bbfill" style="width:5%"></div></div><span class="bbpct">5%</span></div>
+      </div>
+      <div>
+        <div class="slabel" style="margin-top:0;">Budget Rules of Thumb</div>
+        <table class="bt">
+          <thead><tr><th>Rule</th><th>Application</th></tr></thead>
+          <tbody>
+            <tr><td class="cat">60:40 Rule</td><td>60% on demand generation (paid, OOH, print). 40% on brand building (content, PR, events, experience).</td></tr>
+            <tr><td class="cat">Launch Spike</td><td>30–40% of the entire project marketing budget in the first 6 weeks. Momentum is everything at launch.</td></tr>
+            <tr><td class="cat">Always-On Floor</td><td>Minimum 15% of monthly budget on always-on digital (Google search, retargeting) — never switch off entirely.</td></tr>
+            <tr><td class="cat">Festive Top-Up</td><td>Set aside 15–20% of annual digital budget for Diwali and 2–3 other festival windows as a separately planned burst.</td></tr>
+            <tr><td class="cat">10% Reserve</td><td>Always maintain a 10% contingency reserve for competitor counter-campaigns, opportunity buys, or crisis response.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 07 TEAM ═══ -->
+<section id="team" class="module">
+  <div class="mod-header reveal">
+    <div class="mod-num">07</div>
+    <div>
+      <span class="mod-tag">Who Owns What</span>
+      <h2 class="mod-title">Team & Agency <em>Structure</em></h2>
+      <p class="mod-desc">Marketing fails when ownership is unclear. Every activity in the plan must have a named owner, a deadline, and a defined output. This section defines the operating model.</p>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="slabel">In-House Marketing Team — Core Roles</div>
+    <div class="roster reveal">
+      <div class="role-card">
+        <div class="role-title">Brand Manager</div>
+        <div class="role-type">In-house · Senior</div>
+        <div class="role-owns">Owns: brand strategy, campaign briefs, agency coordination, brand governance, PR oversight, thought leadership, budget management. The strategic centre of the marketing function.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-title">Digital Marketing Manager</div>
+        <div class="role-type">In-house · Mid-Senior</div>
+        <div class="role-owns">Owns: Google Ads, Meta Ads, SEO, website performance, lead management dashboard, CRM integration, A/B testing, weekly digital reporting. Performance-first role.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-title">Content Lead</div>
+        <div class="role-type">In-house · Mid</div>
+        <div class="role-owns">Owns: social media content calendar, blog, email copy, video scripts, sales collateral copy, WhatsApp broadcast content. Must understand brand voice deeply.</div>
+      </div>
+      <div class="role-card">
+        <div class="role-title">CRM & Sales Support</div>
+        <div class="role-type">In-house · Mid</div>
+        <div class="role-owns">Owns: lead database management, email nurture sequences, buyer communication journey, construction updates, NPS surveys, CP toolkit distribution.</div>
+      </div>
+    </div>
+
+    <div class="slabel">Agency Ecosystem</div>
+    <table class="bt reveal">
+      <thead><tr><th>Agency Type</th><th>Scope</th><th>Engagement Model</th><th>KPI</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">Creative Agency</td><td>Campaign concepts, brand campaigns, launch films, print ads, OOH design, brochures, sales collateral</td><td>Project-based or retainer (₹3–8L/month depending on scale)</td><td>On-time delivery, brand consistency score, campaign recall</td></tr>
+        <tr><td class="cat">Digital Performance Agency</td><td>Google Ads execution, Meta Ads, SEO, landing page optimisation, reporting</td><td>Retainer + performance fee (15–20% of ad spend)</td><td>CPL, ROAS, lead quality score, website conversion rate</td></tr>
+        <tr><td class="cat">PR Agency</td><td>Media relations, press releases, editorial placements, crisis comms support, awards submissions</td><td>Monthly retainer (₹1.5–4L/month)</td><td>Monthly clip count, tier-1 placement %, SOV</td></tr>
+        <tr><td class="cat">Experiential / Events Agency</td><td>Launch events, site visit events, CP meets, possession ceremonies, community events</td><td>Project-based per event</td><td>Event attendance, lead conversion at event, media coverage</td></tr>
+        <tr><td class="cat">Photography / Film</td><td>Architectural photography, lifestyle shoots, aerial drone footage, model flat films, reel production</td><td>Project-based shoots</td><td>Asset quality, reuse across channels, production value</td></tr>
+        <tr><td class="cat">Media Buying</td><td>OOH media planning and buying, newspaper space buying, radio (if relevant), OTT/CTV</td><td>Per campaign or integrated with creative agency</td><td>CPM, reach efficiency, location quality</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══ 08 MEASUREMENT ═══ -->
+<section id="measurement" class="module">
+  <div class="mod-header reveal">
+    <div class="mod-num">08</div>
+    <div>
+      <span class="mod-tag">How You Know It's Working</span>
+      <h2 class="mod-title">Measurement & <em>Reporting</em></h2>
+      <p class="mod-desc">A plan without a reporting cadence is a plan that slowly drifts. The reporting architecture creates the feedback loops that allow course correction before budget is wasted.</p>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="slabel">KPI Dashboard — Real Estate Marketing</div>
+    <div class="kpi-grid reveal">
+      <div class="kpi"><div class="kpi-val">CPL</div><div class="kpi-label">Cost Per Lead</div><div class="kpi-desc">By channel. Mid-segment benchmark: ₹1,800–3,500 via digital. Higher for OOH (estimated). Lower for referrals.</div></div>
+      <div class="kpi"><div class="kpi-val">L→V%</div><div class="kpi-label">Lead to Site Visit</div><div class="kpi-desc">Target: 20–30% conversion. Below 15% = messaging or lead quality problem. Track by source channel.</div></div>
+      <div class="kpi"><div class="kpi-val">V→B%</div><div class="kpi-label">Visit to Booking</div><div class="kpi-desc">Target: 15–25%. Below 10% = experience centre or sales team problem. Mystery audit required.</div></div>
+      <div class="kpi"><div class="kpi-val">NPS</div><div class="kpi-label">Net Promoter Score</div><div class="kpi-desc">Measure post-booking and post-possession. Target: 50+. Below 30 = customer experience failure. Act immediately.</div></div>
+    </div>
+
+    <div class="slabel">Reporting Cadence</div>
+    <table class="bt reveal">
+      <thead><tr><th>Report</th><th>Frequency</th><th>Audience</th><th>Covers</th><th>Format</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">Digital Performance</td><td>Weekly</td><td>Brand Manager + Digital Team</td><td>Lead volumes, CPL, CTR, spend, platform performance, top campaigns</td><td>Dashboard + email summary</td></tr>
+        <tr><td class="cat">Sales Funnel</td><td>Weekly</td><td>Brand Manager + Sales Head</td><td>Leads → Visits → Bookings + channel attribution + objection log</td><td>CRM report</td></tr>
+        <tr><td class="cat">Content Performance</td><td>Bi-weekly</td><td>Content + Brand Manager</td><td>Social engagement, video views, email open rates, blog traffic</td><td>Content scorecard</td></tr>
+        <tr><td class="cat">Marketing Review</td><td>Monthly</td><td>CMO / MD, Brand Manager, Sales Head</td><td>Full funnel, budget vs actual, competitor activity, campaign learnings, next month plan</td><td>Presentation + report</td></tr>
+        <tr><td class="cat">Brand Health Report</td><td>Quarterly</td><td>MD / CBO / CMO</td><td>Brand awareness, NPS, review scores, SOV, brand equity indicators</td><td>Strategic deck</td></tr>
+        <tr><td class="cat">Annual Plan Review</td><td>Yearly</td><td>Leadership Team</td><td>Full year actuals vs plan, brand trajectory, next year planning inputs</td><td>Annual strategy session</td></tr>
+      </tbody>
+    </table>
+
+    <div class="qdiv">"The best real estate marketing teams are not the ones with the biggest budgets — they are the ones who review their numbers honestly every week and change direction faster than their competitors."</div>
+  </div>
+</section>
+
+<!-- ═══ 09 CRISIS COMMS ═══ -->
+<section id="crisis" class="module">
+  <div class="mod-header reveal">
+    <div class="mod-num">09</div>
+    <div>
+      <span class="mod-tag">When Things Go Wrong — and They Will</span>
+      <h2 class="mod-title">Crisis <em>Communication</em></h2>
+      <p class="mod-desc">In real estate, crises are not exceptional — they are structural. Construction delays, legal disputes, media exposure, social media complaints. Every plan needs a response architecture before it is ever needed.</p>
+    </div>
+  </div>
+
+  <div class="zone">
+    <div class="slabel">Crisis Scenario Map & Response Framework</div>
+    <div class="crisis reveal">
+      <div class="crisis-item">
+        <span class="crisis-level l-high">● High Severity</span>
+        <h4>Construction Delay</h4>
+        <p>Most common real estate crisis. Response: proactive communication (not reactive). Send a personal letter from MD/CEO within 24 hours of identifying a delay. State the new date and the reason honestly. Offer compensation where applicable (as per RERA). Do NOT communicate through sales team — it must come from leadership. Never go silent.</p>
+      </div>
+      <div class="crisis-item">
+        <span class="crisis-level l-high">● High Severity</span>
+        <h4>Legal / RERA Complaint Campaign</h4>
+        <p>If an organised buyer complaint goes public or to media. Designate a single spokesperson (never multiple). Brief legal counsel and communications team simultaneously. Respond to media with facts and a solution path — not denial. Proactively reach out to other buyers with a reassurance letter. Social media monitoring must increase to real-time.</p>
+      </div>
+      <div class="crisis-item">
+        <span class="crisis-level l-high">● High Severity</span>
+        <h4>Viral Negative Social Media</h4>
+        <p>A buyer-posted video complaint that begins trending. Do NOT delete or dismiss. First response must be within 2 hours acknowledging the concern. Take conversation to DM and resolve. Post a follow-up public response within 24 hours showing resolution. Brief the sales team immediately — they will face calls. Review the root cause and fix it operationally.</p>
+      </div>
+      <div class="crisis-item">
+        <span class="crisis-level l-med">● Medium Severity</span>
+        <h4>Negative Media Coverage</h4>
+        <p>A journalist writes a critical piece — poor quality claims, financial allegations, area negativity. Immediately contact the journalist with verified facts. If inaccurate, request a correction or right of reply. Prepare a counter-narrative with third-party validation (RERA certificate, IGBC rating, buyer testimonials). Do not engage aggressively in public — it amplifies.</p>
+      </div>
+      <div class="crisis-item">
+        <span class="crisis-level l-med">● Medium Severity</span>
+        <h4>Price Revision Backlash</h4>
+        <p>Existing buyers react negatively to price increases for new inventory. Communicate price revision to existing buyers first — before public announcement. Frame it as a market appreciation signal that validates their own investment. Offer early-bird pricing for referrals as a loyalty benefit. Never make existing buyers feel they overpaid.</p>
+      </div>
+      <div class="crisis-item">
+        <span class="crisis-level l-low">● Manageable</span>
+        <h4>Competitor Negative Campaign</h4>
+        <p>A competitor runs comparative advertising that positions your brand poorly. Do not engage in public mud-slinging. Respond with a brand campaign that amplifies your genuine strengths. If the comparison is factually false, pursue ASCI complaint. Brief your sales and CP team with a factual response kit for when buyers raise it.</p>
+      </div>
+    </div>
+
+    <div class="slabel">The Golden Rules of Real Estate Crisis Communication</div>
+    <table class="bt reveal">
+      <thead><tr><th>#</th><th>Rule</th><th>Why It Matters</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">01</td><td>Respond within 2 hours, resolve within 24 hours</td><td>Every hour of silence on social media is interpreted as guilt. Speed is empathy.</td></tr>
+        <tr><td class="cat">02</td><td>One spokesperson. Always.</td><td>Multiple voices in a crisis create contradiction and amplify the story.</td></tr>
+        <tr><td class="cat">03</td><td>Acknowledge before you explain</td><td>Buyers in distress need to feel heard before they will listen to your explanation.</td></tr>
+        <tr><td class="cat">04</td><td>Never lie to a journalist</td><td>A lie discovered post-crisis destroys more than the original crisis. Give facts or say "no comment."</td></tr>
+        <tr><td class="cat">05</td><td>Over-communicate to existing buyers during a crisis</td><td>Your buyers are your most important audience. If they hear about the crisis from media first, trust collapses.</td></tr>
+        <tr><td class="cat">06</td><td>Fix the root cause, then the communication</td><td>A crisis that is communicated but not resolved will produce a second, worse crisis.</td></tr>
+        <tr><td class="cat">07</td><td>Brief your sales team and CPs before going public</td><td>They will face buyer questions. An unprepared sales team in a crisis makes things worse.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="ft-brand">MarComm <span>Plan</span></div>
+      <p class="ft-sub">The operational complement to Branding 360°. Covers the nine modules that transform brand strategy into executable marketing — with objectives, audiences, campaigns, calendars, budgets, teams, measurement, and crisis protocols. Built for Indian real estate.</p>
+    </div>
+    <div class="ft-col">
+      <h5>9 Modules</h5>
+      <ul>
+        <li>01 Situation Analysis</li>
+        <li>02 Marketing Objectives</li>
+        <li>03 Audience Architecture</li>
+        <li>04 Go-to-Market Strategy</li>
+        <li>05 Activity Calendar</li>
+        <li>06 Budget Framework</li>
+        <li>07 Team & Agency Structure</li>
+        <li>08 Measurement & Reporting</li>
+        <li>09 Crisis Communication</li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h5>Works With</h5>
+      <ul>
+        <li>Branding 360° Framework</li>
+        <li>Real Estate Brand Audit</li>
+        <li>Channel Partner Playbook</li>
+        <li>Content Calendar</li>
+        <li>CRM Journey Map</li>
+        <li>Experience Centre Playbook</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>Marketing & Communication Plan — Real Estate Edition</p>
+    <p>Companion Document to Branding 360°</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Animate budget bars on reveal
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.bbfill').forEach(bar => {
+          const w = bar.style.width;
+          bar.style.width = '0';
+          setTimeout(() => { bar.style.width = w; }, 100);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.two').forEach(el => barObserver.observe(el));
+</script>
+</body>
+</html>

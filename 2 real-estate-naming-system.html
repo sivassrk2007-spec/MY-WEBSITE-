@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand & Project Naming System — Real Estate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0b;
+    --parchment: #f5f0e8;
+    --sand: #e8dfc8;
+    --gold: #b89a5a;
+    --gold-lt: #d4b97a;
+    --rust: #8b4a2a;
+    --sage: #4a5c4e;
+    --steel: #3a4a5c;
+    --cream: #faf7f2;
+    --rule: rgba(184,154,90,0.25);
+    --rule2: rgba(139,74,42,0.18);
+    --mono: 'DM Mono', monospace;
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  .nav-brand {
+    font-family: var(--sans); font-weight: 800; font-size: 13px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink); text-decoration: none;
+    opacity: 0.5; transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 80px 80px;
+    position: relative; overflow: hidden;
+    background: var(--ink);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 55% at 75% 35%, rgba(184,154,90,0.09) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 75% at 10% 65%, rgba(139,74,42,0.1) 0%, transparent 55%),
+      linear-gradient(155deg, #0d0d0b 0%, #151510 50%, #0e0e0a 100%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(184,154,90,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,154,90,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+  /* Decorative letter forms in hero bg */
+  .hero-letters {
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: 55%;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    opacity: 0.035;
+    pointer-events: none;
+  }
+  .hero-letters-inner {
+    font-family: var(--serif); font-size: 360px; font-weight: 300;
+    color: var(--gold); letter-spacing: -0.06em;
+    line-height: 0.85;
+    user-select: none;
+  }
+  .hero-stamp {
+    position: absolute; top: 80px; right: 80px;
+    width: 180px; height: 180px;
+    border: 1px solid rgba(184,154,90,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0.65;
+  }
+  .hero-stamp-inner {
+    width: 140px; height: 140px;
+    border: 1px solid rgba(184,154,90,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; text-align: center; gap: 4px;
+  }
+  .hero-stamp span {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold-lt); opacity: 0.8; display: block;
+  }
+  .hero-stamp strong {
+    font-family: var(--sans); font-size: 20px; font-weight: 800;
+    color: var(--gold); line-height: 1; display: block;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+  h1.hero-title {
+    font-family: var(--serif); font-size: clamp(48px, 6.5vw, 88px);
+    font-weight: 300; color: var(--parchment); line-height: 1.0;
+    letter-spacing: -0.01em; margin-bottom: 12px;
+  }
+  h1.hero-title em { font-style: italic; color: var(--gold-lt); }
+  .hero-sub {
+    font-family: var(--mono); font-size: 13px;
+    color: rgba(245,240,232,0.38); letter-spacing: 0.05em;
+    margin-top: 24px; max-width: 580px; line-height: 1.6;
+  }
+  .hero-modules {
+    position: absolute; bottom: 80px; right: 80px;
+    display: flex; flex-direction: column; gap: 5px; align-items: flex-end;
+  }
+  .mod-tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(184,154,90,0.45);
+  }
+  .mod-tag.active { color: var(--gold); }
+
+  /* ─── SECTION HEADER ─── */
+  .phase-header {
+    padding: 0 80px; margin-top: 120px; margin-bottom: 64px;
+    display: flex; align-items: flex-end; gap: 40px;
+    border-bottom: 1px solid var(--rule); padding-bottom: 32px;
+  }
+  .phase-num {
+    font-family: var(--mono); font-size: 72px; font-weight: 300;
+    color: var(--sand); line-height: 1; flex-shrink: 0;
+  }
+  .phase-meta { flex: 1; }
+  .phase-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+  }
+  .phase-title {
+    font-family: var(--serif); font-size: clamp(26px, 3vw, 38px);
+    font-weight: 300; color: var(--ink); line-height: 1.1;
+  }
+  .phase-title em { font-style: italic; color: var(--rust); }
+  .phase-desc {
+    font-size: 15px; color: rgba(13,13,11,0.52); max-width: 520px;
+    margin-top: 12px; font-family: var(--mono); line-height: 1.6; letter-spacing: 0.01em;
+  }
+
+  /* ─── CONTENT ZONES ─── */
+  .content-zone { padding: 0 80px; margin-bottom: 24px; }
+
+  .section-title {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--rule);
+  }
+
+  /* ─── FRAMEWORK CARDS ─── */
+  .fw-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .fw-grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .fw-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .fw-card {
+    background: var(--parchment); padding: 32px 28px;
+    border: 1px solid var(--rule); position: relative; transition: background 0.25s;
+  }
+  .fw-card:hover { background: var(--sand); }
+  .fw-card-accent {
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .fw-card-accent.rust { background: linear-gradient(90deg, var(--rust), transparent); }
+  .fw-card-accent.sage { background: linear-gradient(90deg, var(--sage), transparent); }
+  .fw-card-accent.steel { background: linear-gradient(90deg, var(--steel), transparent); }
+  .fw-card-num {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 12px;
+  }
+  .fw-card h3 {
+    font-family: var(--serif); font-size: 20px; font-weight: 400;
+    margin-bottom: 10px; line-height: 1.2;
+  }
+  .fw-card p { font-size: 15px; color: rgba(13,13,11,0.65); line-height: 1.65; }
+  .fw-card ul { font-size: 15px; color: rgba(13,13,11,0.65); line-height: 1.65; padding-left: 16px; }
+  .fw-card ul li { margin-bottom: 4px; }
+
+  /* ─── CALLOUT ─── */
+  .callout {
+    background: var(--ink); padding: 48px 56px; margin-bottom: 48px;
+    position: relative; overflow: hidden;
+  }
+  .callout-glow {
+    position: absolute; top: -40px; left: -40px;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(184,154,90,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .callout p {
+    font-family: var(--serif); font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 300; font-style: italic; color: var(--parchment);
+    line-height: 1.45; position: relative; z-index: 1; max-width: 820px;
+  }
+  .callout-src {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-top: 20px;
+    position: relative; z-index: 1;
+  }
+
+  /* ─── STRATEGY TABLE ─── */
+  .strat-table {
+    width: 100%; border-collapse: collapse; margin-bottom: 48px;
+    font-family: var(--mono); font-size: 13px;
+  }
+  .strat-table thead th {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); padding: 0 16px 12px; text-align: left;
+    border-bottom: 1px solid var(--rule);
+  }
+  .strat-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .strat-table tbody tr:hover { background: rgba(184,154,90,0.04); }
+  .strat-table tbody td {
+    padding: 14px 16px; font-size: 13px;
+    color: rgba(13,13,11,0.75); vertical-align: top; line-height: 1.55;
+  }
+  .strat-table tbody td.cat {
+    color: var(--ink); font-weight: 500; white-space: nowrap;
+  }
+  .strat-table tbody td.hi { color: var(--rust); font-weight: 500; }
+  .strat-table tbody td.ok { color: var(--sage); font-weight: 500; }
+
+  /* ─── NAMING SCHOOLS ─── */
+  .school-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; margin-bottom: 48px; border: 1px solid var(--rule);
+  }
+  .school-card {
+    padding: 36px 30px; border-right: 1px solid var(--rule);
+    position: relative;
+  }
+  .school-card:last-child { border-right: none; }
+  .school-num {
+    font-family: var(--mono); font-size: 48px; font-weight: 300;
+    color: var(--sand); line-height: 1; margin-bottom: 8px;
+  }
+  .school-type {
+    font-family: var(--sans); font-size: 13px; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .school-card h3 {
+    font-family: var(--serif); font-size: 26px; font-weight: 400;
+    margin-bottom: 12px; line-height: 1.15;
+  }
+  .school-card > p {
+    font-size: 14px; color: rgba(13,13,11,0.62); line-height: 1.65;
+    margin-bottom: 20px; font-family: var(--mono);
+  }
+  .eg-names {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
+  }
+  .eg-name {
+    font-family: var(--mono); font-size: 11px;
+    background: var(--sand); padding: 4px 10px;
+    color: var(--ink); letter-spacing: 0.05em;
+  }
+  .school-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .mini-list h5 {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .mini-list h5.pros { color: var(--sage); }
+  .mini-list h5.cons { color: var(--rust); }
+  .mini-list ul { font-family: var(--mono); font-size: 11px;
+    color: rgba(13,13,11,0.65); list-style: none; padding: 0; }
+  .mini-list ul li { padding: 2px 0; padding-left: 12px; position: relative; }
+  .mini-list ul li::before { content: '—'; position: absolute; left: 0; opacity: 0.5; }
+  .school-segment {
+    margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(13,13,11,0.45);
+  }
+  .school-segment strong { color: var(--gold); }
+
+  /* ─── PROCESS TIMELINE ─── */
+  .process-track {
+    position: relative; margin-bottom: 48px;
+    padding-left: 0;
+  }
+  .process-line {
+    position: absolute; left: 28px; top: 0; bottom: 0;
+    width: 1px; background: var(--rule);
+  }
+  .process-step {
+    display: grid; grid-template-columns: 56px 1fr;
+    gap: 28px; margin-bottom: 0;
+    padding: 28px 0; border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .process-step:last-child { border-bottom: none; }
+  .step-num-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    padding-top: 4px;
+  }
+  .step-num {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--parchment); border: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 12px; font-weight: 500;
+    color: var(--gold); flex-shrink: 0; position: relative; z-index: 1;
+  }
+  .step-num.active { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+  .step-body {}
+  .step-label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+  }
+  .step-body h4 {
+    font-family: var(--serif); font-size: 22px; font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .step-body p { font-size: 15px; color: rgba(13,13,11,0.65); line-height: 1.65; }
+  .step-deliverable {
+    display: inline-block; margin-top: 12px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase; background: var(--sand);
+    padding: 5px 12px; color: var(--ink);
+  }
+
+  /* ─── SCORECARD ─── */
+  .scorecard {
+    border: 1px solid var(--rule); margin-bottom: 48px; overflow: hidden;
+  }
+  .sc-header {
+    background: var(--ink); display: grid;
+    grid-template-columns: 40px 1fr 80px 80px 80px 80px;
+    gap: 0; padding: 14px 20px;
+  }
+  .sc-header span {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(184,154,90,0.7);
+  }
+  .sc-row {
+    display: grid; grid-template-columns: 40px 1fr 80px 80px 80px 80px;
+    gap: 0; padding: 16px 20px; border-bottom: 1px solid var(--rule);
+    transition: background 0.2s;
+  }
+  .sc-row:last-child { border-bottom: none; }
+  .sc-row:hover { background: rgba(184,154,90,0.03); }
+  .sc-weight {
+    font-family: var(--mono); font-size: 12px; color: var(--gold);
+    font-weight: 500; align-self: center;
+  }
+  .sc-criterion { align-self: center; }
+  .sc-criterion h5 {
+    font-family: var(--serif); font-size: 17px; font-weight: 400; margin-bottom: 2px;
+  }
+  .sc-criterion p {
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(13,13,11,0.5); line-height: 1.45;
+  }
+  .sc-score {
+    align-self: center; text-align: center;
+    font-family: var(--mono); font-size: 13px;
+  }
+  .sc-score.hi { color: var(--sage); font-weight: 500; }
+  .sc-score.mid { color: var(--gold); font-weight: 500; }
+  .sc-score.lo { color: var(--rust); font-weight: 500; }
+  .sc-total {
+    background: var(--sand); display: grid;
+    grid-template-columns: 40px 1fr 80px 80px 80px 80px;
+    gap: 0; padding: 14px 20px;
+  }
+  .sc-total .label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink); grid-column: 1/3;
+    align-self: center;
+  }
+  .sc-total .tot {
+    font-family: var(--sans); font-size: 18px; font-weight: 700;
+    text-align: center; align-self: center;
+  }
+  .sc-total .tot.pass { color: var(--sage); }
+  .sc-total .tot.review { color: var(--gold); }
+  .sc-total .tot.fail { color: var(--rust); }
+
+  /* ─── BRIEF TEMPLATE ─── */
+  .brief-template {
+    border: 1px solid var(--rule); margin-bottom: 48px;
+  }
+  .brief-header {
+    background: var(--ink); padding: 28px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .brief-header h3 {
+    font-family: var(--serif); font-size: 22px; font-weight: 300;
+    font-style: italic; color: var(--parchment);
+  }
+  .brief-header span {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .brief-section {
+    padding: 28px 36px; border-bottom: 1px solid var(--rule);
+  }
+  .brief-section:last-child { border-bottom: none; }
+  .brief-section-label {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+  }
+  .brief-questions { display: flex; flex-direction: column; gap: 12px; }
+  .brief-q {
+    display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start;
+  }
+  .brief-q-num {
+    font-family: var(--mono); font-size: 11px; color: var(--gold); padding-top: 2px;
+  }
+  .brief-q-text { font-family: var(--serif); font-size: 17px; color: var(--ink); }
+  .brief-q-hint {
+    font-family: var(--mono); font-size: 11px; color: rgba(13,13,11,0.45);
+    margin-top: 4px; line-height: 1.5;
+  }
+  .brief-input-line {
+    margin-top: 6px; height: 1px; background: var(--rule);
+    position: relative;
+  }
+
+  /* ─── ARCHITECTURE DIAGRAM ─── */
+  .arch-diagram {
+    margin-bottom: 48px; border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .arch-level {
+    display: grid; align-items: stretch; border-bottom: 1px solid var(--rule);
+  }
+  .arch-level:last-child { border-bottom: none; }
+  .arch-level-label {
+    background: var(--ink); padding: 20px 24px;
+    display: flex; flex-direction: column; justify-content: center;
+    min-width: 180px;
+  }
+  .arch-level-label h4 {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 4px;
+  }
+  .arch-level-label p {
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(245,240,232,0.4); line-height: 1.4;
+  }
+  .arch-level-content {
+    flex: 1; padding: 20px 28px;
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  }
+  .arch-brand-chip {
+    font-family: var(--mono); font-size: 12px; padding: 8px 16px;
+    border: 1px solid var(--rule);
+  }
+  .arch-brand-chip.master {
+    background: var(--gold); color: var(--ink); border-color: var(--gold);
+    font-weight: 500; font-size: 13px;
+  }
+  .arch-brand-chip.endorsed {
+    background: var(--parchment); color: var(--ink);
+  }
+  .arch-brand-chip.standalone {
+    background: transparent; color: rgba(13,13,11,0.55);
+    border-style: dashed;
+  }
+  .arch-brand-chip.society {
+    background: var(--sand); color: rgba(13,13,11,0.6); font-size: 11px;
+  }
+  .arch-connector {
+    font-family: var(--mono); font-size: 11px; color: rgba(13,13,11,0.3);
+    align-self: center;
+  }
+
+  /* ─── PHONEMIC GRID ─── */
+  .phon-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .phon-card {
+    background: var(--parchment); padding: 28px 24px;
+    border: 1px solid var(--rule);
+  }
+  .phon-icon {
+    font-family: var(--serif); font-size: 56px; font-weight: 300;
+    font-style: italic; color: var(--gold); line-height: 1;
+    margin-bottom: 12px; display: block;
+  }
+  .phon-card h4 {
+    font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 8px;
+  }
+  .phon-card p {
+    font-family: var(--mono); font-size: 12px;
+    color: rgba(13,13,11,0.6); line-height: 1.6;
+  }
+  .phon-verdict {
+    display: inline-block; margin-top: 10px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase; padding: 3px 10px;
+  }
+  .phon-verdict.prefer { background: rgba(74,92,78,0.15); color: var(--sage); }
+  .phon-verdict.avoid { background: rgba(139,74,42,0.12); color: var(--rust); }
+
+  /* ─── MULTILINGUAL GRID ─── */
+  .multi-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .multi-card {
+    background: var(--parchment); padding: 24px 20px;
+    border: 1px solid var(--rule); text-align: center;
+    transition: background 0.2s;
+  }
+  .multi-card:hover { background: var(--sand); }
+  .script-sample {
+    font-size: 28px; line-height: 1.3; margin-bottom: 12px;
+    color: var(--ink); display: block;
+    font-family: serif;
+  }
+  .multi-card h4 {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 6px;
+  }
+  .multi-card p {
+    font-family: var(--mono); font-size: 11px;
+    color: rgba(13,13,11,0.55); line-height: 1.5;
+  }
+  .multi-risk {
+    display: inline-block; margin-top: 8px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase; padding: 2px 8px;
+  }
+  .risk-hi { background: rgba(139,74,42,0.12); color: var(--rust); }
+  .risk-med { background: rgba(184,154,90,0.15); color: #7a6030; }
+  .risk-lo { background: rgba(74,92,78,0.12); color: var(--sage); }
+
+  /* ─── RERA SECTION ─── */
+  .rera-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .rera-card {
+    background: var(--parchment); padding: 32px 28px;
+    border: 1px solid var(--rule);
+  }
+  .rera-card.dark {
+    background: var(--ink);
+  }
+  .rera-card.dark h3 { color: var(--parchment); }
+  .rera-card.dark p { color: rgba(245,240,232,0.55); }
+  .rera-card.dark .rera-step { border-color: rgba(184,154,90,0.2); }
+  .rera-card.dark .rera-step-num { color: var(--gold); }
+  .rera-card.dark .rera-step-text { color: rgba(245,240,232,0.7); }
+  .rera-card h3 {
+    font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 16px;
+  }
+  .rera-card p {
+    font-family: var(--mono); font-size: 12px;
+    color: rgba(13,13,11,0.6); line-height: 1.65; margin-bottom: 20px;
+  }
+  .rera-step {
+    display: flex; gap: 12px; padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .rera-step:last-child { border-bottom: none; }
+  .rera-step-num {
+    font-family: var(--mono); font-size: 11px; color: var(--gold);
+    font-weight: 500; flex-shrink: 0; width: 24px;
+  }
+  .rera-step-text {
+    font-family: var(--mono); font-size: 12px;
+    color: rgba(13,13,11,0.7); line-height: 1.5;
+  }
+
+  /* ─── DON'TS LIST ─── */
+  .donts-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 2px; margin-bottom: 48px;
+  }
+  .dont-card {
+    background: var(--parchment); padding: 24px 28px;
+    border: 1px solid var(--rule); border-left: 3px solid var(--rust);
+    display: flex; gap: 16px; align-items: start;
+  }
+  .dont-num {
+    font-family: var(--mono); font-size: 11px; color: var(--rust);
+    font-weight: 500; flex-shrink: 0; padding-top: 2px;
+  }
+  .dont-content h5 {
+    font-family: var(--serif); font-size: 18px; font-weight: 400; margin-bottom: 6px;
+  }
+  .dont-content p {
+    font-family: var(--mono); font-size: 12px;
+    color: rgba(13,13,11,0.6); line-height: 1.55;
+  }
+  .dont-eg {
+    font-family: var(--mono); font-size: 11px; color: var(--rust);
+    margin-top: 6px; font-style: italic;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); margin-top: 120px;
+    padding: 64px 80px 40px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px; padding-bottom: 40px;
+    border-bottom: 1px solid rgba(184,154,90,0.15);
+  }
+  .footer-brand {
+    font-family: var(--sans); font-size: 20px; font-weight: 800;
+    color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-brand span { font-weight: 300; color: rgba(184,154,90,0.5); }
+  .footer-desc {
+    font-family: var(--mono); font-size: 12px;
+    color: rgba(245,240,232,0.35); line-height: 1.7;
+  }
+  .footer-col h5 {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li {
+    font-family: var(--mono); font-size: 12px;
+    color: rgba(245,240,232,0.35); padding: 4px 0;
+    border-bottom: 1px solid rgba(184,154,90,0.08);
+  }
+  .footer-bottom {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+    color: rgba(184,154,90,0.3);
+  }
+
+  /* ─── UTILITY ─── */
+  .spacer-lg { height: 64px; }
+  .spacer-md { height: 32px; }
+
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 48px;
+  }
+  .two-col-3-2 {
+    display: grid; grid-template-columns: 3fr 2fr; gap: 48px; margin-bottom: 48px;
+  }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .tag {
+    font-family: var(--mono); font-size: 11px;
+    background: var(--sand); padding: 4px 12px; color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .tag.gold { background: rgba(184,154,90,0.15); color: var(--gold); }
+  .tag.rust { background: rgba(139,74,42,0.1); color: var(--rust); }
+  .tag.sage { background: rgba(74,92,78,0.1); color: var(--sage); }
+
+  .sub-prose {
+    font-size: 16px; color: rgba(13,13,11,0.68);
+    line-height: 1.75; margin-bottom: 32px; max-width: 760px;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content { animation: fadeUp 0.8s ease forwards; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Naming System <span style="color:rgba(184,154,90,0.4);font-weight:300"> / Real Estate</span></div>
+  <ul class="nav-links">
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#schools">Naming Schools</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#phonemic">Phonemic</a></li>
+    <li><a href="#rera">RERA</a></li>
+    <li><a href="#scorecard">Scorecard</a></li>
+    <li><a href="#brief">Brief</a></li>
+    <li><a href="#multilingual">Multilingual</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-letters">
+    <div class="hero-letters-inner">Aa<br>Bb</div>
+  </div>
+  <div class="hero-stamp">
+    <div class="hero-stamp-inner">
+      <span>Companion</span>
+      <strong>N×</strong>
+      <span>Framework</span>
+      <span>2025</span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Companion Document — Branding 360°</div>
+    <h1 class="hero-title">Brand & Project<br><em>Naming System</em></h1>
+    <p class="hero-sub">From corporate identity to project launch — a complete naming methodology for Indian real estate developers. How to name with intent, test for resonance, comply with RERA, and build a naming architecture that compounds as your portfolio grows.</p>
+  </div>
+  <div class="hero-modules">
+    <div class="mod-tag active">01 — Architecture</div>
+    <div class="mod-tag">02 — Naming Schools</div>
+    <div class="mod-tag">03 — Process</div>
+    <div class="mod-tag">04 — Phonemic Testing</div>
+    <div class="mod-tag">05 — RERA Compliance</div>
+    <div class="mod-tag">06 — Scorecard</div>
+    <div class="mod-tag">07 — Brief Template</div>
+    <div class="mod-tag">08 — Multilingual</div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 01 — NAMING ARCHITECTURE
+═════════════════════════════════════════ -->
+<section id="architecture">
+  <div class="phase-header">
+    <div class="phase-num">01</div>
+    <div class="phase-meta">
+      <div class="phase-label">Corporate Naming Architecture</div>
+      <h2 class="phase-title">The Four-Level <em>Naming Hierarchy</em></h2>
+      <p class="phase-desc">Before naming a single project, a developer must decide how names will relate to each other across their portfolio. This structural decision, made once, governs every name that comes after it.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Four Levels of Real Estate Naming</div>
+    <p class="sub-prose">Every name a developer creates sits at one of four levels. Confusion arises when these levels are not consciously separated — when a project name is treated like a master brand name, or when a society name conflicts with the project it belongs to. Define the hierarchy first.</p>
+
+    <div class="arch-diagram">
+      <div class="arch-level" style="display:grid; grid-template-columns: 180px 1fr;">
+        <div class="arch-level-label">
+          <h4>Level One</h4>
+          <p>Master Brand</p>
+        </div>
+        <div class="arch-level-content">
+          <div class="arch-brand-chip master">Lodha</div>
+          <div class="arch-connector">·</div>
+          <div class="arch-brand-chip master">Prestige</div>
+          <div class="arch-connector">·</div>
+          <div class="arch-brand-chip master">Godrej Properties</div>
+          <div class="arch-connector">·</div>
+          <div class="arch-brand-chip master">DLF</div>
+          <div class="arch-connector">·</div>
+          <div class="arch-brand-chip master">Sobha</div>
+          <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,0.4);margin-left:auto;">The corporate identity that owns all other names</div>
+        </div>
+      </div>
+      <div class="arch-level" style="display:grid; grid-template-columns: 180px 1fr;">
+        <div class="arch-level-label">
+          <h4>Level Two</h4>
+          <p>Project Brand</p>
+        </div>
+        <div class="arch-level-content">
+          <div class="arch-brand-chip endorsed">Lodha Bellissimo</div>
+          <div class="arch-brand-chip endorsed">Prestige Falcon City</div>
+          <div class="arch-brand-chip endorsed">Godrej Woods</div>
+          <div class="arch-brand-chip endorsed">DLF The Crest</div>
+          <div class="arch-brand-chip endorsed">Sobha Hartland</div>
+          <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,0.4);margin-left:auto;">Master endorses project — [Developer] + [Project Name]</div>
+        </div>
+      </div>
+      <div class="arch-level" style="display:grid; grid-template-columns: 180px 1fr;">
+        <div class="arch-level-label">
+          <h4>Level Three</h4>
+          <p>Sub-Brand / Phase</p>
+        </div>
+        <div class="arch-level-content">
+          <div class="arch-brand-chip standalone">Tower Aurelia</div>
+          <div class="arch-brand-chip standalone">East Wing</div>
+          <div class="arch-brand-chip standalone">Residences at Plot C</div>
+          <div class="arch-brand-chip standalone">Phase III — The Terraces</div>
+          <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,0.4);margin-left:auto;">Named sub-components within a project (optional)</div>
+        </div>
+      </div>
+      <div class="arch-level" style="display:grid; grid-template-columns: 180px 1fr;">
+        <div class="arch-level-label">
+          <h4>Level Four</h4>
+          <p>Community Brand</p>
+        </div>
+        <div class="arch-level-content">
+          <div class="arch-brand-chip society">Bellissimo Residents' Association</div>
+          <div class="arch-brand-chip society">Falcon City — Society</div>
+          <div class="arch-brand-chip society">The Woods Community</div>
+          <div style="font-family:var(--mono);font-size:11px;color:rgba(13,13,11,0.4);margin-left:auto;">Post-possession identity — often resident-led</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Three Corporate Naming Models — Which One Are You?</div>
+
+    <div class="fw-grid">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Model A</span>
+        <h3>Monolithic (Branded House)</h3>
+        <p>One master brand dominates all projects. Every project name begins with the corporate name. The master brand is the equity engine — projects build it, not their own equity.</p>
+        <div class="tag-row" style="margin-top:14px;">
+          <span class="tag sage">DLF</span>
+          <span class="tag sage">Sobha</span>
+          <span class="tag sage">Puravankara</span>
+        </div>
+        <p style="margin-top:10px;font-family:var(--mono);font-size:12px;color:rgba(13,13,11,0.5);">Best for: Developers building long-term corporate brand equity. Works when the master brand is already trusted. Requires disciplined identity compliance across all projects.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent rust"></div>
+        <span class="fw-card-num">Model B</span>
+        <h3>Endorsed (Master + Project)</h3>
+        <p>Each project has its own distinctive name, endorsed by the master brand. The project name carries the marketing load; the master brand provides assurance and credibility.</p>
+        <div class="tag-row" style="margin-top:14px;">
+          <span class="tag rust">Lodha Bellissimo</span>
+          <span class="tag rust">Prestige Falcon City</span>
+        </div>
+        <p style="margin-top:10px;font-family:var(--mono);font-size:12px;color:rgba(13,13,11,0.5);">Best for: Most mid-to-large developers. Allows project differentiation by segment and location while the master brand builds trust over time. The most common model in India.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent sage"></div>
+        <span class="fw-card-num">Model C</span>
+        <h3>Pluralistic (House of Brands)</h3>
+        <p>Each project or division operates as an independent brand with minimal visible connection to the parent. The master brand is deliberately silent or hidden from public communication.</p>
+        <div class="tag-row" style="margin-top:14px;">
+          <span class="tag gold">Phoenix Palladium</span>
+          <span class="tag gold">Bhutani Alphathum</span>
+        </div>
+        <p style="margin-top:10px;font-family:var(--mono);font-size:12px;color:rgba(13,13,11,0.5);">Best for: Developers spanning very different segments (residential + commercial + hospitality) where cross-pollination would dilute each brand. Expensive to maintain.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"The most expensive naming mistake a developer makes is treating each project as a naming exercise in isolation. The name of a project is not just a label — it is a deposit into or a withdrawal from the master brand account. Name strategically, or pay the compounding cost."</p>
+      <div class="callout-src">Naming Architecture Principle — Real Estate Brand System</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 02 — THE THREE NAMING SCHOOLS
+═════════════════════════════════════════ -->
+<section id="schools">
+  <div class="phase-header">
+    <div class="phase-num">02</div>
+    <div class="phase-meta">
+      <div class="phase-label">Project Naming Conventions</div>
+      <h2 class="phase-title">The Three <em>Naming Schools</em></h2>
+      <p class="phase-desc">Every project name in Indian real estate belongs to one of three strategic schools — Geography-led, Lifestyle-led, or Abstract/Evocative. Each carries distinct advantages, risks, and segment-fit. Choose consciously.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="school-grid">
+      <div class="school-card">
+        <div class="school-num">01</div>
+        <div class="school-type">School One</div>
+        <h3>Geography-Led Naming</h3>
+        <p>The project name anchors to a location — a landmark, area, geography, or directional. Communicates precisely where the project is or what it is near. Highest in functional clarity, lowest in brand equity.</p>
+        <div class="eg-names">
+          <span class="eg-name">Bandra Grand</span>
+          <span class="eg-name">OMR Residences</span>
+          <span class="eg-name">Whitefield Heights</span>
+          <span class="eg-name">Powai Lake View</span>
+          <span class="eg-name">Hiranandani Gardens</span>
+          <span class="eg-name">Navi Mumbai Central</span>
+        </div>
+        <div class="school-pros-cons">
+          <div class="mini-list">
+            <h5 class="pros">Strengths</h5>
+            <ul>
+              <li>Instant buyer wayfinding</li>
+              <li>Easy for CPs to brief</li>
+              <li>SEO-friendly</li>
+              <li>Works for first project</li>
+            </ul>
+          </div>
+          <div class="mini-list">
+            <h5 class="cons">Risks</h5>
+            <ul>
+              <li>Zero brand equity built</li>
+              <li>Competitors copy easily</li>
+              <li>Location stigma transfers</li>
+              <li>No recall without landmark</li>
+            </ul>
+          </div>
+        </div>
+        <div class="school-segment">Best for: <strong>Affordable · First project · Tier 2/3 cities</strong></div>
+      </div>
+
+      <div class="school-card">
+        <div class="school-num">02</div>
+        <div class="school-type">School Two</div>
+        <h3>Lifestyle-Led Naming</h3>
+        <p>The name communicates an aspiration, emotion, or way of life rather than a location. Highest brand-building potential. The name must be aspirationally credible — it will be judged against what is actually delivered.</p>
+        <div class="eg-names">
+          <span class="eg-name">Serenity</span>
+          <span class="eg-name">Elysium</span>
+          <span class="eg-name">Harmony Park</span>
+          <span class="eg-name">The Canvas</span>
+          <span class="eg-name">Solis</span>
+          <span class="eg-name">Nirvana Beyond</span>
+          <span class="eg-name">The Reserve</span>
+        </div>
+        <div class="school-pros-cons">
+          <div class="mini-list">
+            <h5 class="pros">Strengths</h5>
+            <ul>
+              <li>Premium positioning signal</li>
+              <li>Builds lasting recall</li>
+              <li>Transcends location</li>
+              <li>Segment-flexible</li>
+            </ul>
+          </div>
+          <div class="mini-list">
+            <h5 class="cons">Risks</h5>
+            <ul>
+              <li>Oversaturated vocabulary</li>
+              <li>Delivery must match promise</li>
+              <li>Requires brand building</li>
+              <li>Generic if poorly chosen</li>
+            </ul>
+          </div>
+        </div>
+        <div class="school-segment">Best for: <strong>Premium · Luxury · Mid-segment aspiration</strong></div>
+      </div>
+
+      <div class="school-card">
+        <div class="school-num">03</div>
+        <div class="school-type">School Three</div>
+        <h3>Abstract / Invented Naming</h3>
+        <p>A created word, a linguistic hybrid, or a name borrowed from an unrelated domain — mythology, art, nature, language. Highest distinctiveness ceiling, requires most marketing investment to attach meaning.</p>
+        <div class="eg-names">
+          <span class="eg-name">Avior</span>
+          <span class="eg-name">Vaayu</span>
+          <span class="eg-name">Lumina</span>
+          <span class="eg-name">Altus</span>
+          <span class="eg-name">Evara</span>
+          <span class="eg-name">Niyara</span>
+          <span class="eg-name">Aurelia</span>
+        </div>
+        <div class="school-pros-cons">
+          <div class="mini-list">
+            <h5 class="pros">Strengths</h5>
+            <ul>
+              <li>Completely ownable</li>
+              <li>Trademarked easily</li>
+              <li>No inherited baggage</li>
+              <li>International appeal</li>
+            </ul>
+          </div>
+          <div class="mini-list">
+            <h5 class="cons">Risks</h5>
+            <ul>
+              <li>High education cost</li>
+              <li>Mispronunciation risk</li>
+              <li>Meaning void at launch</li>
+              <li>No SEO head start</li>
+            </ul>
+          </div>
+        </div>
+        <div class="school-segment">Best for: <strong>Ultra-luxury · NRI-facing · Flagship projects</strong></div>
+      </div>
+    </div>
+
+    <div class="section-title">Naming School by Segment — Recommended Approach</div>
+
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Segment</th>
+          <th>Recommended School</th>
+          <th>Rationale</th>
+          <th>Sample Formula</th>
+          <th>Avoid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Affordable (₹20–60L)</td>
+          <td>Geography-led primary</td>
+          <td>Buyers prioritise location clarity and accessibility. Brand aspiration is secondary to functional trust.</td>
+          <td>[Developer] [Area] [Homes/Residences]</td>
+          <td>Abstract names — buyers won't invest effort to decode them</td>
+        </tr>
+        <tr>
+          <td class="cat">Mid-Segment (₹60L–1.5Cr)</td>
+          <td>Lifestyle-led with geographic anchor</td>
+          <td>The aspiration gap opens here. Buyers want to feel they are "moving up." Name should signal arrival.</td>
+          <td>[Developer] [Lifestyle Word] — location visible in comms</td>
+          <td>Overly foreign words; mass-market sounding names</td>
+        </tr>
+        <tr>
+          <td class="cat">Premium (₹1.5Cr–4Cr)</td>
+          <td>Lifestyle-led, curated vocabulary</td>
+          <td>Name is a quality signal. Must feel earned and considered. Avoid generic lifestyle words (Harmony, Serenity — overused).</td>
+          <td>[Developer] [Rare/Curated Word]</td>
+          <td>Geography-led (too functional), clichéd lifestyle vocabulary</td>
+        </tr>
+        <tr>
+          <td class="cat">Luxury (₹4Cr+)</td>
+          <td>Abstract or rare word, Italian/French/Sanskrit</td>
+          <td>The name should feel unfamiliar enough to signal exclusivity. Borrowed vocabulary from luxury hospitality (Palazzo, Château, etc.) performs well.</td>
+          <td>[Rare foreign / Sanskrit word] by [Developer]</td>
+          <td>Geographic anchors; common English words; compound names</td>
+        </tr>
+        <tr>
+          <td class="cat">Ultra-Luxury / HNI</td>
+          <td>Invented or single-word proper noun</td>
+          <td>Name must be completely proprietary. Cannot be Googled without finding the project. Ownership of the name IS the exclusivity.</td>
+          <td>[Unique invented / proper noun word]</td>
+          <td>Anything pronounceable by inference; anything with a Google homonym</td>
+        </tr>
+        <tr>
+          <td class="cat">Commercial / Office</td>
+          <td>Abstract + geographic, professional register</td>
+          <td>B2B decision makers want address-ability and prestige. Name should function on a business card and in a board presentation.</td>
+          <td>[Prestige Word] + [District/Area] Tower / Centre / Exchange</td>
+          <td>Residential-style names; heavily emotional vocabulary</td>
+        </tr>
+        <tr>
+          <td class="cat">Township / Mixed-Use</td>
+          <td>Invented proper noun — independent city naming</td>
+          <td>A township is a destination, not a project. Name must carry geography, community, and aspiration simultaneously. Treat it like naming a city.</td>
+          <td>[Invented Name] — City / World / Gardens / Avenue</td>
+          <td>Developer corporate name as township name (limits future partners)</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 03 — THE NAMING PROCESS
+═════════════════════════════════════════ -->
+<section id="process">
+  <div class="phase-header">
+    <div class="phase-num">03</div>
+    <div class="phase-meta">
+      <div class="phase-label">The Seven-Step Naming Process</div>
+      <h2 class="phase-title">From Brief to <em>Board Approval</em></h2>
+      <p class="phase-desc">A project name is one of the most consequential — and least reversible — brand decisions a developer makes. The process takes 3–6 weeks when done properly. Cutting it short to a few days in a boardroom is the leading cause of weak real estate names in India.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="process-track">
+      <div class="process-line"></div>
+
+      <div class="process-step">
+        <div class="step-num-wrap">
+          <div class="step-num active">01</div>
+        </div>
+        <div class="step-body">
+          <div class="step-label">Week 0</div>
+          <h4>Naming Brief</h4>
+          <p>Complete the 12-question naming brief (see Section 07). Define the project's target segment, positioning, geography, price point, competitive set, and the 3–5 words that should come to mind when a buyer hears the name. The brief is the single most important input — a vague brief produces generic names. Include explicit naming exclusions (competitor names that sound similar, words associated with negative local connotations).</p>
+          <span class="step-deliverable">Deliverable: Completed naming brief document</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num-wrap">
+          <div class="step-num">02</div>
+        </div>
+        <div class="step-body">
+          <div class="step-label">Week 1</div>
+          <h4>Guided Ideation</h4>
+          <p>Generate a longlist of 50–80 candidate names across all three naming schools. Use structured ideation — mythology sweeps (Sanskrit, Greek, Latin, Roman), nature lexicons (Indian flora, astronomy, geography), emotion banks, architectural vocabulary, and curated dictionary sweeps. Avoid using AI-only generation — it produces the same pool as every other developer's agency. The best names come from a human editor filtering a large linguistic sweep with cultural knowledge of the buyer.</p>
+          <span class="step-deliverable">Deliverable: Longlist of 60–80 names with school classification</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num-wrap">
+          <div class="step-num">03</div>
+        </div>
+        <div class="step-body">
+          <div class="step-label">Week 1–2</div>
+          <h4>Linguistic & Cultural Screening</h4>
+          <p>Each name in the longlist must pass a minimum linguistic screen before entering evaluation. Check for: unintended meanings in all relevant regional languages (a name that sounds aspirational in Hindi may be slang in Tamil or Kannada), mispronunciation risk when spoken by a non-English speaker, negative cultural associations (certain numbers of syllables, certain sound clusters carry bad-luck associations in some communities), and phonemic memorability (see Section 04 for full framework).</p>
+          <span class="step-deliverable">Deliverable: Screened shortlist of 15–20 names</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num-wrap">
+          <div class="step-num">04</div>
+        </div>
+        <div class="step-body">
+          <div class="step-label">Week 2</div>
+          <h4>Preliminary Trademark Check</h4>
+          <p>Run a preliminary check on all 15–20 shortlisted names against the Indian Trademark Registry (ipindia.gov.in) under Class 36 (real estate services) and Class 37 (construction services). A surprising number of attractive names are already registered or applied for. Do not fall in love with a name before this check. This is a first-pass review — it identifies obvious conflicts before investing in brand development. A full legal clearance follows in Step 6.</p>
+          <span class="step-deliverable">Deliverable: Trademark conflict report — clear / conflicted / grey zone</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num-wrap">
+          <div class="step-num">05</div>
+        </div>
+        <div class="step-body">
+          <div class="step-label">Week 2–3</div>
+          <h4>Name Evaluation — Scorecard</h4>
+          <p>Apply the 8-criterion evaluation scorecard (see Section 06) to the cleared shortlist. Score each name across pronounceability, memorability, segment fit, emotional resonance, distinctiveness, multilingual legibility, trademark potential, and digital footprint. Produce a ranked shortlist of 3–5 finalist names with scores and rationale. Present to the decision-making team with visual mockups — the name must be seen in context (hoarding, brochure, logo treatment) not just heard in a meeting.</p>
+          <span class="step-deliverable">Deliverable: Scored finalist list with visual mockups</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num-wrap">
+          <div class="step-num">06</div>
+        </div>
+        <div class="step-body">
+          <div class="step-label">Week 3–4</div>
+          <h4>Legal Clearance & RERA Registration Check</h4>
+          <p>Commission a full legal clearance from a trademark attorney on the top 2–3 finalists. The attorney will conduct searches beyond the basic registry — including phonetic similarities, related classes, and domain conflicts. Simultaneously check RERA name availability in the relevant state registry — names registered by other projects in the same state can create confusion. Obtain a legal opinion letter before proceeding to board approval.</p>
+          <span class="step-deliverable">Deliverable: Legal opinion letter + RERA name availability confirmation</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="step-num-wrap">
+          <div class="step-num">07</div>
+        </div>
+        <div class="step-body">
+          <div class="step-label">Week 4–5</div>
+          <h4>Board Approval & Trademark Filing</h4>
+          <p>Present the recommended name (with alternative) to the board. The presentation must include: the name itself with pronunciation guide, the strategic rationale (why this school, why this word), segment fit evidence, visual mockups, linguistic clearance summary, trademark status, and the specific risks of the chosen name and mitigation plan. Upon approval, immediately file trademark applications in Classes 36 and 37. File before announcing publicly — public announcements before trademark filing create IP risks.</p>
+          <span class="step-deliverable">Deliverable: Board approval minute + trademark application filed</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 04 — PHONEMIC TESTING
+═════════════════════════════════════════ -->
+<section id="phonemic">
+  <div class="phase-header">
+    <div class="phase-num">04</div>
+    <div class="phase-meta">
+      <div class="phase-label">Linguistic & Phonemic Testing</div>
+      <h2 class="phase-title">The Sound of a <em>Strong Name</em></h2>
+      <p class="phase-desc">A name that looks elegant on a brochure can fail in the real world — mispronounced by a broker, slurred in a Tamil accent, or innocently funny in Telugu. Phonemic testing is the discipline of stress-testing a name against the full acoustic reality of how it will actually be heard.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">Six Phonemic Criteria — What Makes a Name Sound Right</div>
+
+    <div class="phon-grid">
+      <div class="phon-card">
+        <span class="phon-icon">Aa</span>
+        <h4>Pronounceability</h4>
+        <p>Can a first-generation English speaker, a Tamil auto driver, and an NRI in Dubai all say this name — even if imperfectly — and be understood? Names with unusual consonant clusters (Schvartz, Pftzen) fail. Names with clear vowel-consonant alternation perform best in multilingual markets. Test with 10 speakers across language backgrounds.</p>
+        <span class="phon-verdict prefer">Prefer: Open syllables — Vo-ra, Li-la, Su-ra</span>
+      </div>
+      <div class="phon-card">
+        <span class="phon-icon" style="color:var(--rust);">Kk</span>
+        <h4>Hard-Start Consonants</h4>
+        <p>Names beginning with plosive sounds (K, T, P, B) are easier to recall than names beginning with fricatives (S, F, Sh) or liquids (L, R). The plosive "stop" creates a clear acoustic onset — the brain registers the name boundary. "Kairos," "Tivoli," "Prestige," "Birla" — all plosive-led. Hard starts also project authority, which aligns with real estate brand values.</p>
+        <span class="phon-verdict prefer">Prefer: K, T, P, B, D as first consonant</span>
+      </div>
+      <div class="phon-card">
+        <span class="phon-icon" style="color:var(--sage);">Rr</span>
+        <h4>Syllable Count</h4>
+        <p>2–3 syllables is the optimal range for real estate project names. One syllable feels too spare (though luxury can use it deliberately). Four or more syllables creates cognitive load in oral communication — sales teams shorten the name, creating inconsistency. When a master brand is already 2–3 syllables, the project name should be 1–2 syllables to keep the combined endorsement pronounceable.</p>
+        <span class="phon-verdict prefer">2–3 syllables standalone · 1–2 with master brand</span>
+      </div>
+      <div class="phon-card">
+        <span class="phon-icon" style="color:var(--steel);">Mm</span>
+        <h4>Vowel Harmony</h4>
+        <p>Names that repeat similar vowel sounds (assonance) are more memorable. Altus, Solis, Lumina, Avior — all have internal vowel repetition or harmony. Names with clashing vowel clusters are harder to hold in memory. The "mouth feel" of a name — how it physically feels to say — contributes to brand premium perception. Smooth articulatory flow signals refinement.</p>
+        <span class="phon-verdict prefer">Prefer: Assonant vowels — Solis, Lumina, Evara</span>
+      </div>
+      <div class="phon-card">
+        <span class="phon-icon" style="color:var(--rust);">Ss</span>
+        <h4>Accidental Meanings</h4>
+        <p>Test every candidate name for accidental meanings in all four key South Indian languages (Tamil, Telugu, Malayalam, Kannada), Hindi, Marathi, Bengali, and Gujarati. A name that means "beautiful" in one language may mean "debt" or a body part in another. Also test common colloquial shortenings — if buyers will inevitably abbreviate a name, test the abbreviated form. "Bellissimo" becomes "Belli" — fine. "Serendipity Towers" becomes "Serendy" — less fine.</p>
+        <span class="phon-verdict avoid">Avoid: Names with negative homonyms in regional languages</span>
+      </div>
+      <div class="phon-card">
+        <span class="phon-icon" style="color:var(--gold);">Tt</span>
+        <h4>The Telephone Test</h4>
+        <p>Have someone say the name over a phone call to ten people — can each person spell it accurately after hearing it once? Names that require "A for Alpha, V for Victor" clarification every time they are communicated verbally carry a hidden operational cost. They also fail in word-of-mouth propagation. The ideal name is heard, understood, remembered, and spelled correctly without assistance.</p>
+        <span class="phon-verdict prefer">Prefer: Phonetic spelling — what you hear is what you write</span>
+      </div>
+    </div>
+
+    <div class="section-title">The Regional Language Acoustic Test — Essential Checks</div>
+
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Language</th>
+          <th>What to Test For</th>
+          <th>High-Risk Sound Clusters</th>
+          <th>Common Failure Pattern</th>
+          <th>Tester Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Tamil</td>
+          <td>Hard consonants (K, G) often softened; retroflex T/D added; 'V' pronounced as 'W'</td>
+          <td>Zh, Th, W, Z — Tamil has no direct equivalents</td>
+          <td>"Windsor" → "Vindsor"; "Zurich" → "Surich"</td>
+          <td>Native Tamil speaker, 35–50, lower-middle income</td>
+        </tr>
+        <tr>
+          <td class="cat">Telugu</td>
+          <td>Aspirated consonants (Ph, Th, Ch) often de-aspirated; final consonants dropped</td>
+          <td>Final consonant clusters — "Crest" → "Cres'"</td>
+          <td>Multi-consonant endings truncated; Br → B cluster</td>
+          <td>Native Telugu speaker, Hyderabad/Vijayawada register</td>
+        </tr>
+        <tr>
+          <td class="cat">Malayalam</td>
+          <td>Long vowels preserved; some consonant clusters simplified; 'th' becomes 'T'</td>
+          <td>Zh, F, X — absent in native vocabulary</td>
+          <td>"Falcon" → "Phaalkon"; emphasis shift on long names</td>
+          <td>Native Malayalam speaker, Kochi register</td>
+        </tr>
+        <tr>
+          <td class="cat">Kannada</td>
+          <td>Retroflex sounds added; voiced consonants devoiced at ends of words</td>
+          <td>Final 'S', 'Z', 'X' clusters</td>
+          <td>Gemination of consonants; added vowel endings</td>
+          <td>Native Kannada speaker, Bengaluru register</td>
+        </tr>
+        <tr>
+          <td class="cat">Hindi</td>
+          <td>'V'/'W' conflation; aspirated vs unaspirated pairs; schwa deletion</td>
+          <td>W, silent letters, English schwa vowels</td>
+          <td>"Willow" → "Villo"; schwa deletion in 3+ syllables</td>
+          <td>Non-English-medium educated, North India</td>
+        </tr>
+        <tr>
+          <td class="cat">Gujarati</td>
+          <td>Nasal vowels added; 'B' often pronounced as 'V'</td>
+          <td>B at start of word; French nasal vowels</td>
+          <td>"Beau" → "Vo"; "Blanc" → "Vlanc"</td>
+          <td>Native Gujarati speaker, Ahmedabad / NRI Dubai</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 05 — RERA & TRADEMARK
+═════════════════════════════════════════ -->
+<section id="rera">
+  <div class="phase-header">
+    <div class="phase-num">05</div>
+    <div class="phase-meta">
+      <div class="phase-label">Legal Compliance Framework</div>
+      <h2 class="phase-title">RERA Registration &amp; <em>Trademark Compliance</em></h2>
+      <p class="phase-desc">A project name is a legal commitment, not just a marketing decision. RERA requires project names to be registered and consistent across all communications. Trademark registration protects the name as intellectual property. Both must be addressed before any public communication begins.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="rera-grid">
+      <div class="rera-card dark">
+        <h3>RERA Name Registration — What You Must Know</h3>
+        <p>Under RERA 2016, every real estate project above the prescribed threshold must be registered before any marketing, advertising, or sale. The project name you register with RERA becomes the legally mandated name for all communications — changing it later requires a formal amendment and can create buyer confusion with regulatory implications.</p>
+        <div class="rera-step">
+          <div class="rera-step-num">01</div>
+          <div class="rera-step-text">The project name must be unique within the state's RERA registry. Check for phonetic near-duplicates — not just exact matches — before filing.</div>
+        </div>
+        <div class="rera-step">
+          <div class="rera-step-num">02</div>
+          <div class="rera-step-text">All marketing material, brochures, hoardings, and digital ads must display the RERA registration number alongside the project name, in the mandated format.</div>
+        </div>
+        <div class="rera-step">
+          <div class="rera-step-num">03</div>
+          <div class="rera-step-text">Name changes post-registration require state authority approval and notification to all allottees and existing enquiries. Operationally very costly.</div>
+        </div>
+        <div class="rera-step">
+          <div class="rera-step-num">04</div>
+          <div class="rera-step-text">State RERA portals vary — MahaRERA, TNRERA, K-RERA, HRERA each have different name conflict check tools and filing procedures.</div>
+        </div>
+        <div class="rera-step">
+          <div class="rera-step-num">05</div>
+          <div class="rera-step-text">Names implying completion, possession, or amenity availability (e.g., "ready to move", "lake view guaranteed") are subject to ASCI and RERA scrutiny — avoid incorporating claims into the name itself.</div>
+        </div>
+      </div>
+
+      <div class="rera-card">
+        <h3>Trademark Registration — Classes and Strategy</h3>
+        <p style="font-family:var(--mono);font-size:12px;color:rgba(13,13,11,0.6);line-height:1.65;margin-bottom:20px;">Real estate trademark protection requires filing in multiple classes. A single-class filing leaves significant gaps. File early — India's trademark system is first-to-file, not first-to-use.</p>
+        <div class="rera-step">
+          <div class="rera-step-num" style="color:var(--rust);">36</div>
+          <div class="rera-step-text"><strong>Class 36 — Real Estate Services.</strong> The primary class. Covers real estate agency, brokerage, property management, and real estate investment services. File here first.</div>
+        </div>
+        <div class="rera-step">
+          <div class="rera-step-num" style="color:var(--rust);">37</div>
+          <div class="rera-step-text"><strong>Class 37 — Construction Services.</strong> Covers building construction, installation, and repair. Essential for the developer entity — without this, a competitor can register your name for construction.</div>
+        </div>
+        <div class="rera-step">
+          <div class="rera-step-num" style="color:var(--gold);">35</div>
+          <div class="rera-step-text"><strong>Class 35 — Advertising & Business.</strong> Covers marketing and advertising services. Register here if the project name will be used in branded marketing campaigns independently.</div>
+        </div>
+        <div class="rera-step">
+          <div class="rera-step-num" style="color:var(--gold);">43</div>
+          <div class="rera-step-text"><strong>Class 43 — Hospitality / Food.</strong> Required if the project includes a clubhouse, restaurant, or hotel component operating under the project name.</div>
+        </div>
+        <div class="rera-step">
+          <div class="rera-step-num" style="color:var(--sage);">—</div>
+          <div class="rera-step-text"><strong>Timeline:</strong> Trademark application acknowledgment is near-instant. Examination takes 12–18 months. Objection period adds 3–6 months. Full registration: 18–36 months. "Applied for" status provides interim protection.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Common Naming IP Traps in Indian Real Estate</div>
+    <table class="strat-table">
+      <thead>
+        <tr><th>Trap</th><th>What Happens</th><th>Real Cost</th><th>Prevention</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Phonetic Near-Match</td>
+          <td>"Avior Towers" filed when "Avior" is already registered by an FMCG brand in Class 36</td>
+          <td>Cease-and-desist mid-campaign; rebrand after hoardings are up</td>
+          <td>Search phonetic variants, not just exact matches. Use IP attorney, not just online registry tool.</td>
+        </tr>
+        <tr>
+          <td class="cat">Geography + Generic Combination</td>
+          <td>"Whitefield Greens" cannot be trademarked — geographic descriptor + common word</td>
+          <td>No IP protection; any competitor can use similar name in same market</td>
+          <td>Add a distinctive third word or shift to lifestyle/abstract school for any project requiring trademark protection</td>
+        </tr>
+        <tr>
+          <td class="cat">Foreign Word Not Checked</td>
+          <td>An Italian word chosen for luxury appeal already has a registered Indian trademark by a hospitality chain</td>
+          <td>Full rebrand required; all pre-production assets wasted</td>
+          <td>Check foreign words in all trademark classes before design starts. Foreign origin provides no protection from Indian registrations.</td>
+        </tr>
+        <tr>
+          <td class="cat">RERA Name vs Brand Name Divergence</td>
+          <td>Marketing team uses one name ("Elysium Heights") while RERA registration is another ("Prestige Project No. 44A")</td>
+          <td>RERA violation; buyer complaints; regulatory notice</td>
+          <td>The RERA registered project name must be the primary communication name. Never create a divergence.</td>
+        </tr>
+        <tr>
+          <td class="cat">Domain Squatting</td>
+          <td>Project name announced publicly before domain purchased; squatter registers it within hours</td>
+          <td>₹1–5L extortion demand or permanent brand asset loss</td>
+          <td>Register .com, .in, and .co.in domains the same day the name is approved internally — before any external communication</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 06 — NAME EVALUATION SCORECARD
+═════════════════════════════════════════ -->
+<section id="scorecard">
+  <div class="phase-header">
+    <div class="phase-num">06</div>
+    <div class="phase-meta">
+      <div class="phase-label">Objective Evaluation Framework</div>
+      <h2 class="phase-title">Name Evaluation <em>Scorecard</em></h2>
+      <p class="phase-desc">The scorecard removes opinion from the naming decision. Every finalist name is scored out of 100 across eight criteria with defined weightings. Names scoring below 65 should not proceed. The scorecard is also a design brief — low scores on specific criteria tell the naming team exactly what to optimise.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">How to Use This Scorecard — Score each criterion 1–10. Multiply by weight. Sum for total out of 100.</div>
+
+    <div class="scorecard">
+      <div class="sc-header">
+        <span>#</span>
+        <span>Criterion + Evaluation Method</span>
+        <span style="text-align:center;">Weight</span>
+        <span style="text-align:center;">Name A</span>
+        <span style="text-align:center;">Name B</span>
+        <span style="text-align:center;">Name C</span>
+      </div>
+
+      <div class="sc-row">
+        <div class="sc-weight">01</div>
+        <div class="sc-criterion">
+          <h5>Pronounceability</h5>
+          <p>Test: Say to 10 people across language groups. Score by % who say it correctly on first attempt. 90%+ = 10, 70–90% = 7, below 70% = 4 or less.</p>
+        </div>
+        <div class="sc-score">×15</div>
+        <div class="sc-score hi">9 → 135</div>
+        <div class="sc-score mid">7 → 105</div>
+        <div class="sc-score lo">5 → 75</div>
+      </div>
+
+      <div class="sc-row">
+        <div class="sc-weight">02</div>
+        <div class="sc-criterion">
+          <h5>Memorability (24-Hour Recall)</h5>
+          <p>Test: Say the name once to 20 people. Call back 24 hours later — what percentage recall it accurately? 80%+ = 10, 60–80% = 7, below 60% = 4.</p>
+        </div>
+        <div class="sc-score">×15</div>
+        <div class="sc-score hi">9 → 135</div>
+        <div class="sc-score hi">8 → 120</div>
+        <div class="sc-score mid">6 → 90</div>
+      </div>
+
+      <div class="sc-row">
+        <div class="sc-weight">03</div>
+        <div class="sc-criterion">
+          <h5>Segment & Positioning Fit</h5>
+          <p>Does the name feel appropriate for this price point and lifestyle positioning? Ask 10 target-segment buyers to estimate the property's price after hearing only the name. Score by accuracy of intuition.</p>
+        </div>
+        <div class="sc-score">×15</div>
+        <div class="sc-score hi">10 → 150</div>
+        <div class="sc-score mid">6 → 90</div>
+        <div class="sc-score mid">7 → 105</div>
+      </div>
+
+      <div class="sc-row">
+        <div class="sc-weight">04</div>
+        <div class="sc-criterion">
+          <h5>Emotional Resonance</h5>
+          <p>What emotion does the name evoke on first hearing? Survey 15 target buyers: unprompted word association. Score by alignment of evoked emotion with intended brand positioning.</p>
+        </div>
+        <div class="sc-score">×15</div>
+        <div class="sc-score hi">8 → 120</div>
+        <div class="sc-score mid">7 → 105</div>
+        <div class="sc-score lo">5 → 75</div>
+      </div>
+
+      <div class="sc-row">
+        <div class="sc-weight">05</div>
+        <div class="sc-criterion">
+          <h5>Distinctiveness in Market</h5>
+          <p>Search 99acres, MagicBricks, and Google for phonetically similar project names in the same micro-market. How many near-matches exist? Zero = 10, 1–2 near-matches = 6, 3+ = 2.</p>
+        </div>
+        <div class="sc-score">×12</div>
+        <div class="sc-score hi">9 → 108</div>
+        <div class="sc-score hi">10 → 120</div>
+        <div class="sc-score lo">4 → 48</div>
+      </div>
+
+      <div class="sc-row">
+        <div class="sc-weight">06</div>
+        <div class="sc-criterion">
+          <h5>Multilingual Legibility</h5>
+          <p>Apply the regional language acoustic test (Section 04). Deduct 1 point for each language where the name has a negative or confusing meaning. Deduct 2 points for each language where it is significantly mispronounced.</p>
+        </div>
+        <div class="sc-score">×12</div>
+        <div class="sc-score hi">10 → 120</div>
+        <div class="sc-score hi">9 → 108</div>
+        <div class="sc-score mid">6 → 72</div>
+      </div>
+
+      <div class="sc-row">
+        <div class="sc-weight">07</div>
+        <div class="sc-criterion">
+          <h5>Trademark Registrability</h5>
+          <p>Based on trademark attorney assessment: completely clear and distinctive = 10, clear but weak/common = 6, minor conflict to manage = 4, major conflict = 1.</p>
+        </div>
+        <div class="sc-score">×10</div>
+        <div class="sc-score hi">10 → 100</div>
+        <div class="sc-score mid">7 → 70</div>
+        <div class="sc-score hi">9 → 90</div>
+      </div>
+
+      <div class="sc-row">
+        <div class="sc-weight">08</div>
+        <div class="sc-criterion">
+          <h5>Digital Footprint & Domain Availability</h5>
+          <p>Is the .com available? Is there a clean Google search result page (no competing brands, no negative news)? .com available + clean SERP = 10. .in available only = 6. Neither available = 2.</p>
+        </div>
+        <div class="sc-score">×06</div>
+        <div class="sc-score hi">10 → 60</div>
+        <div class="sc-score mid">6 → 36</div>
+        <div class="sc-score hi">8 → 48</div>
+      </div>
+
+      <div class="sc-total">
+        <div class="label">Total Score (Max 100) · Pass ≥ 75 · Review 65–74 · Reject &lt; 65</div>
+        <div class="tot pass">82.8</div>
+        <div class="tot review">75.4</div>
+        <div class="tot fail">60.3</div>
+      </div>
+    </div>
+
+    <div class="fw-grid fw-grid-3">
+      <div class="fw-card">
+        <div class="fw-card-accent sage"></div>
+        <span class="fw-card-num" style="color:var(--sage);">75–100</span>
+        <h3>Pass — Proceed</h3>
+        <p>Name clears all thresholds. Proceed to full legal clearance and board presentation. Document which criteria scored below 8 — these are known risks to monitor and may require additional investment in pronunciation guidance, creative, or market education at launch.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">65–74</span>
+        <h3>Review — Conditional</h3>
+        <p>Name has potential but has specific weak criteria. Identify the lowest-scoring dimension and determine if it can be mitigated (creative, contextual positioning, modified spelling) before deciding to proceed or return to ideation. Do not make a conditional pass the default — it builds risk into the launch.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent rust"></div>
+        <span class="fw-card-num" style="color:var(--rust);">Below 65</span>
+        <h3>Reject — Return</h3>
+        <p>Name does not meet the minimum threshold for a project that will be in market for 3–5+ years. Return to ideation with specific brief amendments based on which criteria failed. It is never worth overriding a sub-65 score because a name is "what the MD prefers" — the scorecard exists precisely to depersonalise this decision.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 07 — NAMING BRIEF TEMPLATE
+═════════════════════════════════════════ -->
+<section id="brief">
+  <div class="phase-header">
+    <div class="phase-num">07</div>
+    <div class="phase-meta">
+      <div class="phase-label">The 12-Question Naming Brief</div>
+      <h2 class="phase-title">Brief Before You <em>Begin</em></h2>
+      <p class="phase-desc">The quality of your name is a direct function of the quality of your brief. A naming team — internal or external — cannot produce distinctly positioned names without answers to these twelve questions. Incomplete briefs produce interchangeable names.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="brief-template">
+      <div class="brief-header">
+        <h3>Project Naming Brief</h3>
+        <span>Complete before naming engagement begins</span>
+      </div>
+
+      <div class="brief-section">
+        <div class="brief-section-label">Part A — Project Identity</div>
+        <div class="brief-questions">
+          <div class="brief-q">
+            <div class="brief-q-num">01</div>
+            <div>
+              <div class="brief-q-text">What is the segment, price point, and target buyer profile for this project?</div>
+              <div class="brief-q-hint">Include income range, age, family structure, end-use vs investor mix, primary geographic source of buyers (e.g. IT corridor professionals, Gulf NRIs, first-generation homebuyers). Be specific — "premium segment, ₹1.8–2.5Cr, 35–45-year-old IT sector families with 2 children, Bengaluru South corridor" is a brief. "Middle class" is not.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+          <div class="brief-q">
+            <div class="brief-q-num">02</div>
+            <div>
+              <div class="brief-q-text">What is the single most distinctive thing about this project that no competitor in the micro-market can claim?</div>
+              <div class="brief-q-hint">This is the proof point the name may want to gesture toward. It could be a design feature, a location advantage, an amenity, a developer commitment, or an architectural approach. "Largest clubhouse in Whitefield" or "Only project with south-facing lake-view towers on this stretch of OMR."</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+          <div class="brief-q">
+            <div class="brief-q-num">03</div>
+            <div>
+              <div class="brief-q-text">List 5 words that should be evoked when the name is heard for the first time.</div>
+              <div class="brief-q-hint">These are emotional and associative targets, not descriptive claims. E.g.: "quiet, earned, generous, enduring, considered." Not: "luxury, spacious, well-located." The latter are marketing claims; the former are naming intent.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+          <div class="brief-q">
+            <div class="brief-q-num">04</div>
+            <div>
+              <div class="brief-q-text">What is the naming model — endorsed (Developer + Project Name), standalone, or sub-brand?</div>
+              <div class="brief-q-hint">If endorsed: how prominent will the master brand be in communication? If standalone: what is the relationship to the master brand in legal and visual terms? This decision affects how much work the project name must do alone.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="brief-section">
+        <div class="brief-section-label">Part B — Naming Constraints</div>
+        <div class="brief-questions">
+          <div class="brief-q">
+            <div class="brief-q-num">05</div>
+            <div>
+              <div class="brief-q-text">List all names that must be avoided — competitor names, previous project names, and names with known negative associations in this market.</div>
+              <div class="brief-q-hint">Include phonetic near-matches, not just exact names. Also include any names previously considered and rejected, with the reason they were rejected, to prevent the naming team from returning to the same territory.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+          <div class="brief-q">
+            <div class="brief-q-num">06</div>
+            <div>
+              <div class="brief-q-text">Are there any language or linguistic preferences or restrictions? (e.g. "must work in Tamil," "should not use Sanskrit," "must be pronounceable for NRI buyers in the Gulf")</div>
+              <div class="brief-q-hint">If the primary buyer market is Tamil-speaking, a heavily Latinate or French-origin name carries unnecessary friction. If 40% of buyers will be Gulf NRIs, the name should work in Arabic-accented English. Specify the linguistic register explicitly.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+          <div class="brief-q">
+            <div class="brief-q-num">07</div>
+            <div>
+              <div class="brief-q-text">What naming schools are preferred — geography-led, lifestyle-led, abstract/invented? Are any explicitly ruled out?</div>
+              <div class="brief-q-hint">Some developers have brand policies (e.g. "we never use geographic names because we have projects across India") or management preferences (e.g. "our MD dislikes foreign words"). Document these upfront to avoid wasted ideation cycles.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+          <div class="brief-q">
+            <div class="brief-q-num">08</div>
+            <div>
+              <div class="brief-q-text">What is the preferred syllable count and approximate length? Will the name be used with a descriptor (Towers, Heights, Gardens, Residences)?</div>
+              <div class="brief-q-hint">Consider how the name will sit on a hoarding at 50m distance. A 4-syllable name + "Residences" = 7 spoken units. A 2-syllable name + "Gardens" = 4 spoken units. For premium and above, the name alone usually works better — descriptors like "Heights" and "Towers" can undermine premium positioning.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="brief-section">
+        <div class="brief-section-label">Part C — Strategic Context</div>
+        <div class="brief-questions">
+          <div class="brief-q">
+            <div class="brief-q-num">09</div>
+            <div>
+              <div class="brief-q-text">What are the top 3 competing projects in the micro-market, and what naming school do they use?</div>
+              <div class="brief-q-hint">You want to name differently from your competition by default — if all three competitors use lifestyle-led names, a geography-led or abstract name will stand out. Map the competitive naming landscape before entering it.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+          <div class="brief-q">
+            <div class="brief-q-num">10</div>
+            <div>
+              <div class="brief-q-text">How long will this name be in active communication? (Pre-launch campaign duration, construction period, possession — likely 4–6 years minimum)</div>
+              <div class="brief-q-hint">A trend-driven name may feel fresh in 2025 and dated by 2029 when possession happens and residents are still living in it. Names that are timeless perform better over a 20-year project lifecycle than names that feel zeitgeist-appropriate at launch.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+          <div class="brief-q">
+            <div class="brief-q-num">11</div>
+            <div>
+              <div class="brief-q-text">Will this project have phases, towers, or sub-components that also need to be named? If so, what is the intended naming family logic?</div>
+              <div class="brief-q-hint">If Tower A is "Aurelia," Tower B cannot be "Block 2" — it needs to feel like part of the same naming family. Plan the full naming system before committing to the project name, so that sub-names can be generated from the same linguistic or thematic well.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+          <div class="brief-q">
+            <div class="brief-q-num">12</div>
+            <div>
+              <div class="brief-q-text">What is the decision-making process for name approval? Who has final authority, and what is the timeline?</div>
+              <div class="brief-q-hint">Name approval by committee is the fastest path to the most average name. Define upfront: who makes the final call, what the escalation path is if there is disagreement, and what the hard deadline is (RERA filing date drives the final deadline). Unlimited revision cycles produce exhausted teams and compromised names.</div>
+              <div class="brief-input-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 08 — SUB-BRAND NAMING
+═════════════════════════════════════════ -->
+<section id="subbrand">
+  <div class="phase-header">
+    <div class="phase-num">08</div>
+    <div class="phase-meta">
+      <div class="phase-label">Portfolio Naming Architecture</div>
+      <h2 class="phase-title">Sub-Brand Naming Under a <em>Master Brand</em></h2>
+      <p class="phase-desc">As a developer's portfolio grows, the naming challenge is no longer a single project — it is how a family of names works together. A well-managed naming portfolio compounds brand equity. A poorly managed one creates confusion, dilutes the master brand, and makes the developer appear to operate many different, disconnected ventures.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Endorsed Naming Formula — How Master + Project Work Together</div>
+
+    <div class="fw-grid fw-grid-2">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Formula A — Strong Endorsement</span>
+        <h3>[Developer] [Project Name]</h3>
+        <p>The master brand leads. The project name follows. Both carry equal visual weight. The master brand's equity is the primary trust signal; the project name is a differentiator within the portfolio.</p>
+        <div class="tag-row" style="margin-top:14px;">
+          <span class="tag">Lodha Bellissimo</span>
+          <span class="tag">Godrej Woods</span>
+          <span class="tag">Sobha Hartland</span>
+        </div>
+        <p style="margin-top:12px;font-family:var(--mono);font-size:12px;color:rgba(13,13,11,0.55);">Works when: Master brand is well-known and adds value. Project name adds segment or location specificity. Most common model in India above ₹60L projects.</p>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent rust"></div>
+        <span class="fw-card-num">Formula B — Whisper Endorsement</span>
+        <h3>[Project Name] <em>by</em> [Developer]</h3>
+        <p>The project name leads. The developer brand follows, usually in smaller type with a connector word ("by," "a," "from"). The project brand carries the experience promise; the developer provides quiet credibility.</p>
+        <div class="tag-row" style="margin-top:14px;">
+          <span class="tag rust">The World Towers by Lodha</span>
+          <span class="tag rust">One Ritz-Carlton Residences by Lodha</span>
+        </div>
+        <p style="margin-top:12px;font-family:var(--mono);font-size:12px;color:rgba(13,13,11,0.55);">Works when: Project needs to stand alone as a distinct brand (flagship, ultra-luxury, international partnership). Developer brand is present but not dominant.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Tower, Phase & Amenity Naming — The Naming Family System</div>
+    <p class="sub-prose">Once a project name is established, all sub-components must feel like part of the same family. There are four coherent strategies for naming towers, phases, wings, and amenity spaces within a project.</p>
+
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Naming Family Strategy</th>
+          <th>Logic</th>
+          <th>Example Project</th>
+          <th>Tower Names</th>
+          <th>Best For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Celestial / Astronomical</td>
+          <td>Towers named after stars, planets, or constellations. Aspirational, universal, and infinite — a developer can never run out of names. Scale-friendly.</td>
+          <td>Prestige Falcon City</td>
+          <td>Orion, Lyra, Auriga, Cassini, Solaris, Andromeda</td>
+          <td>Large townships with 6+ towers; premium segment</td>
+        </tr>
+        <tr>
+          <td class="cat">Botanical / Natural</td>
+          <td>Towers or wings named after trees, flowers, or nature elements. Creates warmth and organic association. Works well for wellness-positioned projects.</td>
+          <td>Godrej Woods</td>
+          <td>Teak Wing, Rosewood, Magnolia Block, Cedar Court</td>
+          <td>Mid-premium; family-oriented; green-positioned projects</td>
+        </tr>
+        <tr>
+          <td class="cat">Heritage / Language Family</td>
+          <td>Towers named in a single language register — Sanskrit words, Greek words, Italian words — maintaining linguistic consistency with the project name.</td>
+          <td>Lodha Bellissimo (Italian)</td>
+          <td>Palazzo A, Palazzo B, La Vista, La Dolce</td>
+          <td>Luxury and ultra-luxury; international buyer audience</td>
+        </tr>
+        <tr>
+          <td class="cat">Directional / Numeric (Last Resort)</td>
+          <td>Tower A, Tower B or North Block, South Block. Simple and functional — communicates zero brand value but requires zero creative overhead.</td>
+          <td>Most affordable housing projects</td>
+          <td>Block A, B, C / North, South, East, West</td>
+          <td>Affordable only — avoid at any premium segment</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"The master brand is the bank. Every well-named project is a deposit — it adds to the collective credibility of everything the developer will ever build. Every poorly named project is a withdrawal. The naming architecture is not a project-by-project decision. It is a compound interest calculation."</p>
+      <div class="callout-src">Portfolio Naming Philosophy — Brand Architecture Framework</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 09 — MULTILINGUAL LEGIBILITY
+═════════════════════════════════════════ -->
+<section id="multilingual">
+  <div class="phase-header">
+    <div class="phase-num">09</div>
+    <div class="phase-meta">
+      <div class="phase-label">Multilingual Legibility System</div>
+      <h2 class="phase-title">Reading a Name in <em>Five Scripts</em></h2>
+      <p class="phase-desc">India's real estate market spans five major scripts across the South alone. A project name that works in Roman must also work — visually and acoustically — in Devanagari, Tamil, Telugu, Malayalam, and Kannada. Multilingual legibility is not translation; it is acoustic and visual fidelity across scripts.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="section-title">The Five-Script Challenge — A Name Must Work in All of Them</div>
+
+    <div class="multi-grid">
+      <div class="multi-card">
+        <span class="script-sample">अवियोर</span>
+        <h4>Devanagari</h4>
+        <p>Hindi, Marathi, Sanskrit base. Most project names transliterate smoothly. Watch for aspirated consonant loss (Bh → B) and schwa deletion in 3+ syllable names.</p>
+        <span class="multi-risk risk-lo">Low risk</span>
+      </div>
+      <div class="multi-card">
+        <span class="script-sample">அவியோர்</span>
+        <h4>Tamil</h4>
+        <p>18 consonant characters — some English sounds have no native equivalent. 'F', 'Z', 'Sh' are borrowed phonemes that signal foreign origin. Risk of mispronunciation highest here.</p>
+        <span class="multi-risk risk-hi">High risk</span>
+      </div>
+      <div class="multi-card">
+        <span class="script-sample">అవియోర్</span>
+        <h4>Telugu</h4>
+        <p>More consonant richness than Tamil — 'F' and aspirated sounds exist. Final consonant clusters problematic. "Avior" works well; "Crest" loses its final T.</p>
+        <span class="multi-risk risk-med">Medium risk</span>
+      </div>
+      <div class="multi-card">
+        <span class="script-sample">അവിയോർ</span>
+        <h4>Malayalam</h4>
+        <p>Rich consonant inventory — handles most English name sounds. Long vowels preserved and may actually improve premium perception. Least phonemic distortion of all South Indian scripts.</p>
+        <span class="multi-risk risk-lo">Lower risk</span>
+      </div>
+      <div class="multi-card">
+        <span class="script-sample">ಅವಿಯೋರ್</span>
+        <h4>Kannada</h4>
+        <p>Close to Telugu in phonemic range. Retroflex sounds added to foreign consonant clusters. Gemination (doubling of consonants) a characteristic — test for unintended emphasis shifts.</p>
+        <span class="multi-risk risk-med">Medium risk</span>
+      </div>
+    </div>
+
+    <div class="section-title">Transliteration vs Translation — The Critical Distinction</div>
+
+    <div class="fw-grid fw-grid-2">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Approach A — Transliteration (Recommended)</span>
+        <h3>Sound-for-Sound Mapping</h3>
+        <p>The English name is rendered in the regional script based on how it sounds. "Avior" becomes அவியோர் in Tamil — representing the approximate sounds using Tamil characters. The name remains phonetically recognisable across scripts.</p>
+        <p style="margin-top:12px;">This is the standard approach for all project names. It preserves brand name recognition across all language audiences. The risk is that the translated form may still be acoustically uncomfortable in some languages — this is what the phonemic test catches.</p>
+        <div class="tag-row" style="margin-top:14px;">
+          <span class="tag sage">Maintain acoustic identity</span>
+          <span class="tag sage">Consistent brand recognition</span>
+        </div>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent rust"></div>
+        <span class="fw-card-num">Approach B — Translation (Avoid)</span>
+        <h3>Meaning-for-Meaning Replacement</h3>
+        <p>The English name is replaced with a local-language word of equivalent meaning. "Serenity" becomes "அமைதி" (Amaithi) in Tamil communication. This creates two completely different names for the same project — a brand governance nightmare.</p>
+        <p style="margin-top:12px;">Never translate a project name into regional languages for marketing communication. It creates irreconcilable brand identity confusion. Transliterate only. The only exception is when the project is explicitly created for a single language market with no ambitions beyond it.</p>
+        <div class="tag-row" style="margin-top:14px;">
+          <span class="tag rust">Brand fragmentation</span>
+          <span class="tag rust">Governance failure</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Multilingual Legibility Test — 5-Point Check for Every Name</div>
+
+    <table class="strat-table">
+      <thead>
+        <tr>
+          <th>Test</th>
+          <th>Method</th>
+          <th>Pass Criterion</th>
+          <th>Fail Indicator</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Script Rendering</td>
+          <td>Ask a native-literate speaker of each script to write the name in their script phonetically, without guidance</td>
+          <td>Consistent transliteration across 5 independent testers per script</td>
+          <td>More than 2 different transliterations produced — the name has no stable phonemic representation in that script</td>
+        </tr>
+        <tr>
+          <td class="cat">Hoarding Legibility</td>
+          <td>Render the name in the regional script at hoarding scale (90pt equivalent). Check character density — some scripts produce very dense letterforms that become illegible at a distance.</td>
+          <td>Readable at 15m distance with correct font weight</td>
+          <td>More than 5 characters in Tamil/Malayalam scripts for the transliteration — visual weight becomes excessive on hoardings</td>
+        </tr>
+        <tr>
+          <td class="cat">Oral Communication</td>
+          <td>Have a sales team member say the transliterated name to a native speaker and ask them to repeat it. Record any phonemic shifts.</td>
+          <td>Native speaker repeats it back within 80% phonemic accuracy</td>
+          <td>The name is consistently transformed into a different word or triggers laughter or confusion</td>
+        </tr>
+        <tr>
+          <td class="cat">Negative Meaning Screen</td>
+          <td>Share transliterated form with 3 native speakers per language. Ask: does this word or a close homophone of it mean anything — including slang, colloquial, or body-part vocabulary?</td>
+          <td>No negative, embarrassing, or confusing meanings identified</td>
+          <td>Any confirmed negative or body-related meaning — even slang. The test is what a 14-year-old would find amusing, not what a linguist would find acceptable.</td>
+        </tr>
+        <tr>
+          <td class="cat">Newspaper Readability</td>
+          <td>Set the name in the regional script at 12pt in a standard newspaper font. Ask 10 readers over 40 to read it aloud.</td>
+          <td>8 of 10 read it accurately at first pass</td>
+          <td>Consistent mispronunciation or requests for clarification — the name is too phonemically foreign for the target literacy range in that market</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SECTION 10 — THE TEN NAMING DON'TS
+═════════════════════════════════════════ -->
+<section id="donts">
+  <div class="phase-header">
+    <div class="phase-num">10</div>
+    <div class="phase-meta">
+      <div class="phase-label">The Naming Don'ts</div>
+      <h2 class="phase-title">Ten Names Indian Real Estate <em>Should Stop Giving</em></h2>
+      <p class="phase-desc">The naming failures below are not hypothetical. They represent the most common mistakes committed every quarter across the Indian real estate market — seen on hoardings from Chennai to Gurgaon. Each costs the developer brand equity they will spend years trying to recover.</p>
+    </div>
+  </div>
+
+  <div class="content-zone">
+
+    <div class="donts-grid">
+      <div class="dont-card">
+        <div class="dont-num">01</div>
+        <div class="dont-content">
+          <h5>The Overused Emotion Word</h5>
+          <p>Serenity, Harmony, Tranquility, Bliss, Nirvana. These words have been so heavily used in real estate across India that they have lost all meaning and premium association. They communicate that the naming team ran out of ideas.</p>
+          <div class="dont-eg">Seen: 847 projects named "Harmony" or variant on 99acres.</div>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-num">02</div>
+        <div class="dont-content">
+          <h5>The Aspirational Overclaim</h5>
+          <p>Naming a mid-segment project in Ambattur "The Riviera" or a 2BHK complex in Noida "The Beverly Hills." The name creates a gap between expectation and reality that damages credibility — particularly post-possession when residents are asked to explain their address.</p>
+          <div class="dont-eg">Seen: "Monaco Towers" — Dombivli East.</div>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-num">03</div>
+        <div class="dont-content">
+          <h5>The Misspelled Foreign Word</h5>
+          <p>Taking a real foreign word and altering the spelling to create uniqueness — "Bellezia" instead of Bellezza, "Vennato" instead of Veneto. The word is now neither the original nor a clean invented name. It is a misspelling that signals carelessness to educated buyers.</p>
+          <div class="dont-eg">Seen: "Pallazo" (sic) — three different developers, three states.</div>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-num">04</div>
+        <div class="dont-content">
+          <h5>The Accidental Abbreviation</h5>
+          <p>Choosing a name without checking what its abbreviation spells. "Prestige Urban Terraces" → "PUT." "Silverstone Luxe Township" → "SLT." These abbreviations appear on legal documents, resident apps, and society notice boards. They outlive the marketing campaign.</p>
+          <div class="dont-eg">Always check: [Developer Initials] + [Project Initials] = what?</div>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-num">05</div>
+        <div class="dont-content">
+          <h5>The Competitor Echo</h5>
+          <p>A name so phonemically close to a well-established competitor in the same micro-market that buyers, CPs, and Google confuse them. This is both a brand problem (free awareness given to competitor) and a legal risk if the competitor's name is trademarked.</p>
+          <div class="dont-eg">Seen: Three "Elysian" projects within 5km in Bengaluru East.</div>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-num">06</div>
+        <div class="dont-content">
+          <h5>The Descriptive Trap</h5>
+          <p>"Green Valley Residences" — descriptive names cannot be trademarked and do not build brand equity. If the valley isn't green, or the project isn't residential (has commercial too), the name actively misleads. Every developer in the area can use a similar name without legal consequence.</p>
+          <div class="dont-eg">Cannot trademark: any name combining a geography + a common word.</div>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-num">07</div>
+        <div class="dont-content">
+          <h5>The Number Suffix</h5>
+          <p>Adding a number to differentiate a second project from a first — "Sunrise Heights 2" or "Lotus Pond Phase II." The number communicates that naming was an afterthought and the second project is a sequel, not a distinct offering. Buyers at Phase II feel second-class relative to Phase I purchasers.</p>
+          <div class="dont-eg">Each phase deserves its own name within the naming family.</div>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-num">08</div>
+        <div class="dont-content">
+          <h5>The MD's Personal Preference</h5>
+          <p>The project is named after the developer's favorite vacation destination, their child's name, or a word they heard at a dinner party. Without scoring against the brief and scorecard, this produces a name that is personally meaningful to one person and strategically meaningless to 500 buyers.</p>
+          <div class="dont-eg">The scorecard exists precisely to manage this conversation.</div>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-num">09</div>
+        <div class="dont-content">
+          <h5>The Unpronounceable Import</h5>
+          <p>A name imported from a foreign language that the primary buyer demographic cannot pronounce consistently — "Schloss," "Château," "Fjord," "Pfalzgrafenstein." Even when intended as luxury signals, they fail the telephone test in the Indian market and create inconsistency in word-of-mouth communication.</p>
+          <div class="dont-eg">Test: Can a non-English-educated CP in Coimbatore say this name?</div>
+        </div>
+      </div>
+      <div class="dont-card">
+        <div class="dont-num">10</div>
+        <div class="dont-content">
+          <h5>The Name Without a Domain</h5>
+          <p>Announcing a project name publicly before securing the .com, .in, and social media handles. Domain squatters monitor property portal filings and developer press releases and register names within hours of public announcement. The cost to recover a squatted domain is always higher than the cost of registering it first.</p>
+          <div class="dont-eg">Rule: Domain registered same day as internal approval — before any external communication.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Naming System <span>/ Real Estate</span></div>
+      <p class="footer-desc">A complete brand and project naming framework for Indian real estate developers. Covers corporate naming architecture, the three naming schools, a 7-step process, phonemic testing, RERA compliance, the 8-criterion evaluation scorecard, the 12-question brief, sub-brand management, multilingual legibility, and the ten naming don'ts.</p>
+    </div>
+    <div class="footer-col">
+      <h5>The 10 Sections</h5>
+      <ul>
+        <li>01 — Corporate Naming Architecture</li>
+        <li>02 — The Three Naming Schools</li>
+        <li>03 — The 7-Step Naming Process</li>
+        <li>04 — Phonemic Testing Framework</li>
+        <li>05 — RERA & Trademark Compliance</li>
+        <li>06 — Name Evaluation Scorecard</li>
+        <li>07 — The 12-Question Naming Brief</li>
+        <li>08 — Sub-Brand Architecture</li>
+        <li>09 — Multilingual Legibility System</li>
+        <li>10 — The Ten Naming Don'ts</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Companion Documents</h5>
+      <ul>
+        <li>Branding 360° — Real Estate</li>
+        <li>MarComm Plan — Real Estate</li>
+        <li>Brand Standards Manual</li>
+        <li>Channel Partner Playbook</li>
+        <li>Experience Centre Playbook</li>
+        <li>Content Strategy & Editorial Playbook</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Brand & Project Naming System — Real Estate Edition</p>
+    <p>Companion to Branding 360° · Complete Reference Document</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fw-card, .school-card, .process-step, .phon-card, .dont-card, .rera-card, .multi-card, .sc-row').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(14px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+
+  // Nav section highlight
+  const sections = document.querySelectorAll('section[id]');
+  const modTags = document.querySelectorAll('.mod-tag');
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        const map = { architecture:0, schools:1, process:2, phonemic:3, rera:4, scorecard:5, brief:6, subbrand:7, multilingual:8, donts:9 };
+        modTags.forEach((t,i) => t.classList.toggle('active', i === map[id]));
+      }
+    });
+  }, { threshold: 0.25 });
+  sections.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>

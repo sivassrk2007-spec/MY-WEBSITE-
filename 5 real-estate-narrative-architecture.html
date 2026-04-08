@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brand Storytelling & Narrative Architecture — Real Estate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:       #0d0d0b;
+    --parchment: #f5f0e8;
+    --sand:      #e8dfc8;
+    --gold:      #b89a5a;
+    --gold-lt:   #d4b97a;
+    --gold-dk:   #8a6f35;
+    --rust:      #8b4a2a;
+    --sage:      #4a5c4e;
+    --steel:     #3a4a5c;
+    --cream:     #faf7f2;
+    --rule:      rgba(184,154,90,.25);
+    --mono:      'DM Mono', monospace;
+    --serif:     'Cormorant Garamond', serif;
+    --sans:      'Syne', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.7;overflow-x:hidden;}
+
+  /* ── NAV ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,240,232,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-brand{font-family:var(--sans);font-weight:800;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);}
+  .nav-links{display:flex;gap:24px;list-style:none;}
+  .nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);text-decoration:none;opacity:.5;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;color:var(--gold);}
+
+  /* ── HERO ── */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 80px;position:relative;overflow:hidden;background:var(--ink);}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 72% 38%,rgba(184,154,90,.09) 0%,transparent 60%),radial-gradient(ellipse 45% 70% at 10% 68%,rgba(139,74,42,.1) 0%,transparent 55%),linear-gradient(158deg,#0d0d0b 0%,#151209 50%,#0e0c09 100%);}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,154,90,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(184,154,90,.04) 1px,transparent 1px);background-size:80px 80px;}
+  /* Decorative quote marks as hero texture */
+  .hero-texture{position:absolute;top:0;right:0;bottom:0;width:50%;overflow:hidden;pointer-events:none;}
+  .hero-quote-mark{position:absolute;font-family:var(--serif);font-size:320px;font-weight:300;color:rgba(184,154,90,.04);line-height:1;user-select:none;}
+  .hero-stamp{position:absolute;top:80px;right:80px;width:180px;height:180px;border:1px solid rgba(184,154,90,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:.65;}
+  .hero-stamp-inner{width:140px;height:140px;border:1px solid rgba(184,154,90,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;gap:4px;}
+  .hero-stamp span{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);opacity:.8;display:block;}
+  .hero-stamp strong{font-family:var(--sans);font-size:22px;font-weight:800;color:var(--gold);line-height:1;display:block;}
+  .hero-content{position:relative;z-index:2;}
+  .hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:16px;}
+  .hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--gold);}
+  h1.hero-title{font-family:var(--serif);font-size:clamp(52px,7vw,96px);font-weight:300;color:var(--parchment);line-height:1.0;letter-spacing:-.01em;margin-bottom:12px;}
+  h1.hero-title em{font-style:italic;color:var(--gold-lt);}
+  .hero-sub{font-family:var(--mono);font-size:13px;color:rgba(245,240,232,.38);letter-spacing:.05em;margin-top:24px;max-width:580px;line-height:1.6;}
+  .hero-modules{position:absolute;bottom:80px;right:80px;display:flex;flex-direction:column;gap:5px;align-items:flex-end;}
+  .mod-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(184,154,90,.4);}
+  .mod-tag.active{color:var(--gold);}
+
+  /* ── SECTION HEADERS ── */
+  .phase-header{padding:0 80px;margin-top:120px;margin-bottom:64px;display:flex;align-items:flex-end;gap:40px;border-bottom:1px solid var(--rule);padding-bottom:32px;}
+  .phase-num{font-family:var(--mono);font-size:72px;font-weight:300;color:var(--sand);line-height:1;flex-shrink:0;}
+  .phase-meta{flex:1;}
+  .phase-label{font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .phase-title{font-family:var(--serif);font-size:clamp(28px,3vw,40px);font-weight:300;color:var(--ink);line-height:1.1;}
+  .phase-title em{font-style:italic;color:var(--rust);}
+  .phase-desc{font-size:15px;color:rgba(13,13,11,.52);max-width:520px;margin-top:12px;font-family:var(--mono);line-height:1.6;letter-spacing:.01em;}
+
+  /* ── CONTENT ── */
+  .content-zone{padding:0 80px;margin-bottom:24px;}
+  .section-title{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;padding-bottom:12px;border-bottom:1px solid var(--rule);}
+  .sub-prose{font-size:16px;color:rgba(13,13,11,.65);line-height:1.75;margin-bottom:32px;max-width:780px;}
+
+  /* ── CALLOUT ── */
+  .callout{background:var(--ink);padding:48px 56px;margin-bottom:48px;position:relative;overflow:hidden;}
+  .callout-glow{position:absolute;top:-40px;left:-40px;width:300px;height:300px;background:radial-gradient(circle,rgba(184,154,90,.12) 0%,transparent 70%);pointer-events:none;}
+  .callout p{font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);font-weight:300;font-style:italic;color:var(--parchment);line-height:1.45;position:relative;z-index:1;max-width:820px;}
+  .callout-src{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:20px;position:relative;z-index:1;}
+
+  /* ── TABLE ── */
+  .strat-table{width:100%;border-collapse:collapse;margin-bottom:48px;font-family:var(--mono);font-size:13px;}
+  .strat-table thead th{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:0 16px 12px;text-align:left;border-bottom:1px solid var(--rule);}
+  .strat-table tbody tr{border-bottom:1px solid var(--rule);}
+  .strat-table tbody tr:hover{background:rgba(184,154,90,.04);}
+  .strat-table tbody td{padding:14px 16px;font-size:13px;color:rgba(13,13,11,.72);vertical-align:top;line-height:1.55;}
+  .strat-table tbody td.cat{color:var(--ink);font-weight:500;}
+  .strat-table .ok{color:var(--sage);font-weight:500;}
+  .strat-table .warn{color:var(--rust);font-weight:500;}
+
+  /* ── CARD GRIDS ── */
+  .fw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:48px;}
+  .fw-grid-2{grid-template-columns:repeat(2,1fr);}
+  .fw-grid-4{grid-template-columns:repeat(4,1fr);}
+  .fw-card{background:var(--parchment);padding:32px 28px;border:1px solid var(--rule);position:relative;transition:background .25s;}
+  .fw-card:hover{background:var(--sand);}
+  .fw-card-accent{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);}
+  .fw-card-accent.rust{background:linear-gradient(90deg,var(--rust),transparent);}
+  .fw-card-accent.sage{background:linear-gradient(90deg,var(--sage),transparent);}
+  .fw-card-accent.steel{background:linear-gradient(90deg,var(--steel),transparent);}
+  .fw-card-num{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px;}
+  .fw-card h3{font-family:var(--serif);font-size:20px;font-weight:400;margin-bottom:10px;line-height:1.2;}
+  .fw-card p{font-size:15px;color:rgba(13,13,11,.65);line-height:1.65;}
+  .fw-card ul{font-size:14px;color:rgba(13,13,11,.65);line-height:1.65;list-style:none;padding:0;margin-top:10px;}
+  .fw-card ul li{padding:3px 0 3px 16px;position:relative;border-bottom:1px solid rgba(184,154,90,.12);}
+  .fw-card ul li:last-child{border-bottom:none;}
+  .fw-card ul li::before{content:'—';position:absolute;left:0;color:var(--gold);opacity:.6;font-family:var(--mono);}
+
+  /* ── STORY STRUCTURE COMPONENTS ── */
+
+  /* Narrative spine — stepped visual */
+  .narrative-spine{margin-bottom:48px;position:relative;}
+  .spine-track{display:flex;flex-direction:column;gap:0;}
+  .spine-step{display:grid;grid-template-columns:48px 1fr;gap:0;position:relative;}
+  .spine-step::before{content:'';position:absolute;left:23px;top:48px;bottom:-1px;width:1px;background:var(--rule);z-index:0;}
+  .spine-step:last-child::before{display:none;}
+  .spine-node{width:48px;display:flex;flex-direction:column;align-items:center;padding-top:32px;flex-shrink:0;position:relative;z-index:1;}
+  .spine-dot{width:16px;height:16px;border-radius:50%;border:1px solid var(--gold);background:var(--cream);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .spine-dot-inner{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+  .spine-dot.filled{background:var(--gold);}
+  .spine-dot.filled .spine-dot-inner{background:var(--ink);}
+  .spine-body{padding:28px 28px 28px 24px;border-left:1px solid var(--rule);margin-left:4px;}
+  .spine-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .spine-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:8px;}
+  .spine-body p{font-size:15px;color:rgba(13,13,11,.65);line-height:1.65;}
+  .spine-body .story-eg{font-family:var(--serif);font-size:16px;font-style:italic;color:rgba(13,13,11,.55);margin-top:10px;padding:12px 16px;border-left:2px solid var(--gold);background:rgba(184,154,90,.04);}
+  .spine-body .story-eg strong{font-style:normal;color:var(--gold-dk);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:4px;}
+
+  /* Canvas template */
+  .canvas{border:1px solid var(--rule);margin-bottom:48px;overflow:hidden;}
+  .canvas-header{background:var(--ink);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;}
+  .canvas-header h3{font-family:var(--serif);font-size:22px;font-weight:300;font-style:italic;color:var(--parchment);}
+  .canvas-header span{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+  .canvas-grid{display:grid;gap:1px;background:var(--rule);}
+  .canvas-2col{grid-template-columns:1fr 1fr;}
+  .canvas-3col{grid-template-columns:1fr 1fr 1fr;}
+  .canvas-cell{background:var(--parchment);padding:24px 28px;}
+  .canvas-cell.dark{background:rgba(13,13,11,.03);}
+  .canvas-cell h4{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .canvas-cell p{font-family:var(--serif);font-size:15px;color:rgba(13,13,11,.65);line-height:1.65;}
+  .canvas-cell .prompt{font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.4);line-height:1.55;margin-top:8px;font-style:italic;}
+  .canvas-cell.full{grid-column:1/-1;}
+  .canvas-cell .fill-line{height:1px;background:var(--rule);margin:12px 0;}
+  .canvas-cell .fill-line+.fill-line{opacity:.5;}
+  .canvas-cell .fill-line+.fill-line+.fill-line{opacity:.3;}
+
+  /* Quote block — pull quote style */
+  .story-pull{background:var(--parchment);border:1px solid var(--rule);border-left:4px solid var(--gold);padding:36px 40px;margin-bottom:32px;position:relative;}
+  .story-pull::before{content:'\201C';font-family:var(--serif);font-size:80px;font-weight:300;color:rgba(184,154,90,.15);position:absolute;top:8px;left:16px;line-height:1;}
+  .story-pull p{font-family:var(--serif);font-size:clamp(18px,1.8vw,22px);font-weight:300;font-style:italic;color:var(--ink);line-height:1.55;position:relative;z-index:1;}
+  .story-pull .attribution{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(13,13,11,.4);margin-top:12px;}
+
+  /* Versus split */
+  .versus-split{display:grid;grid-template-columns:1fr 48px 1fr;gap:0;margin-bottom:48px;align-items:stretch;}
+  .versus-panel{border:1px solid var(--rule);}
+  .versus-panel.left{border-right:none;}
+  .versus-panel.right{border-left:none;}
+  .versus-header{padding:16px 24px;display:flex;align-items:center;gap:10px;}
+  .versus-header .badge{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;padding:4px 10px;}
+  .versus-header .badge.good{background:rgba(74,92,78,.12);color:var(--sage);}
+  .versus-header .badge.bad{background:rgba(139,74,42,.1);color:var(--rust);}
+  .versus-header h4{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--ink);}
+  .versus-body{padding:20px 24px;border-top:1px solid var(--rule);}
+  .versus-body p{font-size:15px;color:rgba(13,13,11,.68);line-height:1.65;}
+  .versus-body .eg{font-family:var(--serif);font-size:16px;font-style:italic;color:var(--ink);margin-top:12px;padding:12px 16px;border-left:2px solid;line-height:1.5;}
+  .versus-body .eg.good-eg{border-color:var(--sage);background:rgba(74,92,78,.04);}
+  .versus-body .eg.bad-eg{border-color:var(--rust);background:rgba(139,74,42,.03);}
+  .versus-divider{background:var(--sand);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:center;}
+  .versus-divider span{font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.35);transform:rotate(90deg);letter-spacing:.12em;white-space:nowrap;}
+
+  /* Film brief blocks */
+  .brief-block{border:1px solid var(--rule);margin-bottom:2px;overflow:hidden;}
+  .brief-block-head{background:var(--sand);padding:16px 28px;display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:center;}
+  .brief-block-num{font-family:var(--mono);font-size:18px;font-weight:500;color:var(--gold);}
+  .brief-block-head h4{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--ink);}
+  .brief-block-body{background:var(--parchment);padding:24px 28px 24px 84px;}
+  .brief-block-body p{font-size:15px;color:rgba(13,13,11,.65);line-height:1.65;margin-bottom:12px;}
+  .brief-block-body p:last-child{margin-bottom:0;}
+  .brief-block-body .brief-eg{font-family:var(--mono);font-size:12px;color:rgba(13,13,11,.5);line-height:1.6;padding:12px 16px;background:rgba(184,154,90,.06);border-left:2px solid var(--gold);margin-top:10px;}
+
+  /* Testimonial template */
+  .testimonial-template{border:1px solid var(--rule);margin-bottom:48px;}
+  .tt-header{background:var(--ink);padding:24px 32px;}
+  .tt-header h3{font-family:var(--serif);font-size:20px;font-weight:300;font-style:italic;color:var(--parchment);}
+  .tt-header p{font-family:var(--mono);font-size:11px;color:rgba(184,154,90,.7);margin-top:6px;}
+  .tt-arc{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--rule);}
+  .tt-arc-cell{background:var(--parchment);padding:24px 20px;text-align:center;}
+  .tt-arc-cell:hover{background:var(--sand);}
+  .tt-arc-num{font-family:var(--mono);font-size:28px;font-weight:300;color:var(--sand);display:block;margin-bottom:8px;}
+  .tt-arc-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;}
+  .tt-arc-cell p{font-family:var(--serif);font-size:14px;color:rgba(13,13,11,.65);line-height:1.55;}
+  .tt-questions{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);}
+  .tt-q{background:var(--parchment);padding:20px 24px;}
+  .tt-q-num{font-family:var(--mono);font-size:10px;color:var(--gold);margin-bottom:6px;letter-spacing:.1em;}
+  .tt-q h5{font-family:var(--serif);font-size:17px;font-weight:400;margin-bottom:6px;}
+  .tt-q p{font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.5);line-height:1.5;}
+
+  /* Investment narrative blocks */
+  .inv-tier{display:grid;grid-template-columns:200px 1fr;gap:0;margin-bottom:2px;border:1px solid var(--rule);overflow:hidden;}
+  .inv-tier-label{background:var(--ink);padding:24px 20px;display:flex;flex-direction:column;justify-content:center;}
+  .inv-tier-label span{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block;}
+  .inv-tier-label strong{font-family:var(--serif);font-size:18px;font-weight:300;color:var(--parchment);line-height:1.2;}
+  .inv-tier-body{background:var(--parchment);padding:24px 28px;}
+  .inv-tier-body h4{font-family:var(--serif);font-size:18px;font-weight:400;margin-bottom:8px;}
+  .inv-tier-body p{font-family:var(--mono);font-size:12px;color:rgba(13,13,11,.62);line-height:1.6;margin-bottom:10px;}
+  .inv-tier-body .inv-eg{font-family:var(--serif);font-size:16px;font-style:italic;color:rgba(13,13,11,.55);padding:10px 14px;border-left:2px solid var(--gold);background:rgba(184,154,90,.04);line-height:1.5;}
+  .inv-tier-body .inv-warning{font-family:var(--mono);font-size:11px;color:var(--rust);margin-top:8px;padding:8px 12px;background:rgba(139,74,42,.06);border-left:2px solid var(--rust);}
+
+  /* Long-form template */
+  .longform-template{margin-bottom:48px;}
+  .lft-header{background:var(--sand);padding:20px 28px;border:1px solid var(--rule);border-bottom:none;display:flex;justify-content:space-between;align-items:baseline;}
+  .lft-header h3{font-family:var(--serif);font-size:20px;font-weight:400;}
+  .lft-header span{font-family:var(--mono);font-size:10px;color:rgba(13,13,11,.45);letter-spacing:.1em;}
+  .lft-sections{border:1px solid var(--rule);}
+  .lft-row{display:grid;grid-template-columns:180px 1fr;gap:0;border-bottom:1px solid var(--rule);}
+  .lft-row:last-child{border-bottom:none;}
+  .lft-label{background:rgba(13,13,11,.03);padding:20px 20px;border-right:1px solid var(--rule);}
+  .lft-label h5{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+  .lft-label span{font-family:var(--mono);font-size:10px;color:rgba(13,13,11,.4);}
+  .lft-content{padding:20px 24px;}
+  .lft-content p{font-size:15px;color:rgba(13,13,11,.65);line-height:1.65;}
+  .lft-content .eg{font-family:var(--serif);font-size:16px;font-style:italic;color:rgba(13,13,11,.55);margin-top:10px;padding:10px 14px;border-left:2px solid var(--gold);line-height:1.5;}
+
+  /* Footer */
+  footer{background:var(--ink);margin-top:120px;padding:64px 80px 40px;}
+  .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid rgba(184,154,90,.15);}
+  .footer-brand{font-family:var(--sans);font-size:20px;font-weight:800;color:var(--gold);margin-bottom:16px;}
+  .footer-brand span{font-weight:300;color:rgba(184,154,90,.5);}
+  .footer-desc{font-family:var(--mono);font-size:12px;color:rgba(245,240,232,.35);line-height:1.7;}
+  .footer-col h5{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .footer-col ul{list-style:none;}
+  .footer-col ul li{font-family:var(--mono);font-size:12px;color:rgba(245,240,232,.35);padding:4px 0;border-bottom:1px solid rgba(184,154,90,.08);}
+  .footer-bottom{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:rgba(184,154,90,.3);}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:48px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Narrative Architecture <span style="color:rgba(184,154,90,.4);font-weight:300"> / Real Estate</span></div>
+  <ul class="nav-links">
+    <li><a href="#distinction">Story vs Tagline</a></li>
+    <li><a href="#founder">Founder Story</a></li>
+    <li><a href="#origin">Brand Origin</a></li>
+    <li><a href="#project">Project Canvas</a></li>
+    <li><a href="#longform">Long-Form</a></li>
+    <li><a href="#film">Brand Film</a></li>
+    <li><a href="#testimonial">Testimonial</a></li>
+    <li><a href="#investment">Investment</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-texture">
+    <div class="hero-quote-mark" style="top:-60px;right:-40px;">"</div>
+    <div class="hero-quote-mark" style="bottom:-80px;right:120px;font-size:240px;">"</div>
+  </div>
+  <div class="hero-stamp">
+    <div class="hero-stamp-inner">
+      <span>Narrative</span>
+      <strong>N×8</strong>
+      <span>Architecture</span>
+      <span>Framework</span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Companion Document — Branding 360°</div>
+    <h1 class="hero-title">Brand Storytelling &amp;<br><em>Narrative Architecture</em></h1>
+    <p class="hero-sub">Eight narrative frameworks for real estate brands — from the sentence your founder says at dinner to the 90-second film that will run for five years. Structured templates, worked examples, and the distinctions that prevent expensive creative mistakes.</p>
+  </div>
+  <div class="hero-modules">
+    <div class="mod-tag active">01 — Tagline vs Brand Story</div>
+    <div class="mod-tag">02 — Founder Story Structure</div>
+    <div class="mod-tag">03 — Brand Origin Narrative</div>
+    <div class="mod-tag">04 — Project Story Canvas</div>
+    <div class="mod-tag">05 — Long-Form Templates</div>
+    <div class="mod-tag">06 — Brand Film Brief</div>
+    <div class="mod-tag">07 — Testimonial Framework</div>
+    <div class="mod-tag">08 — Investment Narrative</div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     INTRO — WHY NARRATIVE
+══════════════════════════════════════ -->
+<section id="intro">
+  <div class="phase-header">
+    <div class="phase-num">00</div>
+    <div class="phase-meta">
+      <div class="phase-label">Foundational Principle</div>
+      <h2 class="phase-title">Why <em>Story</em> Sells Property</h2>
+      <p class="phase-desc">A buyer does not purchase a home. They purchase the version of their life that the home makes possible. The property does not change — the story around it does. Narrative is the only brand asset that compounds without depreciating.</p>
+    </div>
+  </div>
+  <div class="content-zone">
+
+    <div class="two-col reveal">
+      <div>
+        <div class="section-title">The Functional vs Narrative Gap</div>
+        <p class="sub-prose">Every real estate developer in India can describe their project functionally: the number of units, the total area, the amenities list, the delivery date, the RERA registration number. None of this creates preference. None of it creates the emotional commitment that drives a ₹80 lakh decision in a 45-minute site visit.</p>
+        <p class="sub-prose" style="margin-bottom:0;">Story closes the gap between rational information and emotional commitment. It gives the buyer a way to explain to their spouse, their parents, and themselves why this project — among 40 others in the same micro-market — is the one.</p>
+      </div>
+      <div>
+        <div class="section-title">The Three Narrative Levels</div>
+        <div class="fw-card" style="margin-bottom:2px;">
+          <div class="fw-card-accent"></div>
+          <span class="fw-card-num">Level One — The Corporate Story</span>
+          <h3>Who built this and why</h3>
+          <p>The founder story and brand origin narrative. Explains the developer's reason for existing beyond making money. Operates across all projects. Changes rarely.</p>
+        </div>
+        <div class="fw-card" style="margin-bottom:2px;">
+          <div class="fw-card-accent rust"></div>
+          <span class="fw-card-num">Level Two — The Project Story</span>
+          <h3>Why this specific building</h3>
+          <p>The project story canvas and long-form narrative. Specific to one project. Explains the site, the design intent, the community vision. Created fresh for each launch.</p>
+        </div>
+        <div class="fw-card">
+          <div class="fw-card-accent sage"></div>
+          <span class="fw-card-num">Level Three — The Buyer Story</span>
+          <h3>Why this buyer</h3>
+          <p>Testimonials and the investment narrative. Retroactive validation. Created after possession. The most credible narrative because it is not the developer's voice.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"Features tell. Benefits sell. But stories close. A buyer who can tell the story of how your developer came to build in this micro-market — unprompted, at a dinner party — is a brand ambassador worth more than a year of Google Search spend."</p>
+      <div class="callout-src">Narrative Architecture Principle — Brand Storytelling Framework</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 01 — TAGLINE VS BRAND STORY
+══════════════════════════════════════ -->
+<section id="distinction">
+  <div class="phase-header">
+    <div class="phase-num">01</div>
+    <div class="phase-meta">
+      <div class="phase-label">The Critical Distinction</div>
+      <h2 class="phase-title">Tagline vs <em>Brand Story</em></h2>
+      <p class="phase-desc">The most expensive confusion in real estate brand communication. Developers spend months developing a tagline and call it their brand story. They spend weeks writing a brand story and reduce it to a tagline. These are entirely different instruments, with entirely different jobs.</p>
+    </div>
+  </div>
+  <div class="content-zone">
+
+    <div class="versus-split reveal">
+      <div class="versus-panel left">
+        <div class="versus-header">
+          <span class="badge good">TAGLINE</span>
+          <h4>The Compressed Promise</h4>
+        </div>
+        <div class="versus-body">
+          <p>A tagline is a claim compressed to its smallest communicable unit. It is a headline that does not need a body. It lives on hoardings, at the foot of the logo, in the final frame of the film. It must work in 3–7 words, in isolation, without context.</p>
+          <p style="margin-top:12px;">A tagline is NOT a story. It is a destination: "Here is what we stand for, in the time it takes to drive past us on the highway." Its job is immediate emotional positioning.</p>
+          <div class="eg good-eg">
+            "Built for generations." — Guardian archetype tagline. Works at 80km/h.
+          </div>
+          <div class="eg good-eg" style="margin-top:8px;">
+            "Where the city ends, life begins." — Explorer archetype tagline.
+          </div>
+          <div class="eg good-eg" style="margin-top:8px;">
+            "Designed. Not developed." — Creator archetype tagline.
+          </div>
+        </div>
+      </div>
+      <div class="versus-divider"><span>vs</span></div>
+      <div class="versus-panel right">
+        <div class="versus-header">
+          <span class="badge bad">BRAND STORY</span>
+          <h4>The Expanded Truth</h4>
+        </div>
+        <div class="versus-body">
+          <p>A brand story is the narrative arc that explains why the tagline is true. It has a beginning (what existed before the developer), a middle (what the developer saw and decided to do), and an end (what the world looks like as a result). It takes 3 minutes to tell aloud and 400 words to write.</p>
+          <p style="margin-top:12px;">A brand story cannot live on a hoarding. It lives in the brochure introduction, the film, the website About page, the MD's speech at the project launch, and the sales team's first 5 minutes with every buyer.</p>
+          <div class="eg bad-eg">
+            ✗ "We are passionate about building homes that families love" — This is neither a tagline nor a story. It is a vague claim with no structure, no arc, no evidence, no character.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">The Four Criteria That Separate a Tagline from a Brand Story</div>
+
+    <table class="strat-table reveal">
+      <thead>
+        <tr><th>Criterion</th><th>Tagline</th><th>Brand Story</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cat">Length</td>
+          <td>3–7 words. Never more than 10. If it needs punctuation beyond a full stop, it is too long.</td>
+          <td>300–600 words in written form. 90–180 seconds told aloud. Enough space for a beginning, middle, and consequence.</td>
+        </tr>
+        <tr>
+          <td class="cat">Format</td>
+          <td>A fragment or short sentence. No narrative structure. Often has no verb. "Built for permanence." "The standard, not the exception."</td>
+          <td>Has a protagonist (the founder or the developer), a conflict (what was wrong with existing options), a decision (what the developer chose to do), and a consequence (what this means for the buyer).</td>
+        </tr>
+        <tr>
+          <td class="cat">Channel</td>
+          <td>Hoardings, logo lockups, print ad footers, campaign end-frames, business card backs, property portal listings.</td>
+          <td>Brochure introduction, website About page, brand film script, sales team's verbal pitch, launch event speech, PR interviews, thought leadership articles.</td>
+        </tr>
+        <tr>
+          <td class="cat">Change frequency</td>
+          <td>Every 3–5 years or when segment positioning changes. Consistency is essential — changing a tagline too often signals strategic confusion.</td>
+          <td>The core arc never changes, but the emphasis and detail evolve as the developer grows. The origin is fixed; the consequence expands with each new project delivered.</td>
+        </tr>
+        <tr>
+          <td class="cat">Test for success</td>
+          <td class="ok">A buyer can say it correctly after hearing it once.</td>
+          <td class="ok">A buyer can retell it to their spouse, in their own words, after one conversation with the sales team.</td>
+        </tr>
+        <tr>
+          <td class="cat">Common mistake</td>
+          <td class="warn">Writing a paragraph and calling it a tagline. "Crafting exceptional living experiences for discerning families who value quality and community." (32 words, not a tagline)</td>
+          <td class="warn">Writing a paragraph of claims and calling it a brand story. "We are committed to quality, transparency, and excellence in every project we build." (Has no arc, no character, no conflict.)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">The Tagline Architecture — Four Proven Structures</div>
+
+    <div class="fw-grid fw-grid-4 reveal">
+      <div class="fw-card">
+        <div class="fw-card-accent"></div>
+        <span class="fw-card-num">Structure A</span>
+        <h3>[Destination] + [Attribute]</h3>
+        <p>Names what the brand builds toward and its defining quality. Clean, architectural, works for premium and above.</p>
+        <ul>
+          <li>"Homes built for permanence"</li>
+          <li>"Addresses earned, not assigned"</li>
+          <li>"Residences without compromise"</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent rust"></div>
+        <span class="fw-card-num">Structure B</span>
+        <h3>[Contrasting Pair]</h3>
+        <p>Two contrasting terms that define the brand's difference. Memorable, debate-creating, works at all segments.</p>
+        <ul>
+          <li>"Designed. Not developed."</li>
+          <li>"Built for life. Not for sale."</li>
+          <li>"Not a project. A neighbourhood."</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent sage"></div>
+        <span class="fw-card-num">Structure C</span>
+        <h3>[Buyer State] + [Causal Bridge]</h3>
+        <p>Opens with the buyer's desire or situation, then positions the brand as the resolution. Highly personal, works for family and community segments.</p>
+        <ul>
+          <li>"Where your children will grow up safe"</li>
+          <li>"The view your grandchildren will inherit"</li>
+          <li>"Home, before you arrive"</li>
+        </ul>
+      </div>
+      <div class="fw-card">
+        <div class="fw-card-accent steel"></div>
+        <span class="fw-card-num">Structure D</span>
+        <h3>[Declaration] — No Explanation</h3>
+        <p>A single unargued claim. Reserved for brands with enough authority that the claim needs no justification. The Ruler archetype's natural home.</p>
+        <ul>
+          <li>"The standard."</li>
+          <li>"One address."</li>
+          <li>"Not for everyone."</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 02 — FOUNDER STORY
+══════════════════════════════════════ -->
+<section id="founder">
+  <div class="phase-header">
+    <div class="phase-num">02</div>
+    <div class="phase-meta">
+      <div class="phase-label">Corporate Narrative Layer One</div>
+      <h2 class="phase-title">The <em>Founder Story</em> Structure</h2>
+      <p class="phase-desc">The founder story is the most powerful narrative asset in real estate because it is the only story that is inherently credible — it happened before there was anything to sell. But it fails when it is told as a biography rather than as a story of why this brand exists to serve the buyer. The structure makes the difference.</p>
+    </div>
+  </div>
+  <div class="content-zone">
+
+    <div class="section-title">The Five-Act Founder Story Structure</div>
+    <p class="sub-prose">Every founder story in real estate follows one of two paths: the builder who saw a need that no one was meeting, or the inheritor who chose to honour and elevate what was built before them. Both are legitimate. Both require the same five-act structure to be emotionally effective.</p>
+
+    <div class="narrative-spine reveal">
+      <div class="spine-track">
+
+        <div class="spine-step">
+          <div class="spine-node"><div class="spine-dot filled"><div class="spine-dot-inner"></div></div></div>
+          <div class="spine-body">
+            <div class="spine-label">Act One · The World Before</div>
+            <div class="spine-title">What was missing, broken, or unacceptable</div>
+            <p>Begin not with the founder, but with the problem. What was the state of real estate — in this city, in this segment, at this specific time — that made the founder's intervention necessary? This is not a company history. It is a world-building act that makes the buyer feel the need that the founder felt.</p>
+            <div class="story-eg">
+              <strong>Example — Mid-Segment Bengaluru Developer, 1998</strong>
+              "In 1998, a middle-class family in Bengaluru buying their first home had two choices: a government scheme flat that took a decade to deliver and a decade more to feel like home, or a private developer whose track record was a rumour and whose agreements were a negotiation. The quality of the home you lived in was determined entirely by your luck and your connections."
+            </div>
+          </div>
+        </div>
+
+        <div class="spine-step">
+          <div class="spine-node"><div class="spine-dot"><div class="spine-dot-inner"></div></div></div>
+          <div class="spine-body">
+            <div class="spine-label">Act Two · The Founder's Moment</div>
+            <div class="spine-title">A specific, personal, observable moment of clarity</div>
+            <p>Not "I decided to build better homes." That is a resolution, not a story. The moment must be specific — a date, a place, a person, a single concrete observation that is small enough to be vivid and large enough to carry the weight of the brand's entire reason for existing. The best founding moments are personal and slightly uncomfortable in their honesty.</p>
+            <div class="story-eg">
+              <strong>Example — The Specific Moment</strong>
+              "My father-in-law bought a flat in 1994 from one of the most recognised names in the city. We attended the possession ceremony. The keys were handed over on a day when the lifts didn't work, the terrace leaked, and two of the promised amenities weren't built. He smiled anyway because there was nothing else to do. I couldn't stop thinking about him. I had just joined the family business."
+            </div>
+          </div>
+        </div>
+
+        <div class="spine-step">
+          <div class="spine-node"><div class="spine-dot"><div class="spine-dot-inner"></div></div></div>
+          <div class="spine-body">
+            <div class="spine-label">Act Three · The Decision</div>
+            <div class="spine-title">What the founder chose — and what it cost them</div>
+            <p>The decision must have a cost. A founder who decides to "build with integrity" without specifying what that meant they had to give up is stating a preference, not making a commitment. The cost gives the decision its weight: slower growth, smaller margins, higher land cost, refusing to cut corners when competitors were building faster.</p>
+            <div class="story-eg">
+              <strong>Example — The Decision with a Cost</strong>
+              "We decided that every project we built would be delivered within 30 days of the possession date in the agreement — or we would pay the buyer compensation ourselves, before they asked. In our first project, this cost us ₹42 lakhs. In the second project, we delivered early. By the fifth project, our contractors understood that the delivery date was not a target — it was a contract."
+            </div>
+          </div>
+        </div>
+
+        <div class="spine-step">
+          <div class="spine-node"><div class="spine-dot"><div class="spine-dot-inner"></div></div></div>
+          <div class="spine-body">
+            <div class="spine-label">Act Four · The Proof</div>
+            <div class="spine-title">What the decision produced — concretely, measurably</div>
+            <p>The proof is not a list of awards. It is the consequence of the decision, measured in terms that mean something to a buyer: families who came back for their second purchase, referral rates, years of residency, letters from residents that the sales team still carries. The proof should be specific enough to be verified and human enough to be felt.</p>
+            <div class="story-eg">
+              <strong>Example — Specific Proof</strong>
+              "Of the 1,840 families who bought their first home with us, 412 have since bought their second — from us, again. We did not earn that by accident. We earned it by being the one developer in the city whose buyers don't need to be brave."
+            </div>
+          </div>
+        </div>
+
+        <div class="spine-step">
+          <div class="spine-node"><div class="spine-dot"><div class="spine-dot-inner"></div></div></div>
+          <div class="spine-body">
+            <div class="spine-label">Act Five · The Invitation</div>
+            <div class="spine-title">What this means for the buyer standing in front of you today</div>
+            <p>The founder story must end with the buyer, not with the company. The final act is a direct statement — spoken or written — about what the founder's decisions mean for the person reading or listening today. This is the bridge from corporate narrative to personal relevance. Without it, the story is a history lesson, not a sales tool.</p>
+            <div class="story-eg">
+              <strong>Example — The Invitation</strong>
+              "If you are standing here, looking at this project, it is because someone you trust told you to. That is how we grow. Not through advertising. Through the word of someone who already lives in one of our buildings and wants their family member to have the same experience. You are not starting a new relationship. You are joining one that already exists."
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-title">Founder Story — Common Failures to Avoid</div>
+
+    <table class="strat-table reveal">
+      <thead><tr><th>Failure</th><th>What It Sounds Like</th><th>Why It Fails</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="cat">The Hagiography</td>
+          <td>"Mr [Founder] had a vision for transforming the real estate landscape of India with his passion and dedication."</td>
+          <td>No specific moment, no cost, no human vulnerability. This reads as a press release, not a story. No one believes a person without a struggle.</td>
+          <td>Find the specific moment of doubt, failure, or cost that preceded the breakthrough. Hagiographies have no conflict — and stories require conflict.</td>
+        </tr>
+        <tr>
+          <td class="cat">The Dynasty Story Without a Reinvention</td>
+          <td>"Founded by [Grandfather] in 1956, the group has grown into one of India's most respected names..."</td>
+          <td>Heritage is credibility, not story. A story of scale growth tells the buyer nothing about why this developer is different from any other developer who also scaled.</td>
+          <td>Find the moment within the legacy where a choice was made — the heir who rejected the easy path, the project that could have been easier but wasn't. The reinvention within the legacy is the story.</td>
+        </tr>
+        <tr>
+          <td class="cat">The Stat Parade</td>
+          <td>"With 45 completed projects, 12,000 homes delivered, and presence in 8 cities..."</td>
+          <td>Scale is the result of the story, not the story itself. A buyer doesn't feel anything when they hear numbers in this order.</td>
+          <td>Put the numbers inside the story as evidence at Act Four. "12,000 families chose to trust us. Here is why." Numbers inside a story are evidence. Numbers as the story are a CV.</td>
+        </tr>
+        <tr>
+          <td class="cat">The Audience Mismatch</td>
+          <td>A story written for an investor roadshow delivered by a sales executive to a first-home buyer family from Coimbatore.</td>
+          <td>The same founding story needs different emphasis for different audiences. Investors need Act Three (the decision and its discipline). Buyers need Act Five (what this means for them today).</td>
+          <td>Write two versions: the full five-act version for formal contexts, and a "Act Four → Act Five" version for the sales floor — heavy on proof and invitation, light on founder biography.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 03 — BRAND ORIGIN NARRATIVE
+══════════════════════════════════════ -->
+<section id="origin">
+  <div class="phase-header">
+    <div class="phase-num">03</div>
+    <div class="phase-meta">
+      <div class="phase-label">Corporate Narrative Layer Two</div>
+      <h2 class="phase-title">The Brand <em>Origin Narrative</em></h2>
+      <p class="phase-desc">The brand origin narrative is the institutionalised version of the founder story — written for the brand, not for the founder. It survives the founder's retirement, it scales across multiple cities, and it provides the creative anchor for every marketing brief. The origin narrative answers the question every buyer silently asks: why does this company exist?</p>
+    </div>
+  </div>
+  <div class="content-zone">
+
+    <div class="section-title">Origin Narrative vs Founder Story — The Distinction</div>
+
+    <table class="strat-table reveal">
+      <thead><tr><th>Dimension</th><th>Founder Story</th><th>Brand Origin Narrative</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">Protagonist</td><td>The founder as a human being — named, biographical, specific</td><td>The brand as an entity with a worldview — the founder's name may not appear</td></tr>
+        <tr><td class="cat">Tense</td><td>Past — "He saw, he decided, he built"</td><td>Present and continuous — "We believe, we build, we exist to..."</td></tr>
+        <tr><td class="cat">Audience</td><td>Buyers and CPs in direct conversation — emotional and personal</td><td>Any audience at any time — the About page, the brochure opener, the film brief</td></tr>
+        <tr><td class="cat">Change frequency</td><td>Once per generation (when leadership changes)</td><td>Never — the origin is the bedrock. It can be updated but not replaced.</td></tr>
+        <tr><td class="cat">Tone</td><td>Conversational and vulnerable — "I could not stop thinking about him"</td><td>Declarative and earned — "This is why we build differently. This has always been why."</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">The Brand Origin Narrative Template — Four-Part Structure</div>
+
+    <div class="canvas reveal">
+      <div class="canvas-header">
+        <h3>Brand Origin Narrative — Working Template</h3>
+        <span>Complete all four parts in sequence · Total: 300–500 words</span>
+      </div>
+      <div class="canvas-grid canvas-2col">
+
+        <div class="canvas-cell">
+          <h4>Part One — The Belief Statement (40–60 words)</h4>
+          <p>Begin with a statement of belief that is specific enough to differentiate and broad enough to encompass all future projects. Not a mission statement. A belief — something the brand holds to be true about the world that most developers do not act on.</p>
+          <p class="prompt">Fill in: "We believe that _____________ [specific belief about what real estate should do for people that most developers ignore]."</p>
+          <div class="fill-line"></div>
+          <div class="fill-line"></div>
+          <div class="fill-line"></div>
+          <p style="margin-top:16px;font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.4);">Example: "We believe that the quality of the home a family lives in is not a function of how much they can afford — it is a function of how seriously the developer takes their responsibility. Price is a constraint. Commitment is a choice."</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Part Two — The Gap (60–100 words)</h4>
+          <p>Describe the gap between that belief and the reality of the market when the developer began. This is the problem statement — but written in terms of what the developer saw, not in terms of market analysis. The gap must be felt, not observed.</p>
+          <p class="prompt">Fill in: "When we began, the market [described the gap that violated the belief above — specific to your segment, city, and era]."</p>
+          <div class="fill-line"></div>
+          <div class="fill-line"></div>
+          <div class="fill-line"></div>
+          <p style="margin-top:16px;font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.4);">Example: "When we began building in Hyderabad in 2001, a first-generation professional family buying their first home was essentially asked to trust a stranger with their life savings and wait three years to find out if they were right. The only alternative was to wait longer and pay more. Neither felt acceptable."</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Part Three — The Response (80–120 words)</h4>
+          <p>What the brand chose to do in response to the gap. This is the founding decision, institutionalised. It should describe a specific practice, process, or commitment that the developer adopted — not a vague intention, but a visible behavioural change that any buyer could have witnessed from the first project.</p>
+          <p class="prompt">Fill in: "We chose to [specific practice or commitment] — not because it was easy, but because [the reason that makes this belief-driven rather than strategic]."</p>
+          <div class="fill-line"></div>
+          <div class="fill-line"></div>
+          <div class="fill-line"></div>
+          <p style="margin-top:16px;font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.4);">Example: "We chose to publish our construction schedule on the wall of every site office — visible to every buyer who walked in. We updated it every month. When we fell behind, we updated it first, before anyone called to ask."</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Part Four — The Consequence (80–120 words)</h4>
+          <p>What the response produced — for buyers, for the industry, and for the brand's ongoing purpose. The consequence is always written in terms of a future that the brand is still working toward. It should end with a statement that gives the reader a role in that future.</p>
+          <p class="prompt">Fill in: "Because of that choice, [what became true for buyers]. We are still building that [future state]. Every project we deliver is [how this connects to the ongoing mission]."</p>
+          <div class="fill-line"></div>
+          <div class="fill-line"></div>
+          <div class="fill-line"></div>
+          <p style="margin-top:16px;font-family:var(--mono);font-size:11px;color:rgba(13,13,11,.4);">Example: "Because of that choice, 11,000 families have bought a home from us knowing — not hoping — that it would be delivered. We are still building that trust. Every project we deliver is another family who no longer has to be brave to buy a home."</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 04 — PROJECT STORY CANVAS
+══════════════════════════════════════ -->
+<section id="project">
+  <div class="phase-header">
+    <div class="phase-num">04</div>
+    <div class="phase-meta">
+      <div class="phase-label">Project Narrative Layer</div>
+      <h2 class="phase-title">The Project <em>Story Canvas</em></h2>
+      <p class="phase-desc">Every project deserves its own story — one that is distinct from the brand origin narrative and the founder story. The project story canvas is a structured brief that surfaces the specific narrative for each new development before any creative work begins. Without it, campaigns are feature lists with photography.</p>
+    </div>
+  </div>
+  <div class="content-zone">
+
+    <div class="section-title">The Project Story Canvas — Nine Fields</div>
+    <p class="sub-prose">Complete this canvas before briefing any agency, writing any copy, or commissioning any photography. The nine fields are arranged in the order a story is told, not in the order information is typically gathered. They force the team to think in narrative terms before operational terms.</p>
+
+    <div class="canvas reveal">
+      <div class="canvas-header">
+        <h3>Project Story Canvas</h3>
+        <span>One canvas per project · Complete before creative brief</span>
+      </div>
+      <div class="canvas-grid canvas-3col">
+
+        <div class="canvas-cell full" style="background:rgba(13,13,11,.03);">
+          <h4>Field 00 — Project Name + One-Sentence Story</h4>
+          <p>Before filling in the nine fields, complete this: if you had to tell the story of this project in one sentence to someone who would never see an advertisement for it, what would that sentence be? Write it here first, then fill in the nine fields, then come back and rewrite this sentence. The second version will be the true one.</p>
+          <p class="prompt">One sentence: "[Project name] is the story of _____________ [site / design / community / timing observation] that _____________ [what it enabled or what it changed]."</p>
+          <div style="height:36px;border-bottom:1px solid var(--rule);margin-top:12px;"></div>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Field 01 — The Site Story</h4>
+          <p>What is the story of this specific piece of land? Who owned it, what stood here before, what does the geography say about why this is the right location for this project? The land has a history that preceded the developer — often that history is the most compelling part of the story.</p>
+          <p class="prompt">Questions: What was here before? Why this plot, not the one 500m away? What does standing on this site at 6am feel like, and how does that connect to what you're building?</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Field 02 — The Design Intent</h4>
+          <p>The single sentence the architect said during the first site walkthrough that has never made it into any brochure. The design decision that sacrificed commercial area for a better life. The constraint that became a feature. The brief to the landscape architect that explains why the park is placed exactly there.</p>
+          <p class="prompt">Questions: What did the design solve that no other project in this location has solved? What did it refuse to compromise on?</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Field 03 — The Community Vision</h4>
+          <p>Who are the 300 families who will live here in 10 years? What will their mornings look like, what will their children argue about at the dinner table, what will be the story of the first friendship formed in this project that would not have been formed otherwise? The community vision is not a demographic profile — it is an imagination of lived life.</p>
+          <p class="prompt">Questions: What kind of community does this project make possible? What could happen here that couldn't happen anywhere else in this city?</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Field 04 — The Location Insight</h4>
+          <p>The observation about this location that most buyers — and most competitors — have not made yet. Not the proximity to the metro or the IT park (everyone knows that). The observation about the morning light, the prevailing wind direction, the way the neighbourhood will look in 7 years, the school that is about to become the best in the district.</p>
+          <p class="prompt">Questions: What does a buyer learn about this location from this project that they couldn't learn from a property portal listing?</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Field 05 — The Buyer's Desire</h4>
+          <p>Not the buyer's functional requirement (3BHK, east-facing, within budget). Their desire: the version of their life that this home makes possible. The conversation between them and their spouse about what moving here would mean. The thing they would say to their child in twenty years about why they bought this home when they did.</p>
+          <p class="prompt">Questions: What does the buyer gain beyond a home? What life chapter does this purchase open?</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Field 06 — The Timing Truth</h4>
+          <p>Why now, for this specific project, in this specific market window? Not the investment argument (appreciation potential, infrastructure pipeline) — that belongs in the investment narrative. The timing truth is the reason this home makes more sense to buy at this moment in the buyer's life than at any other moment. The window they may not get again.</p>
+          <p class="prompt">Questions: What is changing in this buyer's life, in this location, or in this market that makes now the right time?</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Field 07 — The Developer's Commitment</h4>
+          <p>The specific commitment this developer is making for this project that goes beyond the RERA agreement. The extra undertaking. The quality standard they set for themselves. The thing they would be embarrassed to break, even if it costs money. This is the bridge between the brand origin narrative and this specific project.</p>
+          <p class="prompt">Questions: What is the single commitment the developer is making for this project that their track record entitles them to make?</p>
+        </div>
+
+        <div class="canvas-cell">
+          <h4>Field 08 — The Story After Possession</h4>
+          <p>The story of what this project will have become in 10 years. Not the appreciation argument — the community story. The events that will have been held in the clubhouse. The committee formed by residents. The first child born in this building. The story told at the 10-year anniversary of possession. The developer who writes this field before possession is the one who actually builds the community.</p>
+          <p class="prompt">Questions: What story will residents tell at the 10-year reunion? What will have happened here that will be worth commemorating?</p>
+        </div>
+
+        <div class="canvas-cell full" style="background:rgba(184,154,90,.04);border-top:1px solid var(--rule);">
+          <h4>Synthesis — The Three Campaign Headlines</h4>
+          <p>After completing all eight fields, write three candidate headlines that capture the project's story. Each headline should be deniable — meaning a competitor could not use it without it being false. If a competitor could put their logo on the headline and it would still work, the headline is not specific enough to the project story.</p>
+          <p class="prompt">Headline 1 (Site story): _________ · Headline 2 (Community vision): _________ · Headline 3 (Timing truth): _________</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 05 — LONG-FORM TEMPLATES
+══════════════════════════════════════ -->
+<section id="longform">
+  <div class="phase-header">
+    <div class="phase-num">05</div>
+    <div class="phase-meta">
+      <div class="phase-label">Written Narrative Formats</div>
+      <h2 class="phase-title">Long-Form <em>Narrative Templates</em></h2>
+      <p class="phase-desc">Long-form brand narrative lives in the brochure's opening spread, the project website's hero section, the MD's launch speech, and the PR article placed in ET Realty. Each format has a different length, register, and audience — and each has a specific structure that makes it work.</p>
+    </div>
+  </div>
+  <div class="content-zone">
+
+    <!-- Template 1: Brochure Opener -->
+    <div class="section-title">Template 01 — Brochure Opening Spread (250–350 words)</div>
+
+    <div class="longform-template reveal">
+      <div class="lft-header">
+        <h3>Brochure Opening Narrative</h3>
+        <span>250–350 words · Full spread · Cormorant Garamond 17pt · Facing the first image</span>
+      </div>
+      <div class="lft-sections">
+        <div class="lft-row">
+          <div class="lft-label"><h5>Opening image</h5><span>Paras 1–2 · 80 words</span></div>
+          <div class="lft-content">
+            <p>Begin with a scene, not a claim. Place the reader inside a specific moment at the project — a time of day, a quality of light, a sensory observation that is specific to this location and no other. The brochure reader has just opened to the first page. They should feel as if they have arrived somewhere, not as if they are reading a product description.</p>
+            <div class="eg">The city ends where the light changes. At five in the morning, before the school runs begin, this hillside catches the first warmth of the day from the east. There is no building between you and the Nilgiris. There will never be.</div>
+          </div>
+        </div>
+        <div class="lft-row">
+          <div class="lft-label"><h5>The reveal</h5><span>Para 3 · 50 words</span></div>
+          <div class="lft-content">
+            <p>One paragraph that transitions from the sensory opening to the project's name and positioning. The reveal should feel earned by the opening — the sensory world of Para 1–2 should logically lead to the project's name and what it stands for.</p>
+            <div class="eg">This is Avior. Forty-eight residences on 6.4 acres of the Western Ghats. Designed for those who decided that the best of Bengaluru was worth a 45-minute drive away from it.</div>
+          </div>
+        </div>
+        <div class="lft-row">
+          <div class="lft-label"><h5>The promise</h5><span>Paras 4–5 · 80 words</span></div>
+          <div class="lft-content">
+            <p>What the developer is specifically committing to for this project — not generic quality claims, but the specific design decisions, site commitments, and community intentions that distinguish this project from any other. Each sentence should be specific enough to be checked after possession.</p>
+            <div class="eg">Every building footprint was positioned to preserve the existing tree line. The site's 114 trees are mapped. Sixty-two are named. Not one was removed to make way for parking. The basement was engineered around them. The view from the living room of Unit 12 was designed in the landscape architect's brief before the floor plan was drawn.</div>
+          </div>
+        </div>
+        <div class="lft-row">
+          <div class="lft-label"><h5>The invitation</h5><span>Para 6 · 50 words</span></div>
+          <div class="lft-content">
+            <p>End with the buyer, not with the developer. The final paragraph turns toward the reader and completes the emotional arc from scene-setting to personal relevance. It should be the sentence the buyer could say to explain to someone else why they bought here.</p>
+            <div class="eg">You have been looking at the wrong map. This is the one that shows you where you actually want to live. Forty-eight families will understand that. For them, this brochure is a formality. The decision was made when they walked the site at 5am and didn't want to leave.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template 2: About Page -->
+    <div class="section-title" style="margin-top:48px;">Template 02 — Website About Page (400–600 words)</div>
+
+    <div class="longform-template reveal">
+      <div class="lft-header">
+        <h3>Website — About the Developer</h3>
+        <span>400–600 words · Digital long-form · Structured for scroll · Not a timeline</span>
+      </div>
+      <div class="lft-sections">
+        <div class="lft-row">
+          <div class="lft-label"><h5>The opening claim</h5><span>H1 + 2 sentences · 30 words</span></div>
+          <div class="lft-content">
+            <p>One headline and two sentences that are the entire brand story compressed. The reader who only reads this section must come away with the complete positioning. What follows is elaboration, not new information.</p>
+            <div class="eg">We build homes we would want our own families to live in.<br><br>That is not a marketing line. It is the only standard we have ever used. In 24 years, it has been the reason for every decision we regret not making, and every one we are proud of.</div>
+          </div>
+        </div>
+        <div class="lft-row">
+          <div class="lft-label"><h5>Origin paragraph</h5><span>1 paragraph · 80 words</span></div>
+          <div class="lft-content">
+            <p>The brand origin story compressed to one paragraph — the belief, the gap, the decision. This is not the founder biography. It is the brand's reason for existing, written for a buyer who has five minutes and a working scepticism.</p>
+            <div class="eg">In 2000, we built our first project in a city where the word "developer" had become a synonym for "risk." We decided to do one thing differently: publish our construction schedule publicly and update it every month — whether the news was good or not. That decision cost us money in Year 1. It compounded into reputation over the next two decades.</div>
+          </div>
+        </div>
+        <div class="lft-row">
+          <div class="lft-label"><h5>Proof in story form</h5><span>2–3 paragraphs · 150 words</span></div>
+          <div class="lft-content">
+            <p>Two or three specific stories — not statistics — that demonstrate the brand origin's claim in practice. Each story is one or two sentences. Each is specific enough to be checkable. The stories should span different project types, price segments, or geographies to show range without losing specificity.</p>
+            <div class="eg">In 2011, the monsoon delayed our Velachery project's slab pour by 11 weeks. We wrote to every buyer before any journalist wrote about it.<br><br>In 2018, we stopped a subcontractor mid-pour on Tower C when the slump test failed. We rebuilt the slab at our cost, not the contractor's. The buyers never knew until we told them at the possession ceremony. They asked us why we told them. We told them it was the only way to make the pride worth anything.<br><br>In 2022, 39 of our 2016 buyers bought with us again.</div>
+          </div>
+        </div>
+        <div class="lft-row">
+          <div class="lft-label"><h5>Forward statement</h5><span>1 paragraph · 80 words</span></div>
+          <div class="lft-content">
+            <p>Where the brand is going — not in terms of cities or units, but in terms of what kind of developer it intends to be. The forward statement is the last word on the About page. It should be ambitious enough to feel worth reading and honest enough to be believed.</p>
+            <div class="eg">We are still building the same way we did in 2000. We are building better. The names on our buildings will change — the standard behind them will not. If that is what you are looking for, we should talk.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Template 3: MD Launch Speech -->
+    <div class="section-title" style="margin-top:48px;">Template 03 — MD Project Launch Speech (4–6 minutes / 600–900 words)</div>
+
+    <div class="longform-template reveal">
+      <div class="lft-header">
+        <h3>Project Launch Address — Managing Director</h3>
+        <span>600–900 words · Spoken · 4–6 minutes · Audience: media, brokers, potential buyers, partners</span>
+      </div>
+      <div class="lft-sections">
+        <div class="lft-row">
+          <div class="lft-label"><h5>The gift</h5><span>Opening 60 seconds · No thank-yous</span></div>
+          <div class="lft-content">
+            <p>Begin with something the audience learns, not with gratitude. The first 60 seconds of a launch speech are the only 60 seconds during which the full audience is guaranteed to be listening. Never start with "Thank you for joining us." Start with the most interesting thing about the project — told as a story, not as a feature.</p>
+            <div class="eg">"In 2019, I walked this site for the first time at dawn. There was nothing here. My site engineer pointed north and said: 'In three years, there will be a metro station 600 metres that way.' I did not believe him. I should have believed him. But what actually made me buy this land was not the metro. It was what I saw when I turned south."</div>
+          </div>
+        </div>
+        <div class="lft-row">
+          <div class="lft-label"><h5>The project story</h5><span>2 minutes · The canvas</span></div>
+          <div class="lft-content">
+            <p>The compressed version of the Project Story Canvas — site story, design intent, community vision. Told as a continuous narrative, not as a bullet-point presentation. The MD is not briefing the audience — they are inviting the audience into a story. The architect or landscape architect can be named and quoted directly if they have said something specific and memorable.</p>
+            <div class="eg">Reference Field 01 (Site Story), Field 02 (Design Intent), and Field 03 (Community Vision) from the Project Story Canvas. Weave them as a connected arc: "We bought this land because... The architect said... What we imagined for the people who will live here..."</div>
+          </div>
+        </div>
+        <div class="lft-row">
+          <div class="lft-label"><h5>The commitment</h5><span>60 seconds · Specific and personal</span></div>
+          <div class="lft-content">
+            <p>The single commitment the MD is making publicly for this project. It must be specific and measurable. Not "we will deliver on time" — "we will deliver by [specific month and year], and every buyer in this room has my personal number." The personal staking of credibility is what makes this moment memorable and replicable in media coverage.</p>
+            <div class="eg">"I will say publicly what I have told every buyer privately: if this project is not in possession by [month, year], I will personally call every buyer to discuss what happens next. Not my team. Me. I have made that call twice in twenty years. I intend never to make it again."</div>
+          </div>
+        </div>
+        <div class="lft-row">
+          <div class="lft-label"><h5>The closing</h5><span>30–45 seconds · Generous, not grand</span></div>
+          <div class="lft-content">
+            <p>End with the buyer, not the brand. The closing of a launch speech should make the audience feel that the developer built this project for them specifically — not that they built this project and the buyer was lucky enough to be invited to buy it. Generosity of spirit in the closing is the single most differentiating quality in real estate launch speeches.</p>
+            <div class="eg">"We don't do this for the award at the end. We do it so that in 2030, when someone who lives in this building tells their child the story of how they chose this home, the story is worth telling. That is the review we are working toward."</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 06 — BRAND FILM BRIEF
+══════════════════════════════════════ -->
+<section id="film">
+  <div class="phase-header">
+    <div class="phase-num">06</div>
+    <div class="phase-meta">
+      <div class="phase-label">Film Narrative Framework</div>
+      <h2 class="phase-title">The Brand Film <em>Brief Framework</em></h2>
+      <p class="phase-desc">The brand film is the most expensive narrative asset a developer commissions. The brief determines whether ₹30 lakhs produces a film that runs for five years and wins business, or a film that is retired at the next campaign review because it communicates the wrong thing beautifully. The brief is not a creative suggestion — it is a structural contract.</p>
+    </div>
+  </div>
+  <div class="content-zone">
+
+    <div class="callout reveal">
+      <div class="callout-glow"></div>
+      <p>"The real estate brand film that shows a smiling family walking through an empty show flat at 10am with swelling strings in the background is not a film — it is a decoration. The film that earns its budget is the one that tells the buyer something true about themselves that they had not yet put into words."</p>
+      <div class="callout-src">Film Brief Principle — Brand Storytelling Framework</div>
+    </div>
+
+    <div class="section-title">The Eight-Section Brand Film Brief</div>
+
+    <div class="brief-block reveal">
+      <div class="brief-block-head">
+        <div class="brief-block-num">01</div>
+        <h4>The Film's One Job</h4>
+      </div>
+      <div class="brief-block-body">
+        <p>Before writing any other section of the brief, complete this sentence and do not deviate from it throughout the production: "This film succeeds if a viewer, having watched it once, ________________."</p>
+        <p>The answer to this sentence is not "feels good about our brand" or "wants to buy our apartments." It is specific. "Understands that this developer builds differently because of how it handles delays." Or: "Feels that living in this township would give their family a kind of life they hadn't thought was available to them." The one job governs every creative decision — script, casting, music, ending.</p>
+        <div class="brief-eg">Wrong: "Creates awareness for our new project among premium buyers in Chennai." — This is a media brief, not a film brief.<br><br>Right: "Makes a buyer who has been burned by a previous developer's delay believe that one developer in this city does not behave the same way."</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <div class="brief-block-head">
+        <div class="brief-block-num">02</div>
+        <h4>The Audience — One Person, Specifically</h4>
+      </div>
+      <div class="brief-block-body">
+        <p>Do not describe the audience as a segment ("premium buyers, 35–45, IT sector, household income 25L+"). Describe one specific person: their age, their job, their family composition, the decision they are about to make, the anxiety they carry, the aspiration they have not told their spouse in full.</p>
+        <p>A film made for "premium buyers" is a film made for no one. A film made for "Priya, 38, VP at an IT firm, has been looking for 18 months, is scared of being fooled, wants something her parents will be proud of when they visit" — that is a film that will speak to 40,000 Priyas.</p>
+        <div class="brief-eg">Write the one-person audience profile here: Name, age, job, family, the decision they are facing, their single greatest anxiety, and the single thing they hope this home will give their life.</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <div class="brief-block-head">
+        <div class="brief-block-num">03</div>
+        <h4>The Emotional Arc — Three Beats</h4>
+      </div>
+      <div class="brief-block-body">
+        <p>A 90-second film has three emotional beats: where the viewer starts emotionally, the turning point, and where they end. Specify all three in one sentence each. The arc must move the viewer from one emotional state to a different one — not from neutral to "positive feeling."</p>
+        <p>The most powerful real estate film arcs are: Anxiety → Recognition → Resolution. Fear → Discovery → Commitment. Scepticism → Evidence → Belief. Longing → Arrival → Belonging. Never: Neutral → Aspiration → Aspiration (this is the format of the empty-show-flat film).</p>
+        <div class="brief-eg">Beat 1 (Opening state): The viewer is [specific emotional state — not "curious" or "neutral"].<br>Beat 2 (Turning point): At [time code], something happens that shifts the viewer from Beat 1 toward Beat 3. That something is: [specific scene or moment].<br>Beat 3 (Closing state): The viewer ends with [specific feeling or understanding they did not have at Beat 1].</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <div class="brief-block-head">
+        <div class="brief-block-num">04</div>
+        <h4>The Story — What Actually Happens on Screen</h4>
+      </div>
+      <div class="brief-block-body">
+        <p>Write a two-paragraph treatment of what the viewer sees — not the theme or the tone, but what actually happens. Characters, locations, actions, and one line of dialogue or voiceover that must be in the film. The treatment does not need to be cinematic — it needs to be specific. Vague treatments produce expensive vague films.</p>
+        <div class="brief-eg">Example treatment: "A woman in her late 30s drives to a site office before work. She has been to four other site offices in the last two months — we see the brochures on her passenger seat. She walks into this one, sits across from a relationship manager, and asks a question we don't hear. The camera stays on her face as she hears the answer — the one answer she has not received in four visits. The film ends on her calling someone — probably her husband. We don't hear the call. We see her face. The last frame is the project exterior at the same hour she arrived."</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <div class="brief-block-head">
+        <div class="brief-block-num">05</div>
+        <h4>What Must NOT Appear</h4>
+      </div>
+      <div class="brief-block-body">
+        <p>This section is as important as what must appear. Every brand film brief must have an explicit list of visual and narrative conventions the production is forbidden from using. Without this list, the director will default to the conventions of the category — and every real estate film in India shares the same conventions.</p>
+        <div class="brief-eg">Standard prohibitions for a premium real estate brand film:<br>— No aerial drone footage of the site as the opening shot<br>— No family sitting at a dining table looking happy without context<br>— No swimming pool at golden hour without people in it<br>— No "swooping in" camera move across the facade<br>— No sentimental piano or strings score without dialogue<br>— No child running in slow motion through an empty amenity space<br>— No voiceover that uses the words "dream," "journey," "aspirations," or "home is where the heart is"<br>— No closing logo reveal with lens flare</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <div class="brief-block-head">
+        <div class="brief-block-num">06</div>
+        <h4>Casting Direction</h4>
+      </div>
+      <div class="brief-block-body">
+        <p>Describe the characters as people, not as demographic categories. Include their energy, their age range, their physical type, and one specific quality about how they carry themselves that reflects the brand's archetype. The casting direction must also specify what the brand does NOT want — real estate casting defaults to aspirational-looking young families with improbable apartments.</p>
+        <div class="brief-eg">Guardian brand: "The protagonist is a woman in her early 40s — not conventionally "premium," but quietly authoritative. She looks like someone who has made a good decision before. Not a model. Not a lifestyle influencer. Someone you would trust if they told you to sign something."<br><br>Creator brand: "The male protagonist is around 45, design-literate — he looks at things longer than normal. The director should cast from architects and designers, not from talent agencies."</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <div class="brief-block-head">
+        <div class="brief-block-num">07</div>
+        <h4>Music Direction</h4>
+      </div>
+      <div class="brief-block-body">
+        <p>Music is responsible for approximately 40% of the emotional effect of a brand film — and is the dimension most often decided last and least carefully. Specify: the genre, the tempo, the emotional tone, and three reference tracks that represent the desired feeling. Also specify what the music must NOT do — real estate scores are chronically over-scored.</p>
+        <div class="brief-eg">Guardian archetype music: "Minimal, unhurried. A single instrument, probably piano or cello — never full orchestration. References: Max Richter's Sleep, Ólafur Arnalds' 'Near Light,' Nils Frahm's 'Says.' The music should feel like it has been playing since before the film started, not like it was composed to accompany it. Volume: low under dialogue, rises only for the final 10 seconds."<br><br>Explorer archetype: "Layered organic percussion with space between beats. Nothing electronic. Nothing that sounds like advertising. Reference: Devendra Banhart, early Bon Iver, Tamil Carnatic instrumental compressed and stripped back."</div>
+      </div>
+    </div>
+
+    <div class="brief-block">
+      <div class="brief-block-head">
+        <div class="brief-block-num">08</div>
+        <h4>Mandatory Deliverables + Approval Process</h4>
+      </div>
+      <div class="brief-block-body">
+        <p>Specify exact deliverables, approval gates, and who has final creative authority. Ambiguity in the approval process produces films that are edited by committee until no one is responsible for them. The brand film should have one creative authority — typically the MD or the Brand Manager — and all other approvers provide input into that authority, not into the edit itself.</p>
+        <div class="brief-eg">Standard film deliverables: 90-second master (YouTube, website) · 60-second cut (Instagram Reels, Meta Ads) · 30-second teaser (Instagram Stories, pre-roll) · 15-second digital ad cut · Vertical 9:16 versions of all above · Raw footage library for future edits.<br><br>Approval gates: Script/treatment approval before shoot. Director's cut approval within 5 working days. Final approval: one round of changes maximum on each cut. Final authority: [Name].</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 07 — TESTIMONIAL FRAMEWORK
+══════════════════════════════════════ -->
+<section id="testimonial">
+  <div class="phase-header">
+    <div class="phase-num">07</div>
+    <div class="phase-meta">
+      <div class="phase-label">Resident Narrative Layer</div>
+      <h2 class="phase-title">Resident Testimonial <em>Story Structure</em></h2>
+      <p class="phase-desc">The testimonial is the most underused narrative asset in Indian real estate. Developers collect them as feedback surveys and deploy them as star ratings. The structured testimonial story — with an arc, a specific detail, and a turning point — is 12 times more persuasive than any brochure copy the developer writes about itself.</p>
+    </div>
+  </div>
+  <div class="content-zone">
+
+    <div class="section-title">The Problem with Standard Testimonials</div>
+
+    <div class="versus-split reveal">
+      <div class="versus-panel left">
+        <div class="versus-header">
+          <span class="badge bad">STANDARD TESTIMONIAL</span>
+          <h4>The Claim Without a Story</h4>
+        </div>
+        <div class="versus-body">
+          <p>Most developer testimonials are structured as claims: "Excellent quality," "Delivered on time," "Great amenities," "I recommend to all my friends." These are adjective parades — they are believable in aggregate but persuasive to no one individually, because they carry no specific evidence and no human arc.</p>
+          <div class="eg bad-eg">"I am very happy with my home at [Project]. The construction quality is excellent and the amenities are top-class. The management team has been very responsive. I would highly recommend to anyone looking for a quality home in this area." — Could be written by anyone for any project. Is believed by no one.</div>
+        </div>
+      </div>
+      <div class="versus-divider"><span>vs</span></div>
+      <div class="versus-panel right">
+        <div class="versus-header">
+          <span class="badge good">STRUCTURED TESTIMONIAL</span>
+          <h4>The Story with a Turning Point</h4>
+        </div>
+        <div class="versus-body">
+          <p>The structured testimonial has a before state, a specific incident or moment that shifted perception, and a consequence. It names specific details — a floor number, a month, a person, a price — that make it impossible to fabricate and difficult to dismiss.</p>
+          <div class="eg good-eg">"I had been cheated on a flat in 2014. I said I would never buy from a developer again. My daughter-in-law forced me to come to the site office. In the middle of the presentation I asked the site manager to show me the slab test report for my floor. He showed it to me immediately — printed, signed, dated. I had never seen that before. I bought the next day." — Specific, credible, and more persuasive than any copy the developer could write.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">The Resident Story Framework — Five-Arc Structure</div>
+
+    <div class="testimonial-template reveal">
+      <div class="tt-header">
+        <h3>The Five-Arc Testimonial Interview Guide</h3>
+        <p>Use these questions in sequence. Record the answer verbatim and edit only for clarity, never for sentiment. The specific detail is the credibility.</p>
+      </div>
+      <div class="tt-arc">
+        <div class="tt-arc-cell">
+          <span class="tt-arc-num">01</span>
+          <span class="tt-arc-label">Before State</span>
+          <p>What was the resident's situation before they discovered this project? Their anxiety, their previous experience, their specific doubt about buying.</p>
+        </div>
+        <div class="tt-arc-cell">
+          <span class="tt-arc-num">02</span>
+          <span class="tt-arc-label">The Discovery</span>
+          <p>How did they find this project? Through a broker, a friend, an advertisement, a hoarding on a specific road? The specificity of the discovery makes the story real.</p>
+        </div>
+        <div class="tt-arc-cell">
+          <span class="tt-arc-num">03</span>
+          <span class="tt-arc-label">The Turning Point</span>
+          <p>The single specific moment that shifted their trust from doubt to commitment. A specific person, a specific answer, a specific thing they saw on site that changed the decision.</p>
+        </div>
+        <div class="tt-arc-cell">
+          <span class="tt-arc-num">04</span>
+          <span class="tt-arc-label">The After State</span>
+          <p>The specific way their life is different now. Not "I am very happy" — a specific scene from their current life that was made possible by living here.</p>
+        </div>
+        <div class="tt-arc-cell">
+          <span class="tt-arc-num">05</span>
+          <span class="tt-arc-label">The Recommendation</span>
+          <p>Not "I recommend this project" — "I would tell someone who _______ to come here because _______." The conditional recommendation is the most credible form.</p>
+        </div>
+      </div>
+      <div class="tt-questions">
+        <div class="tt-q">
+          <div class="tt-q-num">ARC 01 — Before State</div>
+          <h5>"Before you found this project, what were you looking for — and what were you afraid of?"</h5>
+          <p>Record verbatim. The fear is the most credible part of the before state. Buyers who admit their fear are trusted by buyers with the same fear.</p>
+        </div>
+        <div class="tt-q">
+          <div class="tt-q-num">ARC 02 — The Discovery</div>
+          <h5>"How did you first hear about [Project]? Who told you, or what brought you to the site office?"</h5>
+          <p>Word-of-mouth discovery stories are the most powerful because they embed a referral narrative inside the testimonial.</p>
+        </div>
+        <div class="tt-q">
+          <div class="tt-q-num">ARC 03 — The Turning Point</div>
+          <h5>"Was there a specific moment — something you saw, heard, or were told — that made you decide to buy? What was that moment?"</h5>
+          <p>If the resident cannot name a specific moment, the testimonial will be a claim parade. Keep probing: "Was there something specific about the site visit?" "Did anyone say something you hadn't heard before?"</p>
+        </div>
+        <div class="tt-q">
+          <div class="tt-q-num">ARC 04 — After State</div>
+          <h5>"Tell me about a specific morning or evening in your home here — a moment that made you feel you made the right decision."</h5>
+          <p>The scene prompt ("a specific morning or evening") forces the resident to recall a concrete moment rather than describe a general feeling. The concrete moment is what goes into the story.</p>
+        </div>
+        <div class="tt-q">
+          <div class="tt-q-num">ARC 05 — The Recommendation</div>
+          <h5>"Who would you bring here, and what would you tell them on the way?"</h5>
+          <p>The "on the way" prompt surfaces the actual selling argument the resident would use with someone they care about — often more persuasive than anything in the developer's own marketing.</p>
+        </div>
+        <div class="tt-q">
+          <div class="tt-q-num">EDITORIAL NOTE</div>
+          <h5>What to edit out, and what never to change</h5>
+          <p>Remove: filler words, incomplete sentences, irrelevant tangents. Never change: specific details (names, amounts, dates, floor numbers), negative emotions in the Before State, any phrasing that is grammatically imperfect but emotionally authentic. Polished testimonials read as PR. Slightly imperfect ones read as truth.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Testimonial Deployment — Where Each Arc Does the Most Work</div>
+
+    <table class="strat-table reveal">
+      <thead><tr><th>Arc</th><th>Most Effective Channel</th><th>Format</th><th>Why It Works Here</th></tr></thead>
+      <tbody>
+        <tr><td class="cat">Arc 01 — Before State (Fear)</td><td>Google Search Ads · Retargeting</td><td>Text ad headline or display copy</td><td>Buyers actively searching for a home carry the same fear. Recognition creates click-through.</td></tr>
+        <tr><td class="cat">Arc 03 — The Turning Point</td><td>Sales team verbal script · Site office wall</td><td>Printed quote + resident photo</td><td>The turning point is the most persuasive moment in the story — it tells the buyer what moment to look for in their own visit.</td></tr>
+        <tr><td class="cat">Full Five-Arc Story</td><td>Brand film · YouTube · Press features</td><td>Video testimonial (90–120 seconds)</td><td>The full arc requires time. Video is the only channel where the arc can land completely without the viewer losing patience.</td></tr>
+        <tr><td class="cat">Arc 04 — After State (Scene)</td><td>Instagram · Brochure back pages</td><td>Portrait photography + single quote</td><td>The after-state scene is visual and emotional — it pairs naturally with a photograph of the resident in their actual home.</td></tr>
+        <tr><td class="cat">Arc 05 — The Recommendation</td><td>WhatsApp Broadcast · Referral programme material</td><td>Short text format</td><td>"I told my brother-in-law to book here before I even moved in" is the highest-credibility referral seed. Used in the referral programme to show existing buyers how to recruit.</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 08 — INVESTMENT NARRATIVE
+══════════════════════════════════════ -->
+<section id="investment">
+  <div class="phase-header">
+    <div class="phase-num">08</div>
+    <div class="phase-meta">
+      <div class="phase-label">The Appreciation Story</div>
+      <h2 class="phase-title">The Investment <em>Appreciation Narrative</em></h2>
+      <p class="phase-desc">The investment narrative is the most dangerous narrative in real estate — mishandled, it creates legal liability, buyer resentment, and brand damage. But avoided entirely, it concedes the most emotionally compelling story in the category to competitors. The answer is not to silence the appreciation argument — it is to tell it with the precision of a financial document and the warmth of a letter from a trusted advisor.</p>
+    </div>
+  </div>
+  <div class="content-zone">
+
+    <div class="section-title">The Five Levels of Investment Narrative — From Safest to Most Powerful</div>
+    <p class="sub-prose">Not all investment communication carries the same legal and brand risk. The five tiers below range from zero-risk contextual communication to the powerful but legally bounded direct appreciation claim. Most developers operate only at Tier 1 or sprint to Tier 5 without the evidence to support it. The middle tiers are the most underused and the most effective.</p>
+
+    <div class="inv-tier reveal">
+      <div class="inv-tier-label">
+        <span>Tier One</span>
+        <strong>Context Narrative</strong>
+      </div>
+      <div class="inv-tier-body">
+        <h4>Telling the location's story without making claims</h4>
+        <p>The safest and most sustainable investment communication. Describes infrastructure, employment growth, demographic trends, and connectivity improvements as factual context — and lets the buyer draw their own conclusions. The developer narrates the location's story; the buyer does the appreciation arithmetic themselves.</p>
+        <div class="inv-eg">"In the six years since the IT SEZ was designated, the residential micro-market within 3 kilometres has seen a 32% increase in occupancy and a 48% reduction in unsold inventory. The metro Phase 2 corridor bisects this plot. This is the context in which we are building. What it means for your investment is a conversation you should have with your financial advisor — and your family."</div>
+        <div class="inv-warning">Legal note: Always include the standard RERA disclaimer. Never add a return projection to Tier 1 communication — doing so converts it to Tier 4 or 5.</div>
+      </div>
+    </div>
+
+    <div class="inv-tier">
+      <div class="inv-tier-label">
+        <span>Tier Two</span>
+        <strong>Track Record Narrative</strong>
+      </div>
+      <div class="inv-tier-body">
+        <h4>Using the developer's own completed projects as evidence</h4>
+        <p>Presents the appreciation history of the developer's own completed projects in the same or similar micro-markets. Factual, verifiable, and specific to this developer's execution quality rather than market-wide trends. The track record narrative connects delivery quality to capital appreciation — making the developer's brand equity tangible.</p>
+        <div class="inv-eg">"Our 2016 project in the same corridor — 2.5 kilometres from this site — registered at ₹4,200 per square foot at launch. Current resale listings range between ₹7,800 and ₹8,400 per square foot as of Q3 2024. We are not projecting this project's appreciation. We are showing you what our last project in this corridor did, delivered on time, with zero quality complaints in the NPS survey."</div>
+        <div class="inv-warning">Legal note: Always include the date range of the data and the caveat that past performance does not guarantee future appreciation. Cite the source for resale pricing (99acres, MagicBricks, or proprietary data).</div>
+      </div>
+    </div>
+
+    <div class="inv-tier">
+      <div class="inv-tier-label">
+        <span>Tier Three</span>
+        <strong>Third-Party Validation</strong>
+      </div>
+      <div class="inv-tier-body">
+        <h4>Referencing published research without making projections</h4>
+        <p>Uses published market research from credible third parties — JLL, Anarock, Knight Frank, CREDAI reports — to provide the investment context without the developer making any claims of their own. The developer curates the evidence; the analyst makes the argument. This tier is particularly effective for NRI buyers who are making decisions from overseas and need published, named sources.</p>
+        <div class="inv-eg">"The Anarock Q3 2024 report identifies this micro-market as one of the top three emerging residential corridors in South India by price growth potential. We are not the source of that assessment — Anarock is. We placed our project here because we saw what they later documented."</div>
+        <div class="inv-warning">Always cite the exact report, date, and page number. Never paraphrase a third-party finding in a way that makes it sound like a projection.</div>
+      </div>
+    </div>
+
+    <div class="inv-tier">
+      <div class="inv-tier-label">
+        <span>Tier Four</span>
+        <strong>The Investor's Letter</strong>
+      </div>
+      <div class="inv-tier-body">
+        <h4>Direct address to investment-minded buyers with documented assumptions</h4>
+        <p>A dedicated communication format — separate from the general buyer brochure — addressed specifically to investors. This format can be more direct about the investment case because it is written for a buyer who has self-identified as making an investment decision. It presents assumptions transparently and instructs the reader to validate with their own advisor.</p>
+        <div class="inv-eg">"For buyers investing rather than self-occupying: the investment case for [Project] rests on three specific factors. [Factor 1: Infrastructure trigger with date and source]. [Factor 2: Employment pipeline with data and source]. [Factor 3: Current supply-demand imbalance with data and source]. We are presenting these factors as inputs to your decision, not as our projection. We have commissioned an independent valuation report from [Valuer Name] which is available for review at our office."</div>
+        <div class="inv-warning">Tier 4 communication requires legal review before publication. It must be clearly segregated from general buyer communication and labelled as "Investment Information — For Discussion with Your Financial Advisor."</div>
+      </div>
+    </div>
+
+    <div class="inv-tier">
+      <div class="inv-tier-label">
+        <span>Tier Five</span>
+        <strong>The Appreciation Story</strong>
+      </div>
+      <div class="inv-tier-body">
+        <h4>The resident who made money — told as a story, not a projection</h4>
+        <p>The most powerful investment narrative is not a projection — it is a true story of a resident whose home appreciated, told with their permission, with specific numbers, in their own words. This is not a projection and carries none of the legal liability of Tier 4 communication. It is the retrospective proof of the investment thesis, told by the investor themselves.</p>
+        <div class="inv-eg">"Shankar bought a 3BHK in our 2015 Whitefield project for ₹68 lakhs. He is an IT professional. He and his wife were end-users, not investors. In 2022, he was offered ₹1.42 crores for the same flat by a colleague who wanted to be in the building. He did not sell. He told us: 'I am not selling because I live here and I don't want to move. But I like knowing that I didn't just buy a home. I bought an asset that can pay for my daughter's education if I need it to.' That is the investment story we are trying to tell with every project we build."</div>
+        <div class="inv-warning">Obtain written consent. Use the resident's first name only unless they consent to full name. The story must state that past appreciation is not a future guarantee. Never use this format as an implied projection.</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:48px;">The Language Rules of Investment Communication</div>
+
+    <table class="strat-table reveal">
+      <thead><tr><th>Say This</th><th>Not This</th><th>Why the Distinction Matters</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="ok">"The infrastructure pipeline includes..." + factual description</td>
+          <td class="warn">"Your investment will benefit from..."</td>
+          <td>The first describes; the second promises. RERA prohibits promotional claims of appreciation. The first is legal; the second creates liability.</td>
+        </tr>
+        <tr>
+          <td class="ok">"Our last project in this corridor registered appreciation of X% over Y years (source: [portal], [date])"</td>
+          <td class="warn">"You can expect similar returns on this project"</td>
+          <td>The track record fact is verifiable and historical. The "expect similar" is a projection. Never connect the historical fact to the current project as an implied guarantee.</td>
+        </tr>
+        <tr>
+          <td class="ok">"This is a market where supply has [data] and demand has [data]"</td>
+          <td class="warn">"Prices are set to rise in this corridor"</td>
+          <td>Supply/demand data is factual. "Set to rise" is a future projection — and one that can be challenged by any market movement. A developer who makes this claim loses credibility if the market doesn't move as predicted.</td>
+        </tr>
+        <tr>
+          <td class="ok">"We recommend discussing this with your financial advisor and reviewing the independent valuation report available at our office"</td>
+          <td class="warn">"Trust us — this is a great investment"</td>
+          <td>Directing the buyer to independent advice is a credibility builder, not a disclaimer. Buyers who are told to get independent advice trust the developer more, not less. "Trust us" is the language of the developer who knows the buyer shouldn't.</td>
+        </tr>
+        <tr>
+          <td class="ok">"Shankar bought for ₹68L in 2015. A similar flat in the building sold for ₹1.38Cr in 2023 (source: registered sale deed, SRO [office])."</td>
+          <td class="warn">"Buyers of our 2015 project have seen 2× returns"</td>
+          <td>The first cites a specific transaction with a source. The second is a sweeping claim that implies all buyers saw the same returns. The first is evidence; the second is exaggeration waiting to be disproved.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <div class="callout-glow"></div>
+      <p>"The developer who tells the investment story with the precision of a financial analyst and the warmth of a family friend is the one whose buyers tell the story for them. The developer who promises returns becomes the developer whose buyers sue when the market does not cooperate."</p>
+      <div class="callout-src">Investment Narrative Principle — Brand Storytelling & Narrative Architecture</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Narrative Architecture <span>/ Real Estate</span></div>
+      <p class="footer-desc">Eight narrative frameworks for Indian real estate developers — from the sentence your founder says at dinner to the 90-second film that runs for five years. Tagline architecture, founder story structure, project story canvas, long-form templates, brand film brief, testimonial framework, and the five tiers of investment communication.</p>
+    </div>
+    <div class="footer-col">
+      <h5>The 8 Frameworks</h5>
+      <ul>
+        <li>01 — Tagline vs Brand Story</li>
+        <li>02 — Founder Story Structure</li>
+        <li>03 — Brand Origin Narrative</li>
+        <li>04 — Project Story Canvas</li>
+        <li>05 — Long-Form Templates (3)</li>
+        <li>06 — Brand Film Brief (8 sections)</li>
+        <li>07 — Resident Testimonial Framework</li>
+        <li>08 — Investment Appreciation Narrative</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Companion Documents</h5>
+      <ul>
+        <li>Branding 360° — Real Estate</li>
+        <li>Brand Standards Manual</li>
+        <li>Brand Archetype Application Playbook</li>
+        <li>Brand & Project Naming System</li>
+        <li>MarComm Plan — Real Estate</li>
+        <li>Content Strategy & Editorial Playbook</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Brand Storytelling & Narrative Architecture — Real Estate Edition</p>
+    <p>Companion to Branding 360° · Narrative Reference Document</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const modTags = document.querySelectorAll('.mod-tag');
+  const secMap = { intro:null, distinction:0, founder:1, origin:2, project:3, longform:4, film:5, testimonial:6, investment:7 };
+  const navObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = secMap[entry.target.id];
+        if (idx !== null && idx !== undefined) {
+          modTags.forEach((t,i) => t.classList.toggle('active', i === idx));
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+  sections.forEach(s => navObs.observe(s));
+</script>
+</body>
+</html>
